@@ -8,7 +8,7 @@
         </div>
         
         <div class="pricing-container">
-          <div class="pricing-card" :class="{ 'popular': plan.popular }" v-for="(plan, index) in plans" :key="index">
+          <div class="pricing-card" v-for="(plan, index) in plans" :key="index" :class="{ 'popular': plan.popular }">
             <h3 class="plan-name">{{ plan.name }}</h3>
             <div class="plan-price">
               <span class="currency">$</span>
@@ -201,7 +201,7 @@ const toggleFaq = (index) => {
   }
   
   &.popular {
-    background: linear-gradient(135deg, $primary 0%, lighten($primary, 15%) 100%) !important;
+    background: linear-gradient(135deg, var(--primary), #8492ff) !important;
     color: white !important;
     transform: scale(1.05) !important;
     box-shadow: $shadow-lg !important;
@@ -220,26 +220,14 @@ const toggleFaq = (index) => {
       }
     }
     
-    .plan-name, .period, .plan-description {
+    .plan-name, .amount, .period, .plan-description {
       color: white !important;
-    }
-    
-    .amount {
-      color: white !important;
-    }
-    
-    .plan-free-trial {
-      .free-trial-badge {
-        background-color: white !important;
-        color: $primary !important;
-        font-weight: $font-weight-bold !important;
-      }
     }
     
     .plan-features {
       li {
         border-bottom: 1px solid rgba(255, 255, 255, 0.2) !important;
-        color: rgba(255, 255, 255, 0.9) !important;
+        color: white !important;
         
         i {
           color: white !important;
@@ -249,7 +237,7 @@ const toggleFaq = (index) => {
     
     .btn {
       background-color: white !important;
-      color: $primary !important;
+      color: var(--primary) !important;
       border: none !important;
       
       &:hover {
