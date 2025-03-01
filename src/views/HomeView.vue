@@ -35,7 +35,7 @@
         <div class="hero__demo animate-slide-in-right">
           <div class="demo-frame">
             <iframe 
-              src="https://my.matterport.com/show/?m=SxQL3iGyoDo" 
+              src="https://maiavr.s3.sa-east-1.amazonaws.com/demo.html" 
               frameborder="0" 
               allowfullscreen 
               allow="xr-spatial-tracking"
@@ -66,7 +66,7 @@
         <div class="features">
           <div class="feature-highlight">
             <div class="feature-highlight__image">
-              <img src="https://images.unsplash.com/photo-1573496358961-3c82861ab8f4?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Automatización Inteligente" />
+              <img src="https://images.unsplash.com/photo-1573164713988-8665fc963095?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Automatización Inteligente" />
             </div>
             <div class="feature-highlight__content">
               <h3 class="feature-highlight__title">Automatización Inteligente</h3>
@@ -88,13 +88,13 @@
               <button class="btn btn--primary">Ver métricas disponibles</button>
             </div>
             <div class="feature-highlight__image">
-              <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Datos y Análisis Avanzados" />
+              <img src="https://images.unsplash.com/photo-1506784983877-45594efa4cbe?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Datos y Análisis Avanzados" />
             </div>
           </div>
           
           <div class="feature-highlight">
             <div class="feature-highlight__image">
-              <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Integración Sin Esfuerzo" />
+              <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Integración Sin Esfuerzo" />
             </div>
             <div class="feature-highlight__content">
               <h3 class="feature-highlight__title">Integración Sin Esfuerzo</h3>
@@ -122,7 +122,7 @@
         <div class="demo-container">
           <div class="demo-frame full-demo">
             <iframe 
-              src="https://my.matterport.com/show/?m=SxQL3iGyoDo" 
+              src="https://maiavr.s3.sa-east-1.amazonaws.com/demo.html" 
               frameborder="0" 
               allowfullscreen 
               allow="xr-spatial-tracking"
@@ -235,8 +235,12 @@
               Arquitecto, experto en VR y modelado 3D, profesor universitario. Lidera la visión del producto y el diseño de experiencia.
             </p>
             <div class="team-member__social">
-              <a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-              <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+              <a href="https://www.linkedin.com/in/manjofer/" target="_blank" aria-label="LinkedIn">
+                <i class="fab fa-linkedin-in"></i>
+              </a>
+              <a href="mailto:manuel@maiavr.cl" aria-label="Email">
+                <i class="fas fa-envelope"></i>
+              </a>
             </div>
           </div>
           
@@ -250,8 +254,9 @@
               10+ años en desarrollo de software, diseñó sistemas escalables para startups. Responsable de la arquitectura técnica y desarrollo de IA.
             </p>
             <div class="team-member__social">
-              <a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-              <a href="#" target="_blank"><i class="fab fa-github"></i></a>
+              <a href="https://www.linkedin.com/in/juan-pablo-rojas-416157195/" target="_blank" aria-label="LinkedIn">
+                <i class="fab fa-linkedin-in"></i>
+              </a>
             </div>
           </div>
           
@@ -265,8 +270,12 @@
               MBA, 8+ años en ventas B2B, experiencia en consultoría inmobiliaria. Dirige las estrategias comerciales y relaciones con clientes.
             </p>
             <div class="team-member__social">
-              <a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-              <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+              <a href="https://www.linkedin.com/in/fantunovic/" target="_blank" aria-label="LinkedIn">
+                <i class="fab fa-linkedin-in"></i>
+              </a>
+              <a href="mailto:fede@maiavr.cl" aria-label="Email">
+                <i class="fas fa-envelope"></i>
+              </a>
             </div>
           </div>
         </div>

@@ -10,7 +10,7 @@
         <div class="demo-container">
           <div class="demo-frame">
             <iframe 
-              src="https://my.matterport.com/show/?m=SxQL3iGyoDo" 
+              src="https://maiavr.s3.sa-east-1.amazonaws.com/demo.html" 
               frameborder="0" 
               allowfullscreen 
               allow="xr-spatial-tracking"

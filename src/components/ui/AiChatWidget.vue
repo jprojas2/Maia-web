@@ -2,41 +2,27 @@
   <div 
     class="ai-chat-widget" 
     :class="{ 
-      'is-open': isOpen, 
-      'is-mobile': isMobile,
-      'is-minimized': isMinimized && !isOpen
+      'open': isOpen, 
+      'mobile': isMobile,
+      'minimized': isMinimized && !isOpen
     }"
   >
-    <!-- Mobile trigger button -->
-    <button 
-      v-if="isMobile" 
-      class="chat-trigger chat-trigger--mobile" 
-      @click="toggleChat"
-      aria-label="Toggle chat"
-    >
-      <span class="chat-trigger__icon">
-        <i class="fas" :class="isOpen ? 'fa-times' : 'fa-comment'"></i>
-      </span>
-      <span v-if="!isOpen" class="chat-trigger__text">Chat con Maia</span>
-    </button>
-    
     <!-- Chat panel -->
-    <div class="chat-panel">
+    <div v-if="isOpen" class="chat-panel">
       <div class="chat-header">
-        <div class="chat-header__title">
-          <span class="title-text">Maia</span>
+        <div class="header-title">
+          <h3>Maia</h3>
         </div>
         
-        <div class="chat-header__actions">
+        <div class="header-actions">
           <button 
-            class="action-button" 
             @click="toggleMinimize"
             aria-label="Minimize"
           >
             <i class="fas" :class="isMinimized ? 'fa-expand' : 'fa-minus'"></i>
           </button>
           <button 
-            class="action-button" 
+            class="close-btn"
             @click="closeChat"
             aria-label="Close"
           >
@@ -45,50 +31,46 @@
         </div>
       </div>
       
-      <div v-if="!isMinimized" class="chat-body">
-        <div class="messages" ref="messagesContainer">
-          <div class="message message--bot">
-            <div class="message__content">
-              <p>Hola 👋 Soy Maia, tu vendedora virtual.</p>
-              <p>¿En qué puedo ayudarte hoy?</p>
-            </div>
-          </div>
-          
-          <div 
-            v-for="(message, index) in messages" 
-            :key="index" 
-            class="message" 
-            :class="{ 
-              'message--user': message.sender === 'user',
-              'message--bot': message.sender === 'bot'
-            }"
-          >
-            <div class="message__content">
-              <p v-html="message.text"></p>
-            </div>
-          </div>
-          
-          <div v-if="isTyping" class="message message--bot">
-            <div class="message__content typing-indicator">
-              <span></span>
-              <span></span>
-              <span></span>
-            </div>
+      <div v-if="!isMinimized" class="messages-container" ref="messagesContainer">
+        <div class="message bot">
+          <div class="message-content">
+            <p>Hola 👋 Soy Maia, tu vendedora virtual.</p>
+            <p>¿En qué puedo ayudarte hoy?</p>
           </div>
         </div>
         
-        <div class="chat-input">
+        <div 
+          v-for="(message, index) in messages" 
+          :key="index" 
+          class="message" 
+          :class="{ 
+            'user': message.sender === 'user',
+            'bot': message.sender === 'bot'
+          }"
+        >
+          <div class="message-content" v-html="message.text"></div>
+          <div class="message-time" v-if="message.time">{{ message.time }}</div>
+        </div>
+        
+        <div v-if="isTyping" class="typing-indicator">
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+        </div>
+      </div>
+      
+      <div v-if="!isMinimized" class="input-area">
+        <div class="input-field">
           <textarea 
             ref="inputField"
             v-model="userInput" 
-            class="input-field" 
             placeholder="Escribe tu mensaje..."
             @keydown.enter.prevent="sendMessage"
             rows="1"
           ></textarea>
           
           <button 
-            class="send-button" 
+            class="send-btn" 
             @click="sendMessage"
             :disabled="!userInput.trim()"
             aria-label="Send message"
@@ -99,10 +81,13 @@
       </div>
     </div>
     
-    <!-- Desktop bubble view -->
-    <div v-if="!isMobile && !isOpen" class="chat-bubble" @click="openChat">
-      <div class="chat-bubble__content">
-        <span>¿Necesitas ayuda? Chat con Maia</span>
+    <!-- Bubble view -->
+    <div v-if="!isOpen" class="bubble-container">
+      <div class="bubble-text" v-if="!isMobile">
+        ¿Necesitas ayuda? Chat con Maia
+      </div>
+      <div class="bubble" @click="openChat">
+        <i class="fas fa-comment"></i>
       </div>
     </div>
   </div>
@@ -308,32 +293,272 @@ $primary-gradient: linear-gradient(135deg, $primary 0%, lighten($primary, 15%) 1
   right: 20px;
   top: 50%;
   transform: translateY(-50%);
-  z-index: 1000;
+  z-index: $z-index-modal;
   font-family: $font-family-base;
   
-  &.is-mobile {
-    bottom: 20px;
-    right: 20px;
-    left: 20px;
-    top: auto;
-    transform: none;
+  &.open {
+    width: 360px;
+    max-width: 95vw;
+  }
+  
+  &.mobile {
+    bottom: 0;
+    right: 0;
+    left: 0;
+    width: 100%;
+    max-width: 100%;
     
     .chat-panel {
-      position: fixed;
-      bottom: 80px;
-      right: 0;
-      left: 0;
-      width: 100%;
-      max-width: 100%;
-      height: calc(100% - 160px);
       border-radius: 0;
-      transform: translateY(100%);
-      transition: transform 0.3s ease;
+      border-top-left-radius: $border-radius-lg;
+      border-top-right-radius: $border-radius-lg;
+      height: 80vh;
+    }
+  }
+  
+  .chat-panel {
+    background-color: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    border-radius: $border-radius-lg;
+    box-shadow: $shadow-lg;
+    display: flex;
+    flex-direction: column;
+    height: 500px;
+    max-height: 70vh;
+    overflow: hidden;
+    transition: $transition-base;
+    
+    .chat-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: $spacing-md $spacing-lg;
+      border-bottom: 1px solid $gray-200;
+      
+      .header-title {
+        display: flex;
+        align-items: center;
+        
+        h3 {
+          font-size: 1.2rem;
+          font-weight: $font-weight-semibold;
+          color: $dark;
+          margin: 0;
+        }
+      }
+      
+      .header-actions {
+        display: flex;
+        gap: $spacing-xs;
+        
+        button {
+          background: none;
+          border: none;
+          color: $gray-600;
+          cursor: pointer;
+          font-size: 1.1rem;
+          padding: $spacing-xs;
+          transition: $transition-fast;
+          
+          &:hover {
+            color: $dark;
+          }
+          
+          &.close-btn:hover {
+            color: #e74c3c;
+          }
+        }
+      }
     }
     
-    &.is-open .chat-panel {
-      transform: translateY(0);
+    .messages-container {
+      flex: 1;
+      overflow-y: auto;
+      padding: $spacing-md $spacing-lg;
+      
+      .message {
+        margin-bottom: $spacing-md;
+        max-width: 85%;
+        
+        &.user {
+          margin-left: auto;
+          
+          .message-content {
+            background-color: $primary;
+            color: white;
+            border-radius: $border-radius $border-radius $border-radius-sm $border-radius;
+          }
+        }
+        
+        &.bot {
+          margin-right: auto;
+          
+          .message-content {
+            background-color: $gray-200;
+            color: $dark;
+            border-radius: $border-radius $border-radius $border-radius $border-radius-sm;
+          }
+        }
+        
+        .message-content {
+          padding: $spacing-sm $spacing-md;
+          font-size: 0.95rem;
+          line-height: 1.5;
+        }
+        
+        .message-time {
+          font-size: 0.75rem;
+          color: $gray-500;
+          margin-top: $spacing-xs;
+          text-align: right;
+        }
+      }
+      
+      .typing-indicator {
+        display: flex;
+        gap: 4px;
+        margin-bottom: $spacing-md;
+        
+        .dot {
+          width: 8px;
+          height: 8px;
+          background-color: $gray-400;
+          border-radius: 50%;
+          animation: typing-animation 1.4s infinite ease-in-out;
+          
+          &:nth-child(1) {
+            animation-delay: 0s;
+          }
+          
+          &:nth-child(2) {
+            animation-delay: 0.2s;
+          }
+          
+          &:nth-child(3) {
+            animation-delay: 0.4s;
+          }
+        }
+      }
     }
+    
+    .input-area {
+      border-top: 1px solid $gray-200;
+      padding: $spacing-md;
+      
+      .input-field {
+        position: relative;
+        
+        textarea {
+          width: 100%;
+          border: 1px solid $gray-300;
+          border-radius: $border-radius;
+          padding: $spacing-sm $spacing-md;
+          padding-right: 50px;
+          font-family: $font-family-base;
+          font-size: 0.95rem;
+          resize: none;
+          height: 60px;
+          max-height: 120px;
+          background-color: white;
+          
+          &:focus {
+            outline: none;
+            border-color: $primary;
+          }
+        }
+        
+        .send-btn {
+          position: absolute;
+          right: $spacing-sm;
+          bottom: $spacing-sm;
+          background-color: $primary;
+          color: white;
+          border: none;
+          border-radius: 50%;
+          width: 32px;
+          height: 32px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+          transition: $transition-fast;
+          
+          &:hover {
+            background-color: $primary-dark;
+          }
+          
+          &:disabled {
+            background-color: $gray-400;
+            cursor: not-allowed;
+          }
+          
+          i {
+            font-size: 0.9rem;
+          }
+        }
+      }
+    }
+  }
+  
+  .bubble-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    
+    .bubble {
+      width: 60px;
+      height: 60px;
+      background-color: rgba(255, 255, 255, 0.2);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: $shadow;
+      transition: $transition-base;
+      color: $primary;
+      font-size: 1.5rem;
+      margin-top: $spacing-md;
+      opacity: 0.2;
+      
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.8);
+        opacity: 1;
+      }
+    }
+    
+    .bubble-text {
+      background-color: rgba(255, 255, 255, 0.8);
+      padding: $spacing-sm $spacing-md;
+      border-radius: $border-radius;
+      font-size: 0.9rem;
+      margin-bottom: $spacing-sm;
+      box-shadow: $shadow-sm;
+      color: $dark;
+      max-width: 200px;
+      text-align: center;
+      opacity: 0.2;
+      
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+}
+
+@keyframes typing-animation {
+  0%, 60%, 100% { transform: translateY(0); }
+  30% { transform: translateY(-5px); }
+}
+
+// Make chat window fully visible when interacting
+.ai-chat-widget:hover,
+.ai-chat-widget:focus-within,
+.ai-chat-widget.open {
+  .bubble,
+  .bubble-text {
+    opacity: 1;
   }
 }
 
