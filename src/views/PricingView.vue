@@ -8,27 +8,77 @@
         </div>
         
         <div class="pricing-container">
-          <div class="pricing-card" :class="{ 'popular': index === 1 }" v-for="(plan, index) in plans" :key="index">
-            <h3 class="plan-name">{{ plan.name }}</h3>
+          <div class="pricing-card">
+            <h3 class="plan-name">{{ plans[0].name }}</h3>
             <div class="plan-price">
               <span class="currency">$</span>
-              <span class="amount">{{ plan.price }}</span>
+              <span class="amount">{{ plans[0].price }}</span>
               <span class="period">/mes</span>
             </div>
-            <p class="plan-description">{{ plan.description }}</p>
+            <p class="plan-description">{{ plans[0].description }}</p>
             
             <div class="plan-free-trial">
               <span class="free-trial-badge"><strong>Prueba gratuita de 7 días</strong></span>
             </div>
             
             <ul class="plan-features">
-              <li v-for="(feature, fIndex) in plan.features" :key="fIndex">
+              <li v-for="(feature, fIndex) in plans[0].features" :key="fIndex">
                 <i class="fas fa-check"></i>
                 {{ feature }}
               </li>
             </ul>
             
-            <router-link :to="plan.buttonLink" class="btn" :class="plan.buttonClass">
+            <router-link :to="plans[0].buttonLink" class="btn" :class="plans[0].buttonClass">
+              Suscribirse
+            </router-link>
+          </div>
+
+          <div class="pricing-card" style="background: linear-gradient(135deg, #5E60CE, #8492ff); color: white; transform: scale(1.05); box-shadow: 0 15px 30px rgba(0,0,0,0.2); border: none; z-index: 2;">
+            <h3 class="plan-name" style="color: white;">{{ plans[1].name }}</h3>
+            <div class="plan-price">
+              <span class="currency" style="color: white;">$</span>
+              <span class="amount" style="color: white;">{{ plans[1].price }}</span>
+              <span class="period" style="color: white;">/mes</span>
+            </div>
+            <p class="plan-description" style="color: white;">{{ plans[1].description }}</p>
+            
+            <div class="plan-free-trial">
+              <span class="free-trial-badge" style="background-color: rgba(255, 255, 255, 0.2); color: white;"><strong>Prueba gratuita de 7 días</strong></span>
+            </div>
+            
+            <ul class="plan-features">
+              <li v-for="(feature, fIndex) in plans[1].features" :key="fIndex" style="border-bottom: 1px solid rgba(255, 255, 255, 0.2); color: white;">
+                <i class="fas fa-check" style="color: white;"></i>
+                {{ feature }}
+              </li>
+            </ul>
+            
+            <router-link :to="plans[1].buttonLink" class="btn" style="background-color: white; color: #5E60CE; border: none;">
+              Suscribirse
+            </router-link>
+          </div>
+
+          <div class="pricing-card">
+            <h3 class="plan-name">{{ plans[2].name }}</h3>
+            <div class="plan-price">
+              <span class="currency">$</span>
+              <span class="amount">{{ plans[2].price }}</span>
+              <span class="period">/mes</span>
+            </div>
+            <p class="plan-description">{{ plans[2].description }}</p>
+            
+            <div class="plan-free-trial">
+              <span class="free-trial-badge"><strong>Prueba gratuita de 7 días</strong></span>
+            </div>
+            
+            <ul class="plan-features">
+              <li v-for="(feature, fIndex) in plans[2].features" :key="fIndex">
+                <i class="fas fa-check"></i>
+                {{ feature }}
+              </li>
+            </ul>
+            
+            <router-link :to="plans[2].buttonLink" class="btn" :class="plans[2].buttonClass">
               Suscribirse
             </router-link>
           </div>
