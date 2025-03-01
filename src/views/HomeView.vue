@@ -682,7 +682,7 @@ onUnmounted(() => {
 .cta {
   background: $gradient-1;
   color: white;
-  padding: $spacing-xxl 0;
+  padding: $spacing-xl 0;
   text-align: center;
   
   &__content {
