@@ -68,7 +68,7 @@
 <script setup>
 import { ref, computed, onMounted, nextTick, watch } from 'vue';
 
-const isOpen = ref(false);
+const isOpen = ref(true);
 const userInput = ref('');
 const messages = ref([]);
 const isTyping = ref(false);
@@ -84,11 +84,6 @@ const suggestions = [
 
 const toggleChat = () => {
   isOpen.value = !isOpen.value;
-  
-  if (isOpen.value && messages.value.length === 0) {
-    // Add initial message when opening for the first time
-    addMessage('¡Hola! Soy Maia, tu asistente virtual para la venta inmobiliaria. ¿En qué puedo ayudarte hoy?', 'ai');
-  }
 };
 
 const sendUserMessage = () => {
@@ -191,11 +186,8 @@ watch(messages, () => {
 });
 
 onMounted(() => {
-  // Check if the chat should be open by default (e.g., based on URL parameter)
-  const urlParams = new URLSearchParams(window.location.search);
-  if (urlParams.get('openChat') === 'true') {
-    toggleChat();
-  }
+  // Add initial message since it's open by default
+  addMessage('¡Hola! Soy Maia, tu asistente virtual para la venta inmobiliaria. ¿En qué puedo ayudarte hoy?', 'ai');
 });
 </script>
 
@@ -212,7 +204,8 @@ onMounted(() => {
   &__tab {
     width: 60px;
     height: 60px;
-    background: $gradient-1;
+    background: white;
+    border: 2px solid $primary;
     border-radius: $border-radius-pill 0 0 $border-radius-pill;
     display: flex;
     align-items: center;
@@ -220,9 +213,11 @@ onMounted(() => {
     cursor: pointer;
     box-shadow: $shadow;
     transition: $transition-base;
+    animation: pulse 2s infinite;
     
     &:hover {
       transform: translateX(-5px);
+      animation: none;
     }
   }
   
@@ -446,6 +441,18 @@ onMounted(() => {
   }
   30% {
     transform: translateY(-4px);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba($primary, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba($primary, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba($primary, 0);
   }
 }
 </style> 
