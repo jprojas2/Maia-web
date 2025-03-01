@@ -114,7 +114,7 @@ $primary-gradient: linear-gradient(135deg, $primary 0%, lighten($primary, 15%) 1
     .logo-container {
       display: flex;
       align-items: center;
-      margin-bottom: $spacing-md;
+      gap: $spacing-sm;
     }
   }
   
@@ -131,19 +131,21 @@ $primary-gradient: linear-gradient(135deg, $primary 0%, lighten($primary, 15%) 1
   }
 }
 
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+}
+
 .logo__image {
-  width: 40px;
   height: 40px;
-  margin-right: $spacing-sm;
-  border-radius: 50%;
-  object-fit: cover;
+  width: auto;
 }
 
 .logo__text {
   font-size: 1.5rem;
   font-weight: $font-weight-bold;
   color: white;
-  margin: 0;
 }
 
 .footer-tagline {

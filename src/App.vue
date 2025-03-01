@@ -78,27 +78,24 @@ onUnmounted(() => {
   // Purple spots
   &::before {
     background-image: 
-      radial-gradient(ellipse at 10% 20%, rgba($primary, 0.35) 0%, rgba($primary, 0) 15%),
-      radial-gradient(ellipse at 30% 70%, rgba($primary, 0.3) 0%, rgba($primary, 0) 18%),
-      radial-gradient(ellipse at 50% 40%, rgba($primary, 0.25) 0%, rgba($primary, 0) 20%),
-      radial-gradient(ellipse at 70% 90%, rgba($primary, 0.35) 0%, rgba($primary, 0) 14%),
-      radial-gradient(ellipse at 90% 30%, rgba($primary, 0.3) 0%, rgba($primary, 0) 16%),
-      radial-gradient(ellipse at 20% 85%, rgba($primary, 0.25) 0%, rgba($primary, 0) 18%),
-      radial-gradient(ellipse at 75% 60%, rgba($primary, 0.35) 0%, rgba($primary, 0) 15%),
-      radial-gradient(ellipse at 55% 10%, rgba($primary, 0.3) 0%, rgba($primary, 0) 16%);
+      radial-gradient(ellipse at 15% 25%, rgba(84, 101, 255, 0.6) 0%, rgba(84, 101, 255, 0) 25%),
+      radial-gradient(circle at 35% 65%, rgba(84, 101, 255, 0.5) 0%, rgba(84, 101, 255, 0) 30%),
+      radial-gradient(ellipse at 55% 35%, rgba(84, 101, 255, 0.6) 0%, rgba(84, 101, 255, 0) 28%),
+      radial-gradient(circle at 75% 80%, rgba(84, 101, 255, 0.5) 0%, rgba(84, 101, 255, 0) 32%),
+      radial-gradient(ellipse at 90% 40%, rgba(84, 101, 255, 0.6) 0%, rgba(84, 101, 255, 0) 25%),
+      radial-gradient(circle at 25% 90%, rgba(84, 101, 255, 0.5) 0%, rgba(84, 101, 255, 0) 28%);
   }
   
   // Black spots
   &::after {
     background-image: 
-      radial-gradient(ellipse at 15% 35%, rgba($dark, 0.25) 0%, rgba($dark, 0) 14%),
-      radial-gradient(ellipse at 35% 55%, rgba($dark, 0.2) 0%, rgba($dark, 0) 15%),
-      radial-gradient(ellipse at 60% 25%, rgba($dark, 0.25) 0%, rgba($dark, 0) 13%),
-      radial-gradient(ellipse at 80% 45%, rgba($dark, 0.2) 0%, rgba($dark, 0) 16%),
-      radial-gradient(ellipse at 20% 65%, rgba($dark, 0.25) 0%, rgba($dark, 0) 15%),
-      radial-gradient(ellipse at 45% 85%, rgba($dark, 0.2) 0%, rgba($dark, 0) 13%),
-      radial-gradient(ellipse at 65% 70%, rgba($dark, 0.25) 0%, rgba($dark, 0) 14%),
-      radial-gradient(ellipse at 90% 85%, rgba($dark, 0.2) 0%, rgba($dark, 0) 15%);
+      radial-gradient(circle at 10% 10%, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0) 25%),
+      radial-gradient(ellipse at 30% 45%, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 24%),
+      radial-gradient(ellipse at 50% 70%, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0) 28%),
+      radial-gradient(circle at 70% 15%, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 23%),
+      radial-gradient(circle at 85% 60%, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0) 26%),
+      radial-gradient(ellipse at 15% 70%, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 22%),
+      radial-gradient(circle at 60% 95%, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0) 25%);
   }
 }
 
