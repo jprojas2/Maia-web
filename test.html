@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="refresh" content="0;url=http://localhost:5173">
+    <title>Redireccionando a Maia AI</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background: linear-gradient(135deg, #5465FF 0%, #5CE1E6 100%);
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        p {
+            margin-bottom: 30px;
+            max-width: 600px;
+        }
+        .loader {
+            border: 5px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top: 5px solid white;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin-bottom: 30px;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .manual-link {
+            background-color: white;
+            color: #5465FF;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        .manual-link:hover {
+            background-color: #f0f0f0;
+            transform: translateY(-3px);
+        }
+    </style>
+</head>
+<body>
+    <h1>Maia AI - Redireccionando al servidor de desarrollo</h1>
+    <div class="loader"></div>
+    <p>Serás redireccionado automáticamente al servidor de desarrollo de Maia AI. Si la redirección no funciona, asegúrate de que el servidor esté en ejecución con <code>npm run dev</code> o <code>./setup.sh</code>.</p>
+    <a href="http://localhost:5173" class="manual-link">Ir manualmente al servidor de desarrollo</a>
+    
+    <script>
+        // Check if the development server is running
+        function checkServer() {
+            fetch('http://localhost:5173', { mode: 'no-cors' })
+                .then(() => {
+                    window.location.href = 'http://localhost:5173';
+                })
+                .catch(() => {
+                    // If server is not running, show a message after 3 seconds
+                    setTimeout(() => {
+                        document.querySelector('p').innerHTML = 'No se pudo conectar al servidor de desarrollo. Por favor ejecuta <code>npm run dev</code> o <code>./setup.sh</code> para iniciar el servidor.';
+                        document.querySelector('.loader').style.display = 'none';
+                    }, 3000);
+                });
+        }
+        
+        // Try to connect to the server
+        checkServer();
+    </script>
+</body>
+</html> 
