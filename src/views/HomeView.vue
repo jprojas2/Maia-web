@@ -33,7 +33,7 @@
         </div>
         
         <div class="hero__image animate-slide-in-right">
-          <img src="@/assets/hero-image.png" alt="Maia AI en acción" />
+          <img src="@/assets/logomaia.png" alt="Maia AI en acción" />
         </div>
       </div>
     </section>
@@ -50,7 +50,7 @@
         
         <div class="features">
           <div class="feature-highlight">
-            <div class="feature-highlight__image" style="background-image: url('@/assets/feature1.jpg')"></div>
+            <div class="feature-highlight__image" style="background-image: url('@/assets/logomaia.png')"></div>
             <div class="feature-highlight__content">
               <h3 class="feature-highlight__title">Automatización Inteligente</h3>
               <p class="feature-highlight__description">
@@ -70,11 +70,11 @@
               </p>
               <button class="btn btn--primary">Ver métricas disponibles</button>
             </div>
-            <div class="feature-highlight__image" style="background-image: url('@/assets/feature2.jpg')"></div>
+            <div class="feature-highlight__image" style="background-image: url('@/assets/logomaia.png')"></div>
           </div>
           
           <div class="feature-highlight">
-            <div class="feature-highlight__image" style="background-image: url('@/assets/feature3.jpg')"></div>
+            <div class="feature-highlight__image" style="background-image: url('@/assets/logomaia.png')"></div>
             <div class="feature-highlight__content">
               <h3 class="feature-highlight__title">Integración Sin Esfuerzo</h3>
               <p class="feature-highlight__description">
@@ -106,7 +106,7 @@
                   "Desde que implementamos Maia, nuestras conversiones han aumentado un 65%. Los clientes valoran la experiencia personalizada y nuestros agentes pueden enfocarse en los aspectos más importantes de cada propiedad."
                 </div>
                 <div class="testimonial__author">
-                  <img src="@/assets/testimonial1.jpg" alt="Carolina Méndez" />
+                  <img src="@/assets/logomaia.png" alt="Carolina Méndez" />
                   <div>
                     <div class="testimonial__author-name">Carolina Méndez</div>
                     <div class="testimonial__author-title">Directora de Ventas, Inmobiliaria Futuro</div>
@@ -121,7 +121,7 @@
                   "La integración de Maia en nuestra plataforma fue sorprendentemente rápida. En una semana ya estábamos viendo resultados. El soporte del equipo ha sido excepcional, siempre atentos a nuestras necesidades."
                 </div>
                 <div class="testimonial__author">
-                  <img src="@/assets/testimonial2.jpg" alt="Roberto Fuentes" />
+                  <img src="@/assets/logomaia.png" alt="Roberto Fuentes" />
                   <div>
                     <div class="testimonial__author-name">Roberto Fuentes</div>
                     <div class="testimonial__author-title">CEO, Propiedades Élite</div>
@@ -321,9 +321,10 @@ export default {
   
   &__image {
     flex: 1;
+    text-align: center;
     
     img {
-      max-width: 100%;
+      max-width: 200px;
       border-radius: $border-radius-lg;
       box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
     }
