@@ -13,7 +13,6 @@
         </div>
         
         <div class="hero__demo animate-fade-in">
-          <h3 class="hero__demo-title">Experimenta Maia en Acción</h3>
           <div class="demo__iframe-wrapper">
             <iframe 
               src="https://maiavr.s3.sa-east-1.amazonaws.com/demo.html" 
@@ -149,21 +148,25 @@
       </div>
     </section>
 
-    <!-- CTA Section -->
-    <section class="section cta">
+    <!-- Call to Action Section -->
+    <section class="cta">
       <div class="container">
         <div class="cta__content">
           <h2>¿Listo para transformar tu negocio inmobiliario?</h2>
-          <p>Únete a las inmobiliarias que ya están vendiendo más rápido con Maia</p>
-          <router-link to="/contact" class="btn btn--gradient">Contáctanos</router-link>
+          <p>Únete a las inmobiliarias que ya están aprovechando el poder de la inteligencia artificial para vender más y mejor.</p>
+          <a href="#contact" class="btn btn-white">Contáctanos</a>
         </div>
       </div>
     </section>
+
+    <!-- AI Chat Widget -->
+    <AiChatWidget />
   </main>
 </template>
 
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue';
+import AiChatWidget from '@/components/ui/AiChatWidget.vue';
 
 // Demo section
 const showDemoOverlay = ref(true);
@@ -277,7 +280,7 @@ onUnmounted(() => {
 <style lang="scss" scoped>
 // Hero Section
 .hero {
-  padding: 120px 0 80px;
+  padding: 100px 0 60px;
   background: linear-gradient(135deg, rgba($light, 0.9) 0%, rgba($light, 0.7) 100%);
   position: relative;
   overflow: hidden;
@@ -299,6 +302,7 @@ onUnmounted(() => {
     display: flex;
     flex-direction: column;
     align-items: center;
+    max-width: 1400px;
     
     @media (min-width: $breakpoint-lg) {
       flex-direction: row;
@@ -317,22 +321,22 @@ onUnmounted(() => {
       flex: 1;
       margin-bottom: 0;
       padding-right: $spacing-xl;
-      max-width: 50%;
+      max-width: 45%;
     }
     
     h1 {
       margin-bottom: $spacing-lg;
       font-weight: $font-weight-bold;
       color: $dark;
-      font-size: 2.5rem;
+      font-size: 3rem;
       
       @media (min-width: $breakpoint-lg) {
-        font-size: 3rem;
+        font-size: 3.5rem;
       }
     }
     
     p {
-      font-size: 1.25rem;
+      font-size: 1.5rem;
       margin-bottom: $spacing-xl;
       color: $gray-700;
       
@@ -350,29 +354,23 @@ onUnmounted(() => {
     @media (min-width: $breakpoint-lg) {
       justify-content: flex-start;
     }
+    
+    .btn {
+      font-size: 1.1rem;
+      padding: $spacing-sm $spacing-lg;
+    }
   }
   
   &__demo {
     width: 100%;
-    max-width: 600px;
+    max-width: 700px;
     border-radius: $border-radius-lg;
     overflow: hidden;
     box-shadow: $shadow-lg;
     
     @media (min-width: $breakpoint-lg) {
       flex: 1;
-      max-width: 50%;
-    }
-    
-    &-title {
-      text-align: center;
-      margin-bottom: $spacing-md;
-      font-weight: $font-weight-semibold;
-      color: $dark;
-      
-      @media (min-width: $breakpoint-lg) {
-        text-align: left;
-      }
+      max-width: 55%;
     }
     
     .demo__iframe-wrapper {
@@ -413,9 +411,14 @@ onUnmounted(() => {
       }
       
       h3 {
-        font-size: 2rem;
+        font-size: 2.5rem;
         margin-bottom: $spacing-lg;
         text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+      }
+      
+      .btn {
+        font-size: 1.2rem;
+        padding: $spacing-sm $spacing-xl;
       }
     }
   }
@@ -675,28 +678,29 @@ onUnmounted(() => {
   }
 }
 
-// CTA Section
+// Call to Action Section
 .cta {
   background: $gradient-1;
   color: white;
+  padding: $spacing-xxl 0;
   text-align: center;
   
   &__content {
-    max-width: 700px;
+    max-width: 800px;
     margin: 0 auto;
     
     h2 {
+      font-size: 2.5rem;
       margin-bottom: $spacing-md;
-      font-weight: $font-weight-bold;
     }
     
     p {
-      margin-bottom: $spacing-xl;
       font-size: 1.2rem;
+      margin-bottom: $spacing-lg;
       opacity: 0.9;
     }
     
-    .btn {
+    .btn-white {
       background-color: white;
       color: $primary;
       

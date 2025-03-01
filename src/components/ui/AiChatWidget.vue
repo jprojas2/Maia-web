@@ -1,41 +1,36 @@
 <template>
-  <div class="ai-chat-widget" :class="{ 'open': isOpen }">
-    <!-- Chat toggle button -->
-    <button 
-      class="chat-toggle" 
-      @click="toggleChat" 
-      :aria-label="isOpen ? 'Close chat' : 'Open chat'"
-      :aria-expanded="isOpen ? 'true' : 'false'"
-    >
-      <div class="toggle-icon">
-        <i :class="isOpen ? 'fas fa-times' : 'fas fa-comment'"></i>
-      </div>
-      <span v-if="!isOpen" class="toggle-label">Chat con Maia</span>
-    </button>
+  <div class="ai-chat-widget" :class="{ 'is-open': isOpen }">
+    <!-- Tab with logo -->
+    <div class="ai-chat-widget__tab" @click="toggleChat">
+      <img src="@/assets/logomaia.png" alt="Maia AI" class="ai-chat-widget__logo">
+    </div>
     
-    <!-- Chat container -->
-    <div class="chat-container" v-show="isOpen">
-      <div class="chat-header">
-        <div class="chat-avatar">
-          <img src="@/assets/logomaia.png" alt="Maia Logo" class="avatar-image">
+    <!-- Chat panel -->
+    <div class="ai-chat-widget__panel">
+      <div class="ai-chat-widget__header">
+        <div class="ai-chat-widget__title">
+          <img src="@/assets/logomaia.png" alt="Maia AI" class="ai-chat-widget__header-logo">
+          <h3>Chat con Maia</h3>
         </div>
-        <div class="chat-title">
-          <h3>Maia Asistente</h3>
-          <p>Tu guía inmobiliaria inteligente</p>
-        </div>
+        <button class="ai-chat-widget__close" @click="toggleChat">
+          <i class="fas fa-times"></i>
+        </button>
       </div>
       
-      <div class="chat-messages" ref="messagesContainer">
+      <div class="ai-chat-widget__messages" ref="messagesContainer">
         <div 
           v-for="(message, index) in messages" 
           :key="index" 
-          class="message" 
-          :class="message.sender"
+          class="ai-chat-widget__message"
+          :class="{ 'ai-message': message.sender === 'ai', 'user-message': message.sender === 'user' }"
         >
-          <p v-html="formatMessage(message.text)"></p>
-          <span class="message-time">{{ formatTime(message.timestamp) }}</span>
+          <div class="message-content">
+            <p v-html="formatMessage(message.text)"></p>
+            <span class="message-time">{{ formatTime(message.timestamp) }}</span>
+          </div>
         </div>
-        <div v-if="isTyping" class="message ai typing">
+        
+        <div v-if="isTyping" class="ai-chat-widget__message ai-message typing">
           <div class="typing-indicator">
             <span></span>
             <span></span>
@@ -44,74 +39,89 @@
         </div>
       </div>
       
-      <div class="chat-input-area">
-        <div class="suggestions" v-if="showSuggestions">
-          <button 
-            v-for="(suggestion, index) in suggestions" 
-            :key="index" 
-            class="suggestion-btn"
-            @click="selectSuggestion(suggestion)"
-          >
-            {{ suggestion }}
-          </button>
-        </div>
-        
-        <div class="input-container">
-          <input 
-            type="text" 
-            v-model="userInput" 
-            @keyup.enter="sendMessage"
-            placeholder="Escribe tu mensaje aquí..." 
-            :disabled="isTyping"
-            ref="inputField"
-          >
-          <button 
-            class="send-button" 
-            @click="sendMessage" 
-            :disabled="!userInput.trim() || isTyping"
-            aria-label="Enviar mensaje"
-          >
-            <i class="fas fa-paper-plane"></i>
-          </button>
-        </div>
+      <div class="ai-chat-widget__suggestions" v-if="suggestions.length > 0 && !hasUserSentMessage">
+        <button 
+          v-for="(suggestion, index) in suggestions" 
+          :key="index"
+          class="suggestion-btn"
+          @click="sendMessage(suggestion)"
+        >
+          {{ suggestion }}
+        </button>
+      </div>
+      
+      <div class="ai-chat-widget__input">
+        <input 
+          type="text" 
+          v-model="userInput" 
+          placeholder="Escribe tu mensaje..." 
+          @keyup.enter="sendUserMessage"
+        >
+        <button class="send-btn" @click="sendUserMessage" :disabled="!userInput.trim()">
+          <i class="fas fa-paper-plane"></i>
+        </button>
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
-import { ref, computed, watch, nextTick, onMounted } from 'vue';
+import { ref, computed, onMounted, nextTick, watch } from 'vue';
 
-// State
 const isOpen = ref(false);
 const userInput = ref('');
 const messages = ref([]);
 const isTyping = ref(false);
-const showSuggestions = ref(true);
 const messagesContainer = ref(null);
-const inputField = ref(null);
+const hasUserSentMessage = ref(false);
 
-// Initial message
-onMounted(() => {
-  addMessage('¡Hola! Soy Maia, tu asistente virtual inmobiliario. Puedo ayudarte a conocer más sobre nuestros servicios, responder preguntas sobre propiedades o guiarte en el proceso de venta. ¿En qué puedo ayudarte hoy?', 'ai');
-});
-
-// Suggestions
 const suggestions = [
   '¿Cómo funciona Maia?',
-  '¿Cuáles son los planes y precios?',
-  '¿Cómo puedo integrar Maia en mi inmobiliaria?'
+  '¿Cuáles son los planes disponibles?',
+  '¿Puedo probar una demo?',
+  '¿Cómo integro Maia en mi inmobiliaria?'
 ];
 
-// Methods
 const toggleChat = () => {
   isOpen.value = !isOpen.value;
-  if (isOpen.value) {
-    nextTick(() => {
-      inputField.value?.focus();
-      scrollToBottom();
-    });
+  
+  if (isOpen.value && messages.value.length === 0) {
+    // Add initial message when opening for the first time
+    addMessage('¡Hola! Soy Maia, tu asistente virtual para la venta inmobiliaria. ¿En qué puedo ayudarte hoy?', 'ai');
   }
+};
+
+const sendUserMessage = () => {
+  if (!userInput.value.trim()) return;
+  
+  const message = userInput.value;
+  userInput.value = '';
+  
+  addMessage(message, 'user');
+  hasUserSentMessage.value = true;
+  
+  // Simulate AI typing
+  isTyping.value = true;
+  
+  // Simulate AI response time (1-3 seconds)
+  setTimeout(() => {
+    isTyping.value = false;
+    respondToMessage(message);
+  }, 1000 + Math.random() * 2000);
+};
+
+const sendMessage = (text) => {
+  addMessage(text, 'user');
+  hasUserSentMessage.value = true;
+  
+  // Simulate AI typing
+  isTyping.value = true;
+  
+  // Simulate AI response time (1-3 seconds)
+  setTimeout(() => {
+    isTyping.value = false;
+    respondToMessage(text);
+  }, 1000 + Math.random() * 2000);
 };
 
 const addMessage = (text, sender) => {
@@ -121,386 +131,321 @@ const addMessage = (text, sender) => {
     timestamp: new Date()
   });
   
+  // Scroll to bottom on next tick
   nextTick(() => {
-    scrollToBottom();
+    if (messagesContainer.value) {
+      messagesContainer.value.scrollTop = messagesContainer.value.scrollHeight;
+    }
   });
-};
-
-const scrollToBottom = () => {
-  if (messagesContainer.value) {
-    messagesContainer.value.scrollTop = messagesContainer.value.scrollHeight;
-  }
-};
-
-const sendMessage = () => {
-  const message = userInput.value.trim();
-  if (!message) return;
-  
-  // Add user message
-  addMessage(message, 'user');
-  userInput.value = '';
-  showSuggestions.value = false;
-  
-  // Simulate AI typing
-  isTyping.value = true;
-  
-  // Simulate AI response after delay
-  setTimeout(() => {
-    isTyping.value = false;
-    respondToMessage(message);
-  }, 1000 + Math.random() * 1000); // Random delay between 1-2 seconds
-};
-
-const selectSuggestion = (suggestion) => {
-  userInput.value = suggestion;
-  sendMessage();
 };
 
 const respondToMessage = (message) => {
   const lowerMessage = message.toLowerCase();
-  let response = '';
   
+  // Simple response logic based on keywords
   if (lowerMessage.includes('hola') || lowerMessage.includes('buenos días') || lowerMessage.includes('buenas tardes')) {
-    response = '¡Hola! ¿En qué puedo ayudarte hoy? ¿Estás buscando información sobre cómo Maia puede transformar tu negocio inmobiliario?';
+    addMessage('¡Hola! ¿En qué puedo ayudarte hoy?', 'ai');
   } 
-  else if (lowerMessage.includes('precio') || lowerMessage.includes('plan') || lowerMessage.includes('costo')) {
-    response = 'Ofrecemos tres planes adaptados a diferentes necesidades:<br><br>• <strong>Básico ($40/mes)</strong>: Ideal para pequeñas inmobiliarias con hasta 5 propiedades activas.<br><br>• <strong>Profesional ($120/mes)</strong>: Para inmobiliarias en crecimiento con hasta 20 propiedades y funciones avanzadas.<br><br>• <strong>Empresarial ($200/mes)</strong>: Propiedades ilimitadas con todas las características premium.<br><br>¿Te gustaría conocer más detalles sobre alguno de estos planes?';
+  else if (lowerMessage.includes('cómo funciona') || lowerMessage.includes('como funciona')) {
+    addMessage('Maia utiliza inteligencia artificial para guiar a los compradores en recorridos virtuales de propiedades. Nuestro sistema analiza las preferencias del cliente y destaca las características más relevantes para ellos, acelerando el proceso de decisión.', 'ai');
   }
-  else if (lowerMessage.includes('demo') || lowerMessage.includes('prueba') || lowerMessage.includes('recorrido')) {
-    response = 'Puedes probar nuestro recorrido virtual en la sección Demo de nuestra página. Es una demostración interactiva que te permite experimentar cómo tus clientes navegarían por una propiedad con la asistencia de Maia. ¿Hay alguna característica específica que te gustaría explorar?';
+  else if (lowerMessage.includes('planes') || lowerMessage.includes('precios') || lowerMessage.includes('precio')) {
+    addMessage('Ofrecemos tres planes:<br><br><strong>Básico:</strong> $40/mes - 5 propiedades activas<br><strong>Profesional:</strong> $120/mes - 20 propiedades activas<br><strong>Empresarial:</strong> $200/mes - Propiedades ilimitadas<br><br>Puedes ver más detalles en nuestra <a href="/pricing">página de precios</a>.', 'ai');
+  }
+  else if (lowerMessage.includes('demo') || lowerMessage.includes('prueba')) {
+    addMessage('¡Claro! Puedes ver una demostración de Maia en acción directamente en nuestra página principal. Simplemente haz clic en "Comenzar Demo" en la sección superior.', 'ai');
+  }
+  else if (lowerMessage.includes('integr') || lowerMessage.includes('implementa')) {
+    addMessage('Integrar Maia en tu inmobiliaria es muy sencillo. Nuestro equipo te guiará en todo el proceso, desde la configuración inicial hasta la capacitación de tu personal. Además, ofrecemos soporte continuo para asegurar que obtengas el máximo beneficio de nuestra plataforma.', 'ai');
   }
   else if (lowerMessage.includes('contacto') || lowerMessage.includes('hablar') || lowerMessage.includes('asesor')) {
-    response = 'Puedes contactarnos a través del formulario en la sección de contacto o directamente al email <a href="mailto:info@maiavr.cl">info@maiavr.cl</a>. También podemos coordinar una demostración personalizada para tu inmobiliaria. ¿Prefieres que un asesor te llame?';
-  }
-  else if (lowerMessage.includes('cómo funciona') || lowerMessage.includes('como funciona')) {
-    response = 'Maia combina recorridos virtuales 3D con inteligencia artificial conversacional para guiar a los potenciales compradores. El sistema:<br><br>1. Permite a los clientes explorar propiedades virtualmente<br>2. Responde preguntas en tiempo real sobre características, precios, etc.<br>3. Recopila datos sobre preferencias para calificar leads<br>4. Programa visitas y conecta con agentes cuando el cliente está listo<br><br>¿Te gustaría saber más sobre alguna de estas funcionalidades?';
-  }
-  else if (lowerMessage.includes('integrar') || lowerMessage.includes('implementar')) {
-    response = 'Integrar Maia en tu inmobiliaria es muy sencillo:<br><br>1. Selecciona un plan según tus necesidades<br>2. Nuestro equipo configura tu cuenta en 24-48 horas<br>3. Subimos tus propiedades y personalizamos la IA<br>4. Te proporcionamos códigos para integrar en tu sitio web<br><br>Ofrecemos soporte completo durante todo el proceso. ¿Te gustaría programar una llamada con nuestro equipo técnico?';
-  }
-  else if (lowerMessage.includes('gracias')) {
-    response = '¡De nada! Estoy aquí para ayudarte. Si tienes más preguntas sobre Maia o quieres conocer más sobre cómo podemos ayudar a tu negocio inmobiliario, no dudes en preguntar.';
+    addMessage('Por supuesto, puedes contactar con nuestro equipo a través de:<br><br>Email: <a href="mailto:info@maiavr.cl">info@maiavr.cl</a><br>O agendar una reunión con nuestro CCO Federico: <a href="https://calendar.app.google/CjKqkYmZtZNg2jFb8" target="_blank">Calendario</a>', 'ai');
   }
   else {
-    response = 'Maia está diseñada para transformar la experiencia de venta inmobiliaria, combinando tours virtuales con IA conversacional. Esto permite a tus clientes explorar propiedades desde cualquier lugar, mientras reciben respuestas inmediatas a sus preguntas. ¿Hay algún aspecto específico que te interese conocer?';
+    addMessage('Gracias por tu mensaje. ¿Te gustaría saber más sobre cómo Maia puede ayudar a tu inmobiliaria a vender propiedades más rápido? O si prefieres, puedes contactar directamente con nuestro equipo.', 'ai');
   }
-  
-  addMessage(response, 'ai');
 };
 
 const formatTime = (timestamp) => {
-  const date = new Date(timestamp);
-  return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+  return new Intl.DateTimeFormat('es', {
+    hour: '2-digit',
+    minute: '2-digit'
+  }).format(timestamp);
 };
 
 const formatMessage = (text) => {
-  // Convert URLs to clickable links
+  // Convert URLs to links
   return text.replace(
     /(https?:\/\/[^\s]+)/g, 
-    '<a href="$1" target="_blank" rel="noopener noreferrer">$1</a>'
+    '<a href="$1" target="_blank">$1</a>'
   );
 };
 
-// Watch for new messages to scroll to bottom
+// Auto-scroll when new messages are added
 watch(messages, () => {
   nextTick(() => {
-    scrollToBottom();
+    if (messagesContainer.value) {
+      messagesContainer.value.scrollTop = messagesContainer.value.scrollHeight;
+    }
   });
-}, { deep: true });
+});
+
+onMounted(() => {
+  // Check if the chat should be open by default (e.g., based on URL parameter)
+  const urlParams = new URLSearchParams(window.location.search);
+  if (urlParams.get('openChat') === 'true') {
+    toggleChat();
+  }
+});
 </script>
 
 <style lang="scss" scoped>
 .ai-chat-widget {
   position: fixed;
-  bottom: $spacing-lg;
-  right: $spacing-lg;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
   z-index: $z-index-modal;
   display: flex;
-  flex-direction: column;
-  align-items: flex-end;
+  align-items: stretch;
   
-  .chat-toggle {
+  &__tab {
+    width: 60px;
+    height: 60px;
+    background: $gradient-1;
+    border-radius: $border-radius-pill 0 0 $border-radius-pill;
     display: flex;
     align-items: center;
-    background: $gradient-1;
-    color: white;
-    border: none;
-    border-radius: $border-radius-pill;
-    padding: $spacing-sm $spacing-md;
+    justify-content: center;
     cursor: pointer;
     box-shadow: $shadow;
     transition: $transition-base;
     
     &:hover {
-      transform: translateY(-3px);
-      box-shadow: $shadow-lg;
-    }
-    
-    .toggle-icon {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      background-color: rgba(255, 255, 255, 0.2);
-      margin-right: $spacing-sm;
-      
-      i {
-        font-size: 1rem;
-      }
-    }
-    
-    .toggle-label {
-      font-weight: $font-weight-medium;
-      margin-right: $spacing-sm;
+      transform: translateX(-5px);
     }
   }
   
-  .chat-container {
-    position: absolute;
-    bottom: calc(100% + $spacing-md);
-    right: 0;
-    width: 350px;
-    max-width: calc(100vw - $spacing-lg * 2);
-    height: 500px;
-    max-height: calc(100vh - 100px);
+  &__logo {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+  }
+  
+  &__panel {
+    width: 0;
+    height: 600px;
     background-color: white;
-    border-radius: $border-radius-lg;
+    border-radius: $border-radius-lg 0 0 $border-radius-lg;
     box-shadow: $shadow-lg;
     display: flex;
     flex-direction: column;
     overflow: hidden;
+    transition: width 0.3s ease;
+  }
+  
+  &.is-open {
+    .ai-chat-widget__panel {
+      width: 350px;
+    }
+  }
+  
+  &__header {
+    padding: $spacing-md;
+    background: $gradient-1;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  &__title {
+    display: flex;
+    align-items: center;
     
-    .chat-header {
-      display: flex;
-      align-items: center;
-      padding: $spacing-md;
-      background: $gradient-1;
-      color: white;
+    h3 {
+      margin: 0;
+      font-weight: $font-weight-semibold;
+    }
+  }
+  
+  &__header-logo {
+    width: 30px;
+    height: 30px;
+    margin-right: $spacing-sm;
+    object-fit: contain;
+  }
+  
+  &__close {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: $transition-base;
+    
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+  
+  &__messages {
+    flex: 1;
+    padding: $spacing-md;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-sm;
+  }
+  
+  &__message {
+    max-width: 80%;
+    padding: $spacing-sm $spacing-md;
+    border-radius: $border-radius-lg;
+    margin-bottom: $spacing-sm;
+    
+    &.ai-message {
+      align-self: flex-start;
+      background-color: $gray-100;
+      border-bottom-left-radius: 0;
       
-      .chat-avatar {
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        background-color: white;
+      .message-time {
+        text-align: left;
+      }
+    }
+    
+    &.user-message {
+      align-self: flex-end;
+      background-color: $primary;
+      color: white;
+      border-bottom-right-radius: 0;
+      
+      .message-time {
+        text-align: right;
+        color: rgba(255, 255, 255, 0.8);
+      }
+    }
+    
+    .message-content {
+      p {
+        margin: 0 0 $spacing-xs;
+        
+        a {
+          color: inherit;
+          text-decoration: underline;
+        }
+      }
+    }
+    
+    .message-time {
+      font-size: 0.8rem;
+      opacity: 0.7;
+      display: block;
+    }
+    
+    &.typing {
+      padding: $spacing-sm;
+      
+      .typing-indicator {
         display: flex;
         align-items: center;
-        justify-content: center;
-        margin-right: $spacing-md;
+        gap: 4px;
         
-        .avatar-image {
-          width: 30px;
-          height: 30px;
-          object-fit: contain;
-        }
-      }
-      
-      .chat-title {
-        h3 {
-          margin: 0;
-          font-size: 1.1rem;
-          font-weight: $font-weight-semibold;
-        }
-        
-        p {
-          margin: 0;
-          font-size: 0.8rem;
-          opacity: 0.8;
-        }
-      }
-    }
-    
-    .chat-messages {
-      flex: 1;
-      padding: $spacing-md;
-      overflow-y: auto;
-      display: flex;
-      flex-direction: column;
-      gap: $spacing-md;
-      
-      .message {
-        max-width: 80%;
-        padding: $spacing-sm $spacing-md;
-        border-radius: $border-radius-lg;
-        position: relative;
-        
-        p {
-          margin: 0;
-          white-space: pre-line;
-        }
-        
-        .message-time {
-          font-size: 0.7rem;
-          opacity: 0.6;
-          position: absolute;
-          bottom: -18px;
-        }
-        
-        &.user {
-          align-self: flex-end;
-          background-color: $primary;
-          color: white;
-          border-bottom-right-radius: 0;
-          
-          .message-time {
-            right: 0;
-          }
-        }
-        
-        &.ai {
-          align-self: flex-start;
-          background-color: $gray-200;
-          color: $dark;
-          border-bottom-left-radius: 0;
-          
-          .message-time {
-            left: 0;
-          }
-          
-          &.typing {
-            background-color: transparent;
-            padding: 0;
-            
-            .typing-indicator {
-              display: flex;
-              align-items: center;
-              gap: 4px;
-              
-              span {
-                display: block;
-                width: 8px;
-                height: 8px;
-                border-radius: 50%;
-                background-color: $gray-400;
-                animation: typing 1s infinite;
-                
-                &:nth-child(2) {
-                  animation-delay: 0.2s;
-                }
-                
-                &:nth-child(3) {
-                  animation-delay: 0.4s;
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-    
-    .chat-input-area {
-      padding: $spacing-md;
-      border-top: 1px solid $gray-200;
-      
-      .suggestions {
-        display: flex;
-        flex-wrap: wrap;
-        gap: $spacing-xs;
-        margin-bottom: $spacing-sm;
-        
-        .suggestion-btn {
-          background-color: $gray-100;
-          border: 1px solid $gray-300;
-          border-radius: $border-radius-pill;
-          padding: $spacing-xs $spacing-sm;
-          font-size: 0.8rem;
-          cursor: pointer;
-          transition: $transition-base;
-          
-          &:hover {
-            background-color: $gray-200;
-          }
-        }
-      }
-      
-      .input-container {
-        display: flex;
-        gap: $spacing-sm;
-        
-        input {
-          flex: 1;
-          padding: $spacing-sm $spacing-md;
-          border: 1px solid $gray-300;
-          border-radius: $border-radius-pill;
-          outline: none;
-          transition: $transition-base;
-          
-          &:focus {
-            border-color: $primary;
-            box-shadow: 0 0 0 2px rgba($primary, 0.2);
-          }
-        }
-        
-        .send-button {
-          width: 40px;
-          height: 40px;
+        span {
+          width: 8px;
+          height: 8px;
           border-radius: 50%;
-          background-color: $primary;
-          color: white;
-          border: none;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          cursor: pointer;
-          transition: $transition-base;
+          background-color: $gray-500;
+          animation: typing 1s infinite ease-in-out;
           
-          &:hover:not(:disabled) {
-            background-color: $primary-dark;
+          &:nth-child(1) {
+            animation-delay: 0s;
           }
           
-          &:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
+          &:nth-child(2) {
+            animation-delay: 0.2s;
+          }
+          
+          &:nth-child(3) {
+            animation-delay: 0.4s;
           }
         }
       }
     }
   }
   
-  &.open {
-    .chat-toggle {
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      padding: 0;
+  &__suggestions {
+    padding: $spacing-md;
+    display: flex;
+    flex-wrap: wrap;
+    gap: $spacing-sm;
+    border-top: 1px solid $gray-200;
+    
+    .suggestion-btn {
+      background-color: $gray-100;
+      border: 1px solid $gray-300;
+      border-radius: $border-radius-pill;
+      padding: $spacing-xs $spacing-md;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: $transition-base;
       
-      .toggle-icon {
-        margin: 0;
-        width: 100%;
-        height: 100%;
-        background-color: transparent;
+      &:hover {
+        background-color: $gray-200;
+      }
+    }
+  }
+  
+  &__input {
+    padding: $spacing-md;
+    border-top: 1px solid $gray-200;
+    display: flex;
+    gap: $spacing-sm;
+    
+    input {
+      flex: 1;
+      padding: $spacing-sm $spacing-md;
+      border: 1px solid $gray-300;
+      border-radius: $border-radius-pill;
+      outline: none;
+      
+      &:focus {
+        border-color: $primary;
+      }
+    }
+    
+    .send-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: $primary;
+      color: white;
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: $transition-base;
+      
+      &:hover:not(:disabled) {
+        background-color: $primary-dark;
+        transform: scale(1.05);
       }
       
-      .toggle-label {
-        display: none;
+      &:disabled {
+        background-color: $gray-400;
+        cursor: not-allowed;
       }
     }
   }
 }
 
 @keyframes typing {
-  0% {
-    transform: translateY(0px);
-    opacity: 0.4;
+  0%, 60%, 100% {
+    transform: translateY(0);
   }
-  50% {
-    transform: translateY(-5px);
-    opacity: 0.8;
-  }
-  100% {
-    transform: translateY(0px);
-    opacity: 0.4;
-  }
-}
-
-// Deep selector for links in messages
-:deep(a) {
-  color: $primary;
-  text-decoration: underline;
-  
-  &:hover {
-    color: $primary-dark;
+  30% {
+    transform: translateY(-4px);
   }
 }
 </style> 
