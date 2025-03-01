@@ -3,18 +3,19 @@
     <div class="container">
       <div class="footer__top">
         <div class="footer__logo">
-          <img src="@/assets/logomaia.png" alt="Maia" class="footer-logo" />
-          <h3 class="footer-brand">Maia</h3>
-          <p class="footer-tagline">La vendedora virtual que revoluciona la venta inmobiliaria</p>
+          <div class="logo-container">
+            <img src="@/assets/logomaia.png" alt="Maia" class="footer-logo" />
+            <h3 class="footer-brand">Maia</h3>
+          </div>
+          <p class="footer-tagline">¿Y si tus propiedades se vendieran solas?</p>
         </div>
         
         <div class="footer__nav">
           <div class="footer-menu">
             <h4 class="footer-menu__title">Plataforma</h4>
             <ul class="footer-menu__list">
-              <li><a href="#demo">Demo</a></li>
               <li><a href="#features">Características</a></li>
-              <li><a href="#pricing">Precios</a></li>
+              <li><a href="#pricing">Planes</a></li>
               <li><a href="#team">Equipo</a></li>
             </ul>
           </div>
@@ -42,9 +43,8 @@
           <div class="footer-menu">
             <h4 class="footer-menu__title">Contacto</h4>
             <ul class="footer-menu__list">
-              <li><a href="mailto:info@maiavirtual.com">info@maiavirtual.com</a></li>
-              <li><a href="tel:+123456789">+1 (234) 567-89</a></li>
-              <li>Ciudad de México, México</li>
+              <li><a href="mailto:info@maiavr.cl">info@maiavr.cl</a></li>
+              <li>Santiago, Chile</li>
             </ul>
             <div class="footer-social">
               <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
@@ -64,7 +64,9 @@
       </div>
       
       <div class="footer__bottom">
-        <p class="copyright">© 2023 Maia. Todos los derechos reservados.</p>
+        <div class="copyright">
+          &copy; 2024 Maia AI. Todos los derechos reservados.
+        </div>
         <div class="footer-links">
           <a href="#">Privacidad</a>
           <a href="#">Términos</a>
@@ -91,83 +93,91 @@ $primary-gradient: linear-gradient(135deg, $primary 0%, lighten($primary, 15%) 1
 .footer {
   background-color: $dark;
   color: white;
-  padding-top: $spacing-2xl;
-}
-
-.footer__top {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: $spacing-2xl;
-  padding-bottom: $spacing-2xl;
-  border-bottom: 1px solid rgba(white, 0.1);
+  padding: $spacing-2xl 0 $spacing-xl;
   
-  @media (min-width: $breakpoint-md) {
-    grid-template-columns: 1fr 3fr;
+  &__top {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $spacing-2xl;
+    margin-bottom: $spacing-2xl;
+    
+    @media (max-width: $breakpoint-lg) {
+      flex-direction: column;
+      gap: $spacing-xl;
+    }
+  }
+  
+  &__logo {
+    flex: 1;
+    min-width: 250px;
+    
+    .logo-container {
+      display: flex;
+      align-items: center;
+      margin-bottom: $spacing-md;
+    }
+  }
+  
+  &__nav {
+    flex: 2;
+    display: flex;
+    flex-wrap: wrap;
+    gap: $spacing-xl;
+    
+    @media (max-width: $breakpoint-md) {
+      flex-direction: column;
+      gap: $spacing-lg;
+    }
   }
 }
 
-.footer__logo {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
-
 .footer-logo {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  margin-bottom: $spacing-md;
-  object-fit: cover;
+  width: 50px;
+  height: 50px;
+  margin-right: $spacing-sm;
 }
 
 .footer-brand {
   font-size: 1.8rem;
   font-weight: $font-weight-bold;
-  margin-bottom: $spacing-xs;
   color: white;
+  margin: 0;
 }
 
 .footer-tagline {
-  color: rgba(white, 0.7);
-  font-size: 0.95rem;
-  line-height: 1.5;
-  max-width: 300px;
-}
-
-.footer__nav {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: $spacing-xl;
-  
-  @media (min-width: $breakpoint-md) {
-    grid-template-columns: repeat(4, 1fr);
-  }
-}
-
-.footer-menu__title {
-  color: white;
-  font-weight: $font-weight-semibold;
-  margin-bottom: $spacing-md;
   font-size: 1.1rem;
+  color: $gray-400;
+  margin-top: $spacing-xs;
 }
 
-.footer-menu__list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+.footer-menu {
+  flex: 1;
+  min-width: 150px;
   
-  li {
-    margin-bottom: $spacing-xs;
+  &__title {
+    font-size: 1.1rem;
+    font-weight: $font-weight-semibold;
+    margin-bottom: $spacing-md;
+    color: white;
   }
   
-  a {
-    color: rgba(white, 0.7);
-    text-decoration: none;
-    transition: color 0.2s ease;
-    font-size: 0.95rem;
+  &__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
     
-    &:hover {
-      color: white;
+    li {
+      margin-bottom: $spacing-sm;
+      
+      a {
+        color: $gray-400;
+        text-decoration: none;
+        transition: $transition-base;
+        
+        &:hover {
+          color: white;
+        }
+      }
     }
   }
 }
@@ -183,14 +193,13 @@ $primary-gradient: linear-gradient(135deg, $primary 0%, lighten($primary, 15%) 1
     justify-content: center;
     width: 36px;
     height: 36px;
-    background-color: rgba(white, 0.1);
     border-radius: 50%;
+    background-color: rgba(white, 0.1);
     color: white;
-    transition: all 0.2s ease;
+    transition: $transition-base;
     
     &:hover {
       background-color: $primary;
-      transform: translateY(-3px);
     }
   }
 }
@@ -229,25 +238,13 @@ $primary-gradient: linear-gradient(135deg, $primary 0%, lighten($primary, 15%) 1
 }
 
 .footer__bottom {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: $spacing-lg 0;
   border-top: 1px solid rgba(white, 0.1);
+  padding-top: $spacing-lg;
+  text-align: center;
   
-  @media (min-width: $breakpoint-md) {
-    flex-direction: row;
-    justify-content: space-between;
-  }
-}
-
-.copyright {
-  color: rgba(white, 0.5);
-  font-size: 0.9rem;
-  margin-bottom: $spacing-md;
-  
-  @media (min-width: $breakpoint-md) {
-    margin-bottom: 0;
+  .copyright {
+    color: $gray-500;
+    font-size: 0.9rem;
   }
 }
 
