@@ -15,11 +15,12 @@
         <div class="hero__demo">
           <div class="demo__iframe-container">
             <iframe 
-              src="https://app.maiavr.cl/demo" 
+              src="https://maiavr.s3.sa-east-1.amazonaws.com/demo.html" 
               title="Demo de Maia" 
               frameborder="0" 
               allow="microphone; camera"
               class="demo__iframe"
+              ref="demoIframe"
             ></iframe>
             <div class="demo__overlay" v-if="showDemoOverlay" @click="startDemo">
               <div class="overlay__content">

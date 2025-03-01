@@ -8,7 +8,7 @@
     
     <!-- Chat panel -->
     <div class="ai-chat-widget__panel">
-      <div class="ai-chat-widget__header" :class="{ 'fade-in': isOpen, 'fade-out': !isOpen }">
+      <div class="ai-chat-widget__header">
         <div class="ai-chat-widget__title">
           <img src="@/assets/logomaia.png" alt="Maia AI" class="ai-chat-widget__header-logo">
           <h3>Chat con Maia</h3>
@@ -70,9 +70,9 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted, nextTick, watch } from 'vue';
+import { ref, computed, onMounted, nextTick, watch, onUnmounted } from 'vue';
 
-const isOpen = ref(true);
+const isOpen = ref(false); // Start closed by default
 const userInput = ref('');
 const messages = ref([]);
 const isTyping = ref(false);
@@ -92,6 +92,10 @@ const toggleChat = () => {
   // Add class to body to shift content
   if (isOpen.value) {
     document.body.classList.add('chat-open');
+    // If first time opening, add initial message
+    if (messages.value.length === 0) {
+      addMessage('¡Hola! Soy Maia, tu asistente virtual para la venta inmobiliaria. ¿En qué puedo ayudarte hoy?', 'ai');
+    }
   } else {
     document.body.classList.remove('chat-open');
   }
@@ -196,14 +200,6 @@ watch(messages, () => {
   });
 });
 
-onMounted(() => {
-  // Add initial message since it's open by default
-  addMessage('¡Hola! Soy Maia, tu asistente virtual para la venta inmobiliaria. ¿En qué puedo ayudarte hoy?', 'ai');
-  
-  // Add class to body to shift content initially
-  document.body.classList.add('chat-open');
-});
-
 // Clean up when component is unmounted
 onUnmounted(() => {
   document.body.classList.remove('chat-open');
@@ -222,7 +218,7 @@ onUnmounted(() => {
   
   &__tab {
     position: fixed;
-    right: 350px;
+    right: 0;
     top: 50%;
     transform: translateY(-50%);
     width: auto;
@@ -260,6 +256,9 @@ onUnmounted(() => {
   }
   
   &__panel {
+    position: fixed;
+    right: 0;
+    top: 0;
     width: 350px;
     height: 100vh;
     background-color: white;
@@ -269,6 +268,7 @@ onUnmounted(() => {
     overflow: hidden;
     transition: transform 0.3s ease;
     transform: translateX(100%);
+    z-index: $z-index-modal;
   }
   
   &__overlay {
@@ -292,15 +292,6 @@ onUnmounted(() => {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    transition: opacity 0.3s ease;
-    
-    &.fade-in {
-      opacity: 1;
-    }
-    
-    &.fade-out {
-      opacity: 0;
-    }
   }
   
   &__title {
@@ -485,10 +476,6 @@ onUnmounted(() => {
   
   @media (max-width: $breakpoint-md) {
     &__panel {
-      position: fixed;
-      right: 0;
-      top: 0;
-      bottom: 0;
       width: 100%;
       max-width: 350px;
     }
