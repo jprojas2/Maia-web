@@ -8,7 +8,7 @@
         </div>
         
         <div class="pricing-container">
-          <div class="pricing-card" v-for="(plan, index) in plans" :key="index" :class="{ 'popular': plan.popular }">
+          <div class="pricing-card" :class="{ 'popular': index === 1 }" v-for="(plan, index) in plans" :key="index">
             <h3 class="plan-name">{{ plan.name }}</h3>
             <div class="plan-price">
               <span class="currency">$</span>
@@ -199,53 +199,63 @@ const toggleFaq = (index) => {
     border-radius: 0 $border-radius-lg 0 $border-radius-lg;
     z-index: 1;
   }
+}
+
+.pricing-card.popular {
+  background: linear-gradient(135deg, var(--primary), #8492ff) !important;
+  color: white !important;
+  transform: scale(1.05) !important;
+  box-shadow: $shadow-lg !important;
+  border: none !important;
+  z-index: 2;
   
-  &.popular {
-    background: linear-gradient(135deg, var(--primary), #8492ff) !important;
-    color: white !important;
-    transform: scale(1.05) !important;
-    box-shadow: $shadow-lg !important;
-    border: none !important;
-    z-index: 2;
-    
-    @media (max-width: $breakpoint-md) {
-      transform: scale(1.02) !important;
-    }
-    
-    &:hover {
-      transform: translateY(-10px) scale(1.05) !important;
-      
-      @media (max-width: $breakpoint-md) {
-        transform: translateY(-10px) scale(1.02) !important;
-      }
-    }
-    
-    .plan-name, .amount, .period, .plan-description {
-      color: white !important;
-    }
-    
-    .plan-features {
-      li {
-        border-bottom: 1px solid rgba(255, 255, 255, 0.2) !important;
-        color: white !important;
-        
-        i {
-          color: white !important;
-        }
-      }
-    }
-    
-    .btn {
-      background-color: white !important;
-      color: var(--primary) !important;
-      border: none !important;
-      
-      &:hover {
-        background-color: rgba(255, 255, 255, 0.9) !important;
-      }
-    }
+  @media (max-width: $breakpoint-md) {
+    transform: scale(1.02) !important;
   }
   
+  &:hover {
+    transform: translateY(-10px) scale(1.05) !important;
+    
+    @media (max-width: $breakpoint-md) {
+      transform: translateY(-10px) scale(1.02) !important;
+    }
+  }
+}
+
+.pricing-card.popular .plan-name,
+.pricing-card.popular .currency,
+.pricing-card.popular .amount, 
+.pricing-card.popular .period, 
+.pricing-card.popular .plan-description,
+.pricing-card.popular .free-trial-badge {
+  color: white !important;
+}
+
+.pricing-card.popular .free-trial-badge {
+  background-color: rgba(255, 255, 255, 0.2) !important;
+  color: white !important;
+}
+
+.pricing-card.popular .plan-features li {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2) !important;
+  color: white !important;
+}
+
+.pricing-card.popular .plan-features li i {
+  color: white !important;
+}
+
+.pricing-card.popular .btn {
+  background-color: white !important;
+  color: var(--primary) !important;
+  border: none !important;
+  
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.9) !important;
+  }
+}
+
+.pricing-card {
   .plan-name {
     font-size: 1.5rem;
     margin-bottom: $spacing-md;
