@@ -95,8 +95,9 @@ export default {
 <style lang="scss" scoped>
 @import '@/styles/variables.scss';
 
-// Define light blue background color
+// Define variables
 $light-blue-bg: #f0f8ff;
+$primary-gradient: linear-gradient(135deg, $primary 0%, lighten($primary, 15%) 100%);
 
 .app-footer {
   position: relative;
