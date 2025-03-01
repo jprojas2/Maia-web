@@ -230,7 +230,7 @@ $primary-gradient: linear-gradient(135deg, $primary 0%, lighten($primary, 15%) 1
   box-shadow: $shadow-lg;
   border-radius: $border-radius-lg;
   overflow: hidden;
-  background-color: rgba(255, 255, 255, 0.4);
+  background-color: rgba(255, 255, 255, 0.3);
   border: 1px solid rgba($primary, 0.2);
   transition: all 0.3s ease;
   display: flex;
@@ -247,7 +247,7 @@ $primary-gradient: linear-gradient(135deg, $primary 0%, lighten($primary, 15%) 1
   flex-direction: column;
   height: 500px;
   max-height: 70vh;
-  background-color: rgba(255, 255, 255, 0.4);
+  background-color: rgba(255, 255, 255, 0.3);
   border-radius: $border-radius-lg;
   overflow: hidden;
 }
@@ -276,7 +276,7 @@ $primary-gradient: linear-gradient(135deg, $primary 0%, lighten($primary, 15%) 1
   flex: 1;
   overflow-y: auto;
   padding: $spacing-md;
-  background-color: rgba(255, 255, 255, 0.4);
+  background-color: rgba(255, 255, 255, 0.3);
   display: flex;
   flex-direction: column;
   gap: $spacing-sm;
@@ -292,10 +292,9 @@ $primary-gradient: linear-gradient(135deg, $primary 0%, lighten($primary, 15%) 1
     margin-left: auto;
     
     .message-content {
-      background-color: rgba(255, 255, 255, 0.4);
+      background-color: rgba(255, 255, 255, 0.3);
       color: #000000;
       border-radius: $border-radius $border-radius 0 $border-radius;
-      border: 1px solid rgba($primary, 0.3);
     }
   }
   
@@ -303,11 +302,10 @@ $primary-gradient: linear-gradient(135deg, $primary 0%, lighten($primary, 15%) 1
     margin-right: auto;
     
     .message-content {
-      background-color: rgba(255, 255, 255, 0.4);
+      background-color: rgba(255, 255, 255, 0.3);
       color: #000000;
       border-radius: 0 $border-radius $border-radius $border-radius;
       box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-      border: 1px solid rgba($gray-300, 0.5);
     }
   }
 }

@@ -5,7 +5,7 @@
         <div class="header__logo">
           <router-link to="/" class="logo">
             <img src="@/assets/logomaia.png" alt="Maia" class="logo__image" />
-            <span class="logo__text">Maia</span>
+            <span class="logo__text purple-text">Maia</span>
           </router-link>
         </div>
         
@@ -339,5 +339,10 @@ $primary-gradient: linear-gradient(135deg, $primary 0%, lighten($primary, 15%) 1
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
+}
+
+// Add this style for purple text
+.purple-text {
+  color: $primary !important;
 }
 </style> 

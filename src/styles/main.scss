@@ -30,7 +30,7 @@ body {
   font-size: $font-size-base;
   line-height: 1.7;
   color: $dark;
-  background-color: $light-blue-bg;
+  background-color: transparent;
   margin: 0;
   padding: 0;
   width: 100vw;
@@ -43,7 +43,7 @@ body {
 
 // Add a full-width background element to ensure coverage
 #app {
-  background-color: $light-blue-bg;
+  background-color: transparent;
   min-height: 100vh;
   width: 100vw;
   overflow-x: hidden;
@@ -142,13 +142,14 @@ strong {
   width: 100%;
   position: relative;
   overflow: hidden;
+  background-color: transparent;
   
   @media (max-width: $breakpoint-md) {
     padding: $spacing-2xl 0;
   }
   
   &--light {
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.5);
     width: 100%;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
   }
@@ -160,7 +161,7 @@ strong {
   }
   
   &--gray {
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.7);
     width: 100%;
   }
   
@@ -212,7 +213,7 @@ strong {
 
 // Cards
 .card {
-  background: white;
+  background: rgba(255, 255, 255, 0.7);
   border-radius: $border-radius-lg;
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
   padding: $spacing-lg;
