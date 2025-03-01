@@ -84,153 +84,77 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "@/styles/variables.scss";
-
-// Define variables
-$light-blue-bg: #f0f8ff;
-$primary-gradient: linear-gradient(135deg, $primary 0%, lighten($primary, 15%) 100%);
+@import "../../styles/variables";
 
 .footer {
   background-color: $dark;
   color: white;
-  padding: 4rem 0 3rem;
-  
-  &__top {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    margin-bottom: 3rem;
-    gap: 2rem;
-    
-    @media (max-width: $breakpoint-md) {
-      flex-direction: column;
-    }
-  }
-  
-  &__logo {
-    flex: 0 0 100%;
-    max-width: 280px;
-    margin-bottom: 2rem;
-    
-    @media (max-width: $breakpoint-md) {
-      max-width: 100%;
-    }
-  }
-  
-  &__nav {
-    display: flex;
-    flex-wrap: wrap;
-    gap: $spacing-xl;
-    justify-content: space-between;
-    flex: 1;
-    width: 100%;
-    
-    @media (max-width: $breakpoint-md) {
-      gap: $spacing-lg;
-    }
-  }
-}
-
-.logo-container {
+  padding: $spacing-xl 0;
   display: flex;
-  align-items: center;
-  gap: 0.2rem;
-  background-color: #FFFFFF;
-  padding: 0.3rem 0.8rem;
-  border-radius: 2rem;
-  display: inline-flex;
-  margin-bottom: 1rem;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  align-items: flex-start;
 }
 
-.logo__image {
-  height: 100px;
-  width: auto;
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 $spacing-lg;
 }
 
-.logo__text {
-  font-size: 2.2rem;
-  font-weight: $font-weight-bold;
-  color: $primary;
-}
-
-.purple-text {
-  color: $primary !important;
-}
-
-.footer-tagline {
-  font-size: 1.1rem;
-  color: $gray-400;
-  margin-top: $spacing-xs;
-  white-space: nowrap;
-  overflow: visible;
-  text-overflow: clip;
-  max-width: 280px;
-  display: block;
-}
-
-.footer-menu {
-  flex: 1;
-  min-width: 150px;
-  margin-bottom: $spacing-md;
+.footer__top {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-bottom: $spacing-xl;
   
   @media (max-width: $breakpoint-md) {
-    min-width: calc(50% - 1rem);
-    flex: 0 0 calc(50% - 1rem);
-  }
-  
-  @media (max-width: $breakpoint-sm) {
-    min-width: 100%;
-    flex: 0 0 100%;
-  }
-  
-  &__title {
-    font-size: 1.1rem;
-    font-weight: $font-weight-semibold;
-    margin-bottom: $spacing-md;
-    color: white;
-  }
-  
-  &__list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    
-    li {
-      margin-bottom: $spacing-sm;
-      
-      a {
-        color: $gray-400;
-        text-decoration: none;
-        transition: $transition-base;
-        
-        &:hover {
-          color: white;
-        }
-      }
-    }
+    flex-direction: column;
+    gap: $spacing-xl;
   }
 }
 
-.footer-social {
-  display: flex;
-  gap: $spacing-sm;
-  margin-top: $spacing-md;
+.footer__logo {
+  flex: 0 0 25%;
   
-  a {
+  @media (max-width: $breakpoint-md) {
+    flex: 0 0 100%;
+    margin-bottom: $spacing-lg;
+  }
+  
+  .logo-container {
     display: flex;
     align-items: center;
-    justify-content: center;
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    background-color: rgba(white, 0.1);
-    color: white;
-    transition: $transition-base;
-    
-    &:hover {
-      background-color: $primary;
-    }
+    gap: $spacing-sm;
+    margin-bottom: $spacing-md;
+  }
+  
+  .logo__image {
+    height: 60px;
+    width: auto;
+  }
+  
+  .logo__text {
+    font-size: 1.8rem;
+    font-weight: $font-weight-bold;
+    color: $primary;
+  }
+  
+  .footer-tagline {
+    color: $gray-400;
+    font-size: 1.1rem;
+    margin-top: $spacing-sm;
+  }
+}
+
+.footer__nav {
+  flex: 0 0 70%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  
+  @media (max-width: $breakpoint-md) {
+    flex: 0 0 100%;
+    gap: $spacing-xl;
   }
 }
 
@@ -299,6 +223,93 @@ $primary-gradient: linear-gradient(135deg, $primary 0%, lighten($primary, 15%) 1
     
     &:hover {
       color: white;
+    }
+  }
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+  background-color: #FFFFFF;
+  padding: 0.3rem 0.8rem;
+  border-radius: 2rem;
+  display: inline-flex;
+  margin-bottom: 1rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.logo__text {
+  font-size: 2rem;
+  font-weight: $font-weight-bold;
+  color: $primary;
+}
+
+.purple-text {
+  color: $primary !important;
+}
+
+.footer-menu {
+  flex: 1;
+  min-width: 150px;
+  margin-bottom: $spacing-md;
+  
+  @media (max-width: $breakpoint-md) {
+    min-width: calc(50% - 1rem);
+    flex: 0 0 calc(50% - 1rem);
+  }
+  
+  @media (max-width: $breakpoint-sm) {
+    min-width: 100%;
+    flex: 0 0 100%;
+  }
+  
+  &__title {
+    font-size: 1.1rem;
+    font-weight: $font-weight-semibold;
+    margin-bottom: $spacing-md;
+    color: white;
+  }
+  
+  &__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    
+    li {
+      margin-bottom: $spacing-sm;
+      
+      a {
+        color: $gray-400;
+        text-decoration: none;
+        transition: $transition-base;
+        
+        &:hover {
+          color: white;
+        }
+      }
+    }
+  }
+}
+
+.footer-social {
+  display: flex;
+  gap: $spacing-sm;
+  margin-top: $spacing-md;
+  
+  a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: rgba(white, 0.1);
+    color: white;
+    transition: $transition-base;
+    
+    &:hover {
+      background-color: $primary;
     }
   }
 }

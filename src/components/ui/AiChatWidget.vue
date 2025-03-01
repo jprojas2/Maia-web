@@ -1,16 +1,36 @@
 <template>
   <div 
     class="ai-chat-widget" 
-    :class="{ 'mobile': isMobile, 'active': isActive }"
+    :class="{ 'mobile': isMobile, 'active': isActive, 'minimized': isMinimized && isMobile }"
     @focusin="handleWidgetFocus"
     @focusout="handleWidgetBlur"
   >
+    <!-- Mobile Toggle Button - Only visible when minimized on mobile -->
+    <button 
+      v-if="isMobile" 
+      class="chat-toggle-button"
+      :class="{ 'hidden': !isMinimized }"
+      @click="toggleMinimized"
+      aria-label="Toggle chat"
+    >
+      <img src="@/assets/logomaia.png" alt="Maia" class="toggle-logo" />
+    </button>
+    
     <!-- Chat panel - Always visible with white transparent background -->
-    <div class="chat-panel">
+    <div class="chat-panel" :class="{ 'hidden': isMinimized && isMobile }">
       <div class="chat-header">
         <div class="header-title">
           <h3>Maia</h3>
         </div>
+        <!-- Minimize button - Only visible on mobile -->
+        <button 
+          v-if="isMobile"
+          class="minimize-button"
+          @click="toggleMinimized"
+          aria-label="Minimize chat"
+        >
+          <i class="fas fa-minus"></i>
+        </button>
       </div>
       
       <div class="messages-container" ref="messagesContainer">
@@ -77,6 +97,7 @@ const isTyping = ref(false);
 const messagesContainer = ref(null);
 const inputField = ref(null);
 const isActive = ref(false); // Track if the widget is being interacted with
+const isMinimized = ref(true); // Start minimized on mobile
 
 // Toggle chat panel
 const toggleChat = () => {
@@ -90,9 +111,29 @@ const toggleChat = () => {
   }
 };
 
+// Toggle minimized state (mobile only)
+const toggleMinimized = () => {
+  if (!isMobile.value) return;
+  
+  isMinimized.value = !isMinimized.value;
+  
+  if (!isMinimized.value) {
+    // When expanding, focus the input and scroll to bottom
+    nextTick(() => {
+      scrollToBottom();
+      inputField.value?.focus();
+    });
+  }
+};
+
 // Check if device is mobile
 const checkMobile = () => {
   isMobile.value = window.innerWidth < 768;
+  
+  // On desktop, always show the full chat
+  if (!isMobile.value) {
+    isMinimized.value = false;
+  }
 };
 
 // Send message
@@ -179,6 +220,10 @@ const adjustTextareaHeight = () => {
 // Handle widget interaction
 const handleWidgetFocus = () => {
   isActive.value = true;
+  // When focusing on mobile, expand the chat
+  if (isMobile.value && isMinimized.value) {
+    isMinimized.value = false;
+  }
 };
 
 const handleWidgetBlur = (e) => {
@@ -218,15 +263,16 @@ $primary-gradient: linear-gradient(135deg, $primary 0%, lighten($primary, 15%) 1
 
 .ai-chat-widget {
   position: fixed;
-  bottom: 30px;
   right: 30px;
+  top: 50%;
+  transform: translateY(-50%);
   width: 350px;
   max-width: calc(100vw - 40px);
   max-height: 600px;
   z-index: 9999;
   font-family: $font-family-base;
   box-shadow: $shadow-lg;
-  border-radius: $border-radius-lg;
+  border-radius: $border-radius-xl;
   overflow: hidden;
   background-color: rgba(255, 255, 255, 0.3);
   border: 1px solid rgba($primary, 0.2);
@@ -237,6 +283,40 @@ $primary-gradient: linear-gradient(135deg, $primary 0%, lighten($primary, 15%) 1
   &.mobile {
     width: calc(100% - 40px);
     max-height: 70vh;
+    
+    &.minimized {
+      width: auto;
+      max-height: none;
+      background: none;
+      border: none;
+      box-shadow: none;
+      right: 20px;
+      bottom: 20px;
+      top: auto;
+      transform: none;
+    }
+    
+    // When active and not minimized on mobile, expand to nearly full screen
+    &.active:not(.minimized) {
+      width: 94vw;
+      height: 90vh;
+      max-height: 90vh;
+      right: 3vw;
+      bottom: 5vh;
+      top: auto;
+      transform: none;
+      border-radius: $border-radius-xl;
+      box-shadow: $shadow-lg;
+      
+      .chat-panel {
+        height: 100%;
+        max-height: 90vh;
+      }
+      
+      .messages-container {
+        max-height: none;
+      }
+    }
   }
   
   &.active {
@@ -250,14 +330,51 @@ $primary-gradient: linear-gradient(135deg, $primary 0%, lighten($primary, 15%) 1
   }
 }
 
+// Mobile chat toggle button styles
+.chat-toggle-button {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: $primary-gradient;
+  border: none;
+  box-shadow: $shadow-lg;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0;
+  transition: all 0.3s ease;
+  overflow: hidden; // Ensure the image doesn't overflow the circular button
+  
+  &:hover {
+    transform: scale(1.05);
+  }
+  
+  &.hidden {
+    display: none;
+  }
+  
+  .toggle-logo {
+    width: 40px;
+    height: 40px;
+    object-fit: cover; // Changed from contain to cover for better circle fitting
+    border-radius: 50%; // Make the logo perfectly round
+  }
+}
+
 .chat-panel {
   display: flex;
   flex-direction: column;
   height: 500px;
   max-height: 70vh;
   background-color: rgba(255, 255, 255, 0.3);
-  border-radius: $border-radius-lg;
+  border-radius: $border-radius-xl;
   overflow: hidden;
+  transition: all 0.3s ease;
+  
+  &.hidden {
+    display: none;
+  }
 }
 
 .chat-header {
@@ -277,6 +394,29 @@ $primary-gradient: linear-gradient(135deg, $primary 0%, lighten($primary, 15%) 1
     font-size: 1.2rem;
     font-weight: 500;
     margin: 0;
+  }
+}
+
+// Minimize button for mobile
+.minimize-button {
+  background: none;
+  border: none;
+  color: white;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+  
+  i {
+    font-size: 1rem;
   }
 }
 
@@ -302,7 +442,7 @@ $primary-gradient: linear-gradient(135deg, $primary 0%, lighten($primary, 15%) 1
     .message-content {
       background-color: rgba(255, 255, 255, 0.3);
       color: #000000;
-      border-radius: $border-radius $border-radius 0 $border-radius;
+      border-radius: $border-radius-lg $border-radius-lg 0 $border-radius-lg;
     }
   }
   
@@ -312,7 +452,7 @@ $primary-gradient: linear-gradient(135deg, $primary 0%, lighten($primary, 15%) 1
     .message-content {
       background-color: rgba(255, 255, 255, 0.3);
       color: #000000;
-      border-radius: 0 $border-radius $border-radius $border-radius;
+      border-radius: 0 $border-radius-lg $border-radius-lg $border-radius-lg;
       box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
     }
   }
@@ -320,7 +460,7 @@ $primary-gradient: linear-gradient(135deg, $primary 0%, lighten($primary, 15%) 1
 
 .message-content {
   padding: $spacing-md;
-  border-radius: $border-radius;
+  border-radius: $border-radius-lg;
   font-size: 0.95rem;
   line-height: 1.4;
   
@@ -390,7 +530,7 @@ $primary-gradient: linear-gradient(135deg, $primary 0%, lighten($primary, 15%) 1
   flex: 1;
   padding: $spacing-sm $spacing-md;
   border: 1px solid $gray-300;
-  border-radius: $border-radius;
+  border-radius: $border-radius-lg;
   resize: none;
   font-family: inherit;
   font-size: 0.95rem;
@@ -426,6 +566,28 @@ $primary-gradient: linear-gradient(135deg, $primary 0%, lighten($primary, 15%) 1
   &:disabled {
     background-color: $gray-400;
     cursor: not-allowed;
+  }
+}
+
+// Media queries for responsive behavior
+@media (max-width: $breakpoint-md) {
+  .ai-chat-widget {
+    right: 20px;
+    bottom: 20px;
+    top: auto;
+    transform: none;
+    
+    &.minimized {
+      width: auto;
+      max-height: none;
+      background: none;
+      border: none;
+      box-shadow: none;
+    }
+  }
+  
+  .chat-panel {
+    height: 450px;
   }
 }
 </style> 

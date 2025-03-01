@@ -115,4 +115,17 @@ main {
 .fade-leave-to {
   opacity: 0;
 }
+
+// Mobile chat widget positioning adjustments
+@media (max-width: 768px) {
+  // Add padding at the bottom to prevent content from being hidden behind the chat button
+  main {
+    padding-bottom: 80px;
+  }
+  
+  // Make sure the footer doesn't get covered by chat button
+  .footer {
+    padding-bottom: calc(#{$spacing-xl} + 70px);
+  }
+}
 </style> 

@@ -40,7 +40,7 @@
         <div class="section__header">
           <h2 class="section__title">Planes y Precios</h2>
           <p class="section__subtitle">
-            Elige el plan perfecto para tu negocio, desde pequeñas inmobiliarias hasta grandes corporaciones
+            Elige el plan perfecto para tu negocio, desde pequeñas inmobiliarias hasta grandes corporaciones. <strong>Todos incluyen una prueba gratuita de 7 días.</strong>
           </p>
         </div>
         
@@ -75,15 +75,18 @@
                   <span class="feature-check"><i class="fas fa-check"></i></span>
                   <span class="feature-text">Soporte por email</span>
                 </div>
+                <div class="feature-item">
+                  <span class="feature-check"><i class="fas fa-check"></i></span>
+                  <span class="feature-text">Prueba gratuita de 7 días</span>
+                </div>
               </div>
               
               <div class="pricing-card__action">
-                <button class="btn btn--primary">Empezar Gratis</button>
+                <button class="btn btn--primary">Suscribirse</button>
               </div>
             </div>
             
             <div class="pricing-card pricing-card--featured">
-              <div class="card__badge">Popular</div>
               <div class="pricing-card__header">
                 <div class="card__icon">
                   <i class="fas fa-building"></i>
@@ -116,10 +119,14 @@
                   <span class="feature-check"><i class="fas fa-check"></i></span>
                   <span class="feature-text">Soporte prioritario</span>
                 </div>
+                <div class="feature-item">
+                  <span class="feature-check"><i class="fas fa-check"></i></span>
+                  <span class="feature-text">Prueba gratuita de 7 días</span>
+                </div>
               </div>
               
               <div class="pricing-card__action">
-                <button class="btn btn--gradient">Suscribirse</button>
+                <button class="btn btn--white">Suscribirse</button>
               </div>
             </div>
             
@@ -156,10 +163,14 @@
                   <span class="feature-check"><i class="fas fa-check"></i></span>
                   <span class="feature-text">Soporte dedicado 24/7</span>
                 </div>
+                <div class="feature-item">
+                  <span class="feature-check"><i class="fas fa-check"></i></span>
+                  <span class="feature-text">Prueba gratuita de 7 días</span>
+                </div>
               </div>
               
               <div class="pricing-card__action">
-                <button class="btn btn--primary">Contactar Ventas</button>
+                <button class="btn btn--primary">Suscribirse</button>
               </div>
             </div>
           </div>
@@ -390,7 +401,7 @@
     </section>
     
     <!-- CTA Section -->
-    <section class="section section--gradient">
+    <section class="section section--cta">
       <div class="container">
         <div class="cta">
           <h2 class="cta__title">¿Listo para transformar tu negocio inmobiliario?</h2>
@@ -493,7 +504,8 @@ export default {
 // Variables for the page
 $primary-gradient: linear-gradient(135deg, $primary 0%, lighten($primary, 15%) 100%);
 $section-spacing: $spacing-4xl;
-$border-radius-enhanced: 20px; // Increased for more rounded corners
+$border-radius-enhanced: 30px; // Aumentado para esquinas más redondeadas
+$button-radius: 20px; // Redondeo específico para botones
 $purple-overlay: rgba($primary, 0.08); // Slightly stronger purple background
 
 // General section styling
@@ -554,8 +566,8 @@ $purple-overlay: rgba($primary, 0.08); // Slightly stronger purple background
     right: 0;
     bottom: 0;
     background-image: 
-      linear-gradient(to bottom, rgba(white, 0.9), rgba(white, 0.7)),
-      radial-gradient($purple-overlay 1px, transparent 1px);
+      linear-gradient(to bottom, rgba($dark, 0.02), rgba($primary, 0.03)),
+      radial-gradient(rgba($dark, 0.03) 1px, transparent 1px);
     background-size: 100% 100%, 20px 20px;
     z-index: -1;
   }
@@ -574,7 +586,11 @@ $purple-overlay: rgba($primary, 0.08); // Slightly stronger purple background
     color: $dark;
     margin-bottom: $spacing-xl;
     line-height: 1.2;
-    text-shadow: 0 1px 3px rgba(white, 0.5);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); // Sombra de texto más pronunciada
+    background-color: rgba(255, 255, 255, 0.7); // Fondo semi-transparente
+    padding: $spacing-md;
+    border-radius: $border-radius-enhanced;
+    display: inline-block;
     
     @media (max-width: $breakpoint-md) {
       font-size: 2rem;
@@ -613,6 +629,10 @@ $purple-overlay: rgba($primary, 0.08); // Slightly stronger purple background
     margin-bottom: $spacing-xl;
     max-width: 900px; // Ancho ampliado
     line-height: 1.5;
+    background-color: rgba(255, 255, 255, 0.7); // Fondo semi-transparente
+    padding: $spacing-md;
+    border-radius: $border-radius-enhanced;
+    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.5); // Sutil sombra de texto
     
     @media (max-width: $breakpoint-md) {
       font-size: 1.2rem;
@@ -627,6 +647,9 @@ $purple-overlay: rgba($primary, 0.08); // Slightly stronger purple background
     a {
       font-size: 1rem; // Botones más pequeños
       padding: $spacing-sm $spacing-xl;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); // Sombra más pronunciada
+      font-weight: 700; // Texto más grueso
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3); // Sombra para el texto
     }
     
     @media (max-width: $breakpoint-sm) {
@@ -660,23 +683,17 @@ $purple-overlay: rgba($primary, 0.08); // Slightly stronger purple background
 }
 
 .pricing-card {
-  background-color: white;
-  border-radius: $border-radius;
-  padding: $spacing-xl;
-  box-shadow: $shadow-sm;
+  position: relative;
   display: flex;
   flex-direction: column;
-  position: relative;
-  transition: $transition-base;
-  border: 1px solid rgba($primary, 0.2); // More visible border
+  padding: $spacing-xl;
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: $border-radius-xl; // Increased from border-radius-lg
+  border: 1px solid rgba(0, 0, 0, 0.04);
   height: 100%;
-  backdrop-filter: blur(10px);
-  
-  &:hover {
-    transform: translateY(-10px);
-    box-shadow: $shadow;
-    border-color: $primary;
-  }
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+  transition: $transition-base;
+  overflow: hidden;
   
   &--featured {
     border-color: $primary;
@@ -776,7 +793,7 @@ $purple-overlay: rgba($primary, 0.08); // Slightly stronger purple background
   
   .stat-item {
     background-color: rgba(white, 0.9);
-    border-radius: $border-radius;
+    border-radius: $border-radius-enhanced;
     padding: $spacing-lg;
     text-align: center;
     box-shadow: $shadow-sm;
@@ -818,19 +835,18 @@ $purple-overlay: rgba($primary, 0.08); // Slightly stronger purple background
   }
   
   .feature-card {
-    background-color: rgba(white, 0.9);
-    border-radius: $border-radius;
     padding: $spacing-xl;
-    box-shadow: $shadow-sm;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: $border-radius-xl; // Increased from border-radius-lg
+    border: 1px solid rgba(0, 0, 0, 0.03);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
     transition: $transition-base;
-    border: 1px solid rgba($primary, 0.2); // More visible border
-    backdrop-filter: blur(5px);
-    
-    &:hover {
-      transform: translateY(-5px);
-      box-shadow: $shadow;
-      border-color: $primary;
-    }
+    position: relative;
+    overflow: hidden;
     
     .feature-icon {
       font-size: 2.5rem;
@@ -867,15 +883,14 @@ $purple-overlay: rgba($primary, 0.08); // Slightly stronger purple background
 }
 
 .testimonial-card {
-  flex: 0 0 100%;
-  background-color: rgba(white, 0.9);
-  border-radius: $border-radius;
   padding: $spacing-xl;
-  box-shadow: $shadow-sm;
-  border: 1px solid rgba($primary, 0.2); // More visible border
-  margin: 0 $spacing-md;
+  background-color: rgba(255, 255, 255, 0.6);
+  border-radius: $border-radius-xl; // Increased from border-radius-lg
+  border: 1px solid rgba(0, 0, 0, 0.03);
   position: relative;
-  backdrop-filter: blur(5px);
+  overflow: hidden;
+  margin-top: $spacing-lg;
+  height: 100%;
   
   .quote-icon {
     font-size: 2rem;
@@ -1006,6 +1021,23 @@ $purple-overlay: rgba($primary, 0.08); // Slightly stronger purple background
     background-size: 100% 100%, 20px 20px;
     z-index: -1;
   }
+  
+  .section__title, .section__subtitle {
+    background-color: rgba(255, 255, 255, 0.7);
+    padding: $spacing-md;
+    border-radius: $border-radius-enhanced;
+    display: inline-block;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: $spacing-md;
+  }
+  
+  .section__subtitle {
+    display: block;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.5);
+  }
 }
 
 .team-container {
@@ -1024,19 +1056,12 @@ $purple-overlay: rgba($primary, 0.08); // Slightly stronger purple background
 }
 
 .team-card {
-  background-color: rgba(white, 0.9);
-  border-radius: $border-radius;
+  padding: $spacing-xl;
+  background: transparent;
+  border-radius: $border-radius-xl; // Increased from border-radius-lg
   overflow: hidden;
-  box-shadow: $shadow-sm;
-  transition: $transition-base;
-  border: 1px solid rgba($primary, 0.2); // More visible border
-  backdrop-filter: blur(5px);
-  
-  &:hover {
-    transform: translateY(-5px);
-    box-shadow: $shadow;
-    border-color: $primary;
-  }
+  text-align: center;
+  position: relative;
   
   .team-image {
     width: 200px;
@@ -1045,7 +1070,7 @@ $purple-overlay: rgba($primary, 0.08); // Slightly stronger purple background
     overflow: hidden;
     margin: $spacing-lg auto;
     border: 5px solid rgba(white, 0.9);
-    box-shadow: 0 0 0 1px rgba($primary, 0.3); // More visible border
+    box-shadow: 0 0 0 1px rgba($primary, 0.3);
     
     img {
       width: 100%;
@@ -1064,6 +1089,11 @@ $purple-overlay: rgba($primary, 0.08); // Slightly stronger purple background
       font-weight: $font-weight-semibold;
       margin-bottom: $spacing-xs;
       color: $dark;
+      background-color: rgba(255, 255, 255, 0.7);
+      padding: $spacing-sm;
+      border-radius: $button-radius;
+      display: inline-block;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
     }
     
     h4 {
@@ -1071,6 +1101,10 @@ $purple-overlay: rgba($primary, 0.08); // Slightly stronger purple background
       font-weight: $font-weight-medium;
       color: $primary;
       margin-bottom: $spacing-md;
+      background-color: rgba(255, 255, 255, 0.7);
+      padding: $spacing-xs $spacing-sm;
+      border-radius: $button-radius;
+      display: inline-block;
     }
     
     p {
@@ -1078,6 +1112,9 @@ $purple-overlay: rgba($primary, 0.08); // Slightly stronger purple background
       font-size: 0.95rem;
       line-height: 1.5;
       margin-bottom: $spacing-md;
+      background-color: rgba(255, 255, 255, 0.5);
+      padding: $spacing-sm;
+      border-radius: $button-radius;
     }
     
     .team-social {
@@ -1224,5 +1261,73 @@ $purple-overlay: rgba($primary, 0.08); // Slightly stronger purple background
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+@media (max-width: $breakpoint-sm) {
+  .d-lg-flex {
+    display: flex !important;
+  }
+}
+
+// Nueva sección de CTA con fondo completo
+.section--cta {
+  background: $primary-gradient;
+  color: white;
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  box-shadow: $shadow-lg;
+  position: relative;
+  padding: $spacing-3xl 0;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+      radial-gradient(rgba(white, 0.1) 1px, transparent 1px);
+    background-size: 20px 20px;
+    z-index: 0;
+  }
+  
+  .container {
+    position: relative;
+    z-index: 1;
+  }
+}
+
+// Eliminar el margen lateral de la sección gradient
+.section--gradient {
+  margin: 0;
+  border-radius: 0;
+}
+
+// Ajustar los bordes redondeados globalmente
+.btn {
+  border-radius: $button-radius;
+}
+
+// Common styles for all cards - Increased border radius
+.card, .feature-card, .pricing-card, .testimonial-card, .team-card, .stats-container .stat-item {
+  border-radius: $border-radius-xl; // Increased from border-radius-lg
+  overflow: hidden;
+  transition: $transition-base;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  background-image: 
+    linear-gradient(to bottom, rgba($dark, 0.02), rgba($primary, 0.03)),
+    radial-gradient(rgba($dark, 0.03) 1px, transparent 1px);
+  background-size: 100%, 20px 20px;
+  
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+  }
+}
+
+.demo-frame, .hero__title, .hero__subtitle {
+  border-radius: $border-radius-enhanced;
 }
 </style> 

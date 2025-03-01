@@ -492,6 +492,13 @@ nav ul li a:hover::after {
     gap: 30px;
 }
 
+.pricing-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-top: 40px;
+}
+
 .pricing-card {
     background: white;
     border-radius: 20px;
@@ -501,6 +508,9 @@ nav ul li a:hover::after {
     text-align: center;
     position: relative;
     z-index: 1;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
 
 .pricing-card:hover {
@@ -508,61 +518,100 @@ nav ul li a:hover::after {
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
 }
 
-.pricing-card.popular {
+.pricing-card--featured {
+    background: linear-gradient(135deg, var(--primary) 0%, #8492ff 100%);
+    color: white;
     transform: scale(1.05);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
-    border: 2px solid transparent;
-    background: 
-        linear-gradient(white, white) padding-box,
-        var(--gradient-1) border-box;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+    border: none;
+    z-index: 2;
 }
 
-.pricing-card.popular:hover {
-    transform: scale(1.05) translateY(-10px);
+.pricing-card--featured:hover {
+    transform: translateY(-10px) scale(1.05);
 }
 
-.pricing-icon {
-    font-size: 40px;
-    margin-bottom: 20px;
-    background: var(--gradient-1);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+.pricing-card--featured .card__title,
+.pricing-card--featured .price-value,
+.pricing-card--featured .price-period,
+.pricing-card--featured .feature-text,
+.pricing-card--featured .feature-check {
+    color: white;
 }
 
-.pricing-card h3 {
-    font-size: 24px;
+.pricing-card--featured .btn--white {
+    background-color: white;
+    color: var(--primary);
+    border: none;
+}
+
+.pricing-card--featured .btn--white:hover {
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+.card__icon {
+    font-size: 2.5rem;
+    color: var(--primary);
     margin-bottom: 15px;
 }
 
-.price {
-    font-size: 42px;
+.pricing-card--featured .card__icon {
+    color: white;
+}
+
+.pricing-card__header {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.pricing-card__price {
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    margin-bottom: 25px;
+}
+
+.price-value {
+    font-size: 2.5rem;
     font-weight: 700;
-    margin-bottom: 30px;
     color: var(--primary);
 }
 
-.price span {
-    font-size: 16px;
-    font-weight: 400;
+.price-period {
+    font-size: 1rem;
     color: #666;
+    margin-left: 5px;
 }
 
-.pricing-features {
-    list-style: none;
-    margin-bottom: 30px;
-    text-align: left;
+.pricing-card__features {
+    flex: 1;
+    margin-bottom: 25px;
 }
 
-.pricing-features li {
-    margin-bottom: 10px;
-    color: #666;
+.feature-item {
     display: flex;
     align-items: center;
+    margin-bottom: 15px;
 }
 
-.pricing-features li i {
+.feature-check {
     color: var(--primary);
     margin-right: 10px;
+}
+
+.pricing-card__action {
+    margin-top: auto;
+}
+
+.btn--white {
+    background-color: white;
+    color: var(--primary);
+    border: 1px solid var(--primary);
+}
+
+.btn--white:hover {
+    background-color: var(--primary);
+    color: white;
 }
 
 /* Testimonials */

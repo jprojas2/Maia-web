@@ -4,12 +4,11 @@
       <div class="container">
         <div class="section__title">
           <h2>Planes y Precios</h2>
-          <p>Elige el plan que mejor se adapte a las necesidades de tu inmobiliaria</p>
+          <p>Elige el plan que mejor se adapte a las necesidades de tu inmobiliaria. <strong>Todos incluyen prueba gratuita de 7 días sin compromiso.</strong></p>
         </div>
         
         <div class="pricing-container">
           <div class="pricing-card" :class="{ 'popular': plan.popular }" v-for="(plan, index) in plans" :key="index">
-            <div class="popular-badge" v-if="plan.popular">Más Popular</div>
             <h3 class="plan-name">{{ plan.name }}</h3>
             <div class="plan-price">
               <span class="currency">$</span>
@@ -18,7 +17,9 @@
             </div>
             <p class="plan-description">{{ plan.description }}</p>
             
-            <p class="plan-free-trial">Prueba gratuita de 7 días</p>
+            <div class="plan-free-trial">
+              <span class="free-trial-badge"><strong>Prueba gratuita de 7 días</strong></span>
+            </div>
             
             <ul class="plan-features">
               <li v-for="(feature, fIndex) in plan.features" :key="fIndex">
@@ -28,7 +29,7 @@
             </ul>
             
             <router-link :to="plan.buttonLink" class="btn" :class="plan.buttonClass">
-              {{ plan.buttonText }}
+              Suscribirse
             </router-link>
           </div>
         </div>
@@ -79,7 +80,7 @@ const plans = ref([
     ],
     buttonText: 'Suscribirse',
     buttonLink: '/contact',
-    buttonClass: 'btn--secondary',
+    buttonClass: 'btn--primary',
     popular: false
   },
   {
@@ -97,7 +98,7 @@ const plans = ref([
     ],
     buttonText: 'Suscribirse',
     buttonLink: '/contact',
-    buttonClass: 'btn--gradient',
+    buttonClass: 'btn--white',
     popular: true
   },
   {
@@ -179,40 +180,82 @@ const toggleFaq = (index) => {
   position: relative;
   transition: $transition-base;
   border: 2px solid transparent;
+  overflow: hidden;
   
   &:hover {
     transform: translateY(-10px);
     box-shadow: $shadow-lg;
   }
   
+  .popular-badge {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: $primary;
+    color: white;
+    padding: $spacing-xs $spacing-md;
+    font-size: 0.9rem;
+    font-weight: $font-weight-semibold;
+    border-radius: 0 $border-radius-lg 0 $border-radius-lg;
+    z-index: 1;
+  }
+  
   &.popular {
-    border-color: $primary;
-    transform: scale(1.05);
+    background: linear-gradient(135deg, $primary 0%, lighten($primary, 15%) 100%) !important;
+    color: white !important;
+    transform: scale(1.05) !important;
+    box-shadow: $shadow-lg !important;
+    border: none !important;
+    z-index: 2;
     
     @media (max-width: $breakpoint-md) {
-      transform: scale(1);
+      transform: scale(1.02) !important;
     }
     
     &:hover {
-      transform: translateY(-10px) scale(1.05);
+      transform: translateY(-10px) scale(1.05) !important;
       
       @media (max-width: $breakpoint-md) {
-        transform: translateY(-10px);
+        transform: translateY(-10px) scale(1.02) !important;
       }
     }
-  }
-  
-  .popular-badge {
-    position: absolute;
-    top: -15px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: $gradient-1;
-    color: white;
-    padding: $spacing-xs $spacing-md;
-    border-radius: $border-radius-pill;
-    font-weight: $font-weight-semibold;
-    font-size: 0.9rem;
+    
+    .plan-name, .period, .plan-description {
+      color: white !important;
+    }
+    
+    .amount {
+      color: white !important;
+    }
+    
+    .plan-free-trial {
+      .free-trial-badge {
+        background-color: white !important;
+        color: $primary !important;
+        font-weight: $font-weight-bold !important;
+      }
+    }
+    
+    .plan-features {
+      li {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2) !important;
+        color: rgba(255, 255, 255, 0.9) !important;
+        
+        i {
+          color: white !important;
+        }
+      }
+    }
+    
+    .btn {
+      background-color: white !important;
+      color: $primary !important;
+      border: none !important;
+      
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.9) !important;
+      }
+    }
   }
   
   .plan-name {
@@ -250,10 +293,17 @@ const toggleFaq = (index) => {
   }
   
   .plan-free-trial {
-    font-weight: 600;
-    color: $primary;
     margin-bottom: $spacing-md;
-    font-size: 0.9rem;
+    
+    .free-trial-badge {
+      display: inline-block;
+      background-color: rgba($primary, 0.1);
+      color: $primary;
+      font-weight: $font-weight-semibold;
+      padding: $spacing-xs $spacing-md;
+      border-radius: $border-radius-pill;
+      font-size: 0.9rem;
+    }
   }
   
   .plan-features {

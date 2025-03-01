@@ -113,174 +113,113 @@ $primary-gradient: linear-gradient(135deg, $primary 0%, lighten($primary, 15%) 1
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
+  right: 0;
   z-index: 1000;
-  transition: $transition-base;
-  background-color: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(10px);
-  padding: 1.5rem 0;
-  height: 180px;
-  display: flex;
-  align-items: center;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-  
-  &--scrolled {
-    padding: 1rem 0;
-    height: 150px;
-    background-color: rgba(255, 255, 255, 0.9);
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
-  }
-  
-  &--open {
-    background-color: white;
-  }
-}
-
-.header__content {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  max-width: 1200px;
-  margin: 0 auto;
-  
-  @media (max-width: $breakpoint-md) {
-    justify-content: center;
-    gap: $spacing-md;
-  }
-}
-
-.header__logo {
-  z-index: 1001;
-  margin-right: auto;
-  
-  @media (max-width: $breakpoint-md) {
-    margin-right: 0;
-    margin-bottom: $spacing-md;
-  }
-}
-
-.logo {
-  display: flex;
-  align-items: center;
-  text-decoration: none;
-  color: $dark;
+  padding: 0 $spacing-lg;
   background-color: #FFFFFF;
-  padding: 0.5rem 1rem;
-  border-radius: 2rem;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-  
-  .header--scrolled & {
-    color: $dark;
-  }
-}
+  height: 100px;
+  display: flex;
+  align-items: center;
+  transition: $transition-base;
+  border-bottom: 1px solid rgba($dark, 0.1);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
 
-.logo__image {
-  width: 140px;
-  height: 140px;
-  margin-right: 0.75rem;
-  border-radius: 50%;
-  object-fit: cover;
-  
-  .header--scrolled & {
-    width: 120px;
-    height: 120px;
+  &__content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
   }
-}
 
-.logo__text {
-  font-size: 2.8rem;
-  font-weight: 700;
-  
-  .header--scrolled & {
-    font-size: 2.5rem;
+  &__logo {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
   }
-}
 
-.header__nav {
-  margin-left: auto;
-  
-  @media (max-width: $breakpoint-lg) {
-    position: fixed;
-    top: 0;
-    right: -100%;
-    width: 80%;
-    max-width: 400px;
-    height: 100vh;
-    background-color: white;
-    z-index: 1000;
-    padding: 6rem 2rem 2rem;
-    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
-    transition: right 0.3s ease;
-    overflow-y: auto;
-    
-    &.active {
-      right: 0;
-    }
+  &__nav {
+    display: flex;
+    flex: 1 1 auto;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__actions {
+    flex: 0 0 auto;
+    display: flex;
+    gap: $spacing-md;
+    align-items: center;
+  }
+
+  &--scrolled {
+    height: 80px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   }
 }
 
 .nav {
   display: flex;
   list-style: none;
-  padding: 0;
-  margin: 0;
+  gap: $spacing-md;
+  justify-content: center;
   align-items: center;
-  
-  @media (max-width: $breakpoint-lg) {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-}
+  margin: 0;
+  padding: 0;
 
-.nav__item {
-  margin: 0 1rem;
-  
-  @media (max-width: $breakpoint-lg) {
-    margin: 0.75rem 0;
-  }
-}
+  &__item {
+    position: relative;
+    display: flex;
+    align-items: center;
 
-.nav__link {
-  color: $dark;
-  text-decoration: none;
-  font-weight: 500;
-  padding: 0.5rem 0;
-  transition: color 0.2s ease;
-  position: relative;
-  
-  &:hover, &.router-link-active {
-    color: $primary;
-  }
-  
-  &::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background-color: $primary;
-    transition: width 0.3s ease;
-  }
-  
-  &:hover::after, &.router-link-active::after {
-    width: 100%;
-  }
-  
-  @media (max-width: $breakpoint-lg) {
-    display: block;
-    padding: 0.75rem 0;
-    font-size: 1.2rem;
-    
-    &::after {
-      display: none;
+    a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: $spacing-sm $spacing-md;
+      color: $dark;
+      font-weight: $font-weight-medium;
+      text-decoration: none;
+      transition: $transition-base;
+      border-radius: 20px;
+      height: 40px;
+
+      &:hover, &:focus {
+        color: $primary;
+        background-color: rgba($primary, 0.1);
+      }
+
+      &.active {
+        color: $primary;
+        background-color: rgba($primary, 0.1);
+      }
     }
   }
 }
 
-.header__actions {
-  z-index: 1001;
+.logo {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  text-decoration: none;
+
+  &__image {
+    height: 60px;
+    width: auto;
+  }
+
+  &__text {
+    font-size: 1.8rem;
+    font-weight: $font-weight-bold;
+    color: $primary;
+  }
+}
+
+@media (max-width: $breakpoint-md) {
+  .header {
+    &__nav {
+      display: none;
+    }
+  }
 }
 
 .header__menu-toggle {
