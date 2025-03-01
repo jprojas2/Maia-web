@@ -30,21 +30,6 @@
             <a href="#pricing" class="btn btn--primary btn--lg">Ver Planes</a>
             <a href="#contact" class="btn btn--white btn--lg">Comenzar Ahora</a>
           </div>
-          
-          <div class="hero__stats animate-fade-in">
-            <div class="stat">
-              <span class="stat__number">72%</span>
-              <span class="stat__label">Más conversiones</span>
-            </div>
-            <div class="stat">
-              <span class="stat__number">3.5x</span>
-              <span class="stat__label">Mayor engagement</span>
-            </div>
-            <div class="stat">
-              <span class="stat__number">40%</span>
-              <span class="stat__label">Ventas más rápidas</span>
-            </div>
-          </div>
         </div>
       </div>
     </section>
@@ -75,16 +60,20 @@
               
               <div class="pricing-card__features">
                 <div class="feature-item">
-                  <i class="fas fa-check"></i> 5 propiedades activas
+                  <span class="feature-check"><i class="fas fa-check"></i></span>
+                  <span class="feature-text">5 propiedades activas</span>
                 </div>
                 <div class="feature-item">
-                  <i class="fas fa-check"></i> Chat con IA básico
+                  <span class="feature-check"><i class="fas fa-check"></i></span>
+                  <span class="feature-text">Chat con IA básico</span>
                 </div>
                 <div class="feature-item">
-                  <i class="fas fa-check"></i> Tours virtuales estándar
+                  <span class="feature-check"><i class="fas fa-check"></i></span>
+                  <span class="feature-text">Tours virtuales estándar</span>
                 </div>
                 <div class="feature-item">
-                  <i class="fas fa-check"></i> Soporte por email
+                  <span class="feature-check"><i class="fas fa-check"></i></span>
+                  <span class="feature-text">Soporte por email</span>
                 </div>
               </div>
               
@@ -108,19 +97,24 @@
               
               <div class="pricing-card__features">
                 <div class="feature-item">
-                  <i class="fas fa-check"></i> 20 propiedades activas
+                  <span class="feature-check"><i class="fas fa-check"></i></span>
+                  <span class="feature-text">20 propiedades activas</span>
                 </div>
                 <div class="feature-item">
-                  <i class="fas fa-check"></i> Chat con IA avanzado con aprendizaje
+                  <span class="feature-check"><i class="fas fa-check"></i></span>
+                  <span class="feature-text">Chat con IA avanzado con aprendizaje</span>
                 </div>
                 <div class="feature-item">
-                  <i class="fas fa-check"></i> Tours virtuales personalizados
+                  <span class="feature-check"><i class="fas fa-check"></i></span>
+                  <span class="feature-text">Tours virtuales personalizados</span>
                 </div>
                 <div class="feature-item">
-                  <i class="fas fa-check"></i> Calificación de leads
+                  <span class="feature-check"><i class="fas fa-check"></i></span>
+                  <span class="feature-text">Calificación de leads</span>
                 </div>
                 <div class="feature-item">
-                  <i class="fas fa-check"></i> Soporte prioritario
+                  <span class="feature-check"><i class="fas fa-check"></i></span>
+                  <span class="feature-text">Soporte prioritario</span>
                 </div>
               </div>
               
@@ -143,19 +137,24 @@
               
               <div class="pricing-card__features">
                 <div class="feature-item">
-                  <i class="fas fa-check"></i> Propiedades ilimitadas
+                  <span class="feature-check"><i class="fas fa-check"></i></span>
+                  <span class="feature-text">Propiedades ilimitadas</span>
                 </div>
                 <div class="feature-item">
-                  <i class="fas fa-check"></i> Todas las características premium
+                  <span class="feature-check"><i class="fas fa-check"></i></span>
+                  <span class="feature-text">Todas las características premium</span>
                 </div>
                 <div class="feature-item">
-                  <i class="fas fa-check"></i> API para integración con sistemas propios
+                  <span class="feature-check"><i class="fas fa-check"></i></span>
+                  <span class="feature-text">API para integración con sistemas propios</span>
                 </div>
                 <div class="feature-item">
-                  <i class="fas fa-check"></i> Personalización de marca
+                  <span class="feature-check"><i class="fas fa-check"></i></span>
+                  <span class="feature-text">Personalización de marca</span>
                 </div>
                 <div class="feature-item">
-                  <i class="fas fa-check"></i> Soporte dedicado 24/7
+                  <span class="feature-check"><i class="fas fa-check"></i></span>
+                  <span class="feature-text">Soporte dedicado 24/7</span>
                 </div>
               </div>
               
@@ -176,6 +175,26 @@
           <p class="section__subtitle">
             Descubre cómo nuestra tecnología está transformando la forma de vender propiedades
           </p>
+        </div>
+        
+        <!-- Stats moved from hero section to here -->
+        <div class="stats-container">
+          <div class="stat">
+            <span class="stat__number">92%</span>
+            <span class="stat__label">Tasa de rebote en webs inmobiliarias tradicionales</span>
+          </div>
+          <div class="stat">
+            <span class="stat__number">72%</span>
+            <span class="stat__label">Más conversiones con Maia</span>
+          </div>
+          <div class="stat">
+            <span class="stat__number">3.5x</span>
+            <span class="stat__label">Mayor engagement</span>
+          </div>
+          <div class="stat">
+            <span class="stat__number">40%</span>
+            <span class="stat__label">Ventas más rápidas</span>
+          </div>
         </div>
         
         <div class="features-grid">
@@ -364,25 +383,19 @@ export default {
 <style lang="scss" scoped>
 @import "@/styles/variables.scss";
 
-// Define variables
-$light-blue-bg: #f0f8ff;
+// Variables for the page
 $primary-gradient: linear-gradient(135deg, $primary 0%, lighten($primary, 15%) 100%);
-
-.home {
-  width: 100%;
-}
+$section-spacing: $spacing-4xl;
+$border-radius-enhanced: 20px; // Increased for more rounded corners
 
 // General section styling
 .section {
-  padding: $spacing-4xl 0;
-  
+  padding: $section-spacing 0;
+  position: relative;
+  overflow: hidden;
+
   &--light {
-    background-color: $light-blue-bg;
-  }
-  
-  &--gradient {
-    background: $primary-gradient;
-    color: white;
+    background-color: $light;
   }
   
   &__header {
@@ -393,147 +406,281 @@ $primary-gradient: linear-gradient(135deg, $primary 0%, lighten($primary, 15%) 1
   
   &__title {
     font-size: 2.5rem;
-    font-weight: $font-weight-bold;
     margin-bottom: $spacing-md;
     color: $dark;
+    font-weight: $font-weight-bold;
+    
+    @media (max-width: $breakpoint-md) {
+      font-size: 2rem;
+    }
   }
   
   &__subtitle {
     font-size: 1.1rem;
-    color: $gray-700;
+    color: $gray-600;
+    line-height: 1.5;
   }
 }
 
-// Hero section with larger demo
+// Container
+.container {
+  max-width: $container-max-width;
+  margin: 0 auto;
+  padding: 0 $spacing-lg;
+  width: 100%;
+}
+
+// Hero Section
 .hero {
-  padding: $spacing-3xl 0;
-  position: relative;
-  overflow: hidden;
-  background-color: $light;
+  background-color: white;
+  padding-top: $spacing-4xl;
+  padding-bottom: $spacing-2xl;
   
   &__content {
-    max-width: 100%;
-    text-align: center;
+    max-width: 1000px;
     margin: 0 auto;
+    text-align: center;
   }
   
   &__title {
-    font-size: 2.8rem;
+    font-size: 3.5rem;
     font-weight: $font-weight-bold;
-    margin-bottom: $spacing-lg;
+    margin-bottom: $spacing-xl;
     color: $dark;
+    line-height: 1.2;
     
-    @media (min-width: $breakpoint-md) {
-      font-size: 3.5rem;
+    @media (max-width: $breakpoint-md) {
+      font-size: 2.5rem;
     }
     
-    .highlight {
-      color: $primary;
-    }
-  }
-  
-  &__subtitle {
-    font-size: 1.1rem;
-    color: $gray-700;
-    margin-bottom: $spacing-lg;
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
-    
-    @media (min-width: $breakpoint-md) {
-      font-size: 1.25rem;
+    @media (max-width: $breakpoint-sm) {
+      font-size: 2rem;
     }
   }
   
   &__demo-large {
-    width: 100%;
-    margin: $spacing-lg auto;
-    
-    .demo-frame {
-      position: relative;
-      width: 100%;
-      height: 0;
-      padding-bottom: 56.25%; // 16:9 aspect ratio
-      border-radius: $border-radius-lg;
-      overflow: hidden;
-      box-shadow: $shadow-lg;
-      
-      &.full-width {
-        width: 90%;
-        max-width: 1200px;
-        margin: 0 auto;
-      }
-      
-      .demo-iframe {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        border: none;
-      }
-    }
+    margin: $spacing-2xl auto;
+    max-width: 1000px;
+    border-radius: $border-radius-enhanced;
+    overflow: hidden;
+    box-shadow: $shadow-lg;
+  }
+  
+  &__subtitle {
+    font-size: 1.2rem;
+    color: $gray-600;
+    margin-bottom: $spacing-xl;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
   }
   
   &__actions {
     display: flex;
-    flex-wrap: wrap;
     justify-content: center;
     gap: $spacing-md;
-    margin-bottom: $spacing-xl;
+    margin-bottom: $spacing-2xl;
     
-    .btn {
-      min-width: 150px;
+    @media (max-width: $breakpoint-sm) {
+      flex-direction: column;
+      gap: $spacing-sm;
+      align-items: center;
+    }
+  }
+}
+
+// Demo Frame
+.demo-frame {
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-bottom: 56.25%; // 16:9 aspect ratio
+  background-color: $gray-800;
+  border-radius: $border-radius-enhanced; 
+  overflow: hidden;
+  box-shadow: $shadow;
+  
+  &.full-width {
+    padding-bottom: 56.25%; // 16:9 aspect ratio
+  }
+  
+  .demo-iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+}
+
+// Action buttons
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: $spacing-sm $spacing-lg;
+  border-radius: $border-radius-enhanced;
+  font-weight: $font-weight-semibold;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: $transition-base;
+  cursor: pointer;
+  border: none;
+  
+  &--primary {
+    background-color: $primary;
+    color: white;
+    
+    &:hover {
+      background-color: darken($primary, 5%);
+      transform: translateY(-2px);
     }
   }
   
-  &__stats {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: $spacing-xl;
-    margin-top: $spacing-lg;
+  &--white {
+    background-color: white;
+    color: $dark;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
     
-    .stat {
-      text-align: center;
+    &:hover {
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      transform: translateY(-2px);
+    }
+  }
+  
+  &--gradient {
+    background: $primary-gradient;
+    color: white;
+    
+    &:hover {
+      opacity: 0.9;
+      transform: translateY(-2px);
+    }
+  }
+  
+  &--lg {
+    padding: $spacing-md $spacing-xl;
+    font-size: 1.1rem;
+  }
+}
+
+// Stats and Features
+.stats-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: $spacing-xl;
+  margin-bottom: $spacing-2xl;
+  
+  .stat {
+    flex: 1;
+    min-width: 200px;
+    max-width: 250px;
+    text-align: center;
+    background-color: white;
+    padding: $spacing-lg;
+    border-radius: $border-radius-enhanced;
+    box-shadow: $shadow;
+    transition: transform 0.3s ease;
+    
+    &:hover {
+      transform: translateY(-5px);
+    }
+    
+    &__number {
+      display: block;
+      font-size: 2.5rem;
+      font-weight: $font-weight-bold;
+      color: $primary;
+      margin-bottom: $spacing-xs;
+    }
+    
+    &__label {
+      color: $gray-600;
+      font-size: 0.95rem;
+    }
+  }
+}
+
+// Features Grid
+.features-grid {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-3xl;
+  margin-top: $spacing-3xl;
+  
+  .feature-item {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-lg;
+    
+    @media (min-width: $breakpoint-md) {
+      flex-direction: row;
+      align-items: center;
       
-      &__number {
-        display: block;
-        font-size: 2.5rem;
+      &.reverse {
+        flex-direction: row-reverse;
+      }
+    }
+    
+    .feature-image {
+      flex: 1;
+      
+      img {
+        width: 100%;
+        height: auto;
+        border-radius: $border-radius-enhanced;
+        box-shadow: $shadow;
+        transition: transform 0.3s ease;
+        
+        &:hover {
+          transform: scale(1.02);
+        }
+      }
+    }
+    
+    .feature-content {
+      flex: 1;
+      padding: $spacing-lg;
+      
+      h3 {
+        font-size: 1.8rem;
         font-weight: $font-weight-bold;
-        color: $primary;
+        margin-bottom: $spacing-md;
+        color: $dark;
       }
       
-      &__label {
-        display: block;
-        color: $gray-700;
-        font-size: 1rem;
+      p {
+        font-size: 1.1rem;
+        color: $gray-600;
+        line-height: 1.6;
       }
     }
   }
 }
 
-// Pricing cards
+// Pricing Cards
 .pricing {
   margin-top: $spacing-2xl;
   
   &-cards {
     display: grid;
-    grid-template-columns: 1fr;
-    gap: $spacing-xl;
-    
-    @media (min-width: $breakpoint-md) {
-      grid-template-columns: repeat(3, 1fr);
-    }
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: $spacing-lg;
+    max-width: 1200px;
+    margin: 0 auto;
   }
   
   &-card {
     background-color: white;
-    border-radius: $border-radius-lg;
+    border-radius: $border-radius-enhanced;
     box-shadow: $shadow;
     overflow: hidden;
     transition: $transition-base;
     position: relative;
+    padding: $spacing-lg;
     
     &:hover {
       transform: translateY(-10px);
@@ -541,75 +688,86 @@ $primary-gradient: linear-gradient(135deg, $primary 0%, lighten($primary, 15%) 1
     }
     
     &--featured {
-      transform: scale(1.05);
       border: 2px solid $primary;
+      transform: scale(1.05);
+      
+      @media (max-width: $breakpoint-md) {
+        transform: scale(1);
+      }
       
       &:hover {
         transform: translateY(-10px) scale(1.05);
-      }
-      
-      .pricing-card__header {
-        background: $primary-gradient;
         
-        .card__title, .pricing-card__price {
-          color: white;
+        @media (max-width: $breakpoint-md) {
+          transform: translateY(-10px);
         }
       }
     }
     
     &__header {
-      padding: $spacing-xl $spacing-lg;
       text-align: center;
+      padding: $spacing-lg;
       border-bottom: 1px solid $gray-200;
+      margin-bottom: $spacing-lg;
       
       .card__icon {
-        font-size: 2.5rem;
+        width: 60px;
+        height: 60px;
+        background: rgba($primary, 0.1);
         color: $primary;
-        margin-bottom: $spacing-sm;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        margin: 0 auto $spacing-md;
+        font-size: 1.5rem;
       }
       
       .card__title {
         font-size: 1.5rem;
         font-weight: $font-weight-bold;
-        margin-bottom: $spacing-sm;
+        margin-bottom: $spacing-md;
+        color: $dark;
       }
     }
     
     &__price {
-      margin-top: $spacing-md;
-      
       .price-value {
         font-size: 2.5rem;
         font-weight: $font-weight-bold;
+        color: $dark;
       }
       
       .price-period {
         font-size: 1rem;
-        color: $gray-600;
+        color: $gray-500;
       }
     }
     
     &__features {
-      padding: $spacing-xl $spacing-lg;
+      padding: 0 $spacing-md $spacing-lg;
       
       .feature-item {
         display: flex;
-        align-items: flex-start;
-        margin-bottom: $spacing-md;
-        font-size: 1rem;
-        color: $gray-700;
+        align-items: center;
+        margin-bottom: $spacing-sm;
+        padding: $spacing-xs 0;
         
-        i {
+        .feature-check {
           color: $primary;
           margin-right: $spacing-sm;
           font-size: 0.9rem;
+        }
+        
+        .feature-text {
+          color: $gray-700;
         }
       }
     }
     
     &__action {
-      padding: 0 $spacing-lg $spacing-xl;
       text-align: center;
+      padding: $spacing-lg;
       
       .btn {
         width: 100%;
@@ -618,66 +776,14 @@ $primary-gradient: linear-gradient(135deg, $primary 0%, lighten($primary, 15%) 1
     
     .card__badge {
       position: absolute;
-      top: $spacing-md;
-      right: $spacing-md;
-      background-color: $primary;
+      top: 10px;
+      right: 10px;
+      background: $primary-gradient;
       color: white;
-      padding: $spacing-xs $spacing-sm;
-      border-radius: $border-radius-pill;
+      padding: 5px 10px;
       font-size: 0.8rem;
-      font-weight: $font-weight-semibold;
-    }
-  }
-}
-
-// Features section with side-by-side layout
-.features-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: $spacing-3xl;
-  margin-top: $spacing-2xl;
-  
-  .feature-item {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: $spacing-lg;
-    
-    @media (min-width: $breakpoint-md) {
-      grid-template-columns: 1fr 1fr;
-      align-items: center;
-      
-      &.reverse {
-        .feature-content {
-          order: 1;
-        }
-        .feature-image {
-          order: 2;
-        }
-      }
-    }
-    
-    .feature-image {
-      img {
-        width: 100%;
-        border-radius: $border-radius-lg;
-        box-shadow: $shadow;
-      }
-    }
-    
-    .feature-content {
-      padding: $spacing-lg;
-      
-      h3 {
-        font-size: 1.8rem;
-        margin-bottom: $spacing-md;
-        color: $dark;
-      }
-      
-      p {
-        font-size: 1.1rem;
-        color: $gray-700;
-        margin: 0;
-      }
+      font-weight: $font-weight-bold;
+      border-radius: $border-radius-pill;
     }
   }
 }
@@ -685,19 +791,15 @@ $primary-gradient: linear-gradient(135deg, $primary 0%, lighten($primary, 15%) 1
 // Testimonials
 .testimonials-wrapper {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: $spacing-xl;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: $spacing-lg;
   margin-top: $spacing-2xl;
-  
-  @media (min-width: $breakpoint-md) {
-    grid-template-columns: repeat(2, 1fr);
-  }
   
   .testimonial-card {
     background-color: white;
-    border-radius: $border-radius-lg;
+    border-radius: $border-radius-enhanced;
     box-shadow: $shadow;
-    padding: $spacing-xl;
+    padding: $spacing-lg;
     transition: $transition-base;
     
     &:hover {
@@ -705,24 +807,19 @@ $primary-gradient: linear-gradient(135deg, $primary 0%, lighten($primary, 15%) 1
       box-shadow: $shadow-lg;
     }
     
+    .quote-icon {
+      font-size: 1.5rem;
+      color: rgba($primary, 0.2);
+      margin-bottom: $spacing-sm;
+    }
+    
     .testimonial__content {
       margin-bottom: $spacing-lg;
-      position: relative;
-      
-      .quote-icon {
-        font-size: 2rem;
-        color: rgba($primary, 0.2);
-        position: absolute;
-        top: -$spacing-md;
-        left: -$spacing-md;
-      }
       
       p {
-        position: relative;
-        font-size: 1.1rem;
-        line-height: 1.6;
+        font-size: 1.05rem;
         color: $gray-700;
-        z-index: 1;
+        line-height: 1.6;
       }
     }
     
@@ -734,67 +831,66 @@ $primary-gradient: linear-gradient(135deg, $primary 0%, lighten($primary, 15%) 1
         width: 50px;
         height: 50px;
         border-radius: 50%;
-        margin-right: $spacing-md;
         object-fit: cover;
+        margin-right: $spacing-sm;
       }
       
       div {
         h4 {
           font-size: 1.1rem;
-          margin: 0 0 $spacing-xs;
+          font-weight: $font-weight-semibold;
+          margin: 0;
           color: $dark;
         }
         
         p {
-          margin: 0;
           font-size: 0.9rem;
-          color: $gray-600;
+          color: $gray-500;
+          margin: 0;
         }
       }
     }
   }
 }
 
-// Team Cards
+// Team Grid
 .team-grid {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: $spacing-xl;
   margin-top: $spacing-2xl;
   
-  @media (min-width: $breakpoint-sm) {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  
-  @media (min-width: $breakpoint-lg) {
-    grid-template-columns: repeat(3, 1fr);
-  }
-  
   .team-card {
     background-color: white;
-    border-radius: $border-radius-lg;
-    box-shadow: $shadow;
+    border-radius: $border-radius-enhanced;
     overflow: hidden;
+    box-shadow: $shadow;
     transition: $transition-base;
     
     &:hover {
       transform: translateY(-10px);
       box-shadow: $shadow-lg;
-      
-      .team-card__image img {
-        transform: scale(1.05);
-      }
     }
     
     &__image {
-      height: 250px;
+      width: 100%;
+      height: 0;
+      padding-bottom: 75%;
+      position: relative;
       overflow: hidden;
       
       img {
+        position: absolute;
+        top: 0;
+        left: 0;
         width: 100%;
         height: 100%;
         object-fit: cover;
         transition: transform 0.5s ease;
+      }
+      
+      &:hover img {
+        transform: scale(1.05);
       }
     }
     
@@ -803,87 +899,103 @@ $primary-gradient: linear-gradient(135deg, $primary 0%, lighten($primary, 15%) 1
       text-align: center;
       
       h3 {
-        font-size: 1.4rem;
+        font-size: 1.5rem;
+        font-weight: $font-weight-bold;
         margin-bottom: $spacing-xs;
         color: $dark;
       }
-    }
-    
-    &__title {
-      font-size: 1rem;
-      color: $primary;
-      font-weight: $font-weight-semibold;
-      margin-bottom: $spacing-md;
-    }
-    
-    &__bio {
-      font-size: 0.95rem;
-      color: $gray-700;
-      margin-bottom: $spacing-lg;
-    }
-    
-    &__social {
-      display: flex;
-      justify-content: center;
-      gap: $spacing-sm;
       
-      .social-link {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 36px;
-        height: 36px;
-        border-radius: 50%;
-        background-color: rgba($primary, 0.1);
+      .team-card__title {
         color: $primary;
-        transition: $transition-base;
+        font-weight: $font-weight-semibold;
+        margin-bottom: $spacing-md;
+      }
+      
+      .team-card__bio {
+        color: $gray-600;
+        font-size: 0.95rem;
+        line-height: 1.5;
+        margin-bottom: $spacing-lg;
+      }
+      
+      .team-card__social {
+        display: flex;
+        justify-content: center;
+        gap: $spacing-sm;
         
-        &:hover {
-          background-color: $primary;
-          color: white;
-          transform: translateY(-3px);
+        .social-link {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 36px;
+          height: 36px;
+          background-color: rgba($primary, 0.1);
+          color: $primary;
+          border-radius: 50%;
+          transition: all 0.2s ease;
+          
+          &:hover {
+            background-color: $primary;
+            color: white;
+            transform: translateY(-2px);
+          }
         }
       }
     }
   }
 }
 
-// Call to Action
-.cta {
+// CTA Section
+.cta-section {
   text-align: center;
-  padding: $spacing-xl 0;
+  padding: $spacing-3xl 0;
+  background: $primary-gradient;
+  border-radius: $border-radius-enhanced;
+  margin: $spacing-3xl auto;
+  max-width: 1000px;
   
-  &__title {
+  h2 {
+    color: white;
     font-size: 2.5rem;
     font-weight: $font-weight-bold;
     margin-bottom: $spacing-md;
+    
+    @media (max-width: $breakpoint-md) {
+      font-size: 2rem;
+    }
   }
   
-  &__subtitle {
+  p {
+    color: rgba(white, 0.9);
     font-size: 1.2rem;
-    margin-bottom: $spacing-xl;
-    opacity: 0.9;
+    max-width: 600px;
+    margin: 0 auto $spacing-xl;
+    line-height: 1.6;
   }
   
-  &__actions {
+  .cta-buttons {
     display: flex;
-    flex-wrap: wrap;
     justify-content: center;
     gap: $spacing-md;
     
-    .btn {
-      min-width: 180px;
+    @media (max-width: $breakpoint-sm) {
+      flex-direction: column;
+      align-items: center;
+      gap: $spacing-sm;
     }
   }
 }
 
 // Animation classes
 .animate-fade-in {
-  animation: fadeIn 1s ease forwards;
+  opacity: 0;
+  animation: fadeIn 1s forwards;
 }
 
 .animate-slide-in-up {
-  animation: slideInUp 0.8s ease forwards;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: slideInUp 1s forwards;
 }
 
 @keyframes fadeIn {

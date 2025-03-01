@@ -4,11 +4,13 @@
     :class="{ 
       'open': isOpen, 
       'mobile': isMobile,
-      'minimized': isMinimized && !isOpen
+      'inactive': !isOpen && !isHovered
     }"
+    @mouseenter="handleMouseEnter"
+    @mouseleave="handleMouseLeave"
   >
-    <!-- Chat panel -->
-    <div v-if="isOpen" class="chat-panel">
+    <!-- Chat panel - Always visible -->
+    <div class="chat-panel">
       <div class="chat-header">
         <div class="header-title">
           <h3>Maia</h3>
@@ -18,20 +20,21 @@
           <button 
             @click="toggleMinimize"
             aria-label="Minimize"
+            v-if="isOpen"
           >
             <i class="fas" :class="isMinimized ? 'fa-expand' : 'fa-minus'"></i>
           </button>
           <button 
-            class="close-btn"
-            @click="closeChat"
-            aria-label="Close"
+            class="toggle-btn"
+            @click="toggleChat"
+            aria-label="Toggle Chat"
           >
-            <i class="fas fa-times"></i>
+            <i class="fas" :class="isOpen ? 'fa-times' : 'fa-comment'"></i>
           </button>
         </div>
       </div>
       
-      <div v-if="!isMinimized" class="messages-container" ref="messagesContainer">
+      <div v-if="isOpen && !isMinimized" class="messages-container" ref="messagesContainer">
         <div class="message bot">
           <div class="message-content">
             <p>Hola 👋 Soy Maia, tu vendedora virtual.</p>
@@ -48,236 +51,214 @@
             'bot': message.sender === 'bot'
           }"
         >
-          <div class="message-content" v-html="message.text"></div>
-          <div class="message-time" v-if="message.time">{{ message.time }}</div>
+          <div class="message-content" v-html="formatMessage(message.text)"></div>
         </div>
         
-        <div v-if="isTyping" class="typing-indicator">
-          <div class="dot"></div>
-          <div class="dot"></div>
-          <div class="dot"></div>
+        <div v-if="isTyping" class="message bot typing">
+          <div class="typing-indicator">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
         </div>
       </div>
       
-      <div v-if="!isMinimized" class="input-area">
-        <div class="input-field">
-          <textarea 
-            ref="inputField"
-            v-model="userInput" 
-            placeholder="Escribe tu mensaje..."
-            @keydown.enter.prevent="sendMessage"
-            rows="1"
-          ></textarea>
-          
-          <button 
-            class="send-btn" 
-            @click="sendMessage"
-            :disabled="!userInput.trim()"
-            aria-label="Send message"
-          >
-            <i class="fas fa-paper-plane"></i>
-          </button>
-        </div>
-      </div>
-    </div>
-    
-    <!-- Bubble view -->
-    <div v-if="!isOpen" class="bubble-container">
-      <div class="bubble-text" v-if="!isMobile">
-        ¿Necesitas ayuda? Chat con Maia
-      </div>
-      <div class="bubble" @click="openChat">
-        <i class="fas fa-comment"></i>
+      <div v-if="isOpen && !isMinimized" class="chat-input">
+        <textarea 
+          ref="inputField"
+          v-model="inputMessage" 
+          class="input-field"
+          placeholder="Escribe un mensaje..."
+          @keypress.enter.prevent="sendMessage"
+          @input="adjustTextareaHeight"
+          :disabled="isTyping"
+          rows="1"
+        ></textarea>
+        <button 
+          class="send-button" 
+          @click="sendMessage"
+          :disabled="!inputMessage.trim() || isTyping"
+        >
+          <i class="fas fa-paper-plane"></i>
+        </button>
       </div>
     </div>
   </div>
 </template>
 
-<script>
-export default {
-  name: 'AiChatWidget',
+<script setup>
+import { ref, onMounted, nextTick, computed } from 'vue';
+
+// State
+const inputMessage = ref('');
+const messages = ref([]);
+const isOpen = ref(false);
+const isMinimized = ref(false);
+const isTyping = ref(false);
+const isMobile = ref(false);
+const isHovered = ref(false);
+const messagesContainer = ref(null);
+const inputField = ref(null);
+
+// Check if mobile device
+onMounted(() => {
+  checkMobile();
+  window.addEventListener('resize', checkMobile);
   
-  data() {
-    return {
-      isOpen: false,
-      isMinimized: false,
-      isMobile: false,
-      userInput: '',
-      messages: [],
-      isTyping: false,
-      lastInteraction: Date.now(),
-      inactivityTimer: null,
-      autoCloseTimer: null,
-      suggestedResponses: [
-        '¿Cómo puedo solicitar una demo?',
-        '¿Cuáles son los planes disponibles?',
-        '¿Cómo funciona la integración?'
-      ]
-    };
-  },
-  
-  mounted() {
-    this.checkDeviceType();
-    window.addEventListener('resize', this.checkDeviceType);
-    
-    // Auto-open chat after a delay on desktop
-    if (!this.isMobile) {
-      setTimeout(() => {
-        if (!this.isOpen && !this.hasInteracted()) {
-          this.openChat();
-        }
-      }, 5000);
-    }
-    
-    // Setup inactivity detection
-    document.addEventListener('click', this.resetInactivityTimer);
-    document.addEventListener('keypress', this.resetInactivityTimer);
-    this.setupInactivityTimer();
-  },
-  
-  beforeUnmount() {
-    window.removeEventListener('resize', this.checkDeviceType);
-    document.removeEventListener('click', this.resetInactivityTimer);
-    document.removeEventListener('keypress', this.resetInactivityTimer);
-    clearTimeout(this.inactivityTimer);
-    clearTimeout(this.autoCloseTimer);
-  },
-  
-  methods: {
-    checkDeviceType() {
-      this.isMobile = window.innerWidth < 768;
-      
-      // Adjust UI based on screen size change
-      if (this.isMobile && this.isOpen) {
-        this.isMinimized = false;
+  // Start with welcome message
+  setTimeout(() => {
+    isTyping.value = true;
+    setTimeout(() => {
+      isTyping.value = false;
+    }, 1500);
+  }, 500);
+});
+
+const checkMobile = () => {
+  isMobile.value = window.innerWidth < 768;
+};
+
+// Handle mouse hover for opacity
+const handleMouseEnter = () => {
+  isHovered.value = true;
+};
+
+const handleMouseLeave = () => {
+  isHovered.value = false;
+};
+
+// Toggle chat open/closed
+const toggleChat = () => {
+  isOpen.value = !isOpen.value;
+  if (isOpen.value) {
+    isMinimized.value = false;
+    nextTick(() => {
+      if (inputField.value) {
+        inputField.value.focus();
       }
-    },
-    
-    toggleChat() {
-      if (this.isOpen) {
-        this.closeChat();
-      } else {
-        this.openChat();
-      }
-    },
-    
-    openChat() {
-      this.isOpen = true;
-      this.isMinimized = false;
-      this.recordInteraction();
-      
-      // Focus input field when chat opens
-      this.$nextTick(() => {
-        if (this.$refs.inputField) {
-          this.$refs.inputField.focus();
-        }
-      });
-      
-      // Clear auto-close timer when manually opened
-      clearTimeout(this.autoCloseTimer);
-    },
-    
-    closeChat() {
-      this.isOpen = false;
-      this.recordInteraction();
-    },
-    
-    toggleMinimize() {
-      this.isMinimized = !this.isMinimized;
-      this.recordInteraction();
-    },
-    
-    sendMessage() {
-      const message = this.userInput.trim();
-      if (!message) return;
-      
-      // Add user message
-      this.messages.push({
-        sender: 'user',
-        text: message
-      });
-      
-      this.userInput = '';
-      this.isTyping = true;
-      this.recordInteraction();
-      
-      // Scroll to bottom
-      this.$nextTick(() => {
-        this.scrollToBottom();
-      });
-      
-      // Simulate bot response
-      setTimeout(() => {
-        this.isTyping = false;
-        
-        let botResponse;
-        if (message.toLowerCase().includes('demo')) {
-          botResponse = '¡Claro! Puedes solicitar una demo gratuita completando el formulario en nuestra página de <a href="#demo">Demo</a> o contáctanos directamente por email.';
-        } else if (message.toLowerCase().includes('precio') || message.toLowerCase().includes('plan')) {
-          botResponse = 'Ofrecemos diferentes planes para adaptarnos a tus necesidades. Puedes ver todos nuestros planes y precios en la sección de <a href="#pricing">Precios</a>.';
-        } else if (message.toLowerCase().includes('vendedora') || message.toLowerCase().includes('funciona')) {
-          botResponse = 'Maia es una vendedora virtual que se integra con tus recorridos inmobiliarios y que analiza el comportamiento de los visitantes para proporcionar respuestas personalizadas en tiempo real.';
-        } else {
-          botResponse = 'Gracias por tu mensaje. ¿Te gustaría agendar una llamada con uno de nuestros especialistas para obtener más información?';
-        }
-        
-        this.messages.push({
-          sender: 'bot',
-          text: botResponse
-        });
-        
-        // Scroll to bottom after bot responds
-        this.$nextTick(() => {
-          this.scrollToBottom();
-        });
-      }, 1500);
-    },
-    
-    scrollToBottom() {
-      if (this.$refs.messagesContainer) {
-        this.$refs.messagesContainer.scrollTop = this.$refs.messagesContainer.scrollHeight;
-      }
-    },
-    
-    hasInteracted() {
-      return localStorage.getItem('chatInteraction') === 'true';
-    },
-    
-    recordInteraction() {
-      localStorage.setItem('chatInteraction', 'true');
-      this.lastInteraction = Date.now();
-    },
-    
-    resetInactivityTimer() {
-      this.lastInteraction = Date.now();
-      clearTimeout(this.autoCloseTimer);
-      
-      if (this.isOpen) {
-        this.setupAutoCloseTimer();
-      }
-    },
-    
-    setupInactivityTimer() {
-      this.inactivityTimer = setInterval(() => {
-        const inactiveTime = Date.now() - this.lastInteraction;
-        
-        // If user has been inactive for 3 minutes and chat is closed
-        if (inactiveTime > 3 * 60 * 1000 && !this.isOpen && !this.hasInteracted()) {
-          this.openChat(); // Show chat
-          this.setupAutoCloseTimer(); // Set up auto-close timer
-        }
-      }, 60 * 1000); // Check every minute
-    },
-    
-    setupAutoCloseTimer() {
-      // Auto close after 1 minute of inactivity if no messages exchanged
-      this.autoCloseTimer = setTimeout(() => {
-        if (this.messages.length === 0) {
-          this.closeChat();
-        }
-      }, 60 * 1000);
-    }
+      scrollToBottom();
+    });
   }
+};
+
+// Toggle minimize
+const toggleMinimize = () => {
+  isMinimized.value = !isMinimized.value;
+  if (!isMinimized.value) {
+    nextTick(() => {
+      scrollToBottom();
+    });
+  }
+};
+
+// Send a message
+const sendMessage = () => {
+  const messageText = inputMessage.value.trim();
+  if (!messageText || isTyping.value) return;
+  
+  // Add user message
+  messages.value.push({
+    text: messageText,
+    sender: 'user',
+    time: new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})
+  });
+  
+  // Clear input
+  inputMessage.value = '';
+  
+  // Auto resize textarea
+  adjustTextareaHeight();
+  
+  // Scroll to bottom
+  nextTick(() => {
+    scrollToBottom();
+  });
+  
+  // Simulate bot typing
+  simulateBotResponse(messageText);
+};
+
+// Simulate bot response
+const simulateBotResponse = (userMessage) => {
+  // Set typing indicator
+  isTyping.value = true;
+  
+  // Simulate typing delay based on response length
+  setTimeout(() => {
+    isTyping.value = false;
+    
+    // Generate response based on user message
+    const botResponse = generateBotResponse(userMessage);
+    
+    // Add bot message
+    messages.value.push({
+      text: botResponse,
+      sender: 'bot',
+      time: new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})
+    });
+    
+    // Scroll to bottom
+    nextTick(() => {
+      scrollToBottom();
+    });
+  }, Math.random() * 1000 + 1000); // Random delay between 1-2 seconds
+};
+
+// Generate a response based on user message
+const generateBotResponse = (userMessage) => {
+  const message = userMessage.toLowerCase();
+  
+  if (message.includes('hola') || message.includes('buenos días') || message.includes('buenas')) {
+    return '¡Hola! 👋 ¿Cómo puedo ayudarte hoy con tu búsqueda de propiedades?';
+  }
+  else if (message.includes('precio') || message.includes('costo') || message.includes('planes')) {
+    return 'Tenemos varios planes disponibles: <br><br>• <strong>Básico:</strong> $40/mes para 5 propiedades<br>• <strong>Profesional:</strong> $120/mes para 20 propiedades<br>• <strong>Empresarial:</strong> $200/mes para propiedades ilimitadas<br><br>¿Te gustaría conocer más detalles sobre alguno de ellos?';
+  }
+  else if (message.includes('demo') || message.includes('prueba')) {
+    return 'Puedes probar nuestra demo interactiva en la parte superior de la página principal. Te permite experimentar cómo Maia guía a los potenciales compradores a través de recorridos virtuales de propiedades.';
+  }
+  else if (message.includes('funciona') || message.includes('cómo')) {
+    return 'Maia utiliza inteligencia artificial para guiar a los clientes en recorridos virtuales de propiedades, destacando características según sus intereses y recopilando información valiosa sobre su comportamiento. Analiza las preferencias en tiempo real para personalizar la experiencia.';
+  }
+  else if (message.includes('integrar') || message.includes('implementar') || message.includes('integración')) {
+    return 'La integración de Maia es muy sencilla. Solo necesitas agregar un código a tu sitio web y configurar tus propiedades en nuestro panel. No requiere conocimientos técnicos especiales y ofrecemos soporte durante todo el proceso.';
+  }
+  else if (message.includes('gracias')) {
+    return '¡De nada! Estoy aquí para ayudarte. ¿Hay algo más que necesites saber sobre Maia?';
+  }
+  else {
+    return 'Entiendo tu consulta. Para información más detallada, te recomendaría contactar con nuestro equipo a través de <a href="mailto:info@maiavr.cl">info@maiavr.cl</a> o programar una demostración personalizada donde podamos mostrarte cómo Maia puede adaptarse a tus necesidades específicas.';
+  }
+};
+
+// Scroll messages container to bottom
+const scrollToBottom = () => {
+  if (messagesContainer.value) {
+    messagesContainer.value.scrollTop = messagesContainer.value.scrollHeight;
+  }
+};
+
+// Format message with links and emojis
+const formatMessage = (text) => {
+  // Convert URLs to clickable links
+  const linkedText = text.replace(
+    /(https?:\/\/[^\s]+)/g, 
+    '<a href="$1" target="_blank">$1</a>'
+  );
+  
+  return linkedText;
+};
+
+// Adjust textarea height based on content
+const adjustTextareaHeight = () => {
+  if (!inputField.value) return;
+  
+  // Reset height to auto
+  inputField.value.style.height = 'auto';
+  
+  // Set to scrollHeight, but cap at 100px
+  const newHeight = Math.min(inputField.value.scrollHeight, 100);
+  inputField.value.style.height = `${newHeight}px`;
 };
 </script>
 
