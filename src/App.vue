@@ -1,11 +1,13 @@
 <template>
-  <div class="app">
+  <div class="app-wrapper">
     <AppHeader />
-    <router-view v-slot="{ Component }">
-      <transition name="fade" mode="out-in">
-        <component :is="Component" />
-      </transition>
-    </router-view>
+    <main>
+      <router-view v-slot="{ Component }">
+        <transition name="fade" mode="out-in">
+          <component :is="Component" />
+        </transition>
+      </router-view>
+    </main>
     <AppFooter />
     <AiChatWidget />
   </div>
@@ -37,6 +39,22 @@ onUnmounted(() => {
 </script>
 
 <style lang="scss">
+@import '@/styles/main.scss';
+
+.app-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  width: 100vw;
+  overflow-x: hidden;
+  background-color: #f0f5ff;
+}
+
+main {
+  flex: 1;
+  width: 100%;
+}
+
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity 0.3s ease;
@@ -45,13 +63,5 @@ onUnmounted(() => {
 .fade-enter-from,
 .fade-leave-to {
   opacity: 0;
-}
-
-.app {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  background-color: #f0f5ff;
-  width: 100%;
 }
 </style> 

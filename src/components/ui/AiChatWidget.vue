@@ -6,7 +6,7 @@
     </div>
     
     <!-- Always visible chat panel -->
-    <div class="ai-chat-widget__panel" @mouseenter="setActive(true)" @mouseleave="setInactive">
+    <div class="ai-chat-widget__panel" @mouseenter="setActive(true)">
       <!-- Logo only header - removed text -->
       <div class="ai-chat-widget__header" v-show="isActive">
         <div class="ai-chat-widget__title">
@@ -59,9 +59,9 @@
         </button>
       </div>
       
-      <!-- Minimized bubble view (visible only on desktop) -->
+      <!-- Minimized bubble view (visible only on desktop) - removed logo -->
       <div class="ai-chat-widget__bubble" v-show="!isActive" @click="setActive(true)">
-        <img src="@/assets/logomaia.png" alt="Maia AI" class="ai-chat-widget__bubble-logo">
+        <!-- Logo removed from here -->
       </div>
     </div>
   </div>
@@ -85,6 +85,15 @@ const suggestions = [
   '¿Cómo integro Maia en mi inmobiliaria?'
 ];
 
+// Set the widget to inactive state immediately when clicking outside
+const handleClickOutside = (event) => {
+  // Check if the click is outside the chat widget
+  if (isActive.value && !event.target.closest('.ai-chat-widget__panel') && 
+      !event.target.closest('.ai-chat-widget__mobile-trigger')) {
+    isActive.value = false;
+  }
+};
+
 // Set the widget to active state
 const setActive = (showInitialMessage = false) => {
   isActive.value = true;
@@ -96,13 +105,11 @@ const setActive = (showInitialMessage = false) => {
   }
 };
 
-// Set the widget to inactive state after a delay
+// Set the widget to inactive state - removed delay
 const setInactive = () => {
   // Only set inactive if user isn't typing and there's no ongoing conversation
   if (!userInput.value.trim() && !isTyping.value) {
-    inactivityTimer.value = setTimeout(() => {
-      isActive.value = false;
-    }, 5000); // 5 second delay before becoming inactive
+    isActive.value = false;
   }
 };
 
@@ -211,11 +218,15 @@ onMounted(() => {
   setTimeout(() => {
     setActive(true);
   }, 1500);
+  
+  // Add click event listener to document for detecting clicks outside
+  document.addEventListener('click', handleClickOutside);
 });
 
 // Clean up when component is unmounted
 onUnmounted(() => {
   clearTimeout(inactivityTimer.value);
+  document.removeEventListener('click', handleClickOutside);
 });
 </script>
 
@@ -236,13 +247,14 @@ onUnmounted(() => {
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    background-color: rgba(255, 255, 255, 0.9);
+    background-color: white; // Solid white background
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     z-index: $z-index-fixed;
     cursor: pointer;
     align-items: center;
     justify-content: center;
     transition: transform 0.2s ease;
+    opacity: 1 !important; // Always fully opaque
     
     &:hover {
       transform: scale(1.05);
@@ -259,25 +271,25 @@ onUnmounted(() => {
     width: 350px;
     height: 500px;
     max-height: 80vh;
-    background-color: rgba(255, 255, 255, 0.85);
+    background-color: rgba(255, 255, 255, 0.95); // More opaque background
     border-radius: 30px;
     box-shadow: 0 5px 25px rgba($dark, 0.15);
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    transition: opacity 0.3s ease, transform 0.3s ease;
-    opacity: 0.75;
+    transition: opacity 0.2s ease, transform 0.2s ease; // Faster transition
+    opacity: 0; // Start fully transparent
     backdrop-filter: blur(5px);
     
-    &:hover {
-      opacity: 0.95;
-      transform: translateY(-5px);
+    .ai-chat-widget.is-active & {
+      opacity: 0.95; // Show when active
     }
   }
   
   &.is-active {
     .ai-chat-widget__panel {
       opacity: 0.95;
+      transform: translateY(0);
     }
   }
   
@@ -295,27 +307,17 @@ onUnmounted(() => {
     width: 70px;
     height: 70px;
     border-radius: 50%;
-    background-color: transparent;
+    background-color: transparent; // Completely transparent
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
     z-index: $z-index-fixed;
-    transition: all 0.3s ease;
+    transition: all 0.2s ease; // Faster transition
     box-shadow: none;
-    
-    img {
-      width: 45px;
-      height: 45px;
-      transition: transform 0.3s ease;
-    }
     
     &:hover {
       transform: translateY(-50%) scale(1.05);
-      
-      img {
-        transform: scale(1.1);
-      }
     }
   }
   
@@ -525,6 +527,7 @@ onUnmounted(() => {
     
     &__mobile-trigger {
       display: flex; // Show on mobile
+      opacity: 1 !important; // Always fully opaque on mobile
     }
     
     &__panel {
