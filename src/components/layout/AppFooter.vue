@@ -64,10 +64,11 @@ const currentYear = computed(() => new Date().getFullYear());
 
 <style lang="scss" scoped>
 .app-footer {
-  background-color: $dark;
-  color: white;
+  background-color: white;
+  color: $dark;
   padding: $spacing-3xl 0 $spacing-xl;
   margin-top: auto;
+  box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.05);
   
   .footer-content {
     display: grid;
@@ -139,7 +140,7 @@ const currentYear = computed(() => new Date().getFullYear());
   
   .footer-links {
     h4 {
-      color: white;
+      color: $primary;
       margin-bottom: $spacing-lg;
       font-size: 1.2rem;
       position: relative;
@@ -165,12 +166,12 @@ const currentYear = computed(() => new Date().getFullYear());
         margin-bottom: $spacing-sm;
         
         a {
-          color: rgba(255, 255, 255, 0.7);
+          color: $gray-600;
           text-decoration: none;
           transition: $transition-base;
           
           &:hover {
-            color: $secondary;
+            color: $primary;
             padding-left: $spacing-xs;
           }
         }
@@ -179,7 +180,7 @@ const currentYear = computed(() => new Date().getFullYear());
   }
   
   .footer-bottom {
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-top: 1px solid rgba($gray-300, 0.3);
     padding-top: $spacing-lg;
     text-align: center;
     

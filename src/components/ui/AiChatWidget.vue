@@ -263,25 +263,27 @@ onUnmounted(() => {
     width: 70px;
     height: 70px;
     border-radius: 50%;
-    background-color: rgba(255, 255, 255, 0.7);
-    box-shadow: 0 3px 15px rgba($dark, 0.15);
+    background-color: transparent;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease;
-    backdrop-filter: blur(5px);
+    z-index: $z-index-fixed;
+    transition: all 0.3s ease;
+    box-shadow: none;
+    
+    img {
+      width: 45px;
+      height: 45px;
+      transition: transform 0.3s ease;
+    }
     
     &:hover {
       transform: translateY(-50%) scale(1.05);
-      box-shadow: 0 5px 20px rgba($dark, 0.2);
-      opacity: 0.9;
-    }
-    
-    &-logo {
-      width: 45px;
-      height: 45px;
-      object-fit: contain;
+      
+      img {
+        transform: scale(1.1);
+      }
     }
   }
   
@@ -291,7 +293,7 @@ onUnmounted(() => {
     display: flex;
     align-items: center;
     justify-content: center;
-    border-bottom: 1px solid rgba($gray-200, 0.5);
+    border-bottom: none;
   }
   
   &__title {

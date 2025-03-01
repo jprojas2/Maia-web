@@ -51,5 +51,7 @@ onUnmounted(() => {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  background-color: #f0f5ff;
+  width: 100%;
 }
 </style> 

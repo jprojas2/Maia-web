@@ -9,6 +9,9 @@
   box-sizing: border-box;
 }
 
+// Define a light blue color for the background
+$light-blue-bg: #f0f5ff;
+
 html {
   scroll-behavior: smooth;
 }
@@ -18,7 +21,7 @@ body {
   font-size: $font-size-base;
   line-height: 1.6;
   color: $dark;
-  background-color: white;
+  background-color: $light-blue-bg;
   margin: 0;
   padding: 0;
   overflow-x: hidden;
@@ -109,7 +112,7 @@ p {
   }
   
   &--light {
-    background-color: $light;
+    background-color: white;
   }
   
   &--dark {
@@ -118,7 +121,7 @@ p {
   }
   
   &--gray {
-    background-color: $gray-100;
+    background-color: white;
   }
   
   &--gradient {
@@ -178,11 +181,12 @@ p {
   font-size: 1rem;
   
   &--primary {
-    background-color: $primary;
-    color: white;
+    background-color: white;
+    color: $primary;
+    box-shadow: $shadow-sm;
     
     &:hover {
-      background-color: $primary-dark;
+      background-color: white;
       transform: translateY(-3px);
       box-shadow: $shadow;
     }
@@ -215,7 +219,7 @@ p {
     border: 1px solid $gray-200;
     
     &:hover {
-      background-color: $gray-100;
+      background-color: white;
       transform: translateY(-3px);
       box-shadow: $shadow-sm;
     }
