@@ -86,47 +86,47 @@
               </div>
             </div>
             
-            <div class="pricing-card pricing-card--featured">
+            <div class="pricing-card pricing-card--featured" style="background: linear-gradient(135deg, #5E60CE, #8492ff); color: white; transform: scale(1.05); box-shadow: 0 15px 30px rgba(0,0,0,0.2); border: none; z-index: 2;">
               <div class="pricing-card__header">
-                <div class="card__icon">
+                <div class="card__icon" style="color: white;">
                   <i class="fas fa-building"></i>
                 </div>
-                <h3 class="card__title">Profesional</h3>
+                <h3 class="card__title" style="color: white;">Profesional</h3>
                 <div class="pricing-card__price">
-                  <span class="price-value">$120</span>
-                  <span class="price-period">/mes</span>
+                  <span class="price-value" style="color: white;">$120</span>
+                  <span class="price-period" style="color: white;">/mes</span>
                 </div>
               </div>
               
               <div class="pricing-card__features">
-                <div class="feature-item">
-                  <span class="feature-check"><i class="fas fa-check"></i></span>
-                  <span class="feature-text">20 propiedades activas</span>
+                <div class="feature-item" style="border-bottom: 1px solid rgba(255, 255, 255, 0.2);">
+                  <span class="feature-check" style="color: white;"><i class="fas fa-check"></i></span>
+                  <span class="feature-text" style="color: white;">20 propiedades activas</span>
                 </div>
-                <div class="feature-item">
-                  <span class="feature-check"><i class="fas fa-check"></i></span>
-                  <span class="feature-text">Chat con IA avanzado con aprendizaje</span>
+                <div class="feature-item" style="border-bottom: 1px solid rgba(255, 255, 255, 0.2);">
+                  <span class="feature-check" style="color: white;"><i class="fas fa-check"></i></span>
+                  <span class="feature-text" style="color: white;">Chat con IA avanzado con aprendizaje</span>
                 </div>
-                <div class="feature-item">
-                  <span class="feature-check"><i class="fas fa-check"></i></span>
-                  <span class="feature-text">Tours virtuales personalizados</span>
+                <div class="feature-item" style="border-bottom: 1px solid rgba(255, 255, 255, 0.2);">
+                  <span class="feature-check" style="color: white;"><i class="fas fa-check"></i></span>
+                  <span class="feature-text" style="color: white;">Tours virtuales personalizados</span>
                 </div>
-                <div class="feature-item">
-                  <span class="feature-check"><i class="fas fa-check"></i></span>
-                  <span class="feature-text">Calificación de leads</span>
+                <div class="feature-item" style="border-bottom: 1px solid rgba(255, 255, 255, 0.2);">
+                  <span class="feature-check" style="color: white;"><i class="fas fa-check"></i></span>
+                  <span class="feature-text" style="color: white;">Calificación de leads</span>
                 </div>
-                <div class="feature-item">
-                  <span class="feature-check"><i class="fas fa-check"></i></span>
-                  <span class="feature-text">Soporte prioritario</span>
+                <div class="feature-item" style="border-bottom: 1px solid rgba(255, 255, 255, 0.2);">
+                  <span class="feature-check" style="color: white;"><i class="fas fa-check"></i></span>
+                  <span class="feature-text" style="color: white;">Soporte prioritario</span>
                 </div>
-                <div class="feature-item">
-                  <span class="feature-check"><i class="fas fa-check"></i></span>
-                  <span class="feature-text">Prueba gratuita de 7 días</span>
+                <div class="feature-item" style="border-bottom: 1px solid rgba(255, 255, 255, 0.2);">
+                  <span class="feature-check" style="color: white;"><i class="fas fa-check"></i></span>
+                  <span class="feature-text" style="color: white;">Prueba gratuita de 7 días</span>
                 </div>
               </div>
               
               <div class="pricing-card__action">
-                <button class="btn btn--white">Suscribirse</button>
+                <button class="btn" style="background-color: white; color: #5E60CE; border: none;">Suscribirse</button>
               </div>
             </div>
             
