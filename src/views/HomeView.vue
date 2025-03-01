@@ -253,32 +253,63 @@
         </div>
         
         <div class="testimonials-wrapper">
-          <div class="testimonial-card">
-            <div class="testimonial__content">
-              <i class="fas fa-quote-left quote-icon"></i>
-              <p>"Desde que implementamos Maia en nuestro sitio web, las consultas por propiedades han aumentado en un 72%. Los clientes valoran la experiencia personalizada y nosotros apreciamos la calificación automática de leads."</p>
+          <div class="testimonials-carousel">
+            <div class="testimonial-card">
+              <div class="testimonial__content">
+                <i class="fas fa-quote-left quote-icon"></i>
+                <p>"Desde que implementamos Maia en nuestro sitio web, las consultas por propiedades han aumentado en un 72%. Los clientes valoran la experiencia personalizada y nosotros apreciamos la calificación automática de leads."</p>
+              </div>
+              <div class="testimonial__author">
+                <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80" alt="Carolina Méndez" />
+                <div>
+                  <h4>Carolina Méndez</h4>
+                  <p>Directora de Ventas, Inmobiliaria Futuro</p>
+                </div>
+              </div>
             </div>
-            <div class="testimonial__author">
-              <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80" alt="Carolina Méndez" />
-              <div>
-                <h4>Carolina Méndez</h4>
-                <p>Directora de Ventas, Inmobiliaria Futuro</p>
+            
+            <div class="testimonial-card">
+              <div class="testimonial__content">
+                <i class="fas fa-quote-left quote-icon"></i>
+                <p>"La integración de Maia en nuestra plataforma fue rápida y sin complicaciones. El equipo de soporte estuvo disponible en cada paso y los resultados han superado nuestras expectativas."</p>
+              </div>
+              <div class="testimonial__author">
+                <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80" alt="Roberto Fuentes" />
+                <div>
+                  <h4>Roberto Fuentes</h4>
+                  <p>CEO, Propiedades Élite</p>
+                </div>
+              </div>
+            </div>
+            
+            <div class="testimonial-card">
+              <div class="testimonial__content">
+                <i class="fas fa-quote-left quote-icon"></i>
+                <p>"La calidad de los leads ha mejorado drásticamente. Ahora cuando un cliente nos contacta, ya conoce la propiedad y está mucho más cerca de tomar una decisión de compra."</p>
+              </div>
+              <div class="testimonial__author">
+                <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80" alt="Fernando Sánchez" />
+                <div>
+                  <h4>Fernando Sánchez</h4>
+                  <p>Gerente de Ventas, Grupo Inmobiliario Santiago</p>
+                </div>
               </div>
             </div>
           </div>
           
-          <div class="testimonial-card">
-            <div class="testimonial__content">
-              <i class="fas fa-quote-left quote-icon"></i>
-              <p>"La integración de Maia en nuestra plataforma fue rápida y sin complicaciones. El equipo de soporte estuvo disponible en cada paso y los resultados han superado nuestras expectativas."</p>
+          <div class="carousel-arrows">
+            <div class="arrow arrow-left">
+              <i class="fas fa-chevron-left"></i>
             </div>
-            <div class="testimonial__author">
-              <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80" alt="Roberto Fuentes" />
-              <div>
-                <h4>Roberto Fuentes</h4>
-                <p>CEO, Propiedades Élite</p>
-              </div>
+            <div class="arrow arrow-right">
+              <i class="fas fa-chevron-right"></i>
             </div>
+          </div>
+          
+          <div class="carousel-controls">
+            <div class="control-dot active"></div>
+            <div class="control-dot"></div>
+            <div class="control-dot"></div>
           </div>
         </div>
       </div>
@@ -379,6 +410,80 @@
 <script>
 export default {
   name: 'HomeView',
+  data() {
+    return {
+      currentSlide: 0,
+      totalSlides: 3,
+    };
+  },
+  mounted() {
+    // Initialize testimonials carousel
+    this.initCarousel();
+  },
+  methods: {
+    initCarousel() {
+      // Get DOM elements
+      const dots = document.querySelectorAll('.control-dot');
+      const leftArrow = document.querySelector('.arrow-left');
+      const rightArrow = document.querySelector('.arrow-right');
+      
+      // Add click events to dots
+      dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+          this.goToSlide(index);
+        });
+      });
+      
+      // Add click events to arrows
+      if (leftArrow && rightArrow) {
+        leftArrow.addEventListener('click', () => {
+          this.prevSlide();
+        });
+        
+        rightArrow.addEventListener('click', () => {
+          this.nextSlide();
+        });
+      }
+      
+      // Auto rotation
+      setInterval(() => {
+        this.nextSlide();
+      }, 5000);
+    },
+    
+    goToSlide(index) {
+      this.currentSlide = index;
+      this.updateCarousel();
+    },
+    
+    nextSlide() {
+      this.currentSlide = (this.currentSlide + 1) % this.totalSlides;
+      this.updateCarousel();
+    },
+    
+    prevSlide() {
+      this.currentSlide = (this.currentSlide - 1 + this.totalSlides) % this.totalSlides;
+      this.updateCarousel();
+    },
+    
+    updateCarousel() {
+      // Update carousel position
+      const carousel = document.querySelector('.testimonials-carousel');
+      if (carousel) {
+        carousel.style.transform = `translateX(-${this.currentSlide * 100}%)`;
+      }
+      
+      // Update active dot
+      const dots = document.querySelectorAll('.control-dot');
+      dots.forEach((dot, index) => {
+        if (index === this.currentSlide) {
+          dot.classList.add('active');
+        } else {
+          dot.classList.remove('active');
+        }
+      });
+    }
+  }
 }
 </script>
 
@@ -389,6 +494,7 @@ export default {
 $primary-gradient: linear-gradient(135deg, $primary 0%, lighten($primary, 15%) 100%);
 $section-spacing: $spacing-4xl;
 $border-radius-enhanced: 20px; // Increased for more rounded corners
+$purple-overlay: rgba($primary, 0.05); // Semi-transparent purple for backgrounds
 
 // General section styling
 .section {
@@ -398,6 +504,13 @@ $border-radius-enhanced: 20px; // Increased for more rounded corners
 
   &--light {
     background-color: $light;
+    background-image: radial-gradient($purple-overlay 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+  
+  &--gradient {
+    background: $primary-gradient;
+    color: white;
   }
   
   &__header {
@@ -437,6 +550,10 @@ $border-radius-enhanced: 20px; // Increased for more rounded corners
   padding-top: 150px;
   padding-bottom: $spacing-4xl;
   background-color: $light;
+  background-image: 
+    linear-gradient(to bottom, rgba($primary, 0.03), rgba(black, 0.02)),
+    radial-gradient($purple-overlay 1px, transparent 1px);
+  background-size: 100% 100%, 20px 20px;
   text-align: center;
   
   .hero__content {
@@ -448,19 +565,19 @@ $border-radius-enhanced: 20px; // Increased for more rounded corners
   }
   
   .hero__title {
-    font-size: 2.5rem;
+    font-size: 3rem; // Increased size
     font-weight: $font-weight-bold;
     color: $dark;
     margin-bottom: $spacing-xl;
     line-height: 1.2;
     
     @media (max-width: $breakpoint-md) {
-      font-size: 2rem;
+      font-size: 2.5rem;
     }
   }
   
   .hero__demo {
-    width: 80%;
+    width: 70%; // Smaller demo size
     margin: 0 auto $spacing-2xl;
     
     .demo-frame {
@@ -484,7 +601,7 @@ $border-radius-enhanced: 20px; // Increased for more rounded corners
   }
   
   .hero__subtitle {
-    font-size: 1.5rem;
+    font-size: 1.8rem; // Larger hero text
     font-weight: $font-weight-normal;
     color: $gray-700;
     margin-bottom: $spacing-xl;
@@ -492,7 +609,7 @@ $border-radius-enhanced: 20px; // Increased for more rounded corners
     line-height: 1.5;
     
     @media (max-width: $breakpoint-md) {
-      font-size: 1.2rem;
+      font-size: 1.5rem;
     }
   }
   
@@ -507,6 +624,123 @@ $border-radius-enhanced: 20px; // Increased for more rounded corners
       max-width: 300px;
       gap: $spacing-sm;
     }
+  }
+}
+
+// Pricing section
+.pricing {
+  margin-top: $spacing-xl;
+}
+
+.pricing-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); // Three cards side by side
+  gap: $spacing-lg;
+  margin: 0 auto;
+  max-width: 1200px;
+  
+  @media (max-width: $breakpoint-lg) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  @media (max-width: $breakpoint-sm) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.pricing-card {
+  background-color: white;
+  border-radius: $border-radius;
+  padding: $spacing-xl;
+  box-shadow: $shadow-sm;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: $transition-base;
+  border: 1px solid $gray-200;
+  height: 100%;
+  
+  &:hover {
+    transform: translateY(-10px);
+    box-shadow: $shadow;
+  }
+  
+  &--featured {
+    border-color: $primary;
+    box-shadow: $shadow;
+    
+    .card__badge {
+      position: absolute;
+      top: -12px;
+      right: $spacing-lg;
+      background: $primary-gradient;
+      color: white;
+      font-size: 0.85rem;
+      font-weight: $font-weight-semibold;
+      padding: $spacing-xs $spacing-sm;
+      border-radius: $border-radius-pill;
+    }
+  }
+  
+  &__header {
+    text-align: center;
+    margin-bottom: $spacing-lg;
+    
+    .card__icon {
+      font-size: 2.5rem;
+      color: $primary;
+      margin-bottom: $spacing-sm;
+    }
+    
+    .card__title {
+      font-size: 1.5rem;
+      font-weight: $font-weight-semibold;
+      color: $dark;
+      margin-bottom: $spacing-sm;
+    }
+  }
+  
+  &__price {
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    margin-bottom: $spacing-lg;
+    
+    .price-value {
+      font-size: 2.5rem;
+      font-weight: $font-weight-bold;
+      color: $primary;
+    }
+    
+    .price-period {
+      font-size: 1rem;
+      color: $gray-600;
+      margin-left: $spacing-xs;
+    }
+  }
+  
+  &__features {
+    flex: 1;
+    margin-bottom: $spacing-lg;
+    
+    .feature-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: $spacing-sm;
+      
+      .feature-check {
+        color: $primary;
+        margin-right: $spacing-sm;
+      }
+      
+      .feature-text {
+        color: $gray-700;
+      }
+    }
+  }
+  
+  &__action {
+    margin-top: auto;
   }
 }
 
@@ -532,6 +766,7 @@ $border-radius-enhanced: 20px; // Increased for more rounded corners
     text-align: center;
     box-shadow: $shadow-sm;
     transition: $transition-base;
+    border: 1px solid rgba($primary, 0.1);
     
     &:hover {
       transform: translateY(-5px);
@@ -571,6 +806,7 @@ $border-radius-enhanced: 20px; // Increased for more rounded corners
     padding: $spacing-xl;
     box-shadow: $shadow-sm;
     transition: $transition-base;
+    border: 1px solid rgba($primary, 0.1);
     
     &:hover {
       transform: translateY(-5px);
@@ -597,9 +833,145 @@ $border-radius-enhanced: 20px; // Increased for more rounded corners
   }
 }
 
+// Testimonials Carousel
+.testimonials-wrapper {
+  position: relative;
+  max-width: 1000px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.testimonials-carousel {
+  display: flex;
+  transition: transform 0.5s ease;
+  padding: $spacing-md 0;
+}
+
+.testimonial-card {
+  flex: 0 0 100%;
+  background-color: white;
+  border-radius: $border-radius;
+  padding: $spacing-xl;
+  box-shadow: $shadow-sm;
+  border: 1px solid rgba($primary, 0.1);
+  margin: 0 $spacing-md;
+  position: relative;
+  
+  .quote-icon {
+    font-size: 2rem;
+    color: rgba($primary, 0.1);
+    position: absolute;
+    top: $spacing-md;
+    left: $spacing-md;
+  }
+  
+  .testimonial__content {
+    padding-left: $spacing-lg;
+    margin-bottom: $spacing-lg;
+    
+    p {
+      font-size: 1.1rem;
+      color: $gray-700;
+      line-height: 1.6;
+      font-style: italic;
+    }
+  }
+  
+  .testimonial__author {
+    display: flex;
+    align-items: center;
+    
+    img {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-right: $spacing-md;
+      border: 3px solid $light;
+      box-shadow: 0 0 0 1px rgba($primary, 0.2);
+    }
+    
+    div {
+      h4 {
+        font-size: 1.1rem;
+        font-weight: $font-weight-semibold;
+        color: $dark;
+        margin: 0 0 $spacing-xs;
+      }
+      
+      p {
+        color: $gray-600;
+        font-size: 0.9rem;
+        margin: 0;
+      }
+    }
+  }
+}
+
+.carousel-controls {
+  display: flex;
+  justify-content: center;
+  margin-top: $spacing-xl;
+  gap: $spacing-md;
+  
+  .control-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: $gray-300;
+    transition: $transition-base;
+    cursor: pointer;
+    
+    &.active {
+      background-color: $primary;
+      transform: scale(1.2);
+    }
+    
+    &:hover {
+      background-color: $gray-600;
+    }
+  }
+}
+
+.carousel-arrows {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  transform: translateY(-50%);
+  display: flex;
+  justify-content: space-between;
+  padding: 0 $spacing-sm;
+  z-index: 1;
+  
+  .arrow {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $primary;
+    box-shadow: $shadow-sm;
+    cursor: pointer;
+    transition: $transition-base;
+    
+    &:hover {
+      background-color: $primary;
+      color: white;
+      box-shadow: $shadow;
+    }
+  }
+}
+
 // Team section
 .team-section {
   background-color: $light;
+  background-image: 
+    linear-gradient(to bottom, rgba($primary, 0.03), rgba(black, 0.02)),
+    radial-gradient($purple-overlay 1px, transparent 1px);
+  background-size: 100% 100%, 20px 20px;
 }
 
 .team-container {
@@ -623,6 +995,7 @@ $border-radius-enhanced: 20px; // Increased for more rounded corners
   overflow: hidden;
   box-shadow: $shadow-sm;
   transition: $transition-base;
+  border: 1px solid rgba($primary, 0.1);
   
   &:hover {
     transform: translateY(-5px);
@@ -630,8 +1003,13 @@ $border-radius-enhanced: 20px; // Increased for more rounded corners
   }
   
   .team-image {
-    height: 250px;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
     overflow: hidden;
+    margin: $spacing-lg auto;
+    border: 5px solid $light;
+    box-shadow: 0 0 0 1px rgba($primary, 0.2);
     
     img {
       width: 100%;
@@ -643,6 +1021,7 @@ $border-radius-enhanced: 20px; // Increased for more rounded corners
   
   .team-content {
     padding: $spacing-lg;
+    text-align: center;
     
     h3 {
       font-size: 1.3rem;
@@ -667,6 +1046,7 @@ $border-radius-enhanced: 20px; // Increased for more rounded corners
     
     .team-social {
       display: flex;
+      justify-content: center;
       gap: $spacing-sm;
       
       .social-link {
