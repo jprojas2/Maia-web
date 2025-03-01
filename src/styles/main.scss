@@ -19,8 +19,15 @@ body {
   line-height: 1.6;
   color: $dark;
   background-color: white;
+  margin: 0;
+  padding: 0;
   overflow-x: hidden;
   transition: padding 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  
+  // Add padding to the right side to make space for the chat bubble
+  @media (min-width: $breakpoint-md) {
+    padding-right: 80px; // Space for the chat bubble
+  }
 }
 
 a {
