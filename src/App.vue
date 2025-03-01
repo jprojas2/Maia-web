@@ -61,7 +61,7 @@ onUnmounted(() => {
   width: 100%;
   height: 100%;
   z-index: -1;
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.9);
   overflow: hidden;
   
   // Create cow hide pattern with pseudo-elements

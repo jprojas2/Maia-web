@@ -121,14 +121,14 @@ $primary-gradient: linear-gradient(135deg, $primary 0%, lighten($primary, 15%) 1
   background-color: rgba(255, 255, 255, 0.7);
   backdrop-filter: blur(10px);
   padding: 1.5rem 0;
-  height: 250px;
+  height: 180px;
   display: flex;
   align-items: center;
   border-bottom: 1px solid rgba(0, 0, 0, 0.05);
   
   &--scrolled {
     padding: 1rem 0;
-    height: 210px;
+    height: 150px;
     background-color: rgba(255, 255, 255, 0.9);
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
   }
@@ -142,10 +142,21 @@ $primary-gradient: linear-gradient(135deg, $primary 0%, lighten($primary, 15%) 1
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
+  
+  @media (max-width: $breakpoint-md) {
+    justify-content: center;
+    gap: $spacing-md;
+  }
 }
 
 .header__logo {
   z-index: 1001;
+  margin-right: $spacing-md;
+  
+  @media (max-width: $breakpoint-md) {
+    margin-right: 0;
+  }
 }
 
 .logo {
@@ -153,6 +164,10 @@ $primary-gradient: linear-gradient(135deg, $primary 0%, lighten($primary, 15%) 1
   align-items: center;
   text-decoration: none;
   color: $dark;
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 0.5rem 1rem;
+  border-radius: 2rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
   
   .header--scrolled & {
     color: $dark;
@@ -160,24 +175,24 @@ $primary-gradient: linear-gradient(135deg, $primary 0%, lighten($primary, 15%) 1
 }
 
 .logo__image {
-  width: 200px;
-  height: 200px;
+  width: 140px;
+  height: 140px;
   margin-right: 0.75rem;
   border-radius: 50%;
   object-fit: cover;
   
   .header--scrolled & {
-    width: 175px;
-    height: 175px;
+    width: 120px;
+    height: 120px;
   }
 }
 
 .logo__text {
-  font-size: 4rem;
+  font-size: 2.8rem;
   font-weight: 700;
   
   .header--scrolled & {
-    font-size: 3.5rem;
+    font-size: 2.5rem;
   }
 }
 
@@ -207,9 +222,11 @@ $primary-gradient: linear-gradient(135deg, $primary 0%, lighten($primary, 15%) 1
   list-style: none;
   padding: 0;
   margin: 0;
+  align-items: center;
   
   @media (max-width: $breakpoint-lg) {
     flex-direction: column;
+    align-items: flex-start;
   }
 }
 

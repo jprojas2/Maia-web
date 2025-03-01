@@ -93,27 +93,39 @@ $primary-gradient: linear-gradient(135deg, $primary 0%, lighten($primary, 15%) 1
 .footer {
   background-color: $dark;
   color: white;
-  padding: 5rem 0 4rem;
+  padding: 4rem 0 3rem;
   
   &__top {
-    margin-bottom: 3rem;
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 3rem;
     gap: 2rem;
+    
+    @media (max-width: $breakpoint-md) {
+      flex-direction: column;
+    }
   }
   
   &__logo {
+    flex: 0 0 100%;
+    max-width: 280px;
     margin-bottom: 2rem;
-    display: inline-block;
+    
+    @media (max-width: $breakpoint-md) {
+      max-width: 100%;
+    }
   }
   
   &__nav {
     display: flex;
     flex-wrap: wrap;
     gap: $spacing-xl;
+    justify-content: space-between;
+    flex: 1;
+    width: 100%;
     
     @media (max-width: $breakpoint-md) {
-      flex-direction: column;
       gap: $spacing-lg;
     }
   }
@@ -123,17 +135,23 @@ $primary-gradient: linear-gradient(135deg, $primary 0%, lighten($primary, 15%) 1
   display: flex;
   align-items: center;
   gap: $spacing-sm;
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 0.5rem 1rem;
+  border-radius: 2rem;
+  display: inline-flex;
+  margin-bottom: 1rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 .logo__image {
-  height: 200px;
+  height: 140px;
   width: auto;
 }
 
 .logo__text {
-  font-size: 4rem;
+  font-size: 2.8rem;
   font-weight: $font-weight-bold;
-  color: white;
+  color: $primary;
 }
 
 .purple-text {
@@ -149,6 +167,17 @@ $primary-gradient: linear-gradient(135deg, $primary 0%, lighten($primary, 15%) 1
 .footer-menu {
   flex: 1;
   min-width: 150px;
+  margin-bottom: $spacing-md;
+  
+  @media (max-width: $breakpoint-md) {
+    min-width: calc(50% - 1rem);
+    flex: 0 0 calc(50% - 1rem);
+  }
+  
+  @media (max-width: $breakpoint-sm) {
+    min-width: 100%;
+    flex: 0 0 100%;
+  }
   
   &__title {
     font-size: 1.1rem;
@@ -237,7 +266,15 @@ $primary-gradient: linear-gradient(135deg, $primary 0%, lighten($primary, 15%) 1
 .footer__bottom {
   border-top: 1px solid rgba(white, 0.1);
   padding-top: $spacing-lg;
-  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  
+  @media (max-width: $breakpoint-sm) {
+    flex-direction: column;
+    gap: $spacing-md;
+    text-align: center;
+  }
   
   .copyright {
     color: $gray-500;
