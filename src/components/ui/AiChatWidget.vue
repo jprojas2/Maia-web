@@ -1,11 +1,11 @@
 <template>
   <div class="ai-chat-widget" :class="{ 'is-open': isOpen }">
-    <!-- Tab with logo only -->
+    <!-- Tab that blends with the bubble -->
     <div class="ai-chat-widget__tab" @click="toggleChat">
       <img src="@/assets/logomaia.png" alt="Maia AI" class="ai-chat-widget__logo">
     </div>
     
-    <!-- Chat panel -->
+    <!-- Chat panel as a floating bubble -->
     <div class="ai-chat-widget__panel">
       <div class="ai-chat-widget__header">
         <div class="ai-chat-widget__title">
@@ -235,14 +235,15 @@ onUnmounted(() => {
     width: 50px;
     height: 50px;
     padding: $spacing-sm;
-    background: white;
+    background: $light;
     border: 2px solid $primary;
+    border-right: none;
     border-radius: $border-radius-pill 0 0 $border-radius-pill;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    box-shadow: $shadow;
+    box-shadow: -3px 0 10px rgba($primary, 0.2);
     transition: all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
     animation: pulse 2s infinite;
     z-index: $z-index-modal + 1;
@@ -250,6 +251,17 @@ onUnmounted(() => {
     &:hover {
       transform: translateY(-50%) translateX(-5px);
       animation: none;
+    }
+    
+    &::after {
+      content: '';
+      position: absolute;
+      right: -10px;
+      top: 0;
+      height: 100%;
+      width: 15px;
+      background: $light;
+      z-index: -1;
     }
   }
   
@@ -261,32 +273,54 @@ onUnmounted(() => {
   
   &__panel {
     position: fixed;
-    right: 0;
-    top: 0;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%) translateX(calc(100% + 20px));
     width: 350px;
-    height: 100vh;
-    background-color: white;
-    box-shadow: $shadow-lg;
+    height: 80vh;
+    max-height: 600px;
+    background-color: $light;
+    border: 2px solid $primary;
+    border-radius: $border-radius-xl;
+    box-shadow: 0 5px 25px rgba($primary, 0.25);
     display: flex;
     flex-direction: column;
     overflow: hidden;
     transition: transform 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
-    transform: translateX(100%);
     z-index: $z-index-modal;
   }
   
   &__overlay {
     display: none;
+    
+    @media (max-width: $breakpoint-md) {
+      display: block;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba($dark, 0.5);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+      z-index: $z-index-modal - 1;
+    }
   }
   
   &.is-open {
     .ai-chat-widget__panel {
-      transform: translateX(0);
+      transform: translateY(-50%) translateX(0);
     }
     
     .ai-chat-widget__tab {
       right: 350px;
       transition: right 0.3s cubic-bezier(0.25, 0.1, 0.25, 1), transform 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
+    }
+    
+    .ai-chat-widget__overlay {
+      opacity: 1;
+      visibility: visible;
     }
   }
   
@@ -297,6 +331,7 @@ onUnmounted(() => {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    border-radius: $border-radius-xl $border-radius-xl 0 0;
   }
   
   &__title {
@@ -475,36 +510,6 @@ onUnmounted(() => {
       &:disabled {
         background-color: $gray-400;
         cursor: not-allowed;
-      }
-    }
-  }
-  
-  @media (max-width: $breakpoint-md) {
-    &__panel {
-      width: 100%;
-      max-width: 350px;
-    }
-    
-    &__tab {
-      right: 0;
-      border-radius: $border-radius-pill 0 0 $border-radius-pill;
-      padding: $spacing-sm $spacing-md;
-    }
-    
-    &.is-open {
-      .ai-chat-widget__tab {
-        right: 350px;
-      }
-      
-      .ai-chat-widget__overlay {
-        display: block;
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background-color: rgba(0, 0, 0, 0.5);
-        z-index: $z-index-modal - 1;
       }
     }
   }
