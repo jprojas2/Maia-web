@@ -1,0 +1,1 @@
+import{_ as t,c as o,d as c,e as n}from"./index-5de22e8c.js";const s={},a={class:"contact-view"};function r(_,e){return o(),c("div",a,e[0]||(e[0]=[n("h1",null,"Contacto",-1)]))}const i=t(s,[["render",r]]);export{i as default};
