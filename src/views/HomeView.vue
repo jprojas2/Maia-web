@@ -541,7 +541,7 @@ $purple-overlay: rgba($primary, 0.08); // Slightly stronger purple background
 
 // Hero Section
 .hero-section {
-  padding-top: 150px;
+  padding-top: 120px; // Ajustado para el nuevo tamaño de header
   padding-bottom: $spacing-4xl;
   position: relative;
   text-align: center;
@@ -561,7 +561,7 @@ $purple-overlay: rgba($primary, 0.08); // Slightly stronger purple background
   }
   
   .hero__content {
-    max-width: 1000px;
+    max-width: 1200px; // Ancho ampliado
     margin: 0 auto;
     display: flex;
     flex-direction: column;
@@ -569,7 +569,7 @@ $purple-overlay: rgba($primary, 0.08); // Slightly stronger purple background
   }
   
   .hero__title {
-    font-size: 3rem; // Increased size
+    font-size: 2.5rem; // Tamaño reducido
     font-weight: $font-weight-bold;
     color: $dark;
     margin-bottom: $spacing-xl;
@@ -577,12 +577,12 @@ $purple-overlay: rgba($primary, 0.08); // Slightly stronger purple background
     text-shadow: 0 1px 3px rgba(white, 0.5);
     
     @media (max-width: $breakpoint-md) {
-      font-size: 2.5rem;
+      font-size: 2rem;
     }
   }
   
   .hero__demo {
-    width: 70%; // Smaller demo size
+    width: 80%; // Demo más grande
     margin: 0 auto $spacing-2xl;
     
     .demo-frame {
@@ -607,22 +607,27 @@ $purple-overlay: rgba($primary, 0.08); // Slightly stronger purple background
   }
   
   .hero__subtitle {
-    font-size: 1.8rem; // Larger hero text
+    font-size: 1.4rem; // Tamaño reducido
     font-weight: $font-weight-normal;
     color: $gray-700;
     margin-bottom: $spacing-xl;
-    max-width: 800px;
+    max-width: 900px; // Ancho ampliado
     line-height: 1.5;
     
     @media (max-width: $breakpoint-md) {
-      font-size: 1.5rem;
+      font-size: 1.2rem;
     }
   }
   
   .hero__actions {
     display: flex;
-    gap: $spacing-md;
+    gap: $spacing-xl; // Más espacio entre botones
     margin-top: $spacing-lg;
+    
+    a {
+      font-size: 1rem; // Botones más pequeños
+      padding: $spacing-sm $spacing-xl;
+    }
     
     @media (max-width: $breakpoint-sm) {
       flex-direction: column;
@@ -1135,12 +1140,17 @@ $purple-overlay: rgba($primary, 0.08); // Slightly stronger purple background
   .cta-buttons {
     display: flex;
     justify-content: center;
-    gap: $spacing-md;
+    gap: $spacing-xl;
     
     @media (max-width: $breakpoint-sm) {
       flex-direction: column;
       align-items: center;
-      gap: $spacing-sm;
+      gap: $spacing-md;
+    }
+    
+    .btn {
+      font-size: 1rem;
+      padding: 0.6rem 1.5rem;
     }
   }
 }

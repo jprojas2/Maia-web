@@ -134,9 +134,9 @@ $primary-gradient: linear-gradient(135deg, $primary 0%, lighten($primary, 15%) 1
 .logo-container {
   display: flex;
   align-items: center;
-  gap: $spacing-sm;
+  gap: 0.2rem;
   background-color: #FFFFFF;
-  padding: 0.5rem 1rem;
+  padding: 0.3rem 0.8rem;
   border-radius: 2rem;
   display: inline-flex;
   margin-bottom: 1rem;
@@ -144,12 +144,12 @@ $primary-gradient: linear-gradient(135deg, $primary 0%, lighten($primary, 15%) 1
 }
 
 .logo__image {
-  height: 140px;
+  height: 100px;
   width: auto;
 }
 
 .logo__text {
-  font-size: 2.8rem;
+  font-size: 2.2rem;
   font-weight: $font-weight-bold;
   color: $primary;
 }
@@ -163,9 +163,10 @@ $primary-gradient: linear-gradient(135deg, $primary 0%, lighten($primary, 15%) 1
   color: $gray-400;
   margin-top: $spacing-xs;
   white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  max-width: 100%;
+  overflow: visible;
+  text-overflow: clip;
+  max-width: 280px;
+  display: block;
 }
 
 .footer-menu {
