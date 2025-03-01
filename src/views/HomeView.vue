@@ -8,9 +8,9 @@
             ¿Y si tus propiedades se vendieran solas?
           </h1>
           
-          <!-- Large Demo Frame -->
-          <div class="hero__demo-large animate-fade-in">
-            <div class="demo-frame full-width">
+          <!-- Demo Frame - Made smaller -->
+          <div class="hero__demo animate-fade-in">
+            <div class="demo-frame">
               <iframe 
                 src="https://maiavr.s3.sa-east-1.amazonaws.com/demo.html" 
                 frameborder="0" 
@@ -167,77 +167,76 @@
       </div>
     </section>
     
-    <!-- Why Choose Maia Section -->
-    <section class="section features-section">
+    <!-- Features and Why Choose Us Section -->
+    <section class="section section--light" id="features">
       <div class="container">
         <div class="section__header">
-          <h2 class="section__title">¿Por qué elegir Maia?</h2>
+          <h2 class="section__title">¿Por Qué Elegir Maia?</h2>
           <p class="section__subtitle">
-            Descubre cómo nuestra tecnología está transformando la forma de vender propiedades
+            Transforma la manera en que vendes propiedades con nuestra tecnología revolucionaria
           </p>
         </div>
         
-        <div class="features-container">
-          <div class="feature-row">
-            <div class="feature-col">
-              <div class="feature-image">
-                <img src="https://images.unsplash.com/photo-1573164713988-8665fc963095?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Automatización Inteligente" />
-              </div>
-              <div class="feature-content">
-                <h3>Automatización Inteligente</h3>
-                <p>
-                  Maia analiza las preferencias de cada cliente en tiempo real, destacando las características de 
-                  la propiedad que más le interesan y adaptando el recorrido para maximizar el impacto.
-                </p>
-              </div>
-            </div>
-            
-            <div class="feature-col">
-              <div class="feature-content">
-                <h3>Datos y Análisis Avanzados</h3>
-                <p>
-                  Obtén insights valiosos sobre el comportamiento de tus clientes. Maia registra qué características 
-                  generan más interés y te ayuda a ajustar tus estrategias de venta en base a datos reales.
-                </p>
-              </div>
-              <div class="feature-image">
-                <img src="https://images.unsplash.com/photo-1506784983877-45594efa4cbe?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Datos y Análisis Avanzados" />
-              </div>
-            </div>
-          </div>
-          
-          <div class="feature-row">
-            <div class="feature-col">
-              <div class="feature-image">
-                <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Integración Sin Esfuerzo" />
-              </div>
-              <div class="feature-content">
-                <h3>Integración Sin Esfuerzo</h3>
-                <p>
-                  Implementa Maia en tu sitio web y propiedades en minutos, sin necesidad de conocimientos técnicos. 
-                  Nuestra plataforma se integra perfectamente con las herramientas que ya utilizas.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        <div class="stat-row">
-          <div class="stat">
+        <!-- Stats Row - All stats included -->
+        <div class="stats-container">
+          <div class="stat-item">
             <span class="stat-number">92%</span>
             <span class="stat-label">Tasa de rebote en webs inmobiliarias tradicionales</span>
           </div>
-          <div class="stat">
+          <div class="stat-item">
             <span class="stat-number">72%</span>
             <span class="stat-label">Más conversiones con Maia</span>
           </div>
-          <div class="stat">
+          <div class="stat-item">
             <span class="stat-number">3.5x</span>
             <span class="stat-label">Mayor engagement</span>
           </div>
-          <div class="stat">
+          <div class="stat-item">
             <span class="stat-number">40%</span>
             <span class="stat-label">Ventas más rápidas</span>
+          </div>
+        </div>
+        
+        <!-- Features with improved layout -->
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-robot"></i>
+            </div>
+            <h3 class="feature-title">Inteligencia Artificial</h3>
+            <p class="feature-desc">
+              Algoritmos avanzados que aprenden de cada interacción para ofrecer experiencias cada vez más personalizadas a tus clientes.
+            </p>
+          </div>
+          
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-chart-line"></i>
+            </div>
+            <h3 class="feature-title">Datos y Análisis</h3>
+            <p class="feature-desc">
+              Comprende qué características de tus propiedades generan más interés y ajusta tus estrategias de venta en base a datos reales.
+            </p>
+          </div>
+          
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-vr-cardboard"></i>
+            </div>
+            <h3 class="feature-title">Tours Virtuales 3D</h3>
+            <p class="feature-desc">
+              Recorridos inmersivos que permiten a los compradores explorar cada detalle de la propiedad como si estuvieran allí.
+            </p>
+          </div>
+          
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-plug"></i>
+            </div>
+            <h3 class="feature-title">Integración Sin Esfuerzo</h3>
+            <p class="feature-desc">
+              Implementa Maia en tu sitio web en minutos, sin necesidad de conocimientos técnicos. Se integra con tus herramientas actuales.
+            </p>
           </div>
         </div>
       </div>
@@ -298,7 +297,7 @@
         <div class="team-container">
           <div class="team-card">
             <div class="team-image">
-              <img src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80" alt="Manuel Fernández" />
+              <img src="https://media.licdn.com/dms/image/v2/D4E03AQFi2QfyPeH3sQ/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1700504903894?e=1746057600&v=beta&t=T2CmNrKmIqp0Rn1Vd3TLguv87GMRzwZbgf8iDDiblYw" alt="Manuel Fernández" />
             </div>
             <div class="team-content">
               <h3>Manuel Fernández</h3>
@@ -319,7 +318,7 @@
           
           <div class="team-card">
             <div class="team-image">
-              <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80" alt="Juan Pablo Rojas" />
+              <img src="https://media.licdn.com/dms/image/v2/D4E03AQH2qkZrHLTaaA/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1706107499432?e=1746057600&v=beta&t=6TegZvoxBvFsN6uPjrwrqY-Zhb-Ra3mrIby415f14i4" alt="Juan Pablo Rojas" />
             </div>
             <div class="team-content">
               <h3>Juan Pablo Rojas</h3>
@@ -337,7 +336,7 @@
           
           <div class="team-card">
             <div class="team-image">
-              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80" alt="Federico Antunovic" />
+              <img src="https://media.licdn.com/dms/image/v2/C4D03AQExEzpf2qxawQ/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1635413934306?e=1746057600&v=beta&t=DZsUsWBp3D5yciGIHNtxFH15bROc2GTBmQOzZ9ikR00" alt="Federico Antunovic" />
             </div>
             <div class="team-content">
               <h3>Federico Antunovic</h3>
@@ -435,412 +434,255 @@ $border-radius-enhanced: 20px; // Increased for more rounded corners
 
 // Hero Section
 .hero-section {
-  position: relative;
-  padding-top: 150px; /* Increased top padding to move text lower */
-  padding-bottom: $spacing-3xl;
+  padding-top: 150px;
+  padding-bottom: $spacing-4xl;
   background-color: $light;
-  overflow: hidden;
-  min-height: 90vh;
-
-  .container {
-    position: relative;
-    z-index: 2;
+  text-align: center;
+  
+  .hero__content {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
-
-  .title {
-    font-size: 3rem; /* Adjusted for better visibility */
+  
+  .hero__title {
+    font-size: 2.5rem;
     font-weight: $font-weight-bold;
     color: $dark;
-    margin-bottom: $spacing-lg;
+    margin-bottom: $spacing-xl;
     line-height: 1.2;
-
+    
     @media (max-width: $breakpoint-md) {
-      font-size: 2.5rem;
+      font-size: 2rem;
     }
   }
-
-  .subtitle {
-    font-size: 1.4rem; /* Adjusted for better visibility */
+  
+  .hero__demo {
+    width: 80%;
+    margin: 0 auto $spacing-2xl;
+    
+    .demo-frame {
+      position: relative;
+      width: 100%;
+      padding-bottom: 56.25%; // 16:9 aspect ratio
+      height: 0;
+      overflow: hidden;
+      border-radius: $border-radius-enhanced;
+      box-shadow: $shadow-lg;
+      
+      .demo-iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: none;
+      }
+    }
+  }
+  
+  .hero__subtitle {
+    font-size: 1.5rem;
+    font-weight: $font-weight-normal;
     color: $gray-700;
     margin-bottom: $spacing-xl;
-    max-width: 700px;
+    max-width: 800px;
+    line-height: 1.5;
     
     @media (max-width: $breakpoint-md) {
       font-size: 1.2rem;
     }
   }
   
-  &__demo-large {
-    margin: $spacing-2xl auto;
-    max-width: 1000px;
-    border-radius: $border-radius-enhanced;
-    overflow: hidden;
-    box-shadow: $shadow-lg;
-  }
-  
-  &__actions {
+  .hero__actions {
     display: flex;
-    justify-content: center;
     gap: $spacing-md;
-    margin-bottom: $spacing-2xl;
+    margin-top: $spacing-lg;
     
     @media (max-width: $breakpoint-sm) {
       flex-direction: column;
+      width: 100%;
+      max-width: 300px;
       gap: $spacing-sm;
-      align-items: center;
     }
   }
 }
 
-// Demo Frame
-.demo-frame {
-  position: relative;
-  width: 100%;
-  height: 0;
-  padding-bottom: 56.25%; // 16:9 aspect ratio
-  background-color: $gray-800;
-  border-radius: $border-radius-enhanced; 
-  overflow: hidden;
-  box-shadow: $shadow;
-  
-  &.full-width {
-    padding-bottom: 56.25%; // 16:9 aspect ratio
-  }
-  
-  .demo-iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border: none;
-  }
-}
-
-// Action buttons
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: $spacing-sm $spacing-lg;
-  border-radius: $border-radius-enhanced;
-  font-weight: $font-weight-semibold;
-  font-size: 1rem;
-  text-decoration: none;
-  transition: $transition-base;
-  cursor: pointer;
-  border: none;
-  
-  &--primary {
-    background-color: $primary;
-    color: white;
-    
-    &:hover {
-      background-color: darken($primary, 5%);
-      transform: translateY(-2px);
-    }
-  }
-  
-  &--white {
-    background-color: white;
-    color: $dark;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-    
-    &:hover {
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-      transform: translateY(-2px);
-    }
-  }
-  
-  &--gradient {
-    background: $primary-gradient;
-    color: white;
-    
-    &:hover {
-      opacity: 0.9;
-      transform: translateY(-2px);
-    }
-  }
-  
-  &--lg {
-    padding: $spacing-md $spacing-xl;
-    font-size: 1.1rem;
-  }
-}
-
-// Pricing Cards
-.pricing {
-  margin-top: $spacing-2xl;
-  
-  &-cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: $spacing-lg;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-  
-  &-card {
-    background-color: white;
-    border-radius: $border-radius-enhanced;
-    box-shadow: $shadow;
-    overflow: hidden;
-    transition: $transition-base;
-    position: relative;
-    padding: $spacing-lg;
-    
-    &:hover {
-      transform: translateY(-10px);
-      box-shadow: $shadow-lg;
-    }
-    
-    &--featured {
-      border: 2px solid $primary;
-      transform: scale(1.05);
-      
-      @media (max-width: $breakpoint-md) {
-        transform: scale(1);
-      }
-      
-      &:hover {
-        transform: translateY(-10px) scale(1.05);
-        
-        @media (max-width: $breakpoint-md) {
-          transform: translateY(-10px);
-        }
-      }
-    }
-    
-    &__header {
-      text-align: center;
-      padding: $spacing-lg;
-      border-bottom: 1px solid $gray-200;
-      margin-bottom: $spacing-lg;
-      
-      .card__icon {
-        width: 60px;
-        height: 60px;
-        background: rgba($primary, 0.1);
-        color: $primary;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 50%;
-        margin: 0 auto $spacing-md;
-        font-size: 1.5rem;
-      }
-      
-      .card__title {
-        font-size: 1.5rem;
-        font-weight: $font-weight-bold;
-        margin-bottom: $spacing-md;
-        color: $dark;
-      }
-    }
-    
-    &__price {
-      .price-value {
-        font-size: 2.5rem;
-        font-weight: $font-weight-bold;
-        color: $dark;
-      }
-      
-      .price-period {
-        font-size: 1rem;
-        color: $gray-500;
-      }
-    }
-    
-    &__features {
-      padding: 0 $spacing-md $spacing-lg;
-      
-      .feature-item {
-        display: flex;
-        align-items: center;
-        margin-bottom: $spacing-sm;
-        padding: $spacing-xs 0;
-        
-        .feature-check {
-          color: $primary;
-          margin-right: $spacing-sm;
-          font-size: 0.9rem;
-        }
-        
-        .feature-text {
-          color: $gray-700;
-        }
-      }
-    }
-    
-    &__action {
-      text-align: center;
-      padding: $spacing-lg;
-      
-      .btn {
-        width: 100%;
-      }
-    }
-    
-    .card__badge {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      background: $primary-gradient;
-      color: white;
-      padding: 5px 10px;
-      font-size: 0.8rem;
-      font-weight: $font-weight-bold;
-      border-radius: $border-radius-pill;
-    }
-  }
-}
-
-// Testimonials
-.testimonials-wrapper {
+// Stats layout
+.stats-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(4, 1fr);
   gap: $spacing-lg;
-  margin-top: $spacing-2xl;
+  margin: $spacing-2xl 0;
   
-  .testimonial-card {
+  @media (max-width: $breakpoint-md) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  @media (max-width: $breakpoint-sm) {
+    grid-template-columns: 1fr;
+  }
+  
+  .stat-item {
     background-color: white;
-    border-radius: $border-radius-enhanced;
-    box-shadow: $shadow;
+    border-radius: $border-radius;
     padding: $spacing-lg;
+    text-align: center;
+    box-shadow: $shadow-sm;
     transition: $transition-base;
     
     &:hover {
       transform: translateY(-5px);
-      box-shadow: $shadow-lg;
+      box-shadow: $shadow;
     }
     
-    .quote-icon {
-      font-size: 1.5rem;
-      color: rgba($primary, 0.2);
+    .stat-number {
+      display: block;
+      font-size: 2.5rem;
+      font-weight: $font-weight-bold;
+      color: $primary;
       margin-bottom: $spacing-sm;
     }
     
-    .testimonial__content {
-      margin-bottom: $spacing-lg;
-      
-      p {
-        font-size: 1.05rem;
-        color: $gray-700;
-        line-height: 1.6;
-      }
-    }
-    
-    .testimonial__author {
-      display: flex;
-      align-items: center;
-      
-      img {
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-        object-fit: cover;
-        margin-right: $spacing-sm;
-      }
-      
-      div {
-        h4 {
-          font-size: 1.1rem;
-          font-weight: $font-weight-semibold;
-          margin: 0;
-          color: $dark;
-        }
-        
-        p {
-          font-size: 0.9rem;
-          color: $gray-500;
-          margin: 0;
-        }
-      }
+    .stat-label {
+      font-size: 1rem;
+      color: $gray-700;
+      line-height: 1.4;
     }
   }
 }
 
-// Team Grid
-.team-section {
-  padding: $spacing-4xl 0;
-  background-color: white;
+// Features grid
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: $spacing-xl;
+  margin-top: $spacing-2xl;
   
-  .team-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: $spacing-xl;
-    margin-top: $spacing-2xl;
-    justify-content: center;
+  @media (max-width: $breakpoint-md) {
+    grid-template-columns: 1fr;
   }
   
-  .team-card {
-    flex: 1;
-    min-width: 280px;
-    max-width: 350px;
+  .feature-card {
     background-color: white;
-    border-radius: $border-radius-lg;
-    overflow: hidden;
-    box-shadow: $shadow;
+    border-radius: $border-radius;
+    padding: $spacing-xl;
+    box-shadow: $shadow-sm;
     transition: $transition-base;
     
     &:hover {
-      transform: translateY(-10px);
-      box-shadow: $shadow-lg;
+      transform: translateY(-5px);
+      box-shadow: $shadow;
     }
     
-    .team-image {
-      height: 250px;
-      overflow: hidden;
-      
-      img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transition: transform 0.3s ease;
-      }
+    .feature-icon {
+      font-size: 2.5rem;
+      color: $primary;
+      margin-bottom: $spacing-md;
     }
     
-    .team-content {
-      padding: $spacing-xl;
+    .feature-title {
+      font-size: 1.5rem;
+      font-weight: $font-weight-semibold;
+      color: $dark;
+      margin-bottom: $spacing-md;
+    }
+    
+    .feature-desc {
+      color: $gray-700;
+      line-height: 1.6;
+    }
+  }
+}
+
+// Team section
+.team-section {
+  background-color: $light;
+}
+
+.team-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: $spacing-xl;
+  margin-top: $spacing-2xl;
+  
+  @media (max-width: $breakpoint-lg) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  @media (max-width: $breakpoint-sm) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.team-card {
+  background-color: white;
+  border-radius: $border-radius;
+  overflow: hidden;
+  box-shadow: $shadow-sm;
+  transition: $transition-base;
+  
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: $shadow;
+  }
+  
+  .team-image {
+    height: 250px;
+    overflow: hidden;
+    
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: $transition-base;
+    }
+  }
+  
+  .team-content {
+    padding: $spacing-lg;
+    
+    h3 {
+      font-size: 1.3rem;
+      font-weight: $font-weight-semibold;
+      margin-bottom: $spacing-xs;
+      color: $dark;
+    }
+    
+    h4 {
+      font-size: 1rem;
+      font-weight: $font-weight-medium;
+      color: $primary;
+      margin-bottom: $spacing-md;
+    }
+    
+    p {
+      color: $gray-700;
+      font-size: 0.95rem;
+      line-height: 1.5;
+      margin-bottom: $spacing-md;
+    }
+    
+    .team-social {
+      display: flex;
+      gap: $spacing-sm;
       
-      h3 {
-        font-size: 1.5rem;
-        margin-bottom: $spacing-xs;
-        color: $dark;
-      }
-      
-      h4 {
-        font-size: 1rem;
-        font-weight: $font-weight-medium;
-        color: $primary;
-        margin-bottom: $spacing-md;
-      }
-      
-      p {
-        font-size: 0.95rem;
-        color: $gray-700;
-        margin-bottom: $spacing-lg;
-      }
-      
-      .team-social {
+      .social-link {
         display: flex;
-        gap: $spacing-sm;
+        align-items: center;
+        justify-content: center;
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        background-color: $gray-200;
+        color: $dark;
+        transition: $transition-base;
         
-        a {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          width: 36px;
-          height: 36px;
-          border-radius: 50%;
-          background-color: $gray-200;
-          color: $dark;
-          transition: $transition-base;
-          
-          &:hover {
-            background-color: $primary;
-            color: white;
-          }
+        &:hover {
+          background-color: $primary;
+          color: white;
         }
       }
     }

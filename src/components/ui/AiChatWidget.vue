@@ -9,7 +9,7 @@
     @mouseenter="handleMouseEnter"
     @mouseleave="handleMouseLeave"
   >
-    <!-- Chat panel - Always visible with transparent background -->
+    <!-- Chat panel - Always visible with white transparent background -->
     <div class="chat-panel">
       <div class="chat-header">
         <div class="header-title">
@@ -277,9 +277,14 @@ $primary-gradient: linear-gradient(135deg, $primary 0%, lighten($primary, 15%) 1
   z-index: $z-index-modal;
   font-family: $font-family-base;
   
+  &.inactive {
+    opacity: 0.3;
+  }
+  
   &.open {
     width: 360px;
     max-width: 95vw;
+    opacity: 1;
   }
   
   &.mobile {
@@ -298,8 +303,7 @@ $primary-gradient: linear-gradient(135deg, $primary 0%, lighten($primary, 15%) 1
   }
   
   .chat-panel {
-    background-color: transparent;
-    backdrop-filter: blur(10px);
+    background-color: rgba(255, 255, 255, 0.4);
     border-radius: $border-radius-lg;
     box-shadow: $shadow-lg;
     display: flex;
@@ -314,7 +318,9 @@ $primary-gradient: linear-gradient(135deg, $primary 0%, lighten($primary, 15%) 1
       align-items: center;
       justify-content: space-between;
       padding: $spacing-md $spacing-lg;
-      border-bottom: 1px solid $gray-200;
+      background-color: transparent;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+      color: $dark;
       
       .header-title {
         display: flex;
@@ -335,18 +341,14 @@ $primary-gradient: linear-gradient(135deg, $primary 0%, lighten($primary, 15%) 1
         button {
           background: none;
           border: none;
-          color: $gray-600;
+          color: $dark;
           cursor: pointer;
           font-size: 1.1rem;
           padding: $spacing-xs;
           transition: $transition-fast;
           
           &:hover {
-            color: $dark;
-          }
-          
-          &.close-btn:hover {
-            color: #e74c3c;
+            color: darken($dark, 10%);
           }
         }
       }
