@@ -414,4 +414,11 @@ p {
 // Header spacing adjustment
 .app-header + main .hero {
   padding-top: 30px;
+}
+
+// Header spacing adjustment for mobile chat trigger
+@media (max-width: $breakpoint-md) {
+  .app-header .header-content {
+    padding-right: 50px; // Make space for the chat trigger button
+  }
 } 

@@ -1,5 +1,10 @@
 <template>
   <div class="ai-chat-widget" :class="{ 'is-active': isActive, 'is-typing': isTyping }">
+    <!-- Mobile trigger button (visible only on mobile) -->
+    <div class="ai-chat-widget__mobile-trigger" @click="setActive(true)">
+      <img src="@/assets/logomaia.png" alt="Maia AI" class="mobile-trigger-logo">
+    </div>
+    
     <!-- Always visible chat panel -->
     <div class="ai-chat-widget__panel" @mouseenter="setActive(true)" @mouseleave="setInactive">
       <!-- Logo only header - removed text -->
@@ -54,7 +59,7 @@
         </button>
       </div>
       
-      <!-- Minimized bubble view (always visible) -->
+      <!-- Minimized bubble view (visible only on desktop) -->
       <div class="ai-chat-widget__bubble" v-show="!isActive" @click="setActive(true)">
         <img src="@/assets/logomaia.png" alt="Maia AI" class="ai-chat-widget__bubble-logo">
       </div>
@@ -221,6 +226,33 @@ onUnmounted(() => {
   top: 50%;
   transform: translateY(-50%);
   z-index: $z-index-modal;
+  
+  // Mobile trigger button
+  &__mobile-trigger {
+    display: none; // Hidden by default on desktop
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    z-index: $z-index-fixed;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease;
+    
+    &:hover {
+      transform: scale(1.05);
+    }
+    
+    .mobile-trigger-logo {
+      width: 25px;
+      height: 25px;
+    }
+  }
   
   &__panel {
     position: relative;
@@ -487,19 +519,35 @@ onUnmounted(() => {
   
   @media (max-width: $breakpoint-md) {
     right: 15px;
+    top: auto;
+    bottom: 20px;
+    transform: none;
+    
+    &__mobile-trigger {
+      display: flex; // Show on mobile
+    }
     
     &__panel {
       width: 320px;
       height: 450px;
+      position: fixed;
+      bottom: 15px;
+      right: 15px;
+      top: auto;
+      transform: none;
+      
+      &:hover {
+        transform: none;
+      }
     }
     
     &__bubble {
-      width: 60px;
-      height: 60px;
-      
-      &-logo {
-        width: 35px;
-        height: 35px;
+      display: none !important; // Always hide bubble on mobile
+    }
+    
+    &.is-active {
+      .ai-chat-widget__panel {
+        opacity: 0.95;
       }
     }
   }
