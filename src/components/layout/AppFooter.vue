@@ -59,7 +59,7 @@
         <div class="cta-content">
           <h3>¿Listo para transformar tus ventas inmobiliarias?</h3>
           <p>Únete a cientos de inmobiliarias y agentes que ya están utilizando Maia para vender más propiedades.</p>
-          <button class="btn btn--white btn--lg">Comenzar Ahora</button>
+          <button class="btn btn--white btn--lg">Suscribirse</button>
         </div>
       </div>
       

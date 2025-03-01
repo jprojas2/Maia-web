@@ -28,7 +28,7 @@
           
           <div class="hero__actions animate-slide-in-up">
             <a href="#pricing" class="btn btn--primary btn--lg">Ver Planes</a>
-            <a href="#contact" class="btn btn--white btn--lg">Comenzar Ahora</a>
+            <a href="#contact" class="btn btn--white btn--lg">Suscribirse</a>
           </div>
         </div>
       </div>
@@ -119,7 +119,7 @@
               </div>
               
               <div class="pricing-card__action">
-                <button class="btn btn--gradient">Comenzar Ahora</button>
+                <button class="btn btn--gradient">Suscribirse</button>
               </div>
             </div>
             
@@ -399,7 +399,7 @@
           </p>
           <div class="cta__actions">
             <a href="#pricing" class="btn btn--white btn--lg">Ver Planes</a>
-            <a href="#contact" class="btn btn--outline-white btn--lg">Solicitar Demo</a>
+            <a href="#contact" class="btn btn--outline-white btn--lg">Suscribirse</a>
           </div>
         </div>
       </div>

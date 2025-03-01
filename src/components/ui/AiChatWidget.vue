@@ -1,9 +1,9 @@
 <template>
   <div 
-    class="ai-chat-widget open" 
-    :class="{ 
-      'mobile': isMobile
-    }"
+    class="ai-chat-widget" 
+    :class="{ 'mobile': isMobile, 'active': isActive }"
+    @focusin="handleWidgetFocus"
+    @focusout="handleWidgetBlur"
   >
     <!-- Chat panel - Always visible with white transparent background -->
     <div class="chat-panel">
@@ -68,52 +68,46 @@
 <script setup>
 import { ref, onMounted, nextTick } from 'vue';
 
-// State
+// Chat state
+const isOpen = ref(false);
+const isMobile = ref(false);
 const inputMessage = ref('');
 const messages = ref([]);
 const isTyping = ref(false);
-const isMobile = ref(false);
 const messagesContainer = ref(null);
 const inputField = ref(null);
+const isActive = ref(false); // Track if the widget is being interacted with
 
-// Check if mobile device
-onMounted(() => {
-  checkMobile();
-  window.addEventListener('resize', checkMobile);
+// Toggle chat panel
+const toggleChat = () => {
+  isOpen.value = !isOpen.value;
   
-  // Focus input field on mount
-  nextTick(() => {
-    if (inputField.value) {
-      inputField.value.focus();
-    }
-  });
-  
-  // Start with welcome message
-  setTimeout(() => {
-    isTyping.value = true;
-    setTimeout(() => {
-      isTyping.value = false;
-    }, 1500);
-  }, 500);
-});
+  if (isOpen.value) {
+    nextTick(() => {
+      scrollToBottom();
+      inputField.value?.focus();
+    });
+  }
+};
 
+// Check if device is mobile
 const checkMobile = () => {
   isMobile.value = window.innerWidth < 768;
 };
 
-// Send a message
+// Send message
 const sendMessage = () => {
-  const messageText = inputMessage.value.trim();
-  if (!messageText || isTyping.value) return;
+  if (!inputMessage.value.trim() || isTyping.value) return;
   
   // Add user message
   messages.value.push({
-    text: messageText,
+    text: inputMessage.value,
     sender: 'user',
     time: new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})
   });
   
   // Clear input
+  const userMessage = inputMessage.value;
   inputMessage.value = '';
   
   // Auto resize textarea
@@ -124,79 +118,50 @@ const sendMessage = () => {
     scrollToBottom();
   });
   
-  // Simulate bot response
-  simulateBotResponse(messageText);
-};
-
-// Simulate bot response
-const simulateBotResponse = (userMessage) => {
-  // Set typing indicator
+  // Show typing indicator
   isTyping.value = true;
   
-  // Simulate typing delay based on response length
+  // Simulate bot response (in a real app, this would call an API)
   setTimeout(() => {
     isTyping.value = false;
+    // Demo responses
+    let botResponse;
+    if (userMessage.toLowerCase().includes('precio') || userMessage.toLowerCase().includes('costo') || userMessage.toLowerCase().includes('tarifa')) {
+      botResponse = 'Tenemos varios planes disponibles desde $40/mes. ¿Te gustaría conocer más detalles sobre nuestros planes y precios?';
+    } else if (userMessage.toLowerCase().includes('demo') || userMessage.toLowerCase().includes('prueba') || userMessage.toLowerCase().includes('probar')) {
+      botResponse = 'Con gusto puedo ayudarte a programar una demostración personalizada. ¿Prefieres una demostración virtual o te gustaría que un agente te contacte directamente?';
+    } else if (userMessage.toLowerCase().includes('inmobiliaria') || userMessage.toLowerCase().includes('propiedad') || userMessage.toLowerCase().includes('casa')) {
+      botResponse = 'Maia ayuda a inmobiliarias a automatizar la atención de clientes para propiedades. ¿Tienes alguna propiedad específica de la que quieras hablar?';
+    } else {
+      botResponse = 'Gracias por tu mensaje. ¿Hay algo más específico en lo que pueda ayudarte sobre nuestro servicio de asistencia virtual para inmobiliarias?';
+    }
     
-    // Generate response based on user message
-    const botResponse = generateBotResponse(userMessage);
-    
-    // Add bot message
     messages.value.push({
       text: botResponse,
       sender: 'bot',
       time: new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})
     });
     
-    // Scroll to bottom
+    // Scroll to bottom after new message
     nextTick(() => {
       scrollToBottom();
     });
-  }, Math.random() * 1000 + 1000); // Random delay between 1-2 seconds
+  }, 1500);
 };
 
-// Generate a response based on user message
-const generateBotResponse = (userMessage) => {
-  const message = userMessage.toLowerCase();
-  
-  if (message.includes('hola') || message.includes('buenos días') || message.includes('buenas')) {
-    return '¡Hola! 👋 ¿Cómo puedo ayudarte hoy con tu búsqueda de propiedades?';
-  }
-  else if (message.includes('precio') || message.includes('costo') || message.includes('planes')) {
-    return 'Tenemos varios planes disponibles: <br><br>• <strong>Básico:</strong> $40/mes para 5 propiedades<br>• <strong>Profesional:</strong> $120/mes para 20 propiedades<br>• <strong>Empresarial:</strong> $200/mes para propiedades ilimitadas<br><br>¿Te gustaría conocer más detalles sobre alguno de ellos?';
-  }
-  else if (message.includes('demo') || message.includes('prueba')) {
-    return 'Puedes probar nuestra demo interactiva en la parte superior de la página principal. Te permite experimentar cómo Maia guía a los potenciales compradores a través de recorridos virtuales de propiedades.';
-  }
-  else if (message.includes('funciona') || message.includes('cómo')) {
-    return 'Maia utiliza inteligencia artificial para guiar a los clientes en recorridos virtuales de propiedades, destacando características según sus intereses y recopilando información valiosa sobre su comportamiento. Analiza las preferencias en tiempo real para personalizar la experiencia.';
-  }
-  else if (message.includes('integrar') || message.includes('implementar') || message.includes('integración')) {
-    return 'La integración de Maia es muy sencilla. Solo necesitas agregar un código a tu sitio web y configurar tus propiedades en nuestro panel. No requiere conocimientos técnicos especiales y ofrecemos soporte durante todo el proceso.';
-  }
-  else if (message.includes('gracias')) {
-    return '¡De nada! Estoy aquí para ayudarte. ¿Hay algo más que necesites saber sobre Maia?';
-  }
-  else {
-    return 'Entiendo tu consulta. Para información más detallada, te recomendaría contactar con nuestro equipo a través de <a href="mailto:info@maiavr.cl">info@maiavr.cl</a> o programar una demostración personalizada donde podamos mostrarte cómo Maia puede adaptarse a tus necesidades específicas.';
-  }
-};
-
-// Scroll messages container to bottom
+// Scroll to bottom of messages
 const scrollToBottom = () => {
   if (messagesContainer.value) {
     messagesContainer.value.scrollTop = messagesContainer.value.scrollHeight;
   }
 };
 
-// Format message with links and emojis
-const formatMessage = (text) => {
-  // Convert URLs to clickable links
-  const linkedText = text.replace(
-    /(https?:\/\/[^\s]+)/g, 
-    '<a href="$1" target="_blank">$1</a>'
-  );
-  
-  return linkedText;
+// Handle keydown for Enter key
+const handleKeydown = (e) => {
+  if (e.key === 'Enter' && !e.shiftKey) {
+    e.preventDefault();
+    sendMessage();
+  }
 };
 
 // Adjust textarea height based on content
@@ -209,6 +174,39 @@ const adjustTextareaHeight = () => {
   // Set to scrollHeight, but cap at 100px
   const newHeight = Math.min(inputField.value.scrollHeight, 100);
   inputField.value.style.height = `${newHeight}px`;
+};
+
+// Handle widget interaction
+const handleWidgetFocus = () => {
+  isActive.value = true;
+};
+
+const handleWidgetBlur = (e) => {
+  // Only blur if the new focus element is outside the chat widget
+  if (!e.currentTarget.contains(e.relatedTarget)) {
+    isActive.value = false;
+  }
+};
+
+onMounted(() => {
+  checkMobile();
+  window.addEventListener('resize', checkMobile);
+  
+  // Clean up
+  return () => {
+    window.removeEventListener('resize', checkMobile);
+  };
+});
+
+// Format message with links and emojis
+const formatMessage = (text) => {
+  // Convert URLs to clickable links
+  const linkedText = text.replace(
+    /(https?:\/\/[^\s]+)/g, 
+    '<a href="$1" target="_blank">$1</a>'
+  );
+  
+  return linkedText;
 };
 </script>
 
@@ -239,6 +237,16 @@ $primary-gradient: linear-gradient(135deg, $primary 0%, lighten($primary, 15%) 1
   &.mobile {
     width: calc(100% - 40px);
     max-height: 70vh;
+  }
+  
+  &.active {
+    background-color: rgba(255, 255, 255, 0.7);
+    
+    .chat-panel,
+    .messages-container, 
+    .message-content {
+      background-color: rgba(255, 255, 255, 0.7);
+    }
   }
 }
 

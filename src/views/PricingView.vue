@@ -18,6 +18,8 @@
             </div>
             <p class="plan-description">{{ plan.description }}</p>
             
+            <p class="plan-free-trial">Prueba gratuita de 7 días</p>
+            
             <ul class="plan-features">
               <li v-for="(feature, fIndex) in plan.features" :key="fIndex">
                 <i class="fas fa-check"></i>
@@ -75,7 +77,7 @@ const plans = ref([
       'Soporte por email',
       'Estadísticas básicas'
     ],
-    buttonText: 'Comenzar',
+    buttonText: 'Suscribirse',
     buttonLink: '/contact',
     buttonClass: 'btn--secondary',
     popular: false
@@ -93,7 +95,7 @@ const plans = ref([
       'Estadísticas avanzadas',
       'Integración con CRM'
     ],
-    buttonText: 'Elegir Plan',
+    buttonText: 'Suscribirse',
     buttonLink: '/contact',
     buttonClass: 'btn--gradient',
     popular: true
@@ -111,7 +113,7 @@ const plans = ref([
       'Análisis avanzado de datos',
       'Capacitación para el equipo'
     ],
-    buttonText: 'Contactar',
+    buttonText: 'Suscribirse',
     buttonLink: '/contact',
     buttonClass: 'btn--primary',
     popular: false
@@ -169,7 +171,7 @@ const toggleFaq = (index) => {
 }
 
 .pricing-card {
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.7);
   border-radius: $border-radius-lg;
   padding: $spacing-xl;
   box-shadow: $shadow;
@@ -245,6 +247,13 @@ const toggleFaq = (index) => {
     color: $gray-600;
     margin-bottom: $spacing-lg;
     min-height: 50px;
+  }
+  
+  .plan-free-trial {
+    font-weight: 600;
+    color: $primary;
+    margin-bottom: $spacing-md;
+    font-size: 0.9rem;
   }
   
   .plan-features {
