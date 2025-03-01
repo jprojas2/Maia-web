@@ -1,9 +1,8 @@
 <template>
   <div class="ai-chat-widget" :class="{ 'is-open': isOpen }">
-    <!-- Tab with logo -->
+    <!-- Tab with logo only -->
     <div class="ai-chat-widget__tab" @click="toggleChat">
       <img src="@/assets/logomaia.png" alt="Maia AI" class="ai-chat-widget__logo">
-      <span class="ai-chat-widget__tab-text">Chat con Maia</span>
     </div>
     
     <!-- Chat panel -->
@@ -87,18 +86,29 @@ const suggestions = [
 ];
 
 const toggleChat = () => {
-  isOpen.value = !isOpen.value;
+  // Apply transition class before changing state
+  document.body.classList.add('chat-transitioning');
   
-  // Add class to body to shift content
-  if (isOpen.value) {
-    document.body.classList.add('chat-open');
-    // If first time opening, add initial message
-    if (messages.value.length === 0) {
-      addMessage('¡Hola! Soy Maia, tu asistente virtual para la venta inmobiliaria. ¿En qué puedo ayudarte hoy?', 'ai');
+  // Toggle the state after a small delay to ensure transition class is applied
+  setTimeout(() => {
+    isOpen.value = !isOpen.value;
+    
+    // Add class to body to shift content
+    if (isOpen.value) {
+      document.body.classList.add('chat-open');
+      // If first time opening, add initial message
+      if (messages.value.length === 0) {
+        addMessage('¡Hola! Soy Maia, tu asistente virtual para la venta inmobiliaria. ¿En qué puedo ayudarte hoy?', 'ai');
+      }
+    } else {
+      document.body.classList.remove('chat-open');
     }
-  } else {
-    document.body.classList.remove('chat-open');
-  }
+    
+    // Remove transition class after animation completes
+    setTimeout(() => {
+      document.body.classList.remove('chat-transitioning');
+    }, 300);
+  }, 10);
 };
 
 const sendUserMessage = () => {
@@ -203,6 +213,7 @@ watch(messages, () => {
 // Clean up when component is unmounted
 onUnmounted(() => {
   document.body.classList.remove('chat-open');
+  document.body.classList.remove('chat-transitioning');
 });
 </script>
 
@@ -221,9 +232,9 @@ onUnmounted(() => {
     right: 0;
     top: 50%;
     transform: translateY(-50%);
-    width: auto;
-    height: auto;
-    padding: $spacing-md $spacing-lg;
+    width: 50px;
+    height: 50px;
+    padding: $spacing-sm;
     background: white;
     border: 2px solid $primary;
     border-radius: $border-radius-pill 0 0 $border-radius-pill;
@@ -232,7 +243,7 @@ onUnmounted(() => {
     justify-content: center;
     cursor: pointer;
     box-shadow: $shadow;
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
     animation: pulse 2s infinite;
     z-index: $z-index-modal + 1;
     
@@ -240,13 +251,6 @@ onUnmounted(() => {
       transform: translateY(-50%) translateX(-5px);
       animation: none;
     }
-  }
-  
-  &__tab-text {
-    margin-left: $spacing-sm;
-    font-weight: $font-weight-medium;
-    color: $primary;
-    white-space: nowrap;
   }
   
   &__logo {
@@ -266,7 +270,7 @@ onUnmounted(() => {
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    transition: transform 0.3s ease;
+    transition: transform 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
     transform: translateX(100%);
     z-index: $z-index-modal;
   }
@@ -282,6 +286,7 @@ onUnmounted(() => {
     
     .ai-chat-widget__tab {
       right: 350px;
+      transition: right 0.3s cubic-bezier(0.25, 0.1, 0.25, 1), transform 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
     }
   }
   

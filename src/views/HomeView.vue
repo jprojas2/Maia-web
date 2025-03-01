@@ -281,7 +281,7 @@ onUnmounted(() => {
 // Hero Section
 .hero {
   position: relative;
-  padding: 60px 0 $spacing-3xl;
+  padding: 80px 0 $spacing-3xl;
   background-color: $light;
   overflow: hidden;
   
@@ -295,6 +295,17 @@ onUnmounted(() => {
     background: url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1073&q=80') no-repeat center center;
     background-size: cover;
     opacity: 0.05;
+    z-index: -1;
+  }
+  
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba($primary, 0.05) 0%, rgba($light, 0) 100%);
     z-index: -1;
   }
   
@@ -315,6 +326,7 @@ onUnmounted(() => {
   &__content {
     text-align: center;
     margin-bottom: $spacing-2xl;
+    animation: fadeIn 0.8s ease-out;
     
     @media (min-width: $breakpoint-lg) {
       text-align: left;
@@ -329,6 +341,10 @@ onUnmounted(() => {
       font-weight: $font-weight-bold;
       color: $dark;
       font-size: 3rem;
+      line-height: 1.1;
+      background: linear-gradient(to right, $primary, $primary-dark);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
       
       @media (min-width: $breakpoint-lg) {
         font-size: 3.5rem;
@@ -358,6 +374,12 @@ onUnmounted(() => {
     .btn {
       font-size: 1.1rem;
       padding: $spacing-sm $spacing-lg;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      
+      &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+      }
     }
   }
   
@@ -366,7 +388,15 @@ onUnmounted(() => {
     max-width: 700px;
     border-radius: $border-radius-lg;
     overflow: hidden;
-    box-shadow: $shadow-lg;
+    box-shadow: $shadow-lg, 0 10px 30px rgba($primary, 0.1);
+    transform: translateY(0);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: fadeIn 0.8s ease-out 0.2s backwards;
+    
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: $shadow-lg, 0 15px 35px rgba($primary, 0.15);
+    }
     
     @media (min-width: $breakpoint-lg) {
       flex: 1;
@@ -397,30 +427,54 @@ onUnmounted(() => {
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba($dark, 0.7);
+      background: linear-gradient(to bottom right, rgba($primary, 0.8), rgba($dark, 0.8));
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       color: white;
       cursor: pointer;
-      transition: $transition-base;
+      transition: all 0.3s ease;
       
       &:hover {
-        background: rgba($dark, 0.8);
+        background: linear-gradient(to bottom right, rgba($primary, 0.9), rgba($dark, 0.9));
+        
+        .overlay__content {
+          transform: scale(1.05);
+        }
       }
       
       .overlay__content {
         font-size: 2.5rem;
         margin-bottom: $spacing-lg;
         text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-      }
-      
-      .btn {
-        font-size: 1.2rem;
-        padding: $spacing-sm $spacing-xl;
+        transition: transform 0.3s ease;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        
+        i {
+          font-size: 4rem;
+          margin-bottom: $spacing-md;
+          animation: pulse 2s infinite;
+        }
       }
     }
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
   }
 }
 

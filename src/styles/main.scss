@@ -22,6 +22,12 @@ body {
   font-size: 16px;
   position: relative;
   width: 100%;
+  transition: padding 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
+  
+  &.chat-transitioning {
+    transition: padding 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
+    will-change: padding;
+  }
   
   &.chat-open {
     @media (min-width: 769px) {
@@ -233,6 +239,24 @@ p {
   }
   100% {
     transform: translateY(0px);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideOut {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(100%);
   }
 }
 
