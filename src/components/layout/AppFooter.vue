@@ -91,7 +91,7 @@ $light-blue-bg: #f0f8ff;
 $primary-gradient: linear-gradient(135deg, $primary 0%, lighten($primary, 15%) 100%);
 
 .footer {
-  background-color: $dark;
+  background-color: #000000;
   color: white;
   padding: $spacing-2xl 0 $spacing-xl;
   
@@ -210,7 +210,8 @@ $primary-gradient: linear-gradient(135deg, $primary 0%, lighten($primary, 15%) 1
   margin: $spacing-3xl 0;
   padding: $spacing-2xl;
   border-radius: $border-radius-lg;
-  background: $primary-gradient;
+  background: #000000;
+  border: 1px solid rgba($primary, 0.3);
   text-align: center;
   
   h3 {

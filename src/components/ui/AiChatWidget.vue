@@ -215,6 +215,9 @@ const adjustTextareaHeight = () => {
 <style lang="scss" scoped>
 @import "@/styles/variables.scss";
 
+// Define variables
+$primary-gradient: linear-gradient(135deg, $primary 0%, lighten($primary, 15%) 100%);
+
 .ai-chat-widget {
   position: fixed;
   bottom: 30px;
@@ -227,7 +230,8 @@ const adjustTextareaHeight = () => {
   box-shadow: $shadow-lg;
   border-radius: $border-radius-lg;
   overflow: hidden;
-  background-color: white;
+  background-color: rgba(white, 0.4);
+  backdrop-filter: blur(10px);
   border: 1px solid rgba($primary, 0.2);
   transition: all 0.3s ease;
   display: flex;
@@ -244,7 +248,8 @@ const adjustTextareaHeight = () => {
   flex-direction: column;
   height: 500px;
   max-height: 70vh;
-  background-color: white;
+  background-color: rgba(white, 0.4);
+  backdrop-filter: blur(10px);
   border-radius: $border-radius-lg;
   overflow: hidden;
 }
