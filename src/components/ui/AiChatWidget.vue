@@ -309,7 +309,7 @@ $primary-gradient: linear-gradient(135deg, $primary 0%, lighten($primary, 15%) 1
   top: 50%;
   transform: translateY(-50%);
   z-index: 1000;
-  font-family: $font-family;
+  font-family: $font-family-base;
   
   &.is-mobile {
     bottom: 20px;
@@ -549,7 +549,7 @@ $primary-gradient: linear-gradient(135deg, $primary 0%, lighten($primary, 15%) 1
   border: 1px solid rgba(0, 0, 0, 0.1);
   padding: 12px 15px;
   border-radius: 20px;
-  font-family: $font-family;
+  font-family: $font-family-base;
   font-size: 14px;
   resize: none;
   outline: none;
