@@ -156,26 +156,39 @@ strong {
     right: 0;
     bottom: 0;
     background-image: 
-      linear-gradient(to bottom, rgba($dark, 0.02), rgba($primary, 0.03)),
-      radial-gradient(rgba($dark, 0.03) 1px, transparent 1px);
+      linear-gradient(to bottom, rgba($dark, 0.01), rgba($primary, 0.02)),
+      radial-gradient(rgba($dark, 0.02) 1px, transparent 1px);
     background-size: 100% 100%, 20px 20px;
     z-index: -1;
   }
   
   &--light {
-    background-color: rgba(255, 255, 255, 0.5);
+    background-color: rgba(255, 255, 255, 0.7);
     width: 100%;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+    box-shadow: none;
+    transition: background-color 0.5s ease;
     
     &::before {
       background-image: 
-        linear-gradient(to bottom, rgba($dark, 0.01), rgba($primary, 0.02)),
-        radial-gradient(rgba($dark, 0.02) 1px, transparent 1px);
+        linear-gradient(to bottom, rgba($dark, 0.01), rgba($primary, 0.01)),
+        radial-gradient(rgba($dark, 0.01) 1px, transparent 1px);
+    }
+    
+    &:nth-of-type(even) {
+      background-color: rgba(255, 255, 255, 0.65);
+    }
+    
+    &:nth-of-type(3n) {
+      background-color: rgba(255, 255, 255, 0.6);
+    }
+    
+    &:nth-of-type(4n) {
+      background-color: rgba(255, 255, 255, 0.55);
     }
   }
   
   &--dark {
-    background-color: $dark;
+    background-color: rgba($dark, 0.95);
     color: white;
     width: 100%;
     
@@ -187,13 +200,13 @@ strong {
   }
   
   &--gray {
-    background-color: rgba(255, 255, 255, 0.7);
+    background-color: rgba(255, 255, 255, 0.5);
     width: 100%;
     
     &::before {
       background-image: 
-        linear-gradient(to bottom, rgba($dark, 0.01), rgba($primary, 0.02)),
-        radial-gradient(rgba($dark, 0.02) 1px, transparent 1px);
+        linear-gradient(to bottom, rgba($dark, 0.01), rgba($primary, 0.01)),
+        radial-gradient(rgba($dark, 0.01) 1px, transparent 1px);
     }
   }
   

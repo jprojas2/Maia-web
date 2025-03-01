@@ -1155,6 +1155,49 @@ $purple-overlay: rgba($primary, 0.08); // Slightly stronger purple background
   }
 }
 
+// Añadir estilos para la clase cta y cta__actions
+.cta {
+  text-align: center;
+  
+  &__title {
+    color: white;
+    font-size: 2.5rem;
+    font-weight: $font-weight-bold;
+    margin-bottom: $spacing-md;
+    
+    @media (max-width: $breakpoint-md) {
+      font-size: 2rem;
+    }
+  }
+  
+  &__subtitle {
+    color: rgba(white, 0.9);
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 0 auto $spacing-xl;
+    line-height: 1.6;
+  }
+  
+  &__actions {
+    display: flex;
+    justify-content: center;
+    gap: $spacing-xl; // Mismo espacio que en hero__actions
+    margin: 0 auto;
+    
+    a {
+      font-size: 1rem; // Mismo tamaño que en hero__actions
+      padding: $spacing-sm $spacing-xl; // Mismo padding que en hero__actions
+    }
+    
+    @media (max-width: $breakpoint-sm) {
+      flex-direction: column;
+      width: 100%;
+      max-width: 300px;
+      margin: 0 auto;
+    }
+  }
+}
+
 // Animation classes
 .animate-fade-in {
   opacity: 0;
