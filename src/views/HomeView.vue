@@ -1,767 +1,491 @@
 <template>
-  <main>
+  <div class="home">
     <!-- Hero Section -->
-    <section class="hero">
+    <section class="section hero">
       <div class="container">
         <div class="hero__content">
-          <h1>Revoluciona tus ventas inmobiliarias con IA</h1>
-          <p>Maia es un asistente virtual que guía a tus clientes en recorridos inmobiliarios, responde preguntas en tiempo real y califica leads automáticamente.</p>
-          <div class="hero__buttons">
-            <a href="#features" class="btn btn-primary">Ver Características</a>
-            <a href="#contact" class="btn btn-outline">Contáctanos</a>
+          <h1 class="hero__title animate-fade-in">
+            La asistente virtual que <span class="highlight">revoluciona</span> la venta inmobiliaria
+          </h1>
+          <p class="hero__subtitle animate-slide-in-up">
+            Maia transforma tus recorridos virtuales en experiencias de venta guiadas por inteligencia artificial, 
+            analizando el comportamiento de tus clientes para destacar lo que realmente les importa.
+          </p>
+          <div class="hero__actions animate-slide-in-up">
+            <button class="btn btn--primary btn--lg">Comenzar Demo</button>
+            <button class="btn btn--white btn--lg">Ver Planes</button>
           </div>
-        </div>
-        
-        <div class="hero__demo">
-          <div class="demo__iframe-container">
-            <iframe 
-              src="https://maiavr.s3.sa-east-1.amazonaws.com/demo.html" 
-              title="Demo de Maia" 
-              frameborder="0" 
-              allow="microphone; camera"
-              class="demo__iframe"
-              ref="demoIframe"
-            ></iframe>
-            <div class="demo__overlay" v-if="showDemoOverlay" @click="startDemo">
-              <div class="overlay__content">
-                <i class="fas fa-play-circle"></i>
-                <span>Comenzar Demo</span>
-              </div>
+          
+          <div class="hero__stats animate-fade-in">
+            <div class="stat">
+              <span class="stat__number">72%</span>
+              <span class="stat__label">Más conversiones</span>
+            </div>
+            <div class="stat">
+              <span class="stat__number">3.5x</span>
+              <span class="stat__label">Mayor engagement</span>
+            </div>
+            <div class="stat">
+              <span class="stat__number">40%</span>
+              <span class="stat__label">Ventas más rápidas</span>
             </div>
           </div>
         </div>
+        
+        <div class="hero__image animate-slide-in-right">
+          <img src="@/assets/hero-image.png" alt="Maia AI en acción" />
+        </div>
       </div>
     </section>
-
+    
     <!-- Features Section -->
-    <section id="features" class="section features">
+    <section class="section section--light">
       <div class="container">
-        <div class="section__title">
-          <h2>Características Principales</h2>
-          <p>Descubre cómo Maia está revolucionando la venta inmobiliaria digital</p>
+        <div class="section__header">
+          <h2 class="section__title">¿Por qué elegir Maia?</h2>
+          <p class="section__subtitle">
+            Nuestro asistente virtual inteligente potencia tus ventas inmobiliarias con tecnología de vanguardia
+          </p>
         </div>
         
-        <div class="features__grid">
-          <div class="feature-card">
-            <div class="feature-card__icon">
-              <i class="fas fa-comments"></i>
+        <div class="features">
+          <div class="feature-highlight">
+            <div class="feature-highlight__image" style="background-image: url('@/assets/feature1.jpg')"></div>
+            <div class="feature-highlight__content">
+              <h3 class="feature-highlight__title">Automatización Inteligente</h3>
+              <p class="feature-highlight__description">
+                Maia analiza las preferencias de cada cliente en tiempo real, destacando las características de 
+                la propiedad que más le interesan y adaptando el recorrido para maximizar el impacto.
+              </p>
+              <button class="btn btn--primary">Descubre cómo funciona</button>
             </div>
-            <h3>IA Conversacional</h3>
-            <p>Nuestra IA interactúa con los clientes en lenguaje natural, entendiendo sus necesidades y guiándolos en todo el proceso de compra.</p>
           </div>
           
-          <div class="feature-card">
-            <div class="feature-card__icon">
-              <i class="fas fa-vr-cardboard"></i>
+          <div class="feature-highlight">
+            <div class="feature-highlight__content">
+              <h3 class="feature-highlight__title">Datos y Análisis Avanzados</h3>
+              <p class="feature-highlight__description">
+                Obtén insights valiosos sobre el comportamiento de tus clientes. Maia registra qué características 
+                generan más interés y te ayuda a ajustar tus estrategias de venta en base a datos reales.
+              </p>
+              <button class="btn btn--primary">Ver métricas disponibles</button>
             </div>
-            <h3>Tours Virtuales 3D</h3>
-            <p>Recorridos inmersivos guiados por IA que muestran las propiedades en detalle, permitiendo a los clientes explorar cada rincón.</p>
+            <div class="feature-highlight__image" style="background-image: url('@/assets/feature2.jpg')"></div>
           </div>
           
-          <div class="feature-card">
-            <div class="feature-card__icon">
-              <i class="fas fa-chart-line"></i>
+          <div class="feature-highlight">
+            <div class="feature-highlight__image" style="background-image: url('@/assets/feature3.jpg')"></div>
+            <div class="feature-highlight__content">
+              <h3 class="feature-highlight__title">Integración Sin Esfuerzo</h3>
+              <p class="feature-highlight__description">
+                Implementa Maia en tu sitio web y propiedades en minutos, sin necesidad de conocimientos técnicos. 
+                Nuestra plataforma se integra perfectamente con las herramientas que ya utilizas.
+              </p>
+              <button class="btn btn--primary">Probar integración</button>
             </div>
-            <h3>Calificación de Leads</h3>
-            <p>Segmentación automática de clientes, gestión de agendamientos y simulación de financiamiento para optimizar el proceso de venta.</p>
           </div>
         </div>
       </div>
     </section>
-
+    
     <!-- Testimonials Section -->
-    <section id="testimonials" class="section testimonials">
+    <section class="section">
       <div class="container">
-        <div class="section__title">
-          <h2>Lo que dicen nuestros clientes</h2>
-          <p>Inmobiliarias que ya están transformando su forma de vender con Maia</p>
+        <div class="section__header">
+          <h2 class="section__title">Lo que dicen nuestros clientes</h2>
+          <p class="section__subtitle">
+            Descubre cómo Maia está transformando la industria inmobiliaria para agentes y corredores en todo el país
+          </p>
         </div>
         
-        <div class="testimonials__slider" ref="testimonialsSlider">
-          <div class="testimonial-card" v-for="(testimonial, index) in testimonials" :key="index">
-            <div class="testimonial-card__content">
-              <p>"{{ testimonial.quote }}"</p>
-              <div class="testimonial-card__author">
-                <div class="author-avatar">
-                  <img :src="testimonial.avatar" :alt="testimonial.name">
+        <div class="testimonials">
+          <div class="row">
+            <div class="col">
+              <div class="testimonial">
+                <div class="testimonial__content">
+                  "Desde que implementamos Maia, nuestras conversiones han aumentado un 65%. Los clientes valoran la experiencia personalizada y nuestros agentes pueden enfocarse en los aspectos más importantes de cada propiedad."
                 </div>
-                <div class="author-info">
-                  <h4>{{ testimonial.name }}</h4>
-                  <p>{{ testimonial.position }}, {{ testimonial.company }}</p>
+                <div class="testimonial__author">
+                  <img src="@/assets/testimonial1.jpg" alt="Carolina Méndez" />
+                  <div>
+                    <div class="testimonial__author-name">Carolina Méndez</div>
+                    <div class="testimonial__author-title">Directora de Ventas, Inmobiliaria Futuro</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="col">
+              <div class="testimonial">
+                <div class="testimonial__content">
+                  "La integración de Maia en nuestra plataforma fue sorprendentemente rápida. En una semana ya estábamos viendo resultados. El soporte del equipo ha sido excepcional, siempre atentos a nuestras necesidades."
+                </div>
+                <div class="testimonial__author">
+                  <img src="@/assets/testimonial2.jpg" alt="Roberto Fuentes" />
+                  <div>
+                    <div class="testimonial__author-name">Roberto Fuentes</div>
+                    <div class="testimonial__author-title">CEO, Propiedades Élite</div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        
-        <div class="testimonials__controls">
-          <button class="control-btn prev" @click="prevTestimonial" aria-label="Testimonio anterior">
-            <i class="fas fa-chevron-left"></i>
-          </button>
-          <div class="testimonials__dots">
-            <button 
-              v-for="(_, index) in testimonials" 
-              :key="index"
-              class="dot-btn"
-              :class="{ active: currentTestimonial === index }"
-              @click="goToTestimonial(index)"
-              :aria-label="`Ir al testimonio ${index + 1}`"
-            ></button>
-          </div>
-          <button class="control-btn next" @click="nextTestimonial" aria-label="Testimonio siguiente">
-            <i class="fas fa-chevron-right"></i>
-          </button>
-        </div>
       </div>
     </section>
-
-    <!-- Team Section -->
-    <section id="team" class="section team">
+    
+    <!-- Pricing Section -->
+    <section class="section section--light" id="pricing">
       <div class="container">
-        <div class="section__title">
-          <h2>Nuestro Equipo</h2>
-          <p>Conoce a los fundadores detrás de Maia</p>
+        <div class="section__header">
+          <h2 class="section__title">Planes y Precios</h2>
+          <p class="section__subtitle">
+            Elige el plan perfecto para tu negocio, desde pequeñas inmobiliarias hasta grandes corporaciones
+          </p>
         </div>
         
-        <div class="team__grid">
-          <div class="team-member" v-for="(member, index) in teamMembers" :key="index">
-            <div class="team-member__image">
-              <img :src="member.photo" :alt="member.name">
+        <div class="pricing">
+          <div class="row">
+            <div class="col">
+              <div class="card pricing-card">
+                <div class="card__icon">
+                  <i class="fas fa-home"></i>
+                </div>
+                <h3 class="card__title">Básico</h3>
+                <div class="pricing-price">
+                  <span class="pricing-amount">$40</span>
+                  <span class="pricing-period">/mes</span>
+                </div>
+                <ul class="pricing-features">
+                  <li>5 propiedades activas</li>
+                  <li>Asistente virtual estándar</li>
+                  <li>Análisis básico de usuarios</li>
+                  <li>Soporte por email</li>
+                </ul>
+                <button class="btn btn--primary btn--lg">Comenzar</button>
+              </div>
             </div>
-            <h3>{{ member.name }}</h3>
-            <p class="team-member__role">{{ member.role }}</p>
-            <p class="team-member__bio">{{ member.bio }}</p>
-            <div class="team-member__social">
-              <a 
-                v-for="(link, i) in member.social" 
-                :key="i" 
-                :href="link.url" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                :title="link.title"
-              >
-                <i :class="link.icon"></i>
-              </a>
+            
+            <div class="col">
+              <div class="card pricing-card pricing-card--featured">
+                <div class="card__icon">
+                  <i class="fas fa-building"></i>
+                </div>
+                <h3 class="card__title">Profesional</h3>
+                <div class="pricing-price">
+                  <span class="pricing-amount">$120</span>
+                  <span class="pricing-period">/mes</span>
+                </div>
+                <ul class="pricing-features">
+                  <li>20 propiedades activas</li>
+                  <li>Asistente virtual personalizado</li>
+                  <li>Análisis avanzado de usuarios</li>
+                  <li>Integración con CRM</li>
+                  <li>Soporte prioritario</li>
+                </ul>
+                <button class="btn btn--gradient btn--lg">Comenzar</button>
+              </div>
+            </div>
+            
+            <div class="col">
+              <div class="card pricing-card">
+                <div class="card__icon">
+                  <i class="fas fa-city"></i>
+                </div>
+                <h3 class="card__title">Empresarial</h3>
+                <div class="pricing-price">
+                  <span class="pricing-amount">$200</span>
+                  <span class="pricing-period">/mes</span>
+                </div>
+                <ul class="pricing-features">
+                  <li>Propiedades ilimitadas</li>
+                  <li>Asistente virtual totalmente personalizado</li>
+                  <li>Análisis predictivo</li>
+                  <li>Integraciones avanzadas</li>
+                  <li>Gestor de cuenta dedicado</li>
+                </ul>
+                <button class="btn btn--primary btn--lg">Contactar</button>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </section>
-
-    <!-- Call to Action Section -->
-    <section class="cta">
+    
+    <!-- CTA Section -->
+    <section class="section section--gradient cta-section">
       <div class="container">
-        <div class="cta__content">
-          <h2>¿Listo para transformar tu negocio inmobiliario?</h2>
-          <p>Únete a las inmobiliarias que ya están aprovechando el poder de la inteligencia artificial para vender más y mejor.</p>
-          <a href="#contact" class="btn btn-white">Contáctanos</a>
+        <div class="cta-content">
+          <h2 class="cta-title">¿Listo para revolucionar tu negocio inmobiliario?</h2>
+          <p class="cta-text">
+            Únete a las inmobiliarias que están marcando la diferencia con Maia.
+          </p>
+          <button class="btn btn--white btn--lg">Comenzar Ahora</button>
         </div>
       </div>
     </section>
-
-    <!-- AI Chat Widget -->
-    <AiChatWidget />
-  </main>
+  </div>
 </template>
 
-<script setup>
-import { ref, onMounted, onUnmounted } from 'vue';
-import AiChatWidget from '@/components/ui/AiChatWidget.vue';
-
-// Demo section
-const showDemoOverlay = ref(true);
-const demoIframe = ref(null);
-
-const startDemo = () => {
-  showDemoOverlay.value = false;
-};
-
-// Testimonials section
-const testimonials = [
-  {
-    quote: 'Maia ha revolucionado nuestra forma de vender propiedades. Nuestros clientes adoran la experiencia y hemos aumentado nuestras ventas en un 40% desde que implementamos la plataforma.',
-    name: 'Carlos Mendoza',
-    position: 'Director Comercial',
-    company: 'Inmobiliaria Futuro',
-    avatar: 'https://randomuser.me/api/portraits/men/32.jpg'
-  },
-  {
-    quote: 'La integración de IA con tours virtuales es exactamente lo que necesitábamos. Nuestros agentes pueden atender más clientes y el proceso de venta se ha acelerado significativamente.',
-    name: 'Ana Martínez',
-    position: 'CEO',
-    company: 'Propiedades Exclusivas',
-    avatar: 'https://randomuser.me/api/portraits/women/44.jpg'
-  },
-  {
-    quote: 'La calidad de los leads ha mejorado drásticamente. Ahora cuando un cliente nos contacta, ya conoce la propiedad y está mucho más cerca de tomar una decisión de compra.',
-    name: 'Roberto Sánchez',
-    position: 'Gerente de Ventas',
-    company: 'Grupo Inmobiliario Santiago',
-    avatar: 'https://randomuser.me/api/portraits/men/67.jpg'
-  }
-];
-
-const currentTestimonial = ref(0);
-const testimonialsSlider = ref(null);
-let autoplayInterval = null;
-
-const goToTestimonial = (index) => {
-  currentTestimonial.value = index;
-  updateSliderPosition();
-};
-
-const nextTestimonial = () => {
-  currentTestimonial.value = (currentTestimonial.value + 1) % testimonials.length;
-  updateSliderPosition();
-};
-
-const prevTestimonial = () => {
-  currentTestimonial.value = (currentTestimonial.value - 1 + testimonials.length) % testimonials.length;
-  updateSliderPosition();
-};
-
-const updateSliderPosition = () => {
-  if (testimonialsSlider.value) {
-    testimonialsSlider.value.style.transform = `translateX(-${currentTestimonial.value * 100}%)`;
-  }
-};
-
-const startAutoplay = () => {
-  autoplayInterval = setInterval(() => {
-    nextTestimonial();
-  }, 5000);
-};
-
-// Team section
-const teamMembers = [
-  {
-    name: 'Manuel Fernández',
-    role: 'CEO',
-    bio: 'Arquitecto, experto en VR y modelado 3D, profesor universitario.',
-    photo: 'https://media.licdn.com/dms/image/v2/D4E03AQFi2QfyPeH3sQ/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1700504903894?e=1746057600&v=beta&t=T2CmNrKmIqp0Rn1Vd3TLguv87GMRzwZbgf8iDDiblYw',
-    social: [
-      { icon: 'fab fa-linkedin', url: 'https://www.linkedin.com/in/manjofer/', title: 'LinkedIn' },
-      { icon: 'far fa-envelope', url: 'mailto:manuel@maiavr.cl', title: 'Enviar email' }
-    ]
-  },
-  {
-    name: 'Juan Pablo Rojas',
-    role: 'CTO',
-    bio: '10+ años en software, diseñó sistemas escalables para startups.',
-    photo: 'https://media.licdn.com/dms/image/v2/D4E03AQH2qkZrHLTaaA/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1706107499432?e=1746057600&v=beta&t=6TegZvoxBvFsN6uPjrwrqY-Zhb-Ra3mrIby415f14i4',
-    social: [
-      { icon: 'fab fa-linkedin', url: 'https://www.linkedin.com/in/juan-pablo-rojas-416157195/', title: 'LinkedIn' }
-    ]
-  },
-  {
-    name: 'Federico Antunovic',
-    role: 'CCO',
-    bio: 'MBA, 8+ años en ventas B2B, experiencia en consultoría inmobiliaria.',
-    photo: 'https://media.licdn.com/dms/image/v2/C4D03AQExEzpf2qxawQ/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1635413934306?e=1746057600&v=beta&t=DZsUsWBp3D5yciGIHNtxFH15bROc2GTBmQOzZ9ikR00',
-    social: [
-      { icon: 'far fa-calendar-alt', url: 'https://calendar.app.google/CjKqkYmZtZNg2jFb8', title: 'Agendar una reunión' },
-      { icon: 'fab fa-linkedin', url: 'https://www.linkedin.com/in/fantunovic/', title: 'LinkedIn' },
-      { icon: 'far fa-envelope', url: 'mailto:fede@maiavr.cl', title: 'Enviar email' }
-    ]
-  }
-];
-
-onMounted(() => {
-  startAutoplay();
-});
-
-onUnmounted(() => {
-  if (autoplayInterval) {
-    clearInterval(autoplayInterval);
-  }
-});
+<script>
+export default {
+  name: 'HomeView',
+}
 </script>
 
 <style lang="scss" scoped>
-// Hero Section
+@import "@/styles/variables.scss";
+
+.home {
+  width: 100%;
+}
+
+// Hero section
 .hero {
-  position: relative;
-  padding: 80px 0 $spacing-3xl;
-  background-color: $light;
+  padding: $spacing-3xl 0;
   overflow: hidden;
+  position: relative;
   
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1073&q=80') no-repeat center center;
-    background-size: cover;
-    opacity: 0.05;
-    z-index: -1;
-  }
-  
-  &::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(135deg, rgba($primary, 0.05) 0%, rgba($light, 0) 100%);
-    z-index: -1;
+  @media (max-width: $breakpoint-md) {
+    padding: $spacing-2xl 0;
   }
   
   .container {
     display: flex;
-    flex-direction: column;
     align-items: center;
-    max-width: 1400px;
+    gap: $spacing-3xl;
     
-    @media (min-width: $breakpoint-lg) {
-      flex-direction: row;
-      justify-content: space-between;
-      align-items: center;
-      gap: $spacing-xl;
+    @media (max-width: $breakpoint-lg) {
+      flex-direction: column;
+      gap: $spacing-2xl;
     }
   }
   
   &__content {
-    text-align: center;
-    margin-bottom: $spacing-2xl;
-    animation: fadeIn 0.8s ease-out;
+    flex: 1;
+    max-width: 600px;
     
-    @media (min-width: $breakpoint-lg) {
-      text-align: left;
-      flex: 1;
-      margin-bottom: 0;
-      padding-right: $spacing-xl;
-      max-width: 45%;
+    @media (max-width: $breakpoint-lg) {
+      text-align: center;
+      max-width: 100%;
+    }
+  }
+  
+  &__title {
+    font-size: 3.5rem;
+    margin-bottom: $spacing-lg;
+    line-height: 1.2;
+    
+    @media (max-width: $breakpoint-md) {
+      font-size: 2.5rem;
     }
     
-    h1 {
-      margin-bottom: $spacing-lg;
-      font-weight: $font-weight-bold;
-      color: $dark;
-      font-size: 3rem;
-      line-height: 1.1;
-      background: linear-gradient(to right, $primary, $primary-dark);
+    .highlight {
+      background: $primary-gradient;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+      position: relative;
+      display: inline-block;
       
-      @media (min-width: $breakpoint-lg) {
-        font-size: 3.5rem;
-      }
-    }
-    
-    p {
-      font-size: 1.5rem;
-      margin-bottom: $spacing-xl;
-      color: $gray-700;
-      
-      @media (min-width: $breakpoint-lg) {
-        margin-left: 0;
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: 5px;
+        left: 0;
+        width: 100%;
+        height: 8px;
+        background: rgba($primary, 0.1);
+        z-index: -1;
+        border-radius: $border-radius-pill;
       }
     }
   }
   
-  &__buttons {
+  &__subtitle {
+    font-size: 1.25rem;
+    margin-bottom: $spacing-xl;
+    color: rgba($dark, 0.7);
+    line-height: 1.6;
+  }
+  
+  &__actions {
+    margin-bottom: $spacing-xl;
     display: flex;
     gap: $spacing-md;
-    justify-content: center;
     
-    @media (min-width: $breakpoint-lg) {
-      justify-content: flex-start;
-    }
-    
-    .btn {
-      font-size: 1.1rem;
-      padding: $spacing-sm $spacing-lg;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      
-      &:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
-      }
-    }
-  }
-  
-  &__demo {
-    width: 100%;
-    max-width: 700px;
-    border-radius: $border-radius-lg;
-    overflow: hidden;
-    box-shadow: $shadow-lg, 0 10px 30px rgba($primary, 0.1);
-    transform: translateY(0);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    animation: fadeIn 0.8s ease-out 0.2s backwards;
-    
-    &:hover {
-      transform: translateY(-5px);
-      box-shadow: $shadow-lg, 0 15px 35px rgba($primary, 0.15);
-    }
-    
-    @media (min-width: $breakpoint-lg) {
-      flex: 1;
-      max-width: 55%;
-    }
-    
-    .demo__iframe-container {
-      position: relative;
-      width: 100%;
-      padding-bottom: 56.25%; // 16:9 aspect ratio
-      height: 0;
-      border-radius: $border-radius-lg;
-      overflow: hidden;
-    }
-    
-    .demo__iframe {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      border: none;
-    }
-    
-    .demo__overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(to bottom right, rgba($primary, 0.8), rgba($dark, 0.8));
-      display: flex;
+    @media (max-width: $breakpoint-md) {
       flex-direction: column;
       align-items: center;
-      justify-content: center;
-      color: white;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      
-      &:hover {
-        background: linear-gradient(to bottom right, rgba($primary, 0.9), rgba($dark, 0.9));
-        
-        .overlay__content {
-          transform: scale(1.05);
-        }
-      }
-      
-      .overlay__content {
-        font-size: 2.5rem;
-        margin-bottom: $spacing-lg;
-        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-        transition: transform 0.3s ease;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        
-        i {
-          font-size: 4rem;
-          margin-bottom: $spacing-md;
-          animation: pulse 2s infinite;
-        }
-      }
     }
-  }
-}
-
-@keyframes pulse {
-  0% {
-    transform: scale(1);
-    opacity: 1;
-  }
-  50% {
-    transform: scale(1.1);
-    opacity: 0.8;
-  }
-  100% {
-    transform: scale(1);
-    opacity: 1;
-  }
-}
-
-// Features Section
-.features {
-  &__grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: $spacing-xl;
-    
-    @media (min-width: $breakpoint-md) {
-      grid-template-columns: repeat(2, 1fr);
-    }
-    
-    @media (min-width: $breakpoint-lg) {
-      grid-template-columns: repeat(3, 1fr);
-    }
-  }
-}
-
-.feature-card {
-  background-color: white;
-  border-radius: $border-radius-lg;
-  padding: $spacing-xl;
-  box-shadow: $shadow;
-  transition: $transition-base;
-  text-align: center;
-  
-  &:hover {
-    transform: translateY(-10px);
-    box-shadow: $shadow-lg;
-  }
-  
-  &__icon {
-    width: 70px;
-    height: 70px;
-    border-radius: 50%;
-    background: $gradient-1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto $spacing-lg;
-    
-    i {
-      font-size: 1.75rem;
-      color: white;
-    }
-  }
-  
-  h3 {
-    margin-bottom: $spacing-md;
-    font-weight: $font-weight-semibold;
-  }
-  
-  p {
-    color: $gray-600;
-    line-height: 1.6;
-    margin: 0;
-  }
-}
-
-// Testimonials Section
-.testimonials {
-  background-color: $light;
-  
-  &__slider {
-    display: flex;
-    transition: transform 0.5s ease;
-    margin-bottom: $spacing-xl;
-  }
-  
-  &__controls {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: $spacing-md;
-  }
-  
-  &__dots {
-    display: flex;
-    gap: $spacing-xs;
-    
-    .dot-btn {
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      background-color: $gray-300;
-      border: none;
-      cursor: pointer;
-      transition: $transition-base;
-      
-      &.active {
-        background-color: $primary;
-        transform: scale(1.2);
-      }
-    }
-  }
-  
-  .control-btn {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background-color: white;
-    border: 1px solid $gray-300;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: $transition-base;
-    
-    &:hover {
-      background-color: $primary;
-      color: white;
-      border-color: $primary;
-    }
-  }
-}
-
-.testimonial-card {
-  flex: 0 0 100%;
-  
-  &__content {
-    background-color: white;
-    border-radius: $border-radius-lg;
-    padding: $spacing-xl;
-    box-shadow: $shadow;
-    
-    p {
-      font-size: 1.1rem;
-      line-height: 1.6;
-      margin-bottom: $spacing-lg;
-      font-style: italic;
-      color: $gray-700;
-    }
-  }
-  
-  &__author {
-    display: flex;
-    align-items: center;
-    
-    .author-avatar {
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      overflow: hidden;
-      margin-right: $spacing-md;
-      
-      img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
-    }
-    
-    .author-info {
-      h4 {
-        margin: 0 0 $spacing-xs;
-        font-weight: $font-weight-semibold;
-      }
-      
-      p {
-        margin: 0;
-        font-size: 0.9rem;
-        color: $gray-600;
-        font-style: normal;
-      }
-    }
-  }
-}
-
-// Team Section
-.team {
-  &__grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: $spacing-xl;
-    
-    @media (min-width: $breakpoint-sm) {
-      grid-template-columns: repeat(2, 1fr);
-    }
-    
-    @media (min-width: $breakpoint-lg) {
-      grid-template-columns: repeat(3, 1fr);
-    }
-  }
-}
-
-.team-member {
-  background-color: white;
-  border-radius: $border-radius-lg;
-  padding: $spacing-xl;
-  box-shadow: $shadow;
-  text-align: center;
-  transition: $transition-base;
-  
-  &:hover {
-    transform: translateY(-10px);
-    box-shadow: $shadow-lg;
   }
   
   &__image {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    overflow: hidden;
-    margin: 0 auto $spacing-lg;
-    border: 3px solid $primary;
+    flex: 1;
     
     img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
+      max-width: 100%;
+      border-radius: $border-radius-lg;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
     }
   }
   
-  h3 {
-    margin-bottom: $spacing-xs;
-    font-weight: $font-weight-semibold;
-  }
-  
-  &__role {
-    color: $primary;
-    font-weight: $font-weight-medium;
-    margin-bottom: $spacing-md;
-  }
-  
-  &__bio {
-    color: $gray-600;
-    margin-bottom: $spacing-lg;
-    line-height: 1.6;
-  }
-  
-  &__social {
+  &__stats {
     display: flex;
-    justify-content: center;
-    gap: $spacing-md;
+    gap: $spacing-xl;
+    margin-top: $spacing-2xl;
     
-    a {
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      background-color: $gray-100;
-      display: flex;
-      align-items: center;
+    @media (max-width: $breakpoint-md) {
       justify-content: center;
-      color: $gray-700;
-      transition: $transition-base;
-      
-      &:hover {
-        background-color: $primary;
-        color: white;
-        transform: translateY(-3px);
-      }
+      flex-wrap: wrap;
+      gap: $spacing-lg;
     }
   }
 }
 
-// Call to Action Section
-.cta {
-  background: $gradient-1;
-  color: white;
-  padding: $spacing-xl 0;
-  text-align: center;
+// Stats
+.stat {
+  display: flex;
+  flex-direction: column;
   
-  &__content {
-    max-width: 800px;
-    margin: 0 auto;
+  &__number {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: $primary;
+    line-height: 1;
+  }
+  
+  &__label {
+    font-size: 1rem;
+    color: rgba($dark, 0.7);
+    margin-top: 5px;
+  }
+}
+
+// Features
+.features {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-2xl;
+}
+
+// Testimonials
+.testimonials {
+  .row {
+    gap: $spacing-xl;
     
-    h2 {
-      font-size: 2.5rem;
-      margin-bottom: $spacing-md;
+    @media (max-width: $breakpoint-md) {
+      gap: $spacing-lg;
+    }
+  }
+}
+
+// Pricing cards
+.pricing {
+  .row {
+    gap: $spacing-lg;
+    
+    @media (max-width: $breakpoint-lg) {
+      gap: $spacing-xl;
+    }
+  }
+}
+
+.pricing-card {
+  text-align: center;
+  padding: $spacing-xl;
+  height: auto;
+  
+  &--featured {
+    transform: translateY(-20px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba($primary, 0.1);
+    position: relative;
+    
+    &::before {
+      content: 'Más popular';
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: $primary-gradient;
+      color: white;
+      padding: 5px 15px;
+      border-radius: 30px;
+      font-size: 0.8rem;
+      font-weight: 600;
     }
     
-    p {
-      font-size: 1.2rem;
-      margin-bottom: $spacing-lg;
-      opacity: 0.9;
+    @media (max-width: $breakpoint-lg) {
+      transform: none;
     }
+  }
+  
+  .card__icon {
+    margin: 0 auto $spacing-md;
+  }
+  
+  .card__title {
+    margin-bottom: $spacing-sm;
+  }
+}
+
+.pricing-price {
+  margin-bottom: $spacing-lg;
+  
+  .pricing-amount {
+    font-size: 3rem;
+    font-weight: 700;
+    color: $primary;
+  }
+  
+  .pricing-period {
+    font-size: 1.1rem;
+    color: rgba($dark, 0.6);
+  }
+}
+
+.pricing-features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 $spacing-xl;
+  
+  li {
+    padding: $spacing-xs 0;
+    color: rgba($dark, 0.7);
     
-    .btn-white {
-      background-color: white;
+    &::before {
+      content: '✓';
       color: $primary;
-      
-      &:hover {
-        background-color: rgba(255, 255, 255, 0.9);
-      }
+      margin-right: 8px;
+      font-weight: bold;
     }
+  }
+}
+
+// CTA Section
+.cta-section {
+  text-align: center;
+  padding: $spacing-3xl 0;
+  
+  .cta-content {
+    max-width: 700px;
+    margin: 0 auto;
+  }
+  
+  .cta-title {
+    font-size: 2.5rem;
+    color: white;
+    margin-bottom: $spacing-md;
+    
+    @media (max-width: $breakpoint-md) {
+      font-size: 2rem;
+    }
+  }
+  
+  .cta-text {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: $spacing-xl;
   }
 }
 </style> 

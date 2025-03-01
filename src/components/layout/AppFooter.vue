@@ -1,194 +1,296 @@
 <template>
   <footer class="app-footer">
     <div class="container">
-      <div class="footer-content">
-        <div class="footer-about">
+      <div class="footer-top">
+        <div class="footer-brand">
           <router-link to="/" class="footer-logo">
-            <div class="logo-container">
-              <img src="@/assets/logomaia.png" alt="Maia Logo" class="footer-logo-image">
-              <span class="footer-logo-text">Maia</span>
-            </div>
+            <img src="@/assets/logomaia.png" alt="Maia AI Logo" />
+            <span>Maia<span class="accent">AI</span></span>
           </router-link>
-          <p>Transformamos la venta de propiedades en una experiencia de compra digital única, interactiva, personalizada y simple, acelerando la toma de decisiones.</p>
-          <div class="social-links">
-            <a href="#" class="social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-            <a href="#" class="social-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-            <a href="#" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-            <a href="#" class="social-link" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          <p class="footer-tagline">
+            Transformando la industria inmobiliaria con inteligencia artificial
+          </p>
+          <div class="footer-social">
+            <a href="https://www.linkedin.com/company/maiavr/" target="_blank" aria-label="LinkedIn">
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a href="https://twitter.com/maiavr_ai" target="_blank" aria-label="Twitter">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a href="https://www.instagram.com/maiavr.ai/" target="_blank" aria-label="Instagram">
+              <i class="fab fa-instagram"></i>
+            </a>
           </div>
         </div>
         
         <div class="footer-links">
-          <h4>Empresa</h4>
-          <ul>
-            <li><router-link to="/about">Sobre Nosotros</router-link></li>
-            <li><router-link to="/#team">Nuestro Equipo</router-link></li>
-            <li><router-link to="/careers">Carreras</router-link></li>
-            <li><router-link to="/blog">Blog</router-link></li>
-          </ul>
-        </div>
-        
-        <div class="footer-links">
-          <h4>Producto</h4>
-          <ul>
-            <li><router-link to="/#features">Características</router-link></li>
-            <li><router-link to="/pricing">Precios</router-link></li>
-            <li><router-link to="/#demo">Demo</router-link></li>
-            <li><router-link to="/api">API</router-link></li>
-          </ul>
-        </div>
-        
-        <div class="footer-links">
-          <h4>Soporte</h4>
-          <ul>
-            <li><router-link to="/help">Centro de Ayuda</router-link></li>
-            <li><router-link to="/docs">Documentación</router-link></li>
-            <li><router-link to="/contact">Contacto</router-link></li>
-            <li><router-link to="/terms">Términos de Servicio</router-link></li>
-          </ul>
+          <div class="footer-links-col">
+            <h4>Producto</h4>
+            <ul>
+              <li><a href="#pricing">Planes</a></li>
+              <li><a href="#">Demo</a></li>
+              <li><a href="#">Integraciones</a></li>
+              <li><a href="#">API</a></li>
+            </ul>
+          </div>
+          
+          <div class="footer-links-col">
+            <h4>Compañía</h4>
+            <ul>
+              <li><router-link to="/about">Nosotros</router-link></li>
+              <li><router-link to="/blog">Blog</router-link></li>
+              <li><a href="#">Carreras</a></li>
+              <li><a href="#">Prensa</a></li>
+            </ul>
+          </div>
+          
+          <div class="footer-links-col">
+            <h4>Soporte</h4>
+            <ul>
+              <li><a href="#">Centro de Ayuda</a></li>
+              <li><router-link to="/contact">Contacto</router-link></li>
+              <li><a href="#">Documentación</a></li>
+              <li><a href="#">Estado del Sistema</a></li>
+            </ul>
+          </div>
+          
+          <div class="footer-links-col">
+            <h4>Legal</h4>
+            <ul>
+              <li><a href="#">Términos de Servicio</a></li>
+              <li><a href="#">Privacidad</a></li>
+              <li><a href="#">Cookies</a></li>
+            </ul>
+          </div>
         </div>
       </div>
       
       <div class="footer-bottom">
-        <p>&copy; {{ currentYear }} Maia. Todos los derechos reservados.</p>
+        <p class="copyright">
+          &copy; {{ currentYear }} Maia AI. Todos los derechos reservados.
+        </p>
+        <div class="footer-bottom-links">
+          <a href="mailto:info@maiavr.cl">info@maiavr.cl</a>
+          <a href="tel:+56912345678">+56 9 1234 5678</a>
+        </div>
       </div>
     </div>
+    
+    <div class="footer-shape"></div>
   </footer>
 </template>
 
-<script setup>
-import { computed } from 'vue';
-
-const currentYear = computed(() => new Date().getFullYear());
+<script>
+export default {
+  name: 'AppFooter',
+  
+  computed: {
+    currentYear() {
+      return new Date().getFullYear();
+    }
+  }
+}
 </script>
 
 <style lang="scss" scoped>
+@import '@/styles/variables.scss';
+
 .app-footer {
+  position: relative;
   background-color: white;
-  color: $dark;
   padding: $spacing-3xl 0 $spacing-xl;
-  margin-top: auto;
-  box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.05);
+  color: $dark;
+  overflow: hidden;
   
-  .footer-content {
-    display: grid;
-    grid-template-columns: repeat(1, 1fr);
+  .container {
+    position: relative;
+    z-index: 1;
+  }
+}
+
+// Footer shape background
+.footer-shape {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 50%;
+  height: 70%;
+  background: rgba($primary, 0.02);
+  border-radius: 100% 0 0 0;
+  z-index: 0;
+}
+
+// Footer top section with logo and links
+.footer-top {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: $spacing-2xl;
+  gap: $spacing-2xl;
+  
+  @media (max-width: $breakpoint-md) {
+    flex-direction: column;
     gap: $spacing-xl;
-    margin-bottom: $spacing-2xl;
-    
-    @media (min-width: $breakpoint-sm) {
-      grid-template-columns: repeat(2, 1fr);
-    }
-    
-    @media (min-width: $breakpoint-lg) {
-      grid-template-columns: 2fr 1fr 1fr 1fr;
-    }
+  }
+}
+
+// Brand section with logo
+.footer-brand {
+  flex: 0 0 25%;
+  
+  @media (max-width: $breakpoint-lg) {
+    flex: 0 0 100%;
+  }
+}
+
+.footer-logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  margin-bottom: $spacing-md;
+  color: $dark;
+  
+  img {
+    width: 40px;
+    height: 40px;
+    margin-right: $spacing-sm;
   }
   
-  .footer-about {
-    .footer-logo {
-      display: flex;
-      align-items: center;
-      margin-bottom: $spacing-md;
-      text-decoration: none;
+  span {
+    font-size: 1.6rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    
+    .accent {
+      color: $primary;
+    }
+  }
+}
+
+.footer-tagline {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: rgba($dark, 0.7);
+  margin-bottom: $spacing-lg;
+}
+
+.footer-social {
+  display: flex;
+  gap: $spacing-sm;
+  
+  a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: rgba($primary, 0.1);
+    color: $primary;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+    
+    &:hover {
+      background-color: $primary;
       color: white;
-      
-      .logo-container {
-        display: flex;
-        align-items: center;
-        
-        .footer-logo-image {
-          height: 40px;
-          margin-right: $spacing-sm;
-        }
-        
-        .footer-logo-text {
-          font-size: 1.5rem;
-          font-weight: $font-weight-bold;
-        }
-      }
+      transform: translateY(-3px);
     }
+  }
+}
+
+// Links section
+.footer-links {
+  flex: 1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: $spacing-xl;
+  
+  @media (max-width: $breakpoint-lg) {
+    gap: $spacing-lg;
+  }
+  
+  @media (max-width: $breakpoint-md) {
+    width: 100%;
+  }
+}
+
+.footer-links-col {
+  flex: 1;
+  min-width: 140px;
+  
+  @media (max-width: $breakpoint-sm) {
+    flex: 0 0 45%;
+    margin-bottom: $spacing-lg;
+  }
+  
+  h4 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: $spacing-md;
+    color: $dark;
+  }
+  
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
     
-    p {
-      margin-bottom: $spacing-lg;
-      opacity: 0.8;
-      line-height: 1.6;
-    }
-    
-    .social-links {
-      display: flex;
-      gap: $spacing-md;
+    li {
+      margin-bottom: $spacing-xs;
       
-      .social-link {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 36px;
-        height: 36px;
-        border-radius: 50%;
-        background-color: rgba(255, 255, 255, 0.1);
-        color: white;
-        transition: $transition-base;
+      a {
+        color: rgba($dark, 0.7);
+        text-decoration: none;
+        transition: all 0.2s ease;
+        font-size: 0.95rem;
         
         &:hover {
-          background-color: $primary;
-          transform: translateY(-3px);
+          color: $primary;
+          text-decoration: underline;
         }
       }
     }
   }
+}
+
+// Footer bottom with copyright
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: $spacing-lg;
+  border-top: 1px solid rgba($dark, 0.08);
   
-  .footer-links {
-    h4 {
+  @media (max-width: $breakpoint-md) {
+    flex-direction: column;
+    gap: $spacing-md;
+    align-items: flex-start;
+  }
+}
+
+.copyright {
+  color: rgba($dark, 0.6);
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.footer-bottom-links {
+  display: flex;
+  gap: $spacing-lg;
+  
+  a {
+    color: rgba($dark, 0.7);
+    text-decoration: none;
+    transition: all 0.2s ease;
+    font-size: 0.9rem;
+    
+    &:hover {
       color: $primary;
-      margin-bottom: $spacing-lg;
-      font-size: 1.2rem;
-      position: relative;
-      display: inline-block;
-      
-      &::after {
-        content: '';
-        position: absolute;
-        bottom: -8px;
-        left: 0;
-        width: 30px;
-        height: 2px;
-        background: $gradient-1;
-      }
-    }
-    
-    ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      
-      li {
-        margin-bottom: $spacing-sm;
-        
-        a {
-          color: $gray-600;
-          text-decoration: none;
-          transition: $transition-base;
-          
-          &:hover {
-            color: $primary;
-            padding-left: $spacing-xs;
-          }
-        }
-      }
     }
   }
   
-  .footer-bottom {
-    border-top: 1px solid rgba($gray-300, 0.3);
-    padding-top: $spacing-lg;
-    text-align: center;
-    
-    p {
-      margin: 0;
-      opacity: 0.6;
-      font-size: 0.9rem;
-    }
+  @media (max-width: $breakpoint-sm) {
+    flex-direction: column;
+    gap: $spacing-xs;
   }
 }
 </style> 

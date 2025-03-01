@@ -1,567 +1,390 @@
 <template>
-  <div class="ai-chat-widget" :class="{ 'is-active': isActive, 'is-typing': isTyping }">
+  <div 
+    class="ai-chat-widget" 
+    ref="chatWidgetRef"
+    :class="{
+      'is-active': isActive,
+      'is-inactive': !isActive && !isMobile,
+      'is-mobile': isMobile
+    }"
+  >
     <!-- Mobile trigger button (visible only on mobile) -->
-    <div class="ai-chat-widget__mobile-trigger" @click="setActive(true)">
-      <img src="@/assets/logomaia.png" alt="Maia AI" class="mobile-trigger-logo">
+    <div 
+      class="ai-chat-widget__mobile-trigger" 
+      v-if="isMobile" 
+      @click="toggleChat"
+    >
+      <img src="@/assets/logomaia.png" alt="Maia AI" />
     </div>
-    
-    <!-- Always visible chat panel -->
-    <div class="ai-chat-widget__panel" @mouseenter="setActive(true)">
-      <!-- Logo only header - removed text -->
-      <div class="ai-chat-widget__header" v-show="isActive">
-        <div class="ai-chat-widget__title">
-          <img src="@/assets/logomaia.png" alt="Maia AI" class="ai-chat-widget__header-logo">
+
+    <!-- Chat panel (visible on desktop, hidden on mobile unless active) -->
+    <div 
+      class="ai-chat-widget__panel"
+      v-show="!isMobile || (isMobile && isActive)"
+    >
+      <div class="ai-chat-widget__header">
+        <img src="@/assets/logomaia.png" alt="Maia AI" />
+      </div>
+      
+      <div class="ai-chat-widget__messages">
+        <div class="ai-chat-widget__message ai-chat-widget__message--ai">
+          ¡Hola! Soy Maia, tu asistente virtual. ¿En qué puedo ayudarte hoy?
         </div>
       </div>
       
-      <div class="ai-chat-widget__messages" ref="messagesContainer" v-show="isActive">
-        <div 
-          v-for="(message, index) in messages" 
-          :key="index" 
-          class="ai-chat-widget__message"
-          :class="{ 'ai-message': message.sender === 'ai', 'user-message': message.sender === 'user' }"
-        >
-          <div class="message-content">
-            <p v-html="formatMessage(message.text)"></p>
-            <span class="message-time">{{ formatTime(message.timestamp) }}</span>
-          </div>
-        </div>
-        
-        <div v-if="isTyping" class="ai-chat-widget__message ai-message typing">
-          <div class="typing-indicator">
-            <span></span>
-            <span></span>
-            <span></span>
-          </div>
-        </div>
-      </div>
-      
-      <div class="ai-chat-widget__suggestions" v-if="suggestions.length > 0 && !hasUserSentMessage && isActive">
-        <button 
-          v-for="(suggestion, index) in suggestions" 
-          :key="index"
-          class="suggestion-btn"
-          @click="sendMessage(suggestion)"
-        >
-          {{ suggestion }}
-        </button>
-      </div>
-      
-      <div class="ai-chat-widget__input" v-show="isActive">
+      <div class="ai-chat-widget__input">
         <input 
           type="text" 
-          v-model="userInput" 
-          placeholder="Escribe tu mensaje..." 
-          @keyup.enter="sendUserMessage"
-        >
-        <button class="send-btn" @click="sendUserMessage" :disabled="!userInput.trim()">
+          placeholder="Escribe tu mensaje..."
+          v-model="userMessage"
+          @keyup.enter="sendMessage"
+        />
+        <button @click="sendMessage">
           <i class="fas fa-paper-plane"></i>
         </button>
       </div>
-      
-      <!-- Minimized bubble view (visible only on desktop) - removed logo -->
-      <div class="ai-chat-widget__bubble" v-show="!isActive" @click="setActive(true)">
-        <!-- Logo removed from here -->
-      </div>
+    </div>
+
+    <!-- Minimized bubble view (hidden on mobile) -->
+    <div 
+      class="ai-chat-widget__bubble"
+      v-if="!isMobile && !isActive"
+      @click="toggleChat"
+    >
+      <img src="@/assets/logomaia.png" alt="Maia AI" />
     </div>
   </div>
 </template>
 
-<script setup>
-import { ref, computed, onMounted, nextTick, watch, onUnmounted } from 'vue';
-
-const isActive = ref(false);
-const userInput = ref('');
-const messages = ref([]);
-const isTyping = ref(false);
-const messagesContainer = ref(null);
-const hasUserSentMessage = ref(false);
-const inactivityTimer = ref(null);
-
-const suggestions = [
-  '¿Cómo funciona Maia?',
-  '¿Cuáles son los planes disponibles?',
-  '¿Puedo probar una demo?',
-  '¿Cómo integro Maia en mi inmobiliaria?'
-];
-
-// Set the widget to inactive state immediately when clicking outside
-const handleClickOutside = (event) => {
-  // Check if the click is outside the chat widget
-  if (isActive.value && !event.target.closest('.ai-chat-widget__panel') && 
-      !event.target.closest('.ai-chat-widget__mobile-trigger')) {
-    isActive.value = false;
-  }
-};
-
-// Set the widget to active state
-const setActive = (showInitialMessage = false) => {
-  isActive.value = true;
-  clearTimeout(inactivityTimer.value);
+<script>
+export default {
+  name: 'AiChatWidget',
   
-  // If first time activating and no messages, add initial message
-  if (showInitialMessage && messages.value.length === 0) {
-    addMessage('¡Hola! Soy Maia, tu asistente virtual para la venta inmobiliaria. ¿En qué puedo ayudarte hoy?', 'ai');
-  }
-};
-
-// Set the widget to inactive state - removed delay
-const setInactive = () => {
-  // Only set inactive if user isn't typing and there's no ongoing conversation
-  if (!userInput.value.trim() && !isTyping.value) {
-    isActive.value = false;
-  }
-};
-
-const sendUserMessage = () => {
-  if (!userInput.value.trim()) return;
-  
-  const message = userInput.value;
-  userInput.value = '';
-  
-  addMessage(message, 'user');
-  hasUserSentMessage.value = true;
-  
-  // Simulate AI typing
-  isTyping.value = true;
-  
-  // Simulate AI response time (1-3 seconds)
-  setTimeout(() => {
-    isTyping.value = false;
-    respondToMessage(message);
-  }, 1000 + Math.random() * 2000);
-};
-
-const sendMessage = (text) => {
-  addMessage(text, 'user');
-  hasUserSentMessage.value = true;
-  
-  // Simulate AI typing
-  isTyping.value = true;
-  
-  // Simulate AI response time (1-3 seconds)
-  setTimeout(() => {
-    isTyping.value = false;
-    respondToMessage(text);
-  }, 1000 + Math.random() * 2000);
-};
-
-const addMessage = (text, sender) => {
-  messages.value.push({
-    text,
-    sender,
-    timestamp: new Date()
-  });
-  
-  // Scroll to bottom on next tick
-  nextTick(() => {
-    if (messagesContainer.value) {
-      messagesContainer.value.scrollTop = messagesContainer.value.scrollHeight;
+  data() {
+    return {
+      isActive: false,
+      isMobile: false,
+      userMessage: '',
+      messages: [],
+      inactivityTimer: null
     }
-  });
-};
-
-const respondToMessage = (message) => {
-  const lowerMessage = message.toLowerCase();
+  },
   
-  // Simple response logic based on keywords
-  if (lowerMessage.includes('hola') || lowerMessage.includes('buenos días') || lowerMessage.includes('buenas tardes')) {
-    addMessage('¡Hola! ¿En qué puedo ayudarte hoy?', 'ai');
-  } 
-  else if (lowerMessage.includes('cómo funciona') || lowerMessage.includes('como funciona')) {
-    addMessage('Maia utiliza inteligencia artificial para guiar a los compradores en recorridos virtuales de propiedades. Nuestro sistema analiza las preferencias del cliente y destaca las características más relevantes para ellos, acelerando el proceso de decisión.', 'ai');
-  }
-  else if (lowerMessage.includes('planes') || lowerMessage.includes('precios') || lowerMessage.includes('precio')) {
-    addMessage('Ofrecemos tres planes:<br><br><strong>Básico:</strong> $40/mes - 5 propiedades activas<br><strong>Profesional:</strong> $120/mes - 20 propiedades activas<br><strong>Empresarial:</strong> $200/mes - Propiedades ilimitadas<br><br>Puedes ver más detalles en nuestra <a href="/pricing">página de precios</a>.', 'ai');
-  }
-  else if (lowerMessage.includes('demo') || lowerMessage.includes('prueba')) {
-    addMessage('¡Claro! Puedes ver una demostración de Maia en acción directamente en nuestra página principal. Simplemente haz clic en "Comenzar Demo" en la sección superior.', 'ai');
-  }
-  else if (lowerMessage.includes('integr') || lowerMessage.includes('implementa')) {
-    addMessage('Integrar Maia en tu inmobiliaria es muy sencillo. Nuestro equipo te guiará en todo el proceso, desde la configuración inicial hasta la capacitación de tu personal. Además, ofrecemos soporte continuo para asegurar que obtengas el máximo beneficio de nuestra plataforma.', 'ai');
-  }
-  else if (lowerMessage.includes('contacto') || lowerMessage.includes('hablar') || lowerMessage.includes('asesor')) {
-    addMessage('Por supuesto, puedes contactar con nuestro equipo a través de:<br><br>Email: <a href="mailto:info@maiavr.cl">info@maiavr.cl</a><br>O agendar una reunión con nuestro CCO Federico: <a href="https://calendar.app.google/CjKqkYmZtZNg2jFb8" target="_blank">Calendario</a>', 'ai');
-  }
-  else {
-    addMessage('Gracias por tu mensaje. ¿Te gustaría saber más sobre cómo Maia puede ayudar a tu inmobiliaria a vender propiedades más rápido? O si prefieres, puedes contactar directamente con nuestro equipo.', 'ai');
-  }
-};
-
-const formatTime = (timestamp) => {
-  return new Intl.DateTimeFormat('es', {
-    hour: '2-digit',
-    minute: '2-digit'
-  }).format(timestamp);
-};
-
-const formatMessage = (text) => {
-  // Convert URLs to links
-  return text.replace(
-    /(https?:\/\/[^\s]+)/g, 
-    '<a href="$1" target="_blank">$1</a>'
-  );
-};
-
-// Auto-scroll when new messages are added
-watch(messages, () => {
-  nextTick(() => {
-    if (messagesContainer.value) {
-      messagesContainer.value.scrollTop = messagesContainer.value.scrollHeight;
+  mounted() {
+    this.checkDeviceType();
+    window.addEventListener('resize', this.checkDeviceType);
+    document.addEventListener('click', this.handleClickOutside);
+  },
+  
+  beforeUnmount() {
+    window.removeEventListener('resize', this.checkDeviceType);
+    document.removeEventListener('click', this.handleClickOutside);
+    if (this.inactivityTimer) {
+      clearTimeout(this.inactivityTimer);
     }
-  });
-});
-
-// Initialize with welcome message when component is mounted
-onMounted(() => {
-  // Show initial message after a short delay
-  setTimeout(() => {
-    setActive(true);
-  }, 1500);
+  },
   
-  // Add click event listener to document for detecting clicks outside
-  document.addEventListener('click', handleClickOutside);
-});
-
-// Clean up when component is unmounted
-onUnmounted(() => {
-  clearTimeout(inactivityTimer.value);
-  document.removeEventListener('click', handleClickOutside);
-});
+  methods: {
+    checkDeviceType() {
+      this.isMobile = window.innerWidth < 768;
+    },
+    
+    toggleChat() {
+      this.isActive = !this.isActive;
+      this.resetInactivityTimer();
+    },
+    
+    resetInactivityTimer() {
+      if (this.inactivityTimer) {
+        clearTimeout(this.inactivityTimer);
+      }
+      
+      this.inactivityTimer = setTimeout(() => {
+        if (!this.isMobile) {
+          this.isActive = false;
+        }
+      }, 5000);
+    },
+    
+    handleClickOutside(event) {
+      const chatWidget = this.$refs.chatWidgetRef;
+      if (chatWidget && !chatWidget.contains(event.target) && this.isActive) {
+        this.isActive = false;
+        // Don't completely hide the bubble, just make it inactive
+      }
+    },
+    
+    sendMessage() {
+      if (!this.userMessage.trim()) return;
+      
+      // Add user message
+      this.messages.push({
+        text: this.userMessage,
+        isUser: true
+      });
+      
+      // Clear input
+      this.userMessage = '';
+      
+      // Simulate AI response (in a real app, you would call your API here)
+      setTimeout(() => {
+        this.messages.push({
+          text: 'Gracias por tu mensaje. Estoy procesando tu consulta.',
+          isUser: false
+        });
+      }, 1000);
+      
+      this.resetInactivityTimer();
+    }
+  }
+}
 </script>
 
 <style lang="scss" scoped>
+@import '@/styles/variables.scss';
+
+// Main container
 .ai-chat-widget {
   position: fixed;
+  bottom: 20px;
   right: 20px;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: $z-index-modal;
+  z-index: 1000;
+  font-family: $font-family-base;
   
-  // Mobile trigger button
-  &__mobile-trigger {
-    display: none; // Hidden by default on desktop
+  &.is-active {
+    opacity: 1;
+    transition: opacity 0.2s ease-in-out;
+  }
+  
+  &.is-inactive {
+    opacity: 0.2; // Maintain 20% opacity when inactive
+    transition: opacity 0.2s ease-in-out;
+    
+    &:hover {
+      opacity: 0.8; // Increase opacity on hover
+    }
+  }
+  
+  &.is-mobile {
+    top: 20px;
+    right: 20px;
+    bottom: auto;
+  }
+}
+
+// Mobile trigger button
+.ai-chat-widget__mobile-trigger {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  background-color: rgba($primary, 0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  z-index: 1001;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    transform: scale(1.05);
+    background-color: rgba($primary, 0.15);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  }
+  
+  img {
+    width: 30px;
+    height: 30px;
+    border-radius: 0;
+  }
+}
+
+// Main chat panel
+.ai-chat-widget__panel {
+  width: 350px;
+  height: 450px;
+  background-color: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 0, 0, 0.03);
+  
+  @media (max-width: $breakpoint-md) {
     position: fixed;
-    top: 15px;
-    right: 15px;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 0;
+    z-index: 1002;
+  }
+}
+
+// Chat header
+.ai-chat-widget__header {
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  background-color: $primary;
+  color: white;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  
+  img {
+    width: 30px;
+    height: 30px;
+    border-radius: 0;
+    margin-right: 10px;
+  }
+}
+
+// Messages container
+.ai-chat-widget__messages {
+  flex: 1;
+  padding: 15px;
+  overflow-y: auto;
+  background-color: rgba(255, 255, 255, 0.7);
+  
+  &::-webkit-scrollbar {
+    width: 5px;
+  }
+  
+  &::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 5px;
+  }
+  
+  &::-webkit-scrollbar-thumb {
+    background-color: rgba($primary, 0.3);
+    border-radius: 5px;
+  }
+}
+
+// Individual message
+.ai-chat-widget__message {
+  margin-bottom: 15px;
+  padding: 12px 15px;
+  border-radius: 18px;
+  max-width: 80%;
+  position: relative;
+  line-height: 1.5;
+  font-size: 0.95rem;
+  
+  &--user {
+    background-color: rgba($primary, 0.1);
+    margin-left: auto;
+    border-bottom-right-radius: 5px;
+    color: $dark;
+  }
+  
+  &--ai {
+    background-color: rgba($gray-200, 0.3);
+    margin-right: auto;
+    border-bottom-left-radius: 5px;
+    color: $dark;
+  }
+}
+
+// Input area
+.ai-chat-widget__input {
+  padding: 10px 15px;
+  display: flex;
+  align-items: center;
+  background-color: white;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  
+  input {
+    flex: 1;
+    border: none;
+    padding: 12px;
+    border-radius: 30px;
+    background-color: rgba($gray-100, 0.3);
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+    
+    &:focus {
+      outline: none;
+      background-color: rgba($gray-100, 0.5);
+      box-shadow: 0 0 0 2px rgba($primary, 0.1);
+    }
+  }
+  
+  button {
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    background-color: white; // Solid white background
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    z-index: $z-index-fixed;
+    border: none;
+    background-color: $primary;
+    color: white;
+    margin-left: 10px;
     cursor: pointer;
+    display: flex;
     align-items: center;
     justify-content: center;
-    transition: transform 0.2s ease;
-    opacity: 1 !important; // Always fully opaque
+    transition: all 0.3s ease;
     
     &:hover {
+      background-color: darken($primary, 5%);
       transform: scale(1.05);
     }
     
-    .mobile-trigger-logo {
-      width: 25px;
-      height: 25px;
-    }
-  }
-  
-  &__panel {
-    position: relative;
-    width: 350px;
-    height: 500px;
-    max-height: 80vh;
-    background-color: rgba(255, 255, 255, 0.95); // More opaque background
-    border-radius: 30px;
-    box-shadow: 0 5px 25px rgba($dark, 0.15);
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-    transition: opacity 0.2s ease, transform 0.2s ease; // Faster transition
-    opacity: 0; // Start fully transparent
-    backdrop-filter: blur(5px);
-    
-    .ai-chat-widget.is-active & {
-      opacity: 0.95; // Show when active
-    }
-  }
-  
-  &.is-active {
-    .ai-chat-widget__panel {
-      opacity: 0.95;
-      transform: translateY(0);
-    }
-  }
-  
-  &.is-typing {
-    .ai-chat-widget__panel {
-      opacity: 0.95;
-    }
-  }
-  
-  &__bubble {
-    position: absolute;
-    top: 50%;
-    right: 0;
-    transform: translateY(-50%);
-    width: 70px;
-    height: 70px;
-    border-radius: 50%;
-    background-color: transparent; // Completely transparent
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    z-index: $z-index-fixed;
-    transition: all 0.2s ease; // Faster transition
-    box-shadow: none;
-    
-    &:hover {
-      transform: translateY(-50%) scale(1.05);
-    }
-  }
-  
-  &__header {
-    padding: $spacing-md;
-    background: transparent;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-bottom: none;
-  }
-  
-  &__title {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  &__header-logo {
-    width: 40px;
-    height: 40px;
-    object-fit: contain;
-  }
-  
-  &__messages {
-    flex: 1;
-    padding: $spacing-md;
-    overflow-y: auto;
-    display: flex;
-    flex-direction: column;
-    gap: $spacing-sm;
-    background-color: rgba($gray-100, 0.3);
-    
-    &::-webkit-scrollbar {
-      width: 4px;
-    }
-    
-    &::-webkit-scrollbar-track {
-      background: rgba($gray-200, 0.2);
-    }
-    
-    &::-webkit-scrollbar-thumb {
-      background: rgba($gray-400, 0.3);
-      border-radius: 10px;
-    }
-  }
-  
-  &__message {
-    max-width: 80%;
-    padding: $spacing-sm $spacing-md;
-    border-radius: 20px;
-    margin-bottom: $spacing-xs;
-    
-    &.ai-message {
-      align-self: flex-start;
-      background-color: rgba(255, 255, 255, 0.8);
-      border: 1px solid rgba($gray-200, 0.5);
-      border-bottom-left-radius: 6px;
-      
-      .message-time {
-        text-align: left;
-      }
-    }
-    
-    &.user-message {
-      align-self: flex-end;
-      background-color: rgba($gray-200, 0.8);
-      border-bottom-right-radius: 6px;
-      
-      .message-time {
-        text-align: right;
-      }
-    }
-    
-    .message-content {
-      p {
-        margin: 0 0 $spacing-xs;
-        line-height: 1.4;
-        
-        a {
-          color: $primary;
-          text-decoration: underline;
-          
-          &:hover {
-            text-decoration: none;
-          }
-        }
-      }
-    }
-    
-    .message-time {
-      font-size: 0.7rem;
-      color: $gray-600;
-      display: block;
-    }
-    
-    &.typing {
-      padding: $spacing-xs $spacing-sm;
-      background: rgba(255, 255, 255, 0.7);
-      border: 1px solid rgba($gray-200, 0.5);
-      box-shadow: none;
-      
-      .typing-indicator {
-        display: flex;
-        align-items: center;
-        gap: 4px;
-        
-        span {
-          width: 6px;
-          height: 6px;
-          border-radius: 50%;
-          background-color: rgba($gray-500, 0.7);
-          animation: typing 1.4s infinite ease-in-out;
-          
-          &:nth-child(1) {
-            animation-delay: 0s;
-          }
-          
-          &:nth-child(2) {
-            animation-delay: 0.2s;
-          }
-          
-          &:nth-child(3) {
-            animation-delay: 0.4s;
-          }
-        }
-      }
-    }
-  }
-  
-  &__suggestions {
-    padding: $spacing-sm;
-    display: flex;
-    flex-wrap: wrap;
-    gap: $spacing-xs;
-    border-top: 1px solid rgba($gray-200, 0.5);
-    background: rgba(255, 255, 255, 0.5);
-    
-    .suggestion-btn {
-      background: rgba($gray-100, 0.7);
-      border: 1px solid rgba($gray-200, 0.5);
-      border-radius: 20px;
-      padding: $spacing-xs $spacing-sm;
-      font-size: 0.8rem;
-      cursor: pointer;
-      transition: all 0.2s ease;
-      
-      &:hover {
-        background: rgba($gray-200, 0.7);
-      }
-    }
-  }
-  
-  &__input {
-    padding: $spacing-sm;
-    border-top: 1px solid rgba($gray-200, 0.5);
-    display: flex;
-    gap: $spacing-sm;
-    background: rgba(255, 255, 255, 0.5);
-    
-    input {
-      flex: 1;
-      padding: $spacing-sm;
-      border: 1px solid rgba($gray-300, 0.5);
-      border-radius: 20px;
-      outline: none;
-      transition: all 0.2s ease;
-      font-size: 0.9rem;
-      background: rgba(255, 255, 255, 0.8);
-      
-      &:focus {
-        border-color: rgba($gray-400, 0.7);
-        background: rgba(255, 255, 255, 0.95);
-      }
-    }
-    
-    .send-btn {
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      background: rgba($gray-200, 0.7);
-      color: $gray-700;
-      border: none;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      transition: all 0.2s ease;
-      
-      &:hover:not(:disabled) {
-        background: rgba($gray-300, 0.7);
-      }
-      
-      &:disabled {
-        background: rgba($gray-100, 0.7);
-        color: rgba($gray-400, 0.7);
-        cursor: not-allowed;
-      }
-    }
-  }
-  
-  @media (max-width: $breakpoint-md) {
-    right: 15px;
-    top: auto;
-    bottom: 20px;
-    transform: none;
-    
-    &__mobile-trigger {
-      display: flex; // Show on mobile
-      opacity: 1 !important; // Always fully opaque on mobile
-    }
-    
-    &__panel {
-      width: 320px;
-      height: 450px;
-      position: fixed;
-      bottom: 15px;
-      right: 15px;
-      top: auto;
-      transform: none;
-      
-      &:hover {
-        transform: none;
-      }
-    }
-    
-    &__bubble {
-      display: none !important; // Always hide bubble on mobile
-    }
-    
-    &.is-active {
-      .ai-chat-widget__panel {
-        opacity: 0.95;
-      }
+    i {
+      font-size: 0.85rem;
     }
   }
 }
 
-@keyframes typing {
-  0%, 60%, 100% {
-    transform: translateY(0);
+// Bubble (minimized state)
+.ai-chat-widget__bubble {
+  position: fixed;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.12);
+  transition: all 0.3s ease;
+  overflow: hidden;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(5px);
+    border-radius: 50%;
+    z-index: -1;
   }
-  30% {
-    transform: translateY(-3px);
+  
+  &:hover {
+    transform: translateY(-50%) scale(1.05);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    
+    &::before {
+      background: rgba(255, 255, 255, 0.75);
+    }
+  }
+  
+  img {
+    width: 40px;
+    height: 40px;
+    border-radius: 0;
+    object-fit: contain;
   }
 }
 </style> 
