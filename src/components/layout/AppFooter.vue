@@ -95,6 +95,9 @@ export default {
 <style lang="scss" scoped>
 @import '@/styles/variables.scss';
 
+// Define light blue background color
+$light-blue-bg: #f0f8ff;
+
 .app-footer {
   position: relative;
   background-color: white;
