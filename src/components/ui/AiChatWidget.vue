@@ -1,11 +1,12 @@
 <template>
   <div class="ai-chat-widget" :class="{ 'is-open': isOpen }">
-    <!-- Tab that blends with the bubble -->
+    <!-- Fluid tab that connects seamlessly with the bubble -->
     <div class="ai-chat-widget__tab" @click="toggleChat">
+      <div class="ai-chat-widget__tab-glow"></div>
       <img src="@/assets/logomaia.png" alt="Maia AI" class="ai-chat-widget__logo">
     </div>
     
-    <!-- Chat panel as a floating bubble -->
+    <!-- Chat panel as an elegant floating bubble -->
     <div class="ai-chat-widget__panel">
       <div class="ai-chat-widget__header">
         <div class="ai-chat-widget__title">
@@ -232,36 +233,47 @@ onUnmounted(() => {
     right: 0;
     top: 50%;
     transform: translateY(-50%);
-    width: 50px;
-    height: 50px;
-    padding: $spacing-sm;
-    background: $light;
-    border: 2px solid $primary;
-    border-right: none;
-    border-radius: $border-radius-pill 0 0 $border-radius-pill;
+    width: 60px;
+    height: 60px;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    box-shadow: -3px 0 10px rgba($primary, 0.2);
-    transition: all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
-    animation: pulse 2s infinite;
     z-index: $z-index-modal + 1;
+    transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 100%;
+      height: 100%;
+      background: $light;
+      border-radius: 30px 0 0 30px;
+      box-shadow: -5px 0 20px rgba($primary, 0.15);
+      transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    
+    &-glow {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 45px;
+      height: 45px;
+      background: radial-gradient(circle, rgba($primary, 0.2) 0%, rgba($primary, 0) 70%);
+      border-radius: 50%;
+      opacity: 0.8;
+      animation: pulse-glow 3s infinite ease-in-out;
+    }
     
     &:hover {
       transform: translateY(-50%) translateX(-5px);
-      animation: none;
-    }
-    
-    &::after {
-      content: '';
-      position: absolute;
-      right: -10px;
-      top: 0;
-      height: 100%;
-      width: 15px;
-      background: $light;
-      z-index: -1;
+      
+      &::before {
+        box-shadow: -8px 0 25px rgba($primary, 0.25);
+      }
     }
   }
   
@@ -269,25 +281,48 @@ onUnmounted(() => {
     width: 30px;
     height: 30px;
     object-fit: contain;
+    position: relative;
+    z-index: 2;
+    filter: drop-shadow(0 2px 4px rgba($dark, 0.1));
+    transition: transform 0.3s ease;
+    
+    &:hover {
+      transform: scale(1.1);
+    }
   }
   
   &__panel {
     position: fixed;
-    right: 20px;
+    right: 30px;
     top: 50%;
-    transform: translateY(-50%) translateX(calc(100% + 20px));
+    transform: translateY(-50%) translateX(calc(100% + 30px));
     width: 350px;
     height: 80vh;
     max-height: 600px;
     background-color: $light;
-    border: 2px solid $primary;
-    border-radius: $border-radius-xl;
-    box-shadow: 0 5px 25px rgba($primary, 0.25);
+    border-radius: 24px;
+    box-shadow: 0 10px 40px rgba($primary, 0.2);
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    transition: transform 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
+    transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
     z-index: $z-index-modal;
+    
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      border-radius: 24px;
+      padding: 2px;
+      background: linear-gradient(135deg, $primary, rgba($secondary, 0.5));
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+    }
   }
   
   &__overlay {
@@ -300,7 +335,8 @@ onUnmounted(() => {
       left: 0;
       right: 0;
       bottom: 0;
-      background-color: rgba($dark, 0.5);
+      background-color: rgba($dark, 0.3);
+      backdrop-filter: blur(3px);
       opacity: 0;
       visibility: hidden;
       transition: opacity 0.3s ease, visibility 0.3s ease;
@@ -314,8 +350,13 @@ onUnmounted(() => {
     }
     
     .ai-chat-widget__tab {
-      right: 350px;
-      transition: right 0.3s cubic-bezier(0.25, 0.1, 0.25, 1), transform 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
+      right: 365px;
+      
+      &::before {
+        border-radius: 30px;
+        width: 60px;
+        background: linear-gradient(90deg, $light, $light);
+      }
     }
     
     .ai-chat-widget__overlay {
@@ -325,13 +366,13 @@ onUnmounted(() => {
   }
   
   &__header {
-    padding: $spacing-md;
-    background: $gradient-1;
+    padding: $spacing-md $spacing-lg;
+    background: linear-gradient(135deg, $primary, $secondary);
     color: white;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    border-radius: $border-radius-xl $border-radius-xl 0 0;
+    border-radius: 22px 22px 0 0;
   }
   
   &__title {
@@ -341,6 +382,7 @@ onUnmounted(() => {
     h3 {
       margin: 0;
       font-weight: $font-weight-semibold;
+      text-shadow: 0 1px 2px rgba($dark, 0.1);
     }
   }
   
@@ -349,6 +391,7 @@ onUnmounted(() => {
     height: 30px;
     margin-right: $spacing-sm;
     object-fit: contain;
+    filter: drop-shadow(0 1px 2px rgba($dark, 0.2));
   }
   
   &__close {
@@ -358,9 +401,16 @@ onUnmounted(() => {
     font-size: 1.2rem;
     cursor: pointer;
     transition: $transition-base;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     
     &:hover {
-      transform: scale(1.1);
+      background-color: rgba(white, 0.2);
+      transform: rotate(90deg);
     }
   }
   
@@ -371,18 +421,42 @@ onUnmounted(() => {
     display: flex;
     flex-direction: column;
     gap: $spacing-sm;
+    
+    &::-webkit-scrollbar {
+      width: 6px;
+    }
+    
+    &::-webkit-scrollbar-track {
+      background: rgba($gray-200, 0.5);
+      border-radius: 10px;
+    }
+    
+    &::-webkit-scrollbar-thumb {
+      background: rgba($primary, 0.2);
+      border-radius: 10px;
+      
+      &:hover {
+        background: rgba($primary, 0.4);
+      }
+    }
   }
   
   &__message {
     max-width: 80%;
     padding: $spacing-sm $spacing-md;
-    border-radius: $border-radius-lg;
+    border-radius: 18px;
     margin-bottom: $spacing-sm;
+    box-shadow: 0 2px 5px rgba($dark, 0.05);
+    transition: transform 0.2s ease;
+    
+    &:hover {
+      transform: translateY(-2px);
+    }
     
     &.ai-message {
       align-self: flex-start;
-      background-color: $gray-100;
-      border-bottom-left-radius: 0;
+      background: linear-gradient(135deg, rgba($gray-100, 0.8), $gray-100);
+      border-bottom-left-radius: 4px;
       
       .message-time {
         text-align: left;
@@ -391,35 +465,42 @@ onUnmounted(() => {
     
     &.user-message {
       align-self: flex-end;
-      background-color: $primary;
+      background: linear-gradient(135deg, $primary, rgba($primary-dark, 0.9));
       color: white;
-      border-bottom-right-radius: 0;
+      border-bottom-right-radius: 4px;
       
       .message-time {
         text-align: right;
-        color: rgba(255, 255, 255, 0.8);
+        color: rgba(white, 0.8);
       }
     }
     
     .message-content {
       p {
         margin: 0 0 $spacing-xs;
+        line-height: 1.4;
         
         a {
           color: inherit;
           text-decoration: underline;
+          
+          &:hover {
+            text-decoration: none;
+          }
         }
       }
     }
     
     .message-time {
-      font-size: 0.8rem;
+      font-size: 0.75rem;
       opacity: 0.7;
       display: block;
     }
     
     &.typing {
       padding: $spacing-sm;
+      background: rgba($gray-100, 0.5);
+      box-shadow: none;
       
       .typing-indicator {
         display: flex;
@@ -430,8 +511,8 @@ onUnmounted(() => {
           width: 8px;
           height: 8px;
           border-radius: 50%;
-          background-color: $gray-500;
-          animation: typing 1s infinite ease-in-out;
+          background-color: rgba($primary, 0.5);
+          animation: typing 1.4s infinite ease-in-out;
           
           &:nth-child(1) {
             animation-delay: 0s;
@@ -454,38 +535,48 @@ onUnmounted(() => {
     display: flex;
     flex-wrap: wrap;
     gap: $spacing-sm;
-    border-top: 1px solid $gray-200;
+    border-top: 1px solid rgba($gray-200, 0.7);
+    background: linear-gradient(to bottom, rgba($light, 0.5), $light);
     
     .suggestion-btn {
-      background-color: $gray-100;
-      border: 1px solid $gray-300;
-      border-radius: $border-radius-pill;
+      background: linear-gradient(135deg, rgba($gray-100, 0.8), $gray-100);
+      border: none;
+      border-radius: 18px;
       padding: $spacing-xs $spacing-md;
       font-size: 0.9rem;
       cursor: pointer;
-      transition: $transition-base;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 5px rgba($dark, 0.05);
       
       &:hover {
-        background-color: $gray-200;
+        background: linear-gradient(135deg, rgba($primary, 0.1), rgba($primary, 0.05));
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba($primary, 0.15);
       }
     }
   }
   
   &__input {
     padding: $spacing-md;
-    border-top: 1px solid $gray-200;
+    border-top: 1px solid rgba($gray-200, 0.7);
     display: flex;
     gap: $spacing-sm;
+    background: $light;
+    border-radius: 0 0 22px 22px;
     
     input {
       flex: 1;
       padding: $spacing-sm $spacing-md;
-      border: 1px solid $gray-300;
-      border-radius: $border-radius-pill;
+      border: 1px solid rgba($gray-300, 0.5);
+      border-radius: 20px;
       outline: none;
+      transition: all 0.3s ease;
+      background: rgba(white, 0.8);
       
       &:focus {
-        border-color: $primary;
+        border-color: rgba($primary, 0.5);
+        box-shadow: 0 0 0 3px rgba($primary, 0.1);
+        background: white;
       }
     }
     
@@ -493,23 +584,25 @@ onUnmounted(() => {
       width: 40px;
       height: 40px;
       border-radius: 50%;
-      background-color: $primary;
+      background: linear-gradient(135deg, $primary, $primary-dark);
       color: white;
       border: none;
       display: flex;
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      transition: $transition-base;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 5px rgba($primary, 0.3);
       
       &:hover:not(:disabled) {
-        background-color: $primary-dark;
-        transform: scale(1.05);
+        transform: scale(1.05) rotate(10deg);
+        box-shadow: 0 4px 10px rgba($primary, 0.4);
       }
       
       &:disabled {
-        background-color: $gray-400;
+        background: linear-gradient(135deg, $gray-300, $gray-400);
         cursor: not-allowed;
+        box-shadow: none;
       }
     }
   }
@@ -518,21 +611,26 @@ onUnmounted(() => {
 @keyframes typing {
   0%, 60%, 100% {
     transform: translateY(0);
+    opacity: 0.6;
   }
   30% {
     transform: translateY(-4px);
+    opacity: 1;
   }
 }
 
-@keyframes pulse {
+@keyframes pulse-glow {
   0% {
-    box-shadow: 0 0 0 0 rgba($primary, 0.7);
+    opacity: 0.4;
+    transform: translate(-50%, -50%) scale(0.9);
   }
-  70% {
-    box-shadow: 0 0 0 10px rgba($primary, 0);
+  50% {
+    opacity: 0.8;
+    transform: translate(-50%, -50%) scale(1.1);
   }
   100% {
-    box-shadow: 0 0 0 0 rgba($primary, 0);
+    opacity: 0.4;
+    transform: translate(-50%, -50%) scale(0.9);
   }
 }
 </style> 
