@@ -135,7 +135,7 @@ $primary-gradient: linear-gradient(135deg, $primary 0%, lighten($primary, 15%) 1
   display: flex;
   align-items: center;
   gap: $spacing-sm;
-  background-color: rgba(255, 255, 255, 0.9);
+  background-color: #FFFFFF;
   padding: 0.5rem 1rem;
   border-radius: 2rem;
   display: inline-flex;
@@ -162,6 +162,10 @@ $primary-gradient: linear-gradient(135deg, $primary 0%, lighten($primary, 15%) 1
   font-size: 1.1rem;
   color: $gray-400;
   margin-top: $spacing-xs;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
 }
 
 .footer-menu {

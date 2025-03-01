@@ -30,8 +30,6 @@
         </nav>
         
         <div class="header__actions">
-          <button class="btn btn--outline">Iniciar sesión</button>
-          <button class="btn btn--primary">Registrarse</button>
           <button 
             class="header__menu-toggle" 
             @click="toggleMobileMenu"
@@ -143,6 +141,8 @@ $primary-gradient: linear-gradient(135deg, $primary 0%, lighten($primary, 15%) 1
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 0 auto;
   
   @media (max-width: $breakpoint-md) {
     justify-content: center;
@@ -152,10 +152,11 @@ $primary-gradient: linear-gradient(135deg, $primary 0%, lighten($primary, 15%) 1
 
 .header__logo {
   z-index: 1001;
-  margin-right: $spacing-md;
+  margin-right: auto;
   
   @media (max-width: $breakpoint-md) {
     margin-right: 0;
+    margin-bottom: $spacing-md;
   }
 }
 
@@ -164,7 +165,7 @@ $primary-gradient: linear-gradient(135deg, $primary 0%, lighten($primary, 15%) 1
   align-items: center;
   text-decoration: none;
   color: $dark;
-  background-color: rgba(255, 255, 255, 0.9);
+  background-color: #FFFFFF;
   padding: 0.5rem 1rem;
   border-radius: 2rem;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
@@ -197,6 +198,8 @@ $primary-gradient: linear-gradient(135deg, $primary 0%, lighten($primary, 15%) 1
 }
 
 .header__nav {
+  margin-left: auto;
+  
   @media (max-width: $breakpoint-lg) {
     position: fixed;
     top: 0;
@@ -277,17 +280,7 @@ $primary-gradient: linear-gradient(135deg, $primary 0%, lighten($primary, 15%) 1
 }
 
 .header__actions {
-  display: flex;
-  align-items: center;
   z-index: 1001;
-  
-  .btn {
-    margin-left: 0.75rem;
-    
-    @media (max-width: $breakpoint-lg) {
-      display: none;
-    }
-  }
 }
 
 .header__menu-toggle {

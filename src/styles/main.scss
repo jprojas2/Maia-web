@@ -148,27 +148,65 @@ strong {
     padding: $spacing-2xl 0;
   }
   
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+      linear-gradient(to bottom, rgba($dark, 0.02), rgba($primary, 0.03)),
+      radial-gradient(rgba($dark, 0.03) 1px, transparent 1px);
+    background-size: 100% 100%, 20px 20px;
+    z-index: -1;
+  }
+  
   &--light {
     background-color: rgba(255, 255, 255, 0.5);
     width: 100%;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+    
+    &::before {
+      background-image: 
+        linear-gradient(to bottom, rgba($dark, 0.01), rgba($primary, 0.02)),
+        radial-gradient(rgba($dark, 0.02) 1px, transparent 1px);
+    }
   }
   
   &--dark {
     background-color: $dark;
     color: white;
     width: 100%;
+    
+    &::before {
+      background-image: 
+        linear-gradient(to bottom, rgba(black, 0.2), rgba(black, 0.1)),
+        radial-gradient(rgba(white, 0.05) 1px, transparent 1px);
+    }
   }
   
   &--gray {
     background-color: rgba(255, 255, 255, 0.7);
     width: 100%;
+    
+    &::before {
+      background-image: 
+        linear-gradient(to bottom, rgba($dark, 0.01), rgba($primary, 0.02)),
+        radial-gradient(rgba($dark, 0.02) 1px, transparent 1px);
+    }
   }
   
   &--gradient {
     background: $primary-gradient;
     color: white;
     width: 100%;
+    
+    &::before {
+      background-image: 
+        radial-gradient(rgba(white, 0.1) 1px, transparent 1px);
+      background-size: 20px 20px;
+    }
   }
   
   &__header {
