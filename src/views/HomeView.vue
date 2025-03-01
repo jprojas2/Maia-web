@@ -60,9 +60,9 @@
         </div>
         
         <div class="pricing">
-          <div class="row">
-            <div class="col">
-              <div class="card pricing-card">
+          <div class="pricing-cards">
+            <div class="pricing-card">
+              <div class="pricing-card__header">
                 <div class="card__icon">
                   <i class="fas fa-home"></i>
                 </div>
@@ -71,21 +71,31 @@
                   <span class="price-value">$40</span>
                   <span class="price-period">/mes</span>
                 </div>
-                <ul class="pricing-card__features">
-                  <li>5 propiedades activas</li>
-                  <li>Chat con IA básico</li>
-                  <li>Tours virtuales estándar</li>
-                  <li>Soporte por email</li>
-                </ul>
-                <div class="pricing-card__action">
-                  <button class="btn btn--primary">Empezar Gratis</button>
+              </div>
+              
+              <div class="pricing-card__features">
+                <div class="feature-item">
+                  <i class="fas fa-check"></i> 5 propiedades activas
                 </div>
+                <div class="feature-item">
+                  <i class="fas fa-check"></i> Chat con IA básico
+                </div>
+                <div class="feature-item">
+                  <i class="fas fa-check"></i> Tours virtuales estándar
+                </div>
+                <div class="feature-item">
+                  <i class="fas fa-check"></i> Soporte por email
+                </div>
+              </div>
+              
+              <div class="pricing-card__action">
+                <button class="btn btn--primary">Empezar Gratis</button>
               </div>
             </div>
             
-            <div class="col">
-              <div class="card pricing-card pricing-card--featured">
-                <div class="card__badge">Popular</div>
+            <div class="pricing-card pricing-card--featured">
+              <div class="card__badge">Popular</div>
+              <div class="pricing-card__header">
                 <div class="card__icon">
                   <i class="fas fa-building"></i>
                 </div>
@@ -94,21 +104,33 @@
                   <span class="price-value">$120</span>
                   <span class="price-period">/mes</span>
                 </div>
-                <ul class="pricing-card__features">
-                  <li>20 propiedades activas</li>
-                  <li>Chat con IA avanzado con aprendizaje</li>
-                  <li>Tours virtuales personalizados</li>
-                  <li>Calificación de leads</li>
-                  <li>Soporte prioritario</li>
-                </ul>
-                <div class="pricing-card__action">
-                  <button class="btn btn--gradient">Comenzar Ahora</button>
+              </div>
+              
+              <div class="pricing-card__features">
+                <div class="feature-item">
+                  <i class="fas fa-check"></i> 20 propiedades activas
                 </div>
+                <div class="feature-item">
+                  <i class="fas fa-check"></i> Chat con IA avanzado con aprendizaje
+                </div>
+                <div class="feature-item">
+                  <i class="fas fa-check"></i> Tours virtuales personalizados
+                </div>
+                <div class="feature-item">
+                  <i class="fas fa-check"></i> Calificación de leads
+                </div>
+                <div class="feature-item">
+                  <i class="fas fa-check"></i> Soporte prioritario
+                </div>
+              </div>
+              
+              <div class="pricing-card__action">
+                <button class="btn btn--gradient">Comenzar Ahora</button>
               </div>
             </div>
             
-            <div class="col">
-              <div class="card pricing-card">
+            <div class="pricing-card">
+              <div class="pricing-card__header">
                 <div class="card__icon">
                   <i class="fas fa-city"></i>
                 </div>
@@ -117,16 +139,28 @@
                   <span class="price-value">$200</span>
                   <span class="price-period">/mes</span>
                 </div>
-                <ul class="pricing-card__features">
-                  <li>Propiedades ilimitadas</li>
-                  <li>Todas las características premium</li>
-                  <li>API para integración con sistemas propios</li>
-                  <li>Personalización de marca</li>
-                  <li>Soporte dedicado 24/7</li>
-                </ul>
-                <div class="pricing-card__action">
-                  <button class="btn btn--primary">Contactar Ventas</button>
+              </div>
+              
+              <div class="pricing-card__features">
+                <div class="feature-item">
+                  <i class="fas fa-check"></i> Propiedades ilimitadas
                 </div>
+                <div class="feature-item">
+                  <i class="fas fa-check"></i> Todas las características premium
+                </div>
+                <div class="feature-item">
+                  <i class="fas fa-check"></i> API para integración con sistemas propios
+                </div>
+                <div class="feature-item">
+                  <i class="fas fa-check"></i> Personalización de marca
+                </div>
+                <div class="feature-item">
+                  <i class="fas fa-check"></i> Soporte dedicado 24/7
+                </div>
+              </div>
+              
+              <div class="pricing-card__action">
+                <button class="btn btn--primary">Contactar Ventas</button>
               </div>
             </div>
           </div>
@@ -144,8 +178,8 @@
           </p>
         </div>
         
-        <div class="features-container">
-          <div class="feature-col">
+        <div class="features-grid">
+          <div class="feature-item">
             <div class="feature-image">
               <img src="https://images.unsplash.com/photo-1573164713988-8665fc963095?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Automatización Inteligente" />
             </div>
@@ -158,7 +192,7 @@
             </div>
           </div>
           
-          <div class="feature-col reverse">
+          <div class="feature-item reverse">
             <div class="feature-content">
               <h3>Datos y Análisis Avanzados</h3>
               <p>
@@ -171,7 +205,7 @@
             </div>
           </div>
           
-          <div class="feature-col">
+          <div class="feature-item">
             <div class="feature-image">
               <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Integración Sin Esfuerzo" />
             </div>
@@ -197,35 +231,31 @@
           </p>
         </div>
         
-        <div class="testimonials">
-          <div class="row">
-            <div class="col">
-              <div class="testimonial">
-                <div class="testimonial__content">
-                  <p>"Desde que implementamos Maia en nuestro sitio web, las consultas por propiedades han aumentado en un 72%. Los clientes valoran la experiencia personalizada y nosotros apreciamos la calificación automática de leads."</p>
-                </div>
-                <div class="testimonial__author">
-                  <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80" alt="Carolina Méndez" />
-                  <div>
-                    <h4>Carolina Méndez</h4>
-                    <p>Directora de Ventas, Inmobiliaria Futuro</p>
-                  </div>
-                </div>
+        <div class="testimonials-wrapper">
+          <div class="testimonial-card">
+            <div class="testimonial__content">
+              <i class="fas fa-quote-left quote-icon"></i>
+              <p>"Desde que implementamos Maia en nuestro sitio web, las consultas por propiedades han aumentado en un 72%. Los clientes valoran la experiencia personalizada y nosotros apreciamos la calificación automática de leads."</p>
+            </div>
+            <div class="testimonial__author">
+              <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80" alt="Carolina Méndez" />
+              <div>
+                <h4>Carolina Méndez</h4>
+                <p>Directora de Ventas, Inmobiliaria Futuro</p>
               </div>
             </div>
-            
-            <div class="col">
-              <div class="testimonial">
-                <div class="testimonial__content">
-                  <p>"La integración de Maia en nuestra plataforma fue rápida y sin complicaciones. El equipo de soporte estuvo disponible en cada paso y los resultados han superado nuestras expectativas."</p>
-                </div>
-                <div class="testimonial__author">
-                  <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80" alt="Roberto Fuentes" />
-                  <div>
-                    <h4>Roberto Fuentes</h4>
-                    <p>CEO, Propiedades Élite</p>
-                  </div>
-                </div>
+          </div>
+          
+          <div class="testimonial-card">
+            <div class="testimonial__content">
+              <i class="fas fa-quote-left quote-icon"></i>
+              <p>"La integración de Maia en nuestra plataforma fue rápida y sin complicaciones. El equipo de soporte estuvo disponible en cada paso y los resultados han superado nuestras expectativas."</p>
+            </div>
+            <div class="testimonial__author">
+              <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80" alt="Roberto Fuentes" />
+              <div>
+                <h4>Roberto Fuentes</h4>
+                <p>CEO, Propiedades Élite</p>
               </div>
             </div>
           </div>
@@ -243,58 +273,64 @@
           </p>
         </div>
         
-        <div class="team">
-          <div class="team-member">
-            <div class="team-member__image">
+        <div class="team-grid">
+          <div class="team-card">
+            <div class="team-card__image">
               <img src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80" alt="Manuel Fernández" />
             </div>
-            <h3 class="team-member__name">Manuel Fernández</h3>
-            <p class="team-member__title">CEO & Co-Fundador</p>
-            <p class="team-member__bio">
-              Arquitecto, experto en VR y modelado 3D, profesor universitario. Lidera la visión del producto y el diseño de experiencia.
-            </p>
-            <div class="team-member__social">
-              <a href="https://www.linkedin.com/in/manjofer/" target="_blank" aria-label="LinkedIn">
-                <i class="fab fa-linkedin-in"></i>
-              </a>
-              <a href="mailto:manuel@maiavr.cl" aria-label="Email">
-                <i class="fas fa-envelope"></i>
-              </a>
+            <div class="team-card__content">
+              <h3>Manuel Fernández</h3>
+              <p class="team-card__title">CEO & Co-Fundador</p>
+              <p class="team-card__bio">
+                Arquitecto, experto en VR y modelado 3D, profesor universitario. Lidera la visión del producto y el diseño de experiencia.
+              </p>
+              <div class="team-card__social">
+                <a href="https://www.linkedin.com/in/manjofer/" target="_blank" class="social-link" aria-label="LinkedIn">
+                  <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="mailto:manuel@maiavr.cl" class="social-link" aria-label="Email">
+                  <i class="fas fa-envelope"></i>
+                </a>
+              </div>
             </div>
           </div>
           
-          <div class="team-member">
-            <div class="team-member__image">
+          <div class="team-card">
+            <div class="team-card__image">
               <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80" alt="Juan Pablo Rojas" />
             </div>
-            <h3 class="team-member__name">Juan Pablo Rojas</h3>
-            <p class="team-member__title">CTO & Co-Fundador</p>
-            <p class="team-member__bio">
-              10+ años en desarrollo de software, diseñó sistemas escalables para startups. Responsable de la arquitectura técnica y desarrollo de IA.
-            </p>
-            <div class="team-member__social">
-              <a href="https://www.linkedin.com/in/juan-pablo-rojas-416157195/" target="_blank" aria-label="LinkedIn">
-                <i class="fab fa-linkedin-in"></i>
-              </a>
+            <div class="team-card__content">
+              <h3>Juan Pablo Rojas</h3>
+              <p class="team-card__title">CTO & Co-Fundador</p>
+              <p class="team-card__bio">
+                10+ años en desarrollo de software, diseñó sistemas escalables para startups. Responsable de la arquitectura técnica y desarrollo de IA.
+              </p>
+              <div class="team-card__social">
+                <a href="https://www.linkedin.com/in/juan-pablo-rojas-416157195/" target="_blank" class="social-link" aria-label="LinkedIn">
+                  <i class="fab fa-linkedin-in"></i>
+                </a>
+              </div>
             </div>
           </div>
           
-          <div class="team-member">
-            <div class="team-member__image">
+          <div class="team-card">
+            <div class="team-card__image">
               <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80" alt="Federico Antunovic" />
             </div>
-            <h3 class="team-member__name">Federico Antunovic</h3>
-            <p class="team-member__title">CCO & Co-Fundador</p>
-            <p class="team-member__bio">
-              MBA, 8+ años en ventas B2B, experiencia en consultoría inmobiliaria. Dirige las estrategias comerciales y relaciones con clientes.
-            </p>
-            <div class="team-member__social">
-              <a href="https://www.linkedin.com/in/fantunovic/" target="_blank" aria-label="LinkedIn">
-                <i class="fab fa-linkedin-in"></i>
-              </a>
-              <a href="mailto:fede@maiavr.cl" aria-label="Email">
-                <i class="fas fa-envelope"></i>
-              </a>
+            <div class="team-card__content">
+              <h3>Federico Antunovic</h3>
+              <p class="team-card__title">CCO & Co-Fundador</p>
+              <p class="team-card__bio">
+                MBA, 8+ años en ventas B2B, experiencia en consultoría inmobiliaria. Dirige las estrategias comerciales y relaciones con clientes.
+              </p>
+              <div class="team-card__social">
+                <a href="https://www.linkedin.com/in/fantunovic/" target="_blank" class="social-link" aria-label="LinkedIn">
+                  <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="mailto:fede@maiavr.cl" class="social-link" aria-label="Email">
+                  <i class="fas fa-envelope"></i>
+                </a>
+              </div>
             </div>
           </div>
         </div>
@@ -334,6 +370,38 @@ $primary-gradient: linear-gradient(135deg, $primary 0%, lighten($primary, 15%) 1
 
 .home {
   width: 100%;
+}
+
+// General section styling
+.section {
+  padding: $spacing-4xl 0;
+  
+  &--light {
+    background-color: $light-blue-bg;
+  }
+  
+  &--gradient {
+    background: $primary-gradient;
+    color: white;
+  }
+  
+  &__header {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto $spacing-2xl;
+  }
+  
+  &__title {
+    font-size: 2.5rem;
+    font-weight: $font-weight-bold;
+    margin-bottom: $spacing-md;
+    color: $dark;
+  }
+  
+  &__subtitle {
+    font-size: 1.1rem;
+    color: $gray-700;
+  }
 }
 
 // Hero section with larger demo
@@ -445,34 +513,150 @@ $primary-gradient: linear-gradient(135deg, $primary 0%, lighten($primary, 15%) 1
   }
 }
 
-// Features section with vertical columns
-.features-container {
-  display: flex;
-  flex-direction: column;
+// Pricing cards
+.pricing {
+  margin-top: $spacing-2xl;
+  
+  &-cards {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: $spacing-xl;
+    
+    @media (min-width: $breakpoint-md) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  
+  &-card {
+    background-color: white;
+    border-radius: $border-radius-lg;
+    box-shadow: $shadow;
+    overflow: hidden;
+    transition: $transition-base;
+    position: relative;
+    
+    &:hover {
+      transform: translateY(-10px);
+      box-shadow: $shadow-lg;
+    }
+    
+    &--featured {
+      transform: scale(1.05);
+      border: 2px solid $primary;
+      
+      &:hover {
+        transform: translateY(-10px) scale(1.05);
+      }
+      
+      .pricing-card__header {
+        background: $primary-gradient;
+        
+        .card__title, .pricing-card__price {
+          color: white;
+        }
+      }
+    }
+    
+    &__header {
+      padding: $spacing-xl $spacing-lg;
+      text-align: center;
+      border-bottom: 1px solid $gray-200;
+      
+      .card__icon {
+        font-size: 2.5rem;
+        color: $primary;
+        margin-bottom: $spacing-sm;
+      }
+      
+      .card__title {
+        font-size: 1.5rem;
+        font-weight: $font-weight-bold;
+        margin-bottom: $spacing-sm;
+      }
+    }
+    
+    &__price {
+      margin-top: $spacing-md;
+      
+      .price-value {
+        font-size: 2.5rem;
+        font-weight: $font-weight-bold;
+      }
+      
+      .price-period {
+        font-size: 1rem;
+        color: $gray-600;
+      }
+    }
+    
+    &__features {
+      padding: $spacing-xl $spacing-lg;
+      
+      .feature-item {
+        display: flex;
+        align-items: flex-start;
+        margin-bottom: $spacing-md;
+        font-size: 1rem;
+        color: $gray-700;
+        
+        i {
+          color: $primary;
+          margin-right: $spacing-sm;
+          font-size: 0.9rem;
+        }
+      }
+    }
+    
+    &__action {
+      padding: 0 $spacing-lg $spacing-xl;
+      text-align: center;
+      
+      .btn {
+        width: 100%;
+      }
+    }
+    
+    .card__badge {
+      position: absolute;
+      top: $spacing-md;
+      right: $spacing-md;
+      background-color: $primary;
+      color: white;
+      padding: $spacing-xs $spacing-sm;
+      border-radius: $border-radius-pill;
+      font-size: 0.8rem;
+      font-weight: $font-weight-semibold;
+    }
+  }
+}
+
+// Features section with side-by-side layout
+.features-grid {
+  display: grid;
+  grid-template-columns: 1fr;
   gap: $spacing-3xl;
   margin-top: $spacing-2xl;
   
-  @media (min-width: $breakpoint-md) {
-    gap: $spacing-4xl;
-  }
-  
-  .feature-col {
-    display: flex;
-    flex-direction: column;
+  .feature-item {
+    display: grid;
+    grid-template-columns: 1fr;
     gap: $spacing-lg;
     
     @media (min-width: $breakpoint-md) {
-      flex-direction: row;
+      grid-template-columns: 1fr 1fr;
       align-items: center;
       
       &.reverse {
-        flex-direction: row-reverse;
+        .feature-content {
+          order: 1;
+        }
+        .feature-image {
+          order: 2;
+        }
       }
     }
     
     .feature-image {
-      flex: 1;
-      
       img {
         width: 100%;
         border-radius: $border-radius-lg;
@@ -481,7 +665,6 @@ $primary-gradient: linear-gradient(135deg, $primary 0%, lighten($primary, 15%) 1
     }
     
     .feature-content {
-      flex: 1;
       padding: $spacing-lg;
       
       h3 {
@@ -499,5 +682,223 @@ $primary-gradient: linear-gradient(135deg, $primary 0%, lighten($primary, 15%) 1
   }
 }
 
-// Keep other styles as they are, just removed the demo section CSS
+// Testimonials
+.testimonials-wrapper {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $spacing-xl;
+  margin-top: $spacing-2xl;
+  
+  @media (min-width: $breakpoint-md) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .testimonial-card {
+    background-color: white;
+    border-radius: $border-radius-lg;
+    box-shadow: $shadow;
+    padding: $spacing-xl;
+    transition: $transition-base;
+    
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: $shadow-lg;
+    }
+    
+    .testimonial__content {
+      margin-bottom: $spacing-lg;
+      position: relative;
+      
+      .quote-icon {
+        font-size: 2rem;
+        color: rgba($primary, 0.2);
+        position: absolute;
+        top: -$spacing-md;
+        left: -$spacing-md;
+      }
+      
+      p {
+        position: relative;
+        font-size: 1.1rem;
+        line-height: 1.6;
+        color: $gray-700;
+        z-index: 1;
+      }
+    }
+    
+    .testimonial__author {
+      display: flex;
+      align-items: center;
+      
+      img {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        margin-right: $spacing-md;
+        object-fit: cover;
+      }
+      
+      div {
+        h4 {
+          font-size: 1.1rem;
+          margin: 0 0 $spacing-xs;
+          color: $dark;
+        }
+        
+        p {
+          margin: 0;
+          font-size: 0.9rem;
+          color: $gray-600;
+        }
+      }
+    }
+  }
+}
+
+// Team Cards
+.team-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $spacing-xl;
+  margin-top: $spacing-2xl;
+  
+  @media (min-width: $breakpoint-sm) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  @media (min-width: $breakpoint-lg) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+  .team-card {
+    background-color: white;
+    border-radius: $border-radius-lg;
+    box-shadow: $shadow;
+    overflow: hidden;
+    transition: $transition-base;
+    
+    &:hover {
+      transform: translateY(-10px);
+      box-shadow: $shadow-lg;
+      
+      .team-card__image img {
+        transform: scale(1.05);
+      }
+    }
+    
+    &__image {
+      height: 250px;
+      overflow: hidden;
+      
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+      }
+    }
+    
+    &__content {
+      padding: $spacing-lg;
+      text-align: center;
+      
+      h3 {
+        font-size: 1.4rem;
+        margin-bottom: $spacing-xs;
+        color: $dark;
+      }
+    }
+    
+    &__title {
+      font-size: 1rem;
+      color: $primary;
+      font-weight: $font-weight-semibold;
+      margin-bottom: $spacing-md;
+    }
+    
+    &__bio {
+      font-size: 0.95rem;
+      color: $gray-700;
+      margin-bottom: $spacing-lg;
+    }
+    
+    &__social {
+      display: flex;
+      justify-content: center;
+      gap: $spacing-sm;
+      
+      .social-link {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        background-color: rgba($primary, 0.1);
+        color: $primary;
+        transition: $transition-base;
+        
+        &:hover {
+          background-color: $primary;
+          color: white;
+          transform: translateY(-3px);
+        }
+      }
+    }
+  }
+}
+
+// Call to Action
+.cta {
+  text-align: center;
+  padding: $spacing-xl 0;
+  
+  &__title {
+    font-size: 2.5rem;
+    font-weight: $font-weight-bold;
+    margin-bottom: $spacing-md;
+  }
+  
+  &__subtitle {
+    font-size: 1.2rem;
+    margin-bottom: $spacing-xl;
+    opacity: 0.9;
+  }
+  
+  &__actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: $spacing-md;
+    
+    .btn {
+      min-width: 180px;
+    }
+  }
+}
+
+// Animation classes
+.animate-fade-in {
+  animation: fadeIn 1s ease forwards;
+}
+
+.animate-slide-in-up {
+  animation: slideInUp 0.8s ease forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideInUp {
+  from { 
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to { 
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 </style> 
