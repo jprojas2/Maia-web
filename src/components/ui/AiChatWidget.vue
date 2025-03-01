@@ -14,7 +14,7 @@
       v-if="isMobile" 
       @click="toggleChat"
     >
-      <img src="@/assets/logomaia.png" alt="Maia AI" />
+      <img src="@/assets/logomaia.png" alt="Maia" style="border-radius: 50%;" />
     </div>
 
     <!-- Chat panel (visible on desktop, hidden on mobile unless active) -->
@@ -23,12 +23,13 @@
       v-show="!isMobile || (isMobile && isActive)"
     >
       <div class="ai-chat-widget__header">
-        <img src="@/assets/logomaia.png" alt="Maia AI" />
+        <img src="@/assets/logomaia.png" alt="Maia" style="border-radius: 50%;" />
+        <span>Chat con Maia</span>
       </div>
       
       <div class="ai-chat-widget__messages">
         <div class="ai-chat-widget__message ai-chat-widget__message--ai">
-          ¡Hola! Soy Maia, tu asistente virtual. ¿En qué puedo ayudarte hoy?
+          ¡Hola! Soy Maia, tu vendedora virtual. ¿En qué puedo ayudarte hoy?
         </div>
       </div>
       
@@ -51,7 +52,7 @@
       v-if="!isMobile && !isActive"
       @click="toggleChat"
     >
-      <img src="@/assets/logomaia.png" alt="Maia AI" />
+      <!-- No content, will be completely transparent -->
     </div>
   </div>
 </template>
@@ -146,8 +147,9 @@ export default {
 // Main container
 .ai-chat-widget {
   position: fixed;
-  bottom: 20px;
+  top: 50%;
   right: 20px;
+  transform: translateY(-50%);
   z-index: 1000;
   font-family: $font-family-base;
   
@@ -168,7 +170,7 @@ export default {
   &.is-mobile {
     top: 20px;
     right: 20px;
-    bottom: auto;
+    transform: none;
   }
 }
 
@@ -179,7 +181,7 @@ export default {
   right: 20px;
   width: 50px;
   height: 50px;
-  background-color: rgba($primary, 0.1);
+  background-color: white;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -191,14 +193,12 @@ export default {
   
   &:hover {
     transform: scale(1.05);
-    background-color: rgba($primary, 0.15);
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
   }
   
   img {
     width: 30px;
     height: 30px;
-    border-radius: 0;
   }
 }
 
@@ -206,10 +206,10 @@ export default {
 .ai-chat-widget__panel {
   width: 350px;
   height: 450px;
-  background-color: rgba(255, 255, 255, 0.95);
+  background-color: rgba(255, 255, 255, 0.9);
   border-radius: 20px;
   overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
   display: flex;
   flex-direction: column;
   transition: all 0.3s ease;
@@ -232,15 +232,18 @@ export default {
   padding: 15px;
   display: flex;
   align-items: center;
-  background-color: $primary;
-  color: white;
+  background-color: white;
+  color: $dark;
   border-bottom: 1px solid rgba(0, 0, 0, 0.05);
   
   img {
     width: 30px;
     height: 30px;
-    border-radius: 0;
     margin-right: 10px;
+  }
+  
+  span {
+    font-weight: 600;
   }
 }
 
@@ -250,20 +253,6 @@ export default {
   padding: 15px;
   overflow-y: auto;
   background-color: rgba(255, 255, 255, 0.7);
-  
-  &::-webkit-scrollbar {
-    width: 5px;
-  }
-  
-  &::-webkit-scrollbar-track {
-    background: rgba(0, 0, 0, 0.05);
-    border-radius: 5px;
-  }
-  
-  &::-webkit-scrollbar-thumb {
-    background-color: rgba($primary, 0.3);
-    border-radius: 5px;
-  }
 }
 
 // Individual message
@@ -272,119 +261,86 @@ export default {
   padding: 12px 15px;
   border-radius: 18px;
   max-width: 80%;
-  position: relative;
+  word-break: break-word;
   line-height: 1.5;
-  font-size: 0.95rem;
+  
+  &--ai {
+    background-color: rgba(240, 248, 255, 0.9);
+    color: $dark;
+    border-bottom-left-radius: 4px;
+    align-self: flex-start;
+  }
   
   &--user {
     background-color: rgba($primary, 0.1);
+    color: $dark;
+    border-bottom-right-radius: 4px;
+    align-self: flex-end;
     margin-left: auto;
-    border-bottom-right-radius: 5px;
-    color: $dark;
-  }
-  
-  &--ai {
-    background-color: rgba($gray-200, 0.3);
-    margin-right: auto;
-    border-bottom-left-radius: 5px;
-    color: $dark;
   }
 }
 
 // Input area
 .ai-chat-widget__input {
-  padding: 10px 15px;
   display: flex;
   align-items: center;
+  padding: 10px 15px;
   background-color: white;
   border-top: 1px solid rgba(0, 0, 0, 0.05);
   
   input {
     flex: 1;
     border: none;
-    padding: 12px;
-    border-radius: 30px;
-    background-color: rgba($gray-100, 0.3);
-    transition: all 0.3s ease;
-    font-size: 0.9rem;
+    padding: 10px 0;
+    outline: none;
+    background: transparent;
+    font-size: 0.95rem;
+    color: $dark;
     
-    &:focus {
-      outline: none;
-      background-color: rgba($gray-100, 0.5);
-      box-shadow: 0 0 0 2px rgba($primary, 0.1);
+    &::placeholder {
+      color: rgba($dark, 0.5);
     }
   }
   
   button {
-    width: 40px;
-    height: 40px;
+    width: 36px;
+    height: 36px;
     border-radius: 50%;
+    background-color: rgba($primary, 0.1);
     border: none;
-    background-color: $primary;
-    color: white;
-    margin-left: 10px;
-    cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: all 0.3s ease;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin-left: 10px;
+    color: $primary;
     
     &:hover {
-      background-color: darken($primary, 5%);
-      transform: scale(1.05);
+      background-color: $primary;
+      color: white;
     }
     
     i {
-      font-size: 0.85rem;
+      font-size: 0.9rem;
     }
   }
 }
 
-// Bubble (minimized state)
+// Bubble view
 .ai-chat-widget__bubble {
-  position: fixed;
-  top: 50%;
-  right: 20px;
-  transform: translateY(-50%);
   width: 60px;
   height: 60px;
+  background-color: rgba(255, 255, 255, 0);
   border-radius: 50%;
-  background-color: transparent;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.12);
   transition: all 0.3s ease;
-  overflow: hidden;
-  
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(255, 255, 255, 0.6);
-    backdrop-filter: blur(5px);
-    border-radius: 50%;
-    z-index: -1;
-  }
   
   &:hover {
-    transform: translateY(-50%) scale(1.05);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-    
-    &::before {
-      background: rgba(255, 255, 255, 0.75);
-    }
-  }
-  
-  img {
-    width: 40px;
-    height: 40px;
-    border-radius: 0;
-    object-fit: contain;
+    transform: scale(1.05);
   }
 }
 </style> 

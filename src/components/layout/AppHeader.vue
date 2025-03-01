@@ -1,42 +1,47 @@
 <template>
-  <header class="app-header">
+  <header class="header" :class="{ 'header--scrolled': scrolled, 'header--open': mobileMenuOpen }">
     <div class="container">
-      <div class="header-content">
-        <div class="logo">
-          <router-link to="/">
-            <img src="@/assets/logomaia.png" alt="Maia AI Logo" class="logo-img" />
-            <span class="logo-text">Maia<span class="logo-accent">AI</span></span>
+      <div class="header__content">
+        <div class="header__logo">
+          <router-link to="/" class="logo">
+            <img src="@/assets/logomaia.png" alt="Maia" class="logo__image" />
+            <span class="logo__text">Maia</span>
           </router-link>
         </div>
         
-        <nav class="main-nav" :class="{ 'is-active': isMenuOpen }">
-          <ul class="nav-list">
-            <li class="nav-item">
-              <router-link to="/" class="nav-link">Inicio</router-link>
+        <nav class="header__nav" :class="{ 'active': mobileMenuOpen }">
+          <ul class="nav">
+            <li class="nav__item">
+              <router-link to="/" class="nav__link">Inicio</router-link>
             </li>
-            <li class="nav-item">
-              <a href="#pricing" class="nav-link">Planes</a>
+            <li class="nav__item">
+              <a href="#demo" class="nav__link">Demo</a>
             </li>
-            <li class="nav-item">
-              <router-link to="/about" class="nav-link">Nosotros</router-link>
+            <li class="nav__item">
+              <a href="#pricing" class="nav__link">Planes</a>
             </li>
-            <li class="nav-item">
-              <router-link to="/blog" class="nav-link">Blog</router-link>
+            <li class="nav__item">
+              <router-link to="/about" class="nav__link">Nosotros</router-link>
+            </li>
+            <li class="nav__item">
+              <router-link to="/contact" class="nav__link">Contacto</router-link>
             </li>
           </ul>
-          
-          <div class="nav-cta">
-            <router-link to="/contact" class="btn btn--primary">Contacto</router-link>
-          </div>
         </nav>
         
-        <button class="menu-toggle" @click="toggleMenu" aria-label="Toggle menu">
-          <span class="menu-icon" :class="{ 'is-active': isMenuOpen }">
-            <span class="bar"></span>
-            <span class="bar"></span>
-            <span class="bar"></span>
-          </span>
-        </button>
+        <div class="header__actions">
+          <button class="btn btn--outline">Iniciar sesión</button>
+          <button class="btn btn--primary">Registrarse</button>
+          <button 
+            class="header__menu-toggle" 
+            @click="toggleMobileMenu"
+            aria-label="Toggle Menu"
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
       </div>
     </div>
   </header>
@@ -45,290 +50,294 @@
 <script>
 export default {
   name: 'AppHeader',
-  
   data() {
     return {
-      isMenuOpen: false,
-      isScrolled: false
+      scrolled: false,
+      mobileMenuOpen: false,
+      lastScrollPosition: 0
     }
   },
-  
   mounted() {
     window.addEventListener('scroll', this.handleScroll);
     window.addEventListener('resize', this.handleResize);
-    this.handleResize();
+    this.handleScroll();
   },
-  
   beforeUnmount() {
     window.removeEventListener('scroll', this.handleScroll);
     window.removeEventListener('resize', this.handleResize);
   },
-  
   methods: {
-    toggleMenu() {
-      this.isMenuOpen = !this.isMenuOpen;
+    handleScroll() {
+      const currentScrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+      this.scrolled = currentScrollPosition > 20;
       
-      if (this.isMenuOpen) {
+      // Close mobile menu on scroll
+      if (this.mobileMenuOpen && Math.abs(currentScrollPosition - this.lastScrollPosition) > 60) {
+        this.mobileMenuOpen = false;
+      }
+      
+      this.lastScrollPosition = currentScrollPosition;
+    },
+    handleResize() {
+      if (window.innerWidth > 991 && this.mobileMenuOpen) {
+        this.mobileMenuOpen = false;
+      }
+    },
+    toggleMobileMenu() {
+      this.mobileMenuOpen = !this.mobileMenuOpen;
+      if (this.mobileMenuOpen) {
         document.body.style.overflow = 'hidden';
       } else {
         document.body.style.overflow = '';
       }
     },
-    
-    handleScroll() {
-      this.isScrolled = window.scrollY > 20;
-    },
-    
-    handleResize() {
-      if (window.innerWidth >= 992) {
-        this.isMenuOpen = false;
-        document.body.style.overflow = '';
-      }
-    },
-    
-    closeMenu() {
-      this.isMenuOpen = false;
+    scrollToSection(sectionId) {
+      this.mobileMenuOpen = false;
       document.body.style.overflow = '';
+      
+      const section = document.getElementById(sectionId);
+      if (section) {
+        section.scrollIntoView({ behavior: 'smooth' });
+      }
     }
   }
 }
 </script>
 
 <style lang="scss" scoped>
-@import '@/styles/variables.scss';
+@import "@/styles/variables.scss";
 
-// Define light blue background color
+// Define variables
 $light-blue-bg: #f0f8ff;
+$primary-gradient: linear-gradient(135deg, $primary 0%, lighten($primary, 15%) 100%);
 
-.app-header {
-  position: sticky;
+.header {
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  z-index: 100;
-  padding: $spacing-md 0;
-  background-color: $light-blue-bg;
+  z-index: 1000;
+  background-color: transparent;
   transition: all 0.3s ease;
-  box-shadow: 0 3px 15px rgba(0, 0, 0, 0.03);
+  padding: 1rem 0;
   
-  &.is-scrolled {
-    padding: $spacing-sm 0;
-    background-color: rgba(255, 255, 255, 0.98);
-    backdrop-filter: blur(10px);
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+  &--scrolled {
+    background-color: white;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 0.7rem 0;
   }
   
-  .container {
-    position: relative;
+  &--open {
+    background-color: white;
   }
 }
 
-.header-content {
+.header__content {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  position: relative;
+}
+
+.header__logo {
+  z-index: 1001;
 }
 
 .logo {
-  a {
-    display: flex;
-    align-items: center;
-    text-decoration: none;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: $dark;
+  
+  .header--scrolled & {
     color: $dark;
-  }
-  
-  &-img {
-    height: 38px;
-    width: auto;
-    margin-right: $spacing-sm;
-    transition: transform 0.3s ease;
-  }
-  
-  &-text {
-    font-size: 1.5rem;
-    font-weight: 700;
-    letter-spacing: -0.01em;
-    
-    .logo-accent {
-      color: $primary;
-    }
-  }
-  
-  a:hover .logo-img {
-    transform: scale(1.05);
   }
 }
 
-.main-nav {
-  display: flex;
-  align-items: center;
+.logo__image {
+  width: 40px;
+  height: 40px;
+  margin-right: 0.75rem;
+  border-radius: 50%;
+  object-fit: cover;
   
+  .header--scrolled & {
+    width: 35px;
+    height: 35px;
+  }
+}
+
+.logo__text {
+  font-size: 1.5rem;
+  font-weight: 700;
+  
+  .header--scrolled & {
+    font-size: 1.4rem;
+  }
+}
+
+.header__nav {
   @media (max-width: $breakpoint-lg) {
     position: fixed;
     top: 0;
-    right: 0;
-    bottom: 0;
-    width: 300px;
-    background: white;
-    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.1);
-    padding: $spacing-3xl $spacing-xl;
-    flex-direction: column;
-    justify-content: center;
-    transform: translateX(100%);
-    transition: transform 0.4s ease;
+    right: -100%;
+    width: 80%;
+    max-width: 400px;
+    height: 100vh;
+    background-color: white;
     z-index: 1000;
+    padding: 6rem 2rem 2rem;
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+    transition: right 0.3s ease;
+    overflow-y: auto;
     
-    &.is-active {
-      transform: translateX(0);
+    &.active {
+      right: 0;
     }
   }
 }
 
-.nav-list {
+.nav {
   display: flex;
   list-style: none;
-  margin: 0;
   padding: 0;
+  margin: 0;
   
   @media (max-width: $breakpoint-lg) {
     flex-direction: column;
-    align-items: center;
-    margin-bottom: $spacing-xl;
   }
 }
 
-.nav-item {
-  margin: 0 $spacing-md;
+.nav__item {
+  margin: 0 1rem;
   
   @media (max-width: $breakpoint-lg) {
-    margin: $spacing-sm 0;
+    margin: 0.75rem 0;
   }
 }
 
-.nav-link {
-  position: relative;
-  display: inline-block;
+.nav__link {
   color: $dark;
   text-decoration: none;
   font-weight: 500;
-  padding: $spacing-xs 0;
+  padding: 0.5rem 0;
   transition: color 0.2s ease;
+  position: relative;
+  
+  &:hover, &.router-link-active {
+    color: $primary;
+  }
   
   &::after {
     content: '';
     position: absolute;
-    left: 0;
     bottom: 0;
+    left: 0;
     width: 0;
     height: 2px;
     background-color: $primary;
     transition: width 0.3s ease;
   }
   
-  &:hover, &.router-link-active {
-    color: $primary;
+  &:hover::after, &.router-link-active::after {
+    width: 100%;
+  }
+  
+  @media (max-width: $breakpoint-lg) {
+    display: block;
+    padding: 0.75rem 0;
+    font-size: 1.2rem;
     
     &::after {
-      width: 100%;
+      display: none;
     }
   }
+}
+
+.header__actions {
+  display: flex;
+  align-items: center;
+  z-index: 1001;
   
-  @media (max-width: $breakpoint-lg) {
-    font-size: 1.1rem;
-    padding: $spacing-sm 0;
+  .btn {
+    margin-left: 0.75rem;
+    
+    @media (max-width: $breakpoint-lg) {
+      display: none;
+    }
   }
 }
 
-.nav-cta {
-  margin-left: $spacing-xl;
-  
-  @media (max-width: $breakpoint-lg) {
-    margin-left: 0;
-  }
-}
-
-.menu-toggle {
+.header__menu-toggle {
   display: none;
   background: none;
   border: none;
-  cursor: pointer;
-  padding: $spacing-xs;
-  z-index: 1001;
-  
-  @media (max-width: $breakpoint-lg) {
-    display: block;
-  }
-}
-
-.menu-icon {
-  width: 28px;
-  height: 20px;
+  width: 30px;
+  height: 24px;
   position: relative;
+  margin-left: 1rem;
+  cursor: pointer;
   
-  .bar {
+  span {
     display: block;
-    position: absolute;
-    height: 3px;
     width: 100%;
+    height: 2px;
     background-color: $dark;
-    border-radius: 3px;
-    opacity: 1;
+    position: absolute;
     left: 0;
-    transform: rotate(0deg);
-    transition: all 0.25s ease-in-out;
+    transition: all 0.3s ease;
     
     &:nth-child(1) {
       top: 0;
     }
     
     &:nth-child(2) {
-      top: 8px;
+      top: 50%;
+      transform: translateY(-50%);
     }
     
     &:nth-child(3) {
-      top: 16px;
+      bottom: 0;
     }
   }
   
-  &.is-active {
-    .bar:nth-child(1) {
-      top: 8px;
-      transform: rotate(135deg);
+  .header--open & {
+    span {
+      &:nth-child(1) {
+        top: 50%;
+        transform: translateY(-50%) rotate(45deg);
+      }
+      
+      &:nth-child(2) {
+        opacity: 0;
+      }
+      
+      &:nth-child(3) {
+        bottom: 50%;
+        transform: translateY(50%) rotate(-45deg);
+      }
     }
-    
-    .bar:nth-child(2) {
-      opacity: 0;
-      transform: translateX(-20px);
-    }
-    
-    .bar:nth-child(3) {
-      top: 8px;
-      transform: rotate(-135deg);
-    }
+  }
+  
+  @media (max-width: $breakpoint-lg) {
+    display: block;
   }
 }
 
-// Menu background overlay
-@media (max-width: $breakpoint-lg) {
-  .app-header::before {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(3px);
-    z-index: 999;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.3s ease;
-  }
-  
-  .is-active + .app-header::before {
-    opacity: 1;
-    pointer-events: auto;
-  }
+// Overlay for mobile menu
+.header--open::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  animation: fadeIn 0.3s ease forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 </style> 

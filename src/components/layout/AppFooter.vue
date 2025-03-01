@@ -1,300 +1,270 @@
 <template>
-  <footer class="app-footer">
+  <footer class="footer">
     <div class="container">
-      <div class="footer-top">
-        <div class="footer-brand">
-          <router-link to="/" class="footer-logo">
-            <img src="@/assets/logomaia.png" alt="Maia AI Logo" />
-            <span>Maia<span class="accent">AI</span></span>
-          </router-link>
-          <p class="footer-tagline">
-            Transformando la industria inmobiliaria con inteligencia artificial
-          </p>
-          <div class="footer-social">
-            <a href="https://www.linkedin.com/company/maiavr/" target="_blank" aria-label="LinkedIn">
-              <i class="fab fa-linkedin-in"></i>
-            </a>
-            <a href="https://twitter.com/maiavr_ai" target="_blank" aria-label="Twitter">
-              <i class="fab fa-twitter"></i>
-            </a>
-            <a href="https://www.instagram.com/maiavr.ai/" target="_blank" aria-label="Instagram">
-              <i class="fab fa-instagram"></i>
-            </a>
-          </div>
+      <div class="footer__top">
+        <div class="footer__logo">
+          <img src="@/assets/logomaia.png" alt="Maia" class="footer-logo" />
+          <h3 class="footer-brand">Maia</h3>
+          <p class="footer-tagline">La vendedora virtual que revoluciona la venta inmobiliaria</p>
         </div>
         
-        <div class="footer-links">
-          <div class="footer-links-col">
-            <h4>Producto</h4>
-            <ul>
-              <li><a href="#pricing">Planes</a></li>
-              <li><a href="#">Demo</a></li>
-              <li><a href="#">Integraciones</a></li>
-              <li><a href="#">API</a></li>
+        <div class="footer__nav">
+          <div class="footer-menu">
+            <h4 class="footer-menu__title">Plataforma</h4>
+            <ul class="footer-menu__list">
+              <li><a href="#demo">Demo</a></li>
+              <li><a href="#features">Características</a></li>
+              <li><a href="#pricing">Precios</a></li>
+              <li><a href="#team">Equipo</a></li>
             </ul>
           </div>
           
-          <div class="footer-links-col">
-            <h4>Compañía</h4>
-            <ul>
-              <li><router-link to="/about">Nosotros</router-link></li>
-              <li><router-link to="/blog">Blog</router-link></li>
-              <li><a href="#">Carreras</a></li>
-              <li><a href="#">Prensa</a></li>
-            </ul>
-          </div>
-          
-          <div class="footer-links-col">
-            <h4>Soporte</h4>
-            <ul>
-              <li><a href="#">Centro de Ayuda</a></li>
-              <li><router-link to="/contact">Contacto</router-link></li>
+          <div class="footer-menu">
+            <h4 class="footer-menu__title">Recursos</h4>
+            <ul class="footer-menu__list">
               <li><a href="#">Documentación</a></li>
-              <li><a href="#">Estado del Sistema</a></li>
+              <li><a href="#">Tutoriales</a></li>
+              <li><a href="#">Blog</a></li>
+              <li><a href="#">FAQ</a></li>
             </ul>
           </div>
           
-          <div class="footer-links-col">
-            <h4>Legal</h4>
-            <ul>
-              <li><a href="#">Términos de Servicio</a></li>
-              <li><a href="#">Privacidad</a></li>
-              <li><a href="#">Cookies</a></li>
+          <div class="footer-menu">
+            <h4 class="footer-menu__title">Empresa</h4>
+            <ul class="footer-menu__list">
+              <li><a href="#">Sobre nosotros</a></li>
+              <li><a href="#">Contacto</a></li>
+              <li><a href="#">Política de privacidad</a></li>
+              <li><a href="#">Términos de servicio</a></li>
             </ul>
+          </div>
+          
+          <div class="footer-menu">
+            <h4 class="footer-menu__title">Contacto</h4>
+            <ul class="footer-menu__list">
+              <li><a href="mailto:info@maiavirtual.com">info@maiavirtual.com</a></li>
+              <li><a href="tel:+123456789">+1 (234) 567-89</a></li>
+              <li>Ciudad de México, México</li>
+            </ul>
+            <div class="footer-social">
+              <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+              <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+              <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+              <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            </div>
           </div>
         </div>
       </div>
       
-      <div class="footer-bottom">
-        <p class="copyright">
-          &copy; {{ currentYear }} Maia AI. Todos los derechos reservados.
-        </p>
-        <div class="footer-bottom-links">
-          <a href="mailto:info@maiavr.cl">info@maiavr.cl</a>
-          <a href="tel:+56912345678">+56 9 1234 5678</a>
+      <div class="footer__cta">
+        <div class="cta-content">
+          <h3>¿Listo para transformar tus ventas inmobiliarias?</h3>
+          <p>Únete a cientos de inmobiliarias y agentes que ya están utilizando Maia para vender más propiedades.</p>
+          <button class="btn btn--white btn--lg">Comenzar Ahora</button>
+        </div>
+      </div>
+      
+      <div class="footer__bottom">
+        <p class="copyright">© 2023 Maia. Todos los derechos reservados.</p>
+        <div class="footer-links">
+          <a href="#">Privacidad</a>
+          <a href="#">Términos</a>
+          <a href="#">Cookies</a>
         </div>
       </div>
     </div>
-    
-    <div class="footer-shape"></div>
   </footer>
 </template>
 
 <script>
 export default {
-  name: 'AppFooter',
-  
-  computed: {
-    currentYear() {
-      return new Date().getFullYear();
-    }
-  }
+  name: 'AppFooter'
 }
 </script>
 
 <style lang="scss" scoped>
-@import '@/styles/variables.scss';
+@import "@/styles/variables.scss";
 
 // Define variables
 $light-blue-bg: #f0f8ff;
 $primary-gradient: linear-gradient(135deg, $primary 0%, lighten($primary, 15%) 100%);
 
-.app-footer {
-  position: relative;
-  background-color: white;
-  padding: $spacing-3xl 0 $spacing-xl;
-  color: $dark;
-  overflow: hidden;
-  
-  .container {
-    position: relative;
-    z-index: 1;
-  }
+.footer {
+  background-color: $dark;
+  color: white;
+  padding-top: $spacing-2xl;
 }
 
-// Footer shape background
-.footer-shape {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  width: 50%;
-  height: 70%;
-  background: rgba($primary, 0.02);
-  border-radius: 100% 0 0 0;
-  z-index: 0;
-}
-
-// Footer top section with logo and links
-.footer-top {
-  display: flex;
-  flex-wrap: wrap;
-  margin-bottom: $spacing-2xl;
+.footer__top {
+  display: grid;
+  grid-template-columns: 1fr;
   gap: $spacing-2xl;
+  padding-bottom: $spacing-2xl;
+  border-bottom: 1px solid rgba(white, 0.1);
   
-  @media (max-width: $breakpoint-md) {
-    flex-direction: column;
-    gap: $spacing-xl;
+  @media (min-width: $breakpoint-md) {
+    grid-template-columns: 1fr 3fr;
   }
 }
 
-// Brand section with logo
-.footer-brand {
-  flex: 0 0 25%;
-  
-  @media (max-width: $breakpoint-lg) {
-    flex: 0 0 100%;
-  }
+.footer__logo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 .footer-logo {
-  display: flex;
-  align-items: center;
-  text-decoration: none;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
   margin-bottom: $spacing-md;
-  color: $dark;
-  
-  img {
-    width: 40px;
-    height: 40px;
-    margin-right: $spacing-sm;
-  }
-  
-  span {
-    font-size: 1.6rem;
-    font-weight: 700;
-    letter-spacing: -0.01em;
-    
-    .accent {
-      color: $primary;
-    }
-  }
+  object-fit: cover;
+}
+
+.footer-brand {
+  font-size: 1.8rem;
+  font-weight: $font-weight-bold;
+  margin-bottom: $spacing-xs;
+  color: white;
 }
 
 .footer-tagline {
-  font-size: 1rem;
+  color: rgba(white, 0.7);
+  font-size: 0.95rem;
   line-height: 1.5;
-  color: rgba($dark, 0.7);
-  margin-bottom: $spacing-lg;
+  max-width: 300px;
+}
+
+.footer__nav {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: $spacing-xl;
+  
+  @media (min-width: $breakpoint-md) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.footer-menu__title {
+  color: white;
+  font-weight: $font-weight-semibold;
+  margin-bottom: $spacing-md;
+  font-size: 1.1rem;
+}
+
+.footer-menu__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  
+  li {
+    margin-bottom: $spacing-xs;
+  }
+  
+  a {
+    color: rgba(white, 0.7);
+    text-decoration: none;
+    transition: color 0.2s ease;
+    font-size: 0.95rem;
+    
+    &:hover {
+      color: white;
+    }
+  }
 }
 
 .footer-social {
   display: flex;
   gap: $spacing-sm;
+  margin-top: $spacing-md;
   
   a {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 40px;
-    height: 40px;
+    width: 36px;
+    height: 36px;
+    background-color: rgba(white, 0.1);
     border-radius: 50%;
-    background-color: rgba($primary, 0.1);
-    color: $primary;
-    transition: all 0.3s ease;
-    font-size: 1rem;
+    color: white;
+    transition: all 0.2s ease;
     
     &:hover {
       background-color: $primary;
-      color: white;
       transform: translateY(-3px);
     }
   }
 }
 
-// Links section
-.footer-links {
-  flex: 1;
-  display: flex;
-  flex-wrap: wrap;
-  gap: $spacing-xl;
+.footer__cta {
+  margin: $spacing-3xl 0;
+  padding: $spacing-2xl;
+  border-radius: $border-radius-lg;
+  background: $primary-gradient;
+  text-align: center;
   
-  @media (max-width: $breakpoint-lg) {
-    gap: $spacing-lg;
-  }
-  
-  @media (max-width: $breakpoint-md) {
-    width: 100%;
-  }
-}
-
-.footer-links-col {
-  flex: 1;
-  min-width: 140px;
-  
-  @media (max-width: $breakpoint-sm) {
-    flex: 0 0 45%;
-    margin-bottom: $spacing-lg;
-  }
-  
-  h4 {
-    font-size: 1.1rem;
-    font-weight: 600;
+  h3 {
+    font-size: 1.8rem;
+    font-weight: $font-weight-bold;
     margin-bottom: $spacing-md;
-    color: $dark;
+    color: white;
   }
   
-  ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+  p {
+    font-size: 1.1rem;
+    color: rgba(white, 0.9);
+    margin-bottom: $spacing-xl;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .btn--white {
+    background-color: white;
+    color: $dark;
     
-    li {
-      margin-bottom: $spacing-xs;
-      
-      a {
-        color: rgba($dark, 0.7);
-        text-decoration: none;
-        transition: all 0.2s ease;
-        font-size: 0.95rem;
-        
-        &:hover {
-          color: $primary;
-          text-decoration: underline;
-        }
-      }
+    &:hover {
+      background-color: rgba(white, 0.9);
     }
   }
 }
 
-// Footer bottom with copyright
-.footer-bottom {
+.footer__bottom {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   align-items: center;
-  padding-top: $spacing-lg;
-  border-top: 1px solid rgba($dark, 0.08);
+  padding: $spacing-lg 0;
+  border-top: 1px solid rgba(white, 0.1);
   
-  @media (max-width: $breakpoint-md) {
-    flex-direction: column;
-    gap: $spacing-md;
-    align-items: flex-start;
+  @media (min-width: $breakpoint-md) {
+    flex-direction: row;
+    justify-content: space-between;
   }
 }
 
 .copyright {
-  color: rgba($dark, 0.6);
+  color: rgba(white, 0.5);
   font-size: 0.9rem;
-  margin: 0;
+  margin-bottom: $spacing-md;
+  
+  @media (min-width: $breakpoint-md) {
+    margin-bottom: 0;
+  }
 }
 
-.footer-bottom-links {
+.footer-links {
   display: flex;
-  gap: $spacing-lg;
+  gap: $spacing-md;
   
   a {
-    color: rgba($dark, 0.7);
+    color: rgba(white, 0.5);
     text-decoration: none;
-    transition: all 0.2s ease;
     font-size: 0.9rem;
+    transition: color 0.2s ease;
     
     &:hover {
-      color: $primary;
+      color: white;
     }
-  }
-  
-  @media (max-width: $breakpoint-sm) {
-    flex-direction: column;
-    gap: $spacing-xs;
   }
 }
 </style> 
