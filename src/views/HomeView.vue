@@ -494,67 +494,71 @@ export default {
 $primary-gradient: linear-gradient(135deg, $primary 0%, lighten($primary, 15%) 100%);
 $section-spacing: $spacing-4xl;
 $border-radius-enhanced: 20px; // Increased for more rounded corners
-$purple-overlay: rgba($primary, 0.05); // Semi-transparent purple for backgrounds
+$purple-overlay: rgba($primary, 0.08); // Slightly stronger purple background
 
 // General section styling
 .section {
   padding: $section-spacing 0;
   position: relative;
   overflow: hidden;
+  z-index: 1; // Ensure section content is above the background
 
   &--light {
-    background-color: $light;
-    background-image: radial-gradient($purple-overlay 1px, transparent 1px);
-    background-size: 20px 20px;
+    background-color: rgba(white, 0.85); // Semi-transparent white
+    position: relative;
+    
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: radial-gradient($purple-overlay 1px, transparent 1px);
+      background-size: 20px 20px;
+      z-index: -1;
+    }
   }
   
   &--gradient {
     background: $primary-gradient;
     color: white;
-  }
-  
-  &__header {
-    text-align: center;
-    max-width: 800px;
-    margin: 0 auto $spacing-2xl;
-  }
-  
-  &__title {
-    font-size: 2.5rem;
-    margin-bottom: $spacing-md;
-    color: $dark;
-    font-weight: $font-weight-bold;
-    
-    @media (max-width: $breakpoint-md) {
-      font-size: 2rem;
-    }
-  }
-  
-  &__subtitle {
-    font-size: 1.1rem;
-    color: $gray-600;
-    line-height: 1.5;
+    border-radius: $border-radius-enhanced;
+    margin: 0 $spacing-xl;
+    box-shadow: $shadow-lg;
   }
 }
 
-// Container
+// Container with enhanced borders
 .container {
   max-width: $container-max-width;
   margin: 0 auto;
   padding: 0 $spacing-lg;
   width: 100%;
+  position: relative;
+  z-index: 2;
 }
 
 // Hero Section
 .hero-section {
   padding-top: 150px;
   padding-bottom: $spacing-4xl;
-  background-color: $light;
-  background-image: 
-    linear-gradient(to bottom, rgba($primary, 0.03), rgba(black, 0.02)),
-    radial-gradient($purple-overlay 1px, transparent 1px);
-  background-size: 100% 100%, 20px 20px;
+  position: relative;
   text-align: center;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+      linear-gradient(to bottom, rgba(white, 0.9), rgba(white, 0.7)),
+      radial-gradient($purple-overlay 1px, transparent 1px);
+    background-size: 100% 100%, 20px 20px;
+    z-index: -1;
+  }
   
   .hero__content {
     max-width: 1000px;
@@ -570,6 +574,7 @@ $purple-overlay: rgba($primary, 0.05); // Semi-transparent purple for background
     color: $dark;
     margin-bottom: $spacing-xl;
     line-height: 1.2;
+    text-shadow: 0 1px 3px rgba(white, 0.5);
     
     @media (max-width: $breakpoint-md) {
       font-size: 2.5rem;
@@ -588,6 +593,7 @@ $purple-overlay: rgba($primary, 0.05); // Semi-transparent purple for background
       overflow: hidden;
       border-radius: $border-radius-enhanced;
       box-shadow: $shadow-lg;
+      border: 3px solid rgba($primary, 0.1);
       
       .demo-iframe {
         position: absolute;
@@ -657,17 +663,20 @@ $purple-overlay: rgba($primary, 0.05); // Semi-transparent purple for background
   flex-direction: column;
   position: relative;
   transition: $transition-base;
-  border: 1px solid $gray-200;
+  border: 1px solid rgba($primary, 0.2); // More visible border
   height: 100%;
+  backdrop-filter: blur(10px);
   
   &:hover {
     transform: translateY(-10px);
     box-shadow: $shadow;
+    border-color: $primary;
   }
   
   &--featured {
     border-color: $primary;
     box-shadow: $shadow;
+    background-color: rgba(white, 0.95);
     
     .card__badge {
       position: absolute;
@@ -679,6 +688,7 @@ $purple-overlay: rgba($primary, 0.05); // Semi-transparent purple for background
       font-weight: $font-weight-semibold;
       padding: $spacing-xs $spacing-sm;
       border-radius: $border-radius-pill;
+      box-shadow: $shadow-sm;
     }
   }
   
@@ -760,17 +770,19 @@ $purple-overlay: rgba($primary, 0.05); // Semi-transparent purple for background
   }
   
   .stat-item {
-    background-color: white;
+    background-color: rgba(white, 0.9);
     border-radius: $border-radius;
     padding: $spacing-lg;
     text-align: center;
     box-shadow: $shadow-sm;
     transition: $transition-base;
-    border: 1px solid rgba($primary, 0.1);
+    border: 1px solid rgba($primary, 0.2); // More visible border
+    backdrop-filter: blur(5px);
     
     &:hover {
       transform: translateY(-5px);
       box-shadow: $shadow;
+      border-color: $primary;
     }
     
     .stat-number {
@@ -789,7 +801,7 @@ $purple-overlay: rgba($primary, 0.05); // Semi-transparent purple for background
   }
 }
 
-// Features grid
+// Features grid with enhanced colors
 .features-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -801,16 +813,18 @@ $purple-overlay: rgba($primary, 0.05); // Semi-transparent purple for background
   }
   
   .feature-card {
-    background-color: white;
+    background-color: rgba(white, 0.9);
     border-radius: $border-radius;
     padding: $spacing-xl;
     box-shadow: $shadow-sm;
     transition: $transition-base;
-    border: 1px solid rgba($primary, 0.1);
+    border: 1px solid rgba($primary, 0.2); // More visible border
+    backdrop-filter: blur(5px);
     
     &:hover {
       transform: translateY(-5px);
       box-shadow: $shadow;
+      border-color: $primary;
     }
     
     .feature-icon {
@@ -849,17 +863,18 @@ $purple-overlay: rgba($primary, 0.05); // Semi-transparent purple for background
 
 .testimonial-card {
   flex: 0 0 100%;
-  background-color: white;
+  background-color: rgba(white, 0.9);
   border-radius: $border-radius;
   padding: $spacing-xl;
   box-shadow: $shadow-sm;
-  border: 1px solid rgba($primary, 0.1);
+  border: 1px solid rgba($primary, 0.2); // More visible border
   margin: 0 $spacing-md;
   position: relative;
+  backdrop-filter: blur(5px);
   
   .quote-icon {
     font-size: 2rem;
-    color: rgba($primary, 0.1);
+    color: rgba($primary, 0.2);
     position: absolute;
     top: $spacing-md;
     left: $spacing-md;
@@ -888,7 +903,7 @@ $purple-overlay: rgba($primary, 0.05); // Semi-transparent purple for background
       object-fit: cover;
       margin-right: $spacing-md;
       border: 3px solid $light;
-      box-shadow: 0 0 0 1px rgba($primary, 0.2);
+      box-shadow: 0 0 0 1px rgba($primary, 0.3); // More visible border
     }
     
     div {
@@ -918,17 +933,19 @@ $purple-overlay: rgba($primary, 0.05); // Semi-transparent purple for background
     width: 12px;
     height: 12px;
     border-radius: 50%;
-    background-color: $gray-300;
+    background-color: rgba($gray-400, 0.5);
     transition: $transition-base;
     cursor: pointer;
+    border: 1px solid rgba($primary, 0.2);
     
     &.active {
       background-color: $primary;
       transform: scale(1.2);
+      border-color: $primary;
     }
     
     &:hover {
-      background-color: $gray-600;
+      background-color: rgba($primary, 0.5);
     }
   }
 }
@@ -956,22 +973,34 @@ $purple-overlay: rgba($primary, 0.05); // Semi-transparent purple for background
     box-shadow: $shadow-sm;
     cursor: pointer;
     transition: $transition-base;
+    border: 1px solid rgba($primary, 0.2);
     
     &:hover {
       background-color: $primary;
       color: white;
       box-shadow: $shadow;
+      border-color: $primary;
     }
   }
 }
 
 // Team section
 .team-section {
-  background-color: $light;
-  background-image: 
-    linear-gradient(to bottom, rgba($primary, 0.03), rgba(black, 0.02)),
-    radial-gradient($purple-overlay 1px, transparent 1px);
-  background-size: 100% 100%, 20px 20px;
+  position: relative;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+      linear-gradient(to bottom, rgba($dark, 0.02), rgba($primary, 0.03)),
+      radial-gradient(rgba($dark, 0.03) 1px, transparent 1px);
+    background-size: 100% 100%, 20px 20px;
+    z-index: -1;
+  }
 }
 
 .team-container {
@@ -990,16 +1019,18 @@ $purple-overlay: rgba($primary, 0.05); // Semi-transparent purple for background
 }
 
 .team-card {
-  background-color: white;
+  background-color: rgba(white, 0.9);
   border-radius: $border-radius;
   overflow: hidden;
   box-shadow: $shadow-sm;
   transition: $transition-base;
-  border: 1px solid rgba($primary, 0.1);
+  border: 1px solid rgba($primary, 0.2); // More visible border
+  backdrop-filter: blur(5px);
   
   &:hover {
     transform: translateY(-5px);
     box-shadow: $shadow;
+    border-color: $primary;
   }
   
   .team-image {
@@ -1008,8 +1039,8 @@ $purple-overlay: rgba($primary, 0.05); // Semi-transparent purple for background
     border-radius: 50%;
     overflow: hidden;
     margin: $spacing-lg auto;
-    border: 5px solid $light;
-    box-shadow: 0 0 0 1px rgba($primary, 0.2);
+    border: 5px solid rgba(white, 0.9);
+    box-shadow: 0 0 0 1px rgba($primary, 0.3); // More visible border
     
     img {
       width: 100%;
@@ -1059,10 +1090,12 @@ $purple-overlay: rgba($primary, 0.05); // Semi-transparent purple for background
         background-color: $gray-200;
         color: $dark;
         transition: $transition-base;
+        border: 1px solid rgba($primary, 0.1);
         
         &:hover {
           background-color: $primary;
           color: white;
+          border-color: $primary;
         }
       }
     }
@@ -1077,6 +1110,8 @@ $purple-overlay: rgba($primary, 0.05); // Semi-transparent purple for background
   border-radius: $border-radius-enhanced;
   margin: $spacing-3xl auto;
   max-width: 1000px;
+  box-shadow: $shadow-lg;
+  border: 1px solid rgba(white, 0.1);
   
   h2 {
     color: white;

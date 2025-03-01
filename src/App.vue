@@ -1,5 +1,10 @@
 <template>
   <div class="app-wrapper">
+    <div class="background-grid">
+      <div class="bg-section bg-white"></div>
+      <div class="bg-section bg-purple"></div>
+      <div class="bg-section bg-dark"></div>
+    </div>
     <AppHeader />
     <main>
       <router-view v-slot="{ Component }">
@@ -14,7 +19,7 @@
 </template>
 
 <script setup>
-import { onMounted, onUnmounted, ref } from 'vue'
+import { onMounted, onUnmounted } from 'vue'
 import AppHeader from '@/components/layout/AppHeader.vue'
 import AppFooter from '@/components/layout/AppFooter.vue'
 import AiChatWidget from '@/components/ui/AiChatWidget.vue'
@@ -40,6 +45,7 @@ onUnmounted(() => {
 
 <style lang="scss">
 @import '@/styles/main.scss';
+@import '@/styles/variables.scss';
 
 .app-wrapper {
   display: flex;
@@ -47,12 +53,45 @@ onUnmounted(() => {
   min-height: 100vh;
   width: 100vw;
   overflow-x: hidden;
-  background-color: #f0f5ff;
+  position: relative;
+}
+
+.background-grid {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  z-index: -1;
+}
+
+.bg-section {
+  height: 100%;
+}
+
+.bg-white {
+  background-color: white;
+}
+
+.bg-purple {
+  background-color: rgba($primary, 0.05);
+  background-image: radial-gradient(rgba($primary, 0.1) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+.bg-dark {
+  background-color: rgba($dark, 0.02);
+  background-image: radial-gradient(rgba($dark, 0.05) 1px, transparent 1px);
+  background-size: 20px 20px;
 }
 
 main {
   flex: 1;
   width: 100%;
+  position: relative;
+  z-index: 1;
 }
 
 .fade-enter-active,
