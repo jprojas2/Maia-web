@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <!-- Hero Section -->
-    <section class="section hero">
+    <section class="section hero-section">
       <div class="container">
         <div class="hero__content">
           <h1 class="hero__title animate-fade-in">
@@ -168,7 +168,7 @@
     </section>
     
     <!-- Why Choose Maia Section -->
-    <section class="section" id="features">
+    <section class="section features-section">
       <div class="container">
         <div class="section__header">
           <h2 class="section__title">¿Por qué elegir Maia?</h2>
@@ -177,64 +177,67 @@
           </p>
         </div>
         
-        <!-- Stats moved from hero section to here -->
-        <div class="stats-container">
-          <div class="stat">
-            <span class="stat__number">92%</span>
-            <span class="stat__label">Tasa de rebote en webs inmobiliarias tradicionales</span>
+        <div class="features-container">
+          <div class="feature-row">
+            <div class="feature-col">
+              <div class="feature-image">
+                <img src="https://images.unsplash.com/photo-1573164713988-8665fc963095?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Automatización Inteligente" />
+              </div>
+              <div class="feature-content">
+                <h3>Automatización Inteligente</h3>
+                <p>
+                  Maia analiza las preferencias de cada cliente en tiempo real, destacando las características de 
+                  la propiedad que más le interesan y adaptando el recorrido para maximizar el impacto.
+                </p>
+              </div>
+            </div>
+            
+            <div class="feature-col">
+              <div class="feature-content">
+                <h3>Datos y Análisis Avanzados</h3>
+                <p>
+                  Obtén insights valiosos sobre el comportamiento de tus clientes. Maia registra qué características 
+                  generan más interés y te ayuda a ajustar tus estrategias de venta en base a datos reales.
+                </p>
+              </div>
+              <div class="feature-image">
+                <img src="https://images.unsplash.com/photo-1506784983877-45594efa4cbe?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Datos y Análisis Avanzados" />
+              </div>
+            </div>
           </div>
-          <div class="stat">
-            <span class="stat__number">72%</span>
-            <span class="stat__label">Más conversiones con Maia</span>
-          </div>
-          <div class="stat">
-            <span class="stat__number">3.5x</span>
-            <span class="stat__label">Mayor engagement</span>
-          </div>
-          <div class="stat">
-            <span class="stat__number">40%</span>
-            <span class="stat__label">Ventas más rápidas</span>
+          
+          <div class="feature-row">
+            <div class="feature-col">
+              <div class="feature-image">
+                <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Integración Sin Esfuerzo" />
+              </div>
+              <div class="feature-content">
+                <h3>Integración Sin Esfuerzo</h3>
+                <p>
+                  Implementa Maia en tu sitio web y propiedades en minutos, sin necesidad de conocimientos técnicos. 
+                  Nuestra plataforma se integra perfectamente con las herramientas que ya utilizas.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
         
-        <div class="features-grid">
-          <div class="feature-item">
-            <div class="feature-image">
-              <img src="https://images.unsplash.com/photo-1573164713988-8665fc963095?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Automatización Inteligente" />
-            </div>
-            <div class="feature-content">
-              <h3>Automatización Inteligente</h3>
-              <p>
-                Maia analiza las preferencias de cada cliente en tiempo real, destacando las características de 
-                la propiedad que más le interesan y adaptando el recorrido para maximizar el impacto.
-              </p>
-            </div>
+        <div class="stat-row">
+          <div class="stat">
+            <span class="stat-number">92%</span>
+            <span class="stat-label">Tasa de rebote en webs inmobiliarias tradicionales</span>
           </div>
-          
-          <div class="feature-item reverse">
-            <div class="feature-content">
-              <h3>Datos y Análisis Avanzados</h3>
-              <p>
-                Obtén insights valiosos sobre el comportamiento de tus clientes. Maia registra qué características 
-                generan más interés y te ayuda a ajustar tus estrategias de venta en base a datos reales.
-              </p>
-            </div>
-            <div class="feature-image">
-              <img src="https://images.unsplash.com/photo-1506784983877-45594efa4cbe?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Datos y Análisis Avanzados" />
-            </div>
+          <div class="stat">
+            <span class="stat-number">72%</span>
+            <span class="stat-label">Más conversiones con Maia</span>
           </div>
-          
-          <div class="feature-item">
-            <div class="feature-image">
-              <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Integración Sin Esfuerzo" />
-            </div>
-            <div class="feature-content">
-              <h3>Integración Sin Esfuerzo</h3>
-              <p>
-                Implementa Maia en tu sitio web y propiedades en minutos, sin necesidad de conocimientos técnicos. 
-                Nuestra plataforma se integra perfectamente con las herramientas que ya utilizas.
-              </p>
-            </div>
+          <div class="stat">
+            <span class="stat-number">3.5x</span>
+            <span class="stat-label">Mayor engagement</span>
+          </div>
+          <div class="stat">
+            <span class="stat-number">40%</span>
+            <span class="stat-label">Ventas más rápidas</span>
           </div>
         </div>
       </div>
@@ -283,7 +286,7 @@
     </section>
     
     <!-- Team Section -->
-    <section class="section" id="team">
+    <section class="section team-section">
       <div class="container">
         <div class="section__header">
           <h2 class="section__title">Conoce al Equipo</h2>
@@ -292,18 +295,18 @@
           </p>
         </div>
         
-        <div class="team-grid">
+        <div class="team-container">
           <div class="team-card">
-            <div class="team-card__image">
+            <div class="team-image">
               <img src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80" alt="Manuel Fernández" />
             </div>
-            <div class="team-card__content">
+            <div class="team-content">
               <h3>Manuel Fernández</h3>
-              <p class="team-card__title">CEO & Co-Fundador</p>
-              <p class="team-card__bio">
+              <h4>CEO & Co-Fundador</h4>
+              <p>
                 Arquitecto, experto en VR y modelado 3D, profesor universitario. Lidera la visión del producto y el diseño de experiencia.
               </p>
-              <div class="team-card__social">
+              <div class="team-social">
                 <a href="https://www.linkedin.com/in/manjofer/" target="_blank" class="social-link" aria-label="LinkedIn">
                   <i class="fab fa-linkedin-in"></i>
                 </a>
@@ -315,16 +318,16 @@
           </div>
           
           <div class="team-card">
-            <div class="team-card__image">
+            <div class="team-image">
               <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80" alt="Juan Pablo Rojas" />
             </div>
-            <div class="team-card__content">
+            <div class="team-content">
               <h3>Juan Pablo Rojas</h3>
-              <p class="team-card__title">CTO & Co-Fundador</p>
-              <p class="team-card__bio">
+              <h4>CTO & Co-Fundador</h4>
+              <p>
                 10+ años en desarrollo de software, diseñó sistemas escalables para startups. Responsable de la arquitectura técnica y desarrollo de IA.
               </p>
-              <div class="team-card__social">
+              <div class="team-social">
                 <a href="https://www.linkedin.com/in/juan-pablo-rojas-416157195/" target="_blank" class="social-link" aria-label="LinkedIn">
                   <i class="fab fa-linkedin-in"></i>
                 </a>
@@ -333,16 +336,16 @@
           </div>
           
           <div class="team-card">
-            <div class="team-card__image">
+            <div class="team-image">
               <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80" alt="Federico Antunovic" />
             </div>
-            <div class="team-card__content">
+            <div class="team-content">
               <h3>Federico Antunovic</h3>
-              <p class="team-card__title">CCO & Co-Fundador</p>
-              <p class="team-card__bio">
+              <h4>CCO & Co-Fundador</h4>
+              <p>
                 MBA, 8+ años en ventas B2B, experiencia en consultoría inmobiliaria. Dirige las estrategias comerciales y relaciones con clientes.
               </p>
-              <div class="team-card__social">
+              <div class="team-social">
                 <a href="https://www.linkedin.com/in/fantunovic/" target="_blank" class="social-link" aria-label="LinkedIn">
                   <i class="fab fa-linkedin-in"></i>
                 </a>
@@ -431,30 +434,39 @@ $border-radius-enhanced: 20px; // Increased for more rounded corners
 }
 
 // Hero Section
-.hero {
-  background-color: white;
-  padding-top: $spacing-4xl;
-  padding-bottom: $spacing-2xl;
-  
-  &__content {
-    max-width: 1000px;
-    margin: 0 auto;
-    text-align: center;
+.hero-section {
+  position: relative;
+  padding-top: 150px; /* Increased top padding to move text lower */
+  padding-bottom: $spacing-3xl;
+  background-color: $light;
+  overflow: hidden;
+  min-height: 90vh;
+
+  .container {
+    position: relative;
+    z-index: 2;
   }
-  
-  &__title {
-    font-size: 3.5rem;
+
+  .title {
+    font-size: 3rem; /* Adjusted for better visibility */
     font-weight: $font-weight-bold;
-    margin-bottom: $spacing-xl;
     color: $dark;
+    margin-bottom: $spacing-lg;
     line-height: 1.2;
-    
+
     @media (max-width: $breakpoint-md) {
       font-size: 2.5rem;
     }
+  }
+
+  .subtitle {
+    font-size: 1.4rem; /* Adjusted for better visibility */
+    color: $gray-700;
+    margin-bottom: $spacing-xl;
+    max-width: 700px;
     
-    @media (max-width: $breakpoint-sm) {
-      font-size: 2rem;
+    @media (max-width: $breakpoint-md) {
+      font-size: 1.2rem;
     }
   }
   
@@ -464,16 +476,6 @@ $border-radius-enhanced: 20px; // Increased for more rounded corners
     border-radius: $border-radius-enhanced;
     overflow: hidden;
     box-shadow: $shadow-lg;
-  }
-  
-  &__subtitle {
-    font-size: 1.2rem;
-    color: $gray-600;
-    margin-bottom: $spacing-xl;
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
-    line-height: 1.6;
   }
   
   &__actions {
@@ -563,101 +565,6 @@ $border-radius-enhanced: 20px; // Increased for more rounded corners
   &--lg {
     padding: $spacing-md $spacing-xl;
     font-size: 1.1rem;
-  }
-}
-
-// Stats and Features
-.stats-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: $spacing-xl;
-  margin-bottom: $spacing-2xl;
-  
-  .stat {
-    flex: 1;
-    min-width: 200px;
-    max-width: 250px;
-    text-align: center;
-    background-color: white;
-    padding: $spacing-lg;
-    border-radius: $border-radius-enhanced;
-    box-shadow: $shadow;
-    transition: transform 0.3s ease;
-    
-    &:hover {
-      transform: translateY(-5px);
-    }
-    
-    &__number {
-      display: block;
-      font-size: 2.5rem;
-      font-weight: $font-weight-bold;
-      color: $primary;
-      margin-bottom: $spacing-xs;
-    }
-    
-    &__label {
-      color: $gray-600;
-      font-size: 0.95rem;
-    }
-  }
-}
-
-// Features Grid
-.features-grid {
-  display: flex;
-  flex-direction: column;
-  gap: $spacing-3xl;
-  margin-top: $spacing-3xl;
-  
-  .feature-item {
-    display: flex;
-    flex-direction: column;
-    gap: $spacing-lg;
-    
-    @media (min-width: $breakpoint-md) {
-      flex-direction: row;
-      align-items: center;
-      
-      &.reverse {
-        flex-direction: row-reverse;
-      }
-    }
-    
-    .feature-image {
-      flex: 1;
-      
-      img {
-        width: 100%;
-        height: auto;
-        border-radius: $border-radius-enhanced;
-        box-shadow: $shadow;
-        transition: transform 0.3s ease;
-        
-        &:hover {
-          transform: scale(1.02);
-        }
-      }
-    }
-    
-    .feature-content {
-      flex: 1;
-      padding: $spacing-lg;
-      
-      h3 {
-        font-size: 1.8rem;
-        font-weight: $font-weight-bold;
-        margin-bottom: $spacing-md;
-        color: $dark;
-      }
-      
-      p {
-        font-size: 1.1rem;
-        color: $gray-600;
-        line-height: 1.6;
-      }
-    }
   }
 }
 
@@ -854,15 +761,24 @@ $border-radius-enhanced: 20px; // Increased for more rounded corners
 }
 
 // Team Grid
-.team-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: $spacing-xl;
-  margin-top: $spacing-2xl;
+.team-section {
+  padding: $spacing-4xl 0;
+  background-color: white;
+  
+  .team-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $spacing-xl;
+    margin-top: $spacing-2xl;
+    justify-content: center;
+  }
   
   .team-card {
+    flex: 1;
+    min-width: 280px;
+    max-width: 350px;
     background-color: white;
-    border-radius: $border-radius-enhanced;
+    border-radius: $border-radius-lg;
     overflow: hidden;
     box-shadow: $shadow;
     transition: $transition-base;
@@ -872,72 +788,58 @@ $border-radius-enhanced: 20px; // Increased for more rounded corners
       box-shadow: $shadow-lg;
     }
     
-    &__image {
-      width: 100%;
-      height: 0;
-      padding-bottom: 75%;
-      position: relative;
+    .team-image {
+      height: 250px;
       overflow: hidden;
       
       img {
-        position: absolute;
-        top: 0;
-        left: 0;
         width: 100%;
         height: 100%;
         object-fit: cover;
-        transition: transform 0.5s ease;
-      }
-      
-      &:hover img {
-        transform: scale(1.05);
+        transition: transform 0.3s ease;
       }
     }
     
-    &__content {
-      padding: $spacing-lg;
-      text-align: center;
+    .team-content {
+      padding: $spacing-xl;
       
       h3 {
         font-size: 1.5rem;
-        font-weight: $font-weight-bold;
         margin-bottom: $spacing-xs;
         color: $dark;
       }
       
-      .team-card__title {
+      h4 {
+        font-size: 1rem;
+        font-weight: $font-weight-medium;
         color: $primary;
-        font-weight: $font-weight-semibold;
         margin-bottom: $spacing-md;
       }
       
-      .team-card__bio {
-        color: $gray-600;
+      p {
         font-size: 0.95rem;
-        line-height: 1.5;
+        color: $gray-700;
         margin-bottom: $spacing-lg;
       }
       
-      .team-card__social {
+      .team-social {
         display: flex;
-        justify-content: center;
         gap: $spacing-sm;
         
-        .social-link {
+        a {
           display: flex;
           align-items: center;
           justify-content: center;
           width: 36px;
           height: 36px;
-          background-color: rgba($primary, 0.1);
-          color: $primary;
           border-radius: 50%;
-          transition: all 0.2s ease;
+          background-color: $gray-200;
+          color: $dark;
+          transition: $transition-base;
           
           &:hover {
             background-color: $primary;
             color: white;
-            transform: translateY(-2px);
           }
         }
       }

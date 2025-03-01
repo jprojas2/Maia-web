@@ -4,12 +4,12 @@
     :class="{ 
       'open': isOpen, 
       'mobile': isMobile,
-      'inactive': !isOpen && !isHovered
+      'inactive': !isHovered && !isOpen
     }"
     @mouseenter="handleMouseEnter"
     @mouseleave="handleMouseLeave"
   >
-    <!-- Chat panel - Always visible -->
+    <!-- Chat panel - Always visible with transparent background -->
     <div class="chat-panel">
       <div class="chat-header">
         <div class="header-title">
@@ -298,7 +298,7 @@ $primary-gradient: linear-gradient(135deg, $primary 0%, lighten($primary, 15%) 1
   }
   
   .chat-panel {
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: transparent;
     backdrop-filter: blur(10px);
     border-radius: $border-radius-lg;
     box-shadow: $shadow-lg;
@@ -581,7 +581,7 @@ $primary-gradient: linear-gradient(135deg, $primary 0%, lighten($primary, 15%) 1
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  background-color: rgba(255, 255, 255, 0.9);
+  background-color: transparent;
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
   border: 1px solid rgba(0, 0, 0, 0.1);
   
@@ -597,11 +597,11 @@ $primary-gradient: linear-gradient(135deg, $primary 0%, lighten($primary, 15%) 1
 // Chat header
 .chat-header {
   padding: 15px 20px;
-  background-color: rgba(255, 255, 255, 0.95);
+  background-color: transparent;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   
   &__title {
     display: flex;
@@ -644,7 +644,7 @@ $primary-gradient: linear-gradient(135deg, $primary 0%, lighten($primary, 15%) 1
   flex: 1;
   display: flex;
   flex-direction: column;
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: transparent;
 }
 
 .messages {
@@ -746,8 +746,8 @@ $primary-gradient: linear-gradient(135deg, $primary 0%, lighten($primary, 15%) 1
   display: flex;
   align-items: center;
   padding: 10px 15px;
-  background-color: rgba(255, 255, 255, 0.95);
-  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  background-color: transparent;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .input-field {
