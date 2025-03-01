@@ -1,31 +1,19 @@
 <template>
   <main>
-    <!-- Hero Section -->
+    <!-- Combined Hero and Demo Section -->
     <section class="hero">
       <div class="container">
         <div class="hero__content">
           <h1 class="animate-fade-in">¿Y si tus propiedades se vendieran solas?</h1>
           <p class="animate-fade-in">Maia transforma la forma en que vendes propiedades con recorridos virtuales guiados por IA</p>
           <div class="hero__actions animate-fade-in">
-            <a href="#demo" class="btn btn--gradient">Ver Demo</a>
+            <a href="#features" class="btn btn--gradient">Ver Características</a>
             <router-link to="/pricing" class="btn btn--secondary">Ver Planes</router-link>
           </div>
         </div>
-        <div class="hero__image animate-float">
-          <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1073&q=80" alt="Maia AI Virtual Tour">
-        </div>
-      </div>
-    </section>
-
-    <!-- Demo Section -->
-    <section id="demo" class="section demo">
-      <div class="container">
-        <div class="section__title">
-          <h2>Experimenta Maia en Acción</h2>
-          <p>Prueba nuestro recorrido virtual guiado por IA y descubre la nueva forma de vender propiedades</p>
-        </div>
         
-        <div class="demo__container">
+        <div class="hero__demo animate-fade-in">
+          <h3 class="hero__demo-title">Experimenta Maia en Acción</h3>
           <div class="demo__iframe-wrapper">
             <iframe 
               src="https://maiavr.s3.sa-east-1.amazonaws.com/demo.html" 
@@ -316,6 +304,7 @@ onUnmounted(() => {
       flex-direction: row;
       justify-content: space-between;
       align-items: center;
+      gap: $spacing-xl;
     }
   }
   
@@ -327,20 +316,25 @@ onUnmounted(() => {
       text-align: left;
       flex: 1;
       margin-bottom: 0;
-      margin-right: $spacing-2xl;
+      padding-right: $spacing-xl;
+      max-width: 50%;
     }
     
     h1 {
       margin-bottom: $spacing-lg;
       font-weight: $font-weight-bold;
       color: $dark;
+      font-size: 2.5rem;
+      
+      @media (min-width: $breakpoint-lg) {
+        font-size: 3rem;
+      }
     }
     
     p {
       font-size: 1.25rem;
       margin-bottom: $spacing-xl;
       color: $gray-700;
-      max-width: 600px;
       
       @media (min-width: $breakpoint-lg) {
         margin-left: 0;
@@ -358,72 +352,71 @@ onUnmounted(() => {
     }
   }
   
-  &__image {
+  &__demo {
     width: 100%;
-    max-width: 500px;
+    max-width: 600px;
     border-radius: $border-radius-lg;
     overflow: hidden;
     box-shadow: $shadow-lg;
     
-    img {
+    @media (min-width: $breakpoint-lg) {
+      flex: 1;
+      max-width: 50%;
+    }
+    
+    &-title {
+      text-align: center;
+      margin-bottom: $spacing-md;
+      font-weight: $font-weight-semibold;
+      color: $dark;
+      
+      @media (min-width: $breakpoint-lg) {
+        text-align: left;
+      }
+    }
+    
+    .demo__iframe-wrapper {
+      position: relative;
       width: 100%;
-      height: auto;
-      display: block;
-    }
-  }
-}
-
-// Demo Section
-.demo {
-  background-color: $gray-100;
-  
-  &__container {
-    max-width: 900px;
-    margin: 0 auto;
-  }
-  
-  &__iframe-wrapper {
-    position: relative;
-    width: 100%;
-    padding-bottom: 56.25%; // 16:9 aspect ratio
-    height: 0;
-    border-radius: $border-radius-lg;
-    overflow: hidden;
-    box-shadow: $shadow;
-  }
-  
-  &__iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border: none;
-  }
-  
-  &__overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba($dark, 0.7);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    cursor: pointer;
-    transition: $transition-base;
-    
-    &:hover {
-      background: rgba($dark, 0.8);
+      padding-bottom: 56.25%; // 16:9 aspect ratio
+      height: 0;
+      border-radius: $border-radius-lg;
+      overflow: hidden;
     }
     
-    h3 {
-      font-size: 2rem;
-      margin-bottom: $spacing-lg;
-      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    .demo__iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+    
+    .demo__overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba($dark, 0.7);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      cursor: pointer;
+      transition: $transition-base;
+      
+      &:hover {
+        background: rgba($dark, 0.8);
+      }
+      
+      h3 {
+        font-size: 2rem;
+        margin-bottom: $spacing-lg;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+      }
     }
   }
 }
