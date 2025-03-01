@@ -4,8 +4,8 @@
       <div class="footer__top">
         <div class="footer__logo">
           <div class="logo-container">
-            <img src="@/assets/logomaia.png" alt="Maia" class="footer-logo" />
-            <span class="footer-brand">Maia</span>
+            <img src="@/assets/logomaia.png" alt="Maia" class="logo__image" />
+            <span class="logo__text">Maia</span>
           </div>
           <p class="footer-tagline">¿Y si tus propiedades se vendieran solas?</p>
         </div>
@@ -131,7 +131,7 @@ $primary-gradient: linear-gradient(135deg, $primary 0%, lighten($primary, 15%) 1
   }
 }
 
-.footer-logo {
+.logo__image {
   width: 40px;
   height: 40px;
   margin-right: $spacing-sm;
@@ -139,7 +139,7 @@ $primary-gradient: linear-gradient(135deg, $primary 0%, lighten($primary, 15%) 1
   object-fit: cover;
 }
 
-.footer-brand {
+.logo__text {
   font-size: 1.5rem;
   font-weight: $font-weight-bold;
   color: white;

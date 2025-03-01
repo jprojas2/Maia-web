@@ -230,8 +230,7 @@ $primary-gradient: linear-gradient(135deg, $primary 0%, lighten($primary, 15%) 1
   box-shadow: $shadow-lg;
   border-radius: $border-radius-lg;
   overflow: hidden;
-  background-color: rgba(white, 0.4);
-  backdrop-filter: blur(10px);
+  background-color: rgba(255, 255, 255, 0.4);
   border: 1px solid rgba($primary, 0.2);
   transition: all 0.3s ease;
   display: flex;
@@ -248,8 +247,7 @@ $primary-gradient: linear-gradient(135deg, $primary 0%, lighten($primary, 15%) 1
   flex-direction: column;
   height: 500px;
   max-height: 70vh;
-  background-color: rgba(white, 0.4);
-  backdrop-filter: blur(10px);
+  background-color: rgba(255, 255, 255, 0.4);
   border-radius: $border-radius-lg;
   overflow: hidden;
 }
