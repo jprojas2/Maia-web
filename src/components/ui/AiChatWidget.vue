@@ -3,11 +3,12 @@
     <!-- Tab with logo -->
     <div class="ai-chat-widget__tab" @click="toggleChat">
       <img src="@/assets/logomaia.png" alt="Maia AI" class="ai-chat-widget__logo">
+      <span class="ai-chat-widget__tab-text">Chat con Maia</span>
     </div>
     
     <!-- Chat panel -->
     <div class="ai-chat-widget__panel">
-      <div class="ai-chat-widget__header">
+      <div class="ai-chat-widget__header" :class="{ 'fade-in': isOpen, 'fade-out': !isOpen }">
         <div class="ai-chat-widget__title">
           <img src="@/assets/logomaia.png" alt="Maia AI" class="ai-chat-widget__header-logo">
           <h3>Chat con Maia</h3>
@@ -62,6 +63,9 @@
         </button>
       </div>
     </div>
+    
+    <!-- Overlay for mobile -->
+    <div class="ai-chat-widget__overlay" @click="toggleChat" v-if="isOpen"></div>
   </div>
 </template>
 
@@ -84,6 +88,13 @@ const suggestions = [
 
 const toggleChat = () => {
   isOpen.value = !isOpen.value;
+  
+  // Add class to body to shift content
+  if (isOpen.value) {
+    document.body.classList.add('chat-open');
+  } else {
+    document.body.classList.remove('chat-open');
+  }
 };
 
 const sendUserMessage = () => {
@@ -188,6 +199,14 @@ watch(messages, () => {
 onMounted(() => {
   // Add initial message since it's open by default
   addMessage('¡Hola! Soy Maia, tu asistente virtual para la venta inmobiliaria. ¿En qué puedo ayudarte hoy?', 'ai');
+  
+  // Add class to body to shift content initially
+  document.body.classList.add('chat-open');
+});
+
+// Clean up when component is unmounted
+onUnmounted(() => {
+  document.body.classList.remove('chat-open');
 });
 </script>
 
@@ -195,15 +214,20 @@ onMounted(() => {
 .ai-chat-widget {
   position: fixed;
   right: 0;
-  top: 50%;
-  transform: translateY(-50%);
+  top: 0;
+  bottom: 0;
   z-index: $z-index-modal;
   display: flex;
   align-items: stretch;
   
   &__tab {
-    width: 60px;
-    height: 60px;
+    position: fixed;
+    right: 350px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: auto;
+    height: auto;
+    padding: $spacing-md $spacing-lg;
     background: white;
     border: 2px solid $primary;
     border-radius: $border-radius-pill 0 0 $border-radius-pill;
@@ -212,36 +236,52 @@ onMounted(() => {
     justify-content: center;
     cursor: pointer;
     box-shadow: $shadow;
-    transition: $transition-base;
+    transition: all 0.3s ease;
     animation: pulse 2s infinite;
+    z-index: $z-index-modal + 1;
     
     &:hover {
-      transform: translateX(-5px);
+      transform: translateY(-50%) translateX(-5px);
       animation: none;
     }
   }
   
+  &__tab-text {
+    margin-left: $spacing-sm;
+    font-weight: $font-weight-medium;
+    color: $primary;
+    white-space: nowrap;
+  }
+  
   &__logo {
-    width: 40px;
-    height: 40px;
+    width: 30px;
+    height: 30px;
     object-fit: contain;
   }
   
   &__panel {
-    width: 0;
-    height: 600px;
+    width: 350px;
+    height: 100vh;
     background-color: white;
-    border-radius: $border-radius-lg 0 0 $border-radius-lg;
     box-shadow: $shadow-lg;
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    transition: width 0.3s ease;
+    transition: transform 0.3s ease;
+    transform: translateX(100%);
+  }
+  
+  &__overlay {
+    display: none;
   }
   
   &.is-open {
     .ai-chat-widget__panel {
-      width: 350px;
+      transform: translateX(0);
+    }
+    
+    .ai-chat-widget__tab {
+      right: 350px;
     }
   }
   
@@ -252,6 +292,15 @@ onMounted(() => {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    transition: opacity 0.3s ease;
+    
+    &.fade-in {
+      opacity: 1;
+    }
+    
+    &.fade-out {
+      opacity: 0;
+    }
   }
   
   &__title {
@@ -430,6 +479,40 @@ onMounted(() => {
       &:disabled {
         background-color: $gray-400;
         cursor: not-allowed;
+      }
+    }
+  }
+  
+  @media (max-width: $breakpoint-md) {
+    &__panel {
+      position: fixed;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      width: 100%;
+      max-width: 350px;
+    }
+    
+    &__tab {
+      right: 0;
+      border-radius: $border-radius-pill 0 0 $border-radius-pill;
+      padding: $spacing-sm $spacing-md;
+    }
+    
+    &.is-open {
+      .ai-chat-widget__tab {
+        right: 350px;
+      }
+      
+      .ai-chat-widget__overlay {
+        display: block;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: $z-index-modal - 1;
       }
     }
   }

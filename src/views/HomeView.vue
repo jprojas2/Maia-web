@@ -1,32 +1,31 @@
 <template>
   <main>
-    <!-- Combined Hero and Demo Section -->
+    <!-- Hero Section -->
     <section class="hero">
       <div class="container">
         <div class="hero__content">
-          <h1 class="animate-fade-in">¿Y si tus propiedades se vendieran solas?</h1>
-          <p class="animate-fade-in">Maia transforma la forma en que vendes propiedades con recorridos virtuales guiados por IA</p>
-          <div class="hero__actions animate-fade-in">
-            <a href="#features" class="btn btn--gradient">Ver Características</a>
-            <router-link to="/pricing" class="btn btn--secondary">Ver Planes</router-link>
+          <h1>Revoluciona tus ventas inmobiliarias con IA</h1>
+          <p>Maia es un asistente virtual que guía a tus clientes en recorridos inmobiliarios, responde preguntas en tiempo real y califica leads automáticamente.</p>
+          <div class="hero__buttons">
+            <a href="#features" class="btn btn-primary">Ver Características</a>
+            <a href="#contact" class="btn btn-outline">Contáctanos</a>
           </div>
         </div>
         
-        <div class="hero__demo animate-fade-in">
-          <div class="demo__iframe-wrapper">
+        <div class="hero__demo">
+          <div class="demo__iframe-container">
             <iframe 
-              src="https://maiavr.s3.sa-east-1.amazonaws.com/demo.html" 
-              class="demo__iframe" 
-              allowfullscreen
-              ref="demoIframe"
+              src="https://app.maiavr.cl/demo" 
+              title="Demo de Maia" 
+              frameborder="0" 
+              allow="microphone; camera"
+              class="demo__iframe"
             ></iframe>
-            <div 
-              class="demo__overlay" 
-              v-if="showDemoOverlay"
-              @click="startDemo"
-            >
-              <h3>Show, don't tell</h3>
-              <button class="btn btn--gradient">Comenzar Demo</button>
+            <div class="demo__overlay" v-if="showDemoOverlay" @click="startDemo">
+              <div class="overlay__content">
+                <i class="fas fa-play-circle"></i>
+                <span>Comenzar Demo</span>
+              </div>
             </div>
           </div>
         </div>
@@ -280,9 +279,9 @@ onUnmounted(() => {
 <style lang="scss" scoped>
 // Hero Section
 .hero {
-  padding: 100px 0 60px;
-  background: linear-gradient(135deg, rgba($light, 0.9) 0%, rgba($light, 0.7) 100%);
   position: relative;
+  padding: 60px 0 $spacing-3xl;
+  background-color: $light;
   overflow: hidden;
   
   &::before {
@@ -346,7 +345,7 @@ onUnmounted(() => {
     }
   }
   
-  &__actions {
+  &__buttons {
     display: flex;
     gap: $spacing-md;
     justify-content: center;
@@ -373,7 +372,7 @@ onUnmounted(() => {
       max-width: 55%;
     }
     
-    .demo__iframe-wrapper {
+    .demo__iframe-container {
       position: relative;
       width: 100%;
       padding-bottom: 56.25%; // 16:9 aspect ratio
@@ -410,7 +409,7 @@ onUnmounted(() => {
         background: rgba($dark, 0.8);
       }
       
-      h3 {
+      .overlay__content {
         font-size: 2.5rem;
         margin-bottom: $spacing-lg;
         text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
