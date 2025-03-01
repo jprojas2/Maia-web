@@ -117,14 +117,20 @@ $primary-gradient: linear-gradient(135deg, $primary 0%, lighten($primary, 15%) 1
   left: 0;
   width: 100%;
   z-index: 1000;
-  background-color: transparent;
-  transition: all 0.3s ease;
-  padding: 1rem 0;
+  transition: $transition-base;
+  background-color: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  padding: 1.5rem 0;
+  height: 250px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
   
   &--scrolled {
-    background-color: white;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    padding: 0.7rem 0;
+    padding: 1rem 0;
+    height: 210px;
+    background-color: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
   }
   
   &--open {
@@ -154,24 +160,24 @@ $primary-gradient: linear-gradient(135deg, $primary 0%, lighten($primary, 15%) 1
 }
 
 .logo__image {
-  width: 40px;
-  height: 40px;
+  width: 200px;
+  height: 200px;
   margin-right: 0.75rem;
   border-radius: 50%;
   object-fit: cover;
   
   .header--scrolled & {
-    width: 35px;
-    height: 35px;
+    width: 175px;
+    height: 175px;
   }
 }
 
 .logo__text {
-  font-size: 1.5rem;
+  font-size: 4rem;
   font-weight: 700;
   
   .header--scrolled & {
-    font-size: 1.4rem;
+    font-size: 3.5rem;
   }
 }
 

@@ -91,35 +91,23 @@ $light-blue-bg: #f0f8ff;
 $primary-gradient: linear-gradient(135deg, $primary 0%, lighten($primary, 15%) 100%);
 
 .footer {
-  background-color: #000000;
+  background-color: $dark;
   color: white;
-  padding: $spacing-2xl 0 $spacing-xl;
+  padding: 5rem 0 4rem;
   
   &__top {
+    margin-bottom: 3rem;
     display: flex;
-    flex-wrap: wrap;
-    gap: $spacing-2xl;
-    margin-bottom: $spacing-2xl;
-    
-    @media (max-width: $breakpoint-lg) {
-      flex-direction: column;
-      gap: $spacing-xl;
-    }
+    flex-direction: column;
+    gap: 2rem;
   }
   
   &__logo {
-    flex: 1;
-    min-width: 250px;
-    
-    .logo-container {
-      display: flex;
-      align-items: center;
-      gap: $spacing-sm;
-    }
+    margin-bottom: 2rem;
+    display: inline-block;
   }
   
   &__nav {
-    flex: 2;
     display: flex;
     flex-wrap: wrap;
     gap: $spacing-xl;
@@ -138,12 +126,12 @@ $primary-gradient: linear-gradient(135deg, $primary 0%, lighten($primary, 15%) 1
 }
 
 .logo__image {
-  height: 40px;
+  height: 200px;
   width: auto;
 }
 
 .logo__text {
-  font-size: 1.5rem;
+  font-size: 4rem;
   font-weight: $font-weight-bold;
   color: white;
 }

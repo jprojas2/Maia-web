@@ -78,24 +78,24 @@ onUnmounted(() => {
   // Purple spots
   &::before {
     background-image: 
-      radial-gradient(ellipse 15vw 15vw at 15% 25%, rgba(84, 101, 255, 0.85) 0%, rgba(84, 101, 255, 0) 70%),
-      radial-gradient(circle 12vw at 35% 65%, rgba(84, 101, 255, 0.9) 0%, rgba(84, 101, 255, 0) 60%),
-      radial-gradient(ellipse 18vw 14vw at 55% 35%, rgba(84, 101, 255, 0.85) 0%, rgba(84, 101, 255, 0) 70%),
-      radial-gradient(circle 10vw at 75% 80%, rgba(84, 101, 255, 0.9) 0%, rgba(84, 101, 255, 0) 60%),
-      radial-gradient(ellipse 15vw 15vw at 90% 40%, rgba(84, 101, 255, 0.85) 0%, rgba(84, 101, 255, 0) 70%),
-      radial-gradient(circle 12vw at 25% 90%, rgba(84, 101, 255, 0.9) 0%, rgba(84, 101, 255, 0) 60%);
+      radial-gradient(ellipse 15vw 15vw at 15% 25%, rgba(84, 101, 255, 0.95) 0%, rgba(84, 101, 255, 0) 60%),
+      radial-gradient(circle 12vw at 35% 65%, rgba(84, 101, 255, 0.97) 0%, rgba(84, 101, 255, 0) 50%),
+      radial-gradient(ellipse 18vw 14vw at 55% 35%, rgba(84, 101, 255, 0.95) 0%, rgba(84, 101, 255, 0) 60%),
+      radial-gradient(circle 10vw at 75% 80%, rgba(84, 101, 255, 0.97) 0%, rgba(84, 101, 255, 0) 50%),
+      radial-gradient(ellipse 15vw 15vw at 90% 40%, rgba(84, 101, 255, 0.95) 0%, rgba(84, 101, 255, 0) 60%),
+      radial-gradient(circle 12vw at 25% 90%, rgba(84, 101, 255, 0.97) 0%, rgba(84, 101, 255, 0) 50%);
   }
   
   // Black spots
   &::after {
     background-image: 
-      radial-gradient(circle 12vw at 10% 10%, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 70%),
-      radial-gradient(ellipse 15vw 12vw at 30% 45%, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0) 65%),
-      radial-gradient(ellipse 10vw 12vw at 50% 70%, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 70%),
-      radial-gradient(circle 8vw at 70% 15%, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0) 65%),
-      radial-gradient(circle 14vw at 85% 60%, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 70%),
-      radial-gradient(ellipse 12vw 10vw at 15% 70%, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0) 65%),
-      radial-gradient(circle 10vw at 60% 95%, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 70%);
+      radial-gradient(circle 12vw at 10% 10%, rgba(0, 0, 0, 0.97) 0%, rgba(0, 0, 0, 0) 60%),
+      radial-gradient(ellipse 15vw 12vw at 30% 45%, rgba(0, 0, 0, 0.98) 0%, rgba(0, 0, 0, 0) 55%),
+      radial-gradient(ellipse 10vw 12vw at 50% 70%, rgba(0, 0, 0, 0.97) 0%, rgba(0, 0, 0, 0) 60%),
+      radial-gradient(circle 8vw at 70% 15%, rgba(0, 0, 0, 0.98) 0%, rgba(0, 0, 0, 0) 55%),
+      radial-gradient(circle 14vw at 85% 60%, rgba(0, 0, 0, 0.97) 0%, rgba(0, 0, 0, 0) 60%),
+      radial-gradient(ellipse 12vw 10vw at 15% 70%, rgba(0, 0, 0, 0.98) 0%, rgba(0, 0, 0, 0) 55%),
+      radial-gradient(circle 10vw at 60% 95%, rgba(0, 0, 0, 0.97) 0%, rgba(0, 0, 0, 0) 60%);
   }
 }
 

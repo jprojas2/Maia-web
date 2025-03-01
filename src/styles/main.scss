@@ -255,14 +255,14 @@ strong {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: $spacing-sm $spacing-xl;
+  padding: $spacing-md $spacing-2xl;
   border-radius: $border-radius;
   font-weight: 600;
   text-align: center;
   cursor: pointer;
   transition: all 0.3s ease;
   border: none;
-  font-size: 1rem;
+  font-size: 1.2rem;
   letter-spacing: 0.01em;
   position: relative;
   overflow: hidden;
@@ -300,16 +300,16 @@ strong {
   }
   
   &--primary {
-    background-color: white;
-    color: $primary;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    background-color: $primary;
+    color: white;
+    box-shadow: 0 5px 15px rgba($primary, 0.25);
     
     &::after {
-      background-color: white;
+      background-color: $primary;
     }
     
     &:hover {
-      color: $primary-dark;
+      color: white;
     }
   }
   
@@ -346,13 +346,13 @@ strong {
   }
   
   &--lg {
-    padding: $spacing-md $spacing-2xl;
-    font-size: 1.1rem;
+    padding: $spacing-lg $spacing-3xl;
+    font-size: 1.3rem;
   }
   
   &--sm {
-    padding: $spacing-xs $spacing-md;
-    font-size: 0.9rem;
+    padding: $spacing-sm $spacing-lg;
+    font-size: 1rem;
   }
   
   i {
