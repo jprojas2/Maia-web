@@ -360,7 +360,7 @@
           
           <div class="team-card">
             <div class="team-image">
-              <img src="https://media.licdn.com/dms/image/v2/D4E03AQH2qkZrHLTaaA/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1706107499432?e=1746057600&v=beta&t=6TegZvoxBvFsN6uPjrwrqY-Zhb-Ra3mrIby415f14i4" alt="Juan Pablo Rojas" />
+              <img src="https://media.licdn.com/dms/image/v2/D4E03AQH9ThPQ5nKv-g/profile-displayphoto-shrink_800_800/B4EZVdl9b8HcAg-/0/1741031987437?e=1746662400&v=beta&t=_Qm55T90N-534-U-n_XnYRXmcbxTOnJRw62wXt6PxBo" alt="Juan Pablo Rojas" />
             </div>
             <div class="team-content">
               <h3>Juan Pablo Rojas</h3>
@@ -369,7 +369,7 @@
                 10+ años en desarrollo de software, diseñó sistemas escalables para startups. Responsable de la arquitectura técnica y desarrollo de IA.
               </p>
               <div class="team-social">
-                <a href="https://www.linkedin.com/in/juan-pablo-rojas-416157195/" target="_blank" class="social-link" aria-label="LinkedIn">
+                <a href="https://www.linkedin.com/in/jprojasc/" target="_blank" class="social-link" aria-label="LinkedIn">
                   <i class="fab fa-linkedin-in"></i>
                 </a>
               </div>
@@ -422,9 +422,11 @@
 export default {
   name: 'HomeView',
   data() {
+    const isMobile = window.innerWidth < 768;
+    console.log(isMobile);
     return {
       currentSlide: 0,
-      totalSlides: 3,
+      totalSlides: isMobile ? 3 : 1
     };
   },
   mounted() {
@@ -880,6 +882,15 @@ $purple-overlay: rgba($primary, 0.08); // Slightly stronger purple background
   display: flex;
   transition: transform 0.5s ease;
   padding: $spacing-md 0;
+}
+
+@media (max-width: $breakpoint-md) {
+  .testimonials-carousel {
+    flex-wrap: nowrap;
+  }
+  .testimonial-card {
+    flex: 0 0 100%;
+  }
 }
 
 .testimonial-card {
