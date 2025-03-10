@@ -3,7 +3,6 @@ import vue from '@vitejs/plugin-vue'
 import path from 'path'
 
 export default defineConfig({
-  base: '/Maia-web/',
   plugins: [vue()],
   resolve: {
     alias: {
