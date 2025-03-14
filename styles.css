@@ -9,6 +9,10 @@
     --gradient-1: linear-gradient(135deg, #5465FF 0%, #5CE1E6 100%);
     --gradient-2: linear-gradient(135deg, #B260FE 0%, #5CE1E6 100%);
     --gradient-3: linear-gradient(135deg, #FF5677 0%, #5CE1E6 100%);
+    --glass-bg: rgba(255, 255, 255, 0.15);
+    --glass-border: rgba(255, 255, 255, 0.2);
+    --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    --glass-blur: 10px;
 }
 
 * {
@@ -22,6 +26,8 @@ body {
     background-color: var(--light);
     color: var(--dark);
     overflow-x: hidden;
+    background: linear-gradient(135deg, var(--light) 0%, #f0f4ff 100%);
+    background-attachment: fixed;
 }
 
 .container {
@@ -121,6 +127,16 @@ section {
     }
 }
 
+/* Glassmorphism effect */
+.glass-effect {
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid var(--glass-border);
+    border-radius: 10px;
+    box-shadow: var(--glass-shadow);
+}
+
 /* Header styles */
 header {
     position: fixed;
@@ -130,6 +146,11 @@ header {
     padding: 20px 0;
     transition: all 0.3s ease;
     background-color: transparent;
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border-bottom: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
 }
 
 header.scrolled {
@@ -240,11 +261,29 @@ nav ul li a:hover::after {
     text-decoration: none;
     display: inline-block;
     box-shadow: 0 5px 15px rgba(84, 101, 255, 0.4);
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
 }
 
 .cta-button:hover {
     transform: translateY(-3px);
     box-shadow: 0 8px 20px rgba(84, 101, 255, 0.5);
+}
+
+.cta-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid var(--glass-border);
+    border-radius: inherit;
+    z-index: -1;
 }
 
 /* Mobile menu */
@@ -317,11 +356,29 @@ nav ul li a:hover::after {
     transition: all 0.3s ease;
     text-decoration: none;
     display: inline-block;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
 }
 
 .secondary-button:hover {
     background: rgba(84, 101, 255, 0.1);
     transform: translateY(-3px);
+}
+
+.secondary-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid var(--glass-border);
+    border-radius: inherit;
+    z-index: -1;
 }
 
 .hero-image {
@@ -373,7 +430,11 @@ nav ul li a:hover::after {
 }
 
 .feature-card {
-    background: white;
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
     border-radius: 20px;
     padding: 40px 30px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
@@ -500,7 +561,11 @@ nav ul li a:hover::after {
 }
 
 .pricing-card {
-    background: white;
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
     border-radius: 20px;
     padding: 40px 30px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
@@ -608,11 +673,29 @@ nav ul li a:hover::after {
     background-color: white;
     color: var(--primary);
     border: 1px solid var(--primary);
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
 }
 
 .btn--white:hover {
     background-color: var(--primary);
     color: white;
+}
+
+.btn--white::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid var(--glass-border);
+    border-radius: inherit;
+    z-index: -1;
 }
 
 /* Testimonials */
@@ -629,7 +712,11 @@ nav ul li a:hover::after {
 }
 
 .testimonial-card {
-    background: white;
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
     border-radius: 20px;
     padding: 40px 30px;
     position: relative;
@@ -663,6 +750,10 @@ nav ul li a:hover::after {
     line-height: 1.7;
     color: #666;
     margin-bottom: 20px;
+    background: var(--glass-bg);
+    backdrop-filter: blur(calc(var(--glass-blur) / 2));
+    -webkit-backdrop-filter: blur(calc(var(--glass-blur) / 2));
+    border: 1px solid var(--glass-border);
 }
 
 .testimonial-author {
@@ -736,10 +827,13 @@ nav ul li a:hover::after {
 }
 
 .contact-form {
-    background: white;
-    border-radius: 20px;
-    padding: 40px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
+    padding: 30px;
+    border-radius: 10px;
 }
 
 .form-group {
@@ -755,6 +849,9 @@ nav ul li a:hover::after {
     font-family: 'Poppins', sans-serif;
     font-size: 16px;
     transition: all 0.3s ease;
+    background: var(--glass-bg);
+    backdrop-filter: blur(calc(var(--glass-blur) / 2));
+    -webkit-backdrop-filter: blur(calc(var(--glass-blur) / 2));
 }
 
 .form-group input:focus,
@@ -766,8 +863,11 @@ nav ul li a:hover::after {
 
 /* Footer */
 footer {
-    background: var(--dark);
-    color: white;
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border-top: 1px solid var(--glass-border);
+    color: var(--light);
     padding: 80px 0 30px;
 }
 
@@ -921,6 +1021,11 @@ footer {
     transform: translateY(20px) scale(0.9);
     pointer-events: none;
     transition: all 0.3s ease;
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
 }
 
 .chat-container.active {
@@ -982,6 +1087,10 @@ footer {
     border-radius: 15px;
     position: relative;
     animation: fadeIn 0.3s ease;
+    background: var(--glass-bg);
+    backdrop-filter: blur(calc(var(--glass-blur) / 2));
+    -webkit-backdrop-filter: blur(calc(var(--glass-blur) / 2));
+    border: 1px solid var(--glass-border);
 }
 
 .message.incoming {
@@ -1189,7 +1298,11 @@ footer {
     max-width: 800px;
     margin: 0 auto;
     padding: 0 20px;
-    background: transparent;
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
 }
 
 /* AI Interface (Right Side) */
@@ -1204,6 +1317,11 @@ footer {
     display: flex;
     flex-direction: column;
     box-shadow: -5px 0 15px rgba(0, 0, 0, 0.05);
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
 }
 
 .ai-header {
@@ -1261,6 +1379,10 @@ footer {
     border-radius: 15px;
     margin: 0;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    background: var(--glass-bg);
+    backdrop-filter: blur(calc(var(--glass-blur) / 2));
+    -webkit-backdrop-filter: blur(calc(var(--glass-blur) / 2));
+    border: 1px solid var(--glass-border);
 }
 
 .message.ai p {
@@ -1637,6 +1759,11 @@ footer {
     text-align: center;
     padding: 30px;
     transition: transform 0.3s ease;
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
 }
 
 .team-member:hover {
@@ -1760,6 +1887,11 @@ footer {
     display: flex;
     flex-direction: column;
     background: transparent;
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
 }
 
 .ai-header-seamless {
@@ -1815,6 +1947,10 @@ footer {
     border-radius: 15px;
     margin: 0;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    background: var(--glass-bg);
+    backdrop-filter: blur(calc(var(--glass-blur) / 2));
+    -webkit-backdrop-filter: blur(calc(var(--glass-blur) / 2));
+    border: 1px solid var(--glass-border);
 }
 
 .message.ai p {
@@ -1908,7 +2044,11 @@ footer {
     max-width: 90%;
     margin: 0 auto;
     padding: 0;
-    background: transparent;
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
 }
 
 /* Responsive */
@@ -1956,4 +2096,207 @@ footer {
     .logo-text {
         font-size: 22px;
     }
+}
+
+/* Add subtle animation to glassmorphic elements */
+@keyframes glass-shimmer {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.glass-effect:hover, 
+.feature-card:hover, 
+.pricing-card:hover, 
+.testimonial-card:hover, 
+.team-member:hover,
+.contact-form:hover,
+.chat-container:hover,
+.ai-interface-integrated:hover,
+.ai-interface-seamless:hover,
+.section-container:hover,
+.demo-container:hover {
+    background: linear-gradient(135deg, var(--glass-bg), rgba(255, 255, 255, 0.2));
+    background-size: 200% 200%;
+    animation: glass-shimmer 3s ease infinite;
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(31, 38, 135, 0.3);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Apply glassmorphism to AI suggestions */
+.ai-suggestions, .ai-suggestions-seamless {
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
+}
+
+/* Apply glassmorphism to chat input */
+.chat-input, .ai-input-container, .ai-input-seamless {
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid var(--glass-border);
+}
+
+/* Apply glassmorphism to section containers */
+.section-container {
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
+}
+
+/* Apply glassmorphism to demo container */
+.demo-container {
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
+}
+
+/* Ensure text is readable on glassmorphic backgrounds */
+.glass-effect, 
+.feature-card, 
+.pricing-card, 
+.testimonial-card, 
+.team-member,
+.contact-form,
+.chat-container,
+.ai-interface-integrated,
+.ai-interface-seamless,
+.section-container,
+.demo-container {
+    color: var(--dark);
+}
+
+/* Fix footer text color for better contrast */
+footer {
+    color: var(--light);
+}
+
+/* Ensure buttons have proper z-index and positioning */
+.suggestion-button,
+.ai-send,
+.ai-send-button {
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.suggestion-button::before,
+.ai-send::before,
+.ai-send-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid var(--glass-border);
+    border-radius: inherit;
+    z-index: -1;
+}
+
+/* Enhance hover effects */
+.feature-card:hover,
+.pricing-card:hover,
+.testimonial-card:hover,
+.team-member:hover,
+.contact-form:hover,
+.chat-container:hover,
+.ai-interface-integrated:hover,
+.ai-interface-seamless:hover,
+.section-container:hover,
+.demo-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(31, 38, 135, 0.3);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Add subtle background patterns for depth */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 10% 20%, rgba(84, 101, 255, 0.05) 0%, transparent 20%),
+        radial-gradient(circle at 80% 50%, rgba(92, 225, 230, 0.05) 0%, transparent 20%),
+        radial-gradient(circle at 40% 80%, rgba(178, 96, 254, 0.05) 0%, transparent 20%);
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* Fix duplicate hover effects */
+.glass-effect:hover, 
+.feature-card:hover, 
+.pricing-card:hover, 
+.testimonial-card:hover, 
+.team-member:hover,
+.contact-form:hover,
+.chat-container:hover,
+.ai-interface-integrated:hover,
+.ai-interface-seamless:hover,
+.section-container:hover,
+.demo-container:hover {
+    background: linear-gradient(135deg, var(--glass-bg), rgba(255, 255, 255, 0.2));
+    background-size: 200% 200%;
+    animation: glass-shimmer 3s ease infinite;
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(31, 38, 135, 0.3);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Ensure proper contrast for text on glassmorphic backgrounds */
+.glass-effect, 
+.feature-card, 
+.pricing-card, 
+.testimonial-card, 
+.team-member,
+.contact-form,
+.chat-container,
+.ai-interface-integrated,
+.ai-interface-seamless,
+.section-container,
+.demo-container {
+    color: var(--dark);
+}
+
+/* Ensure proper contrast for footer text */
+footer {
+    color: var(--light);
+}
+
+/* Add subtle text shadow for better readability on glassmorphic elements */
+.glass-effect h1, 
+.glass-effect h2, 
+.glass-effect h3, 
+.glass-effect h4,
+.feature-card h3,
+.pricing-card h3,
+.testimonial-card h3,
+.team-member h3,
+.contact-form h3,
+.chat-container h3,
+.ai-interface-integrated h3,
+.ai-interface-seamless h3,
+.section-container h3,
+.demo-container h3 {
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
