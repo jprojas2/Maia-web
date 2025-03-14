@@ -637,7 +637,7 @@ $pink-overlay: rgba(#FBC5C5, 0.15); // Light pink overlay
     margin-bottom: $spacing-xl;
     line-height: 1.2;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); // Sombra de texto más pronunciada
-    background-color: rgba(255, 255, 255, 0.7); // Fondo semi-transparente
+    background-color: rgba(#FBC5C5, 0.7); // Fondo semi-transparente
     padding: $spacing-md;
     border-radius: $border-radius-enhanced;
     display: inline-block;
@@ -679,7 +679,7 @@ $pink-overlay: rgba(#FBC5C5, 0.15); // Light pink overlay
     margin-bottom: $spacing-xl;
     max-width: 900px; // Ancho ampliado
     line-height: 1.5;
-    background-color: rgba(255, 255, 255, 0.7); // Fondo semi-transparente
+    background-color: rgba(#FBC5C5, 0.7); // Fondo semi-transparente
     padding: $spacing-md;
     border-radius: $border-radius-enhanced;
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); // Sutil sombra de texto
@@ -843,7 +843,7 @@ $pink-overlay: rgba(#FBC5C5, 0.15); // Light pink overlay
   }
   
   .stat-item {
-    background-color: rgba(255, 255, 255, 0.7);
+    background-color: rgba(#FBC5C5, 0.7);
     border-radius: $border-radius-enhanced;
     padding: $spacing-lg;
     text-align: center;
@@ -887,7 +887,7 @@ $pink-overlay: rgba(#FBC5C5, 0.15); // Light pink overlay
   
   .feature-card {
     padding: $spacing-xl;
-    background-color: rgba(255, 255, 255, 0.9);
+    background-color: rgba(#FBC5C5, 0.9);
     border-radius: $border-radius-xl; // Increased from border-radius-lg
     border: 1px solid rgba($primary, 0.3);
     height: 100%;
@@ -1165,7 +1165,7 @@ $pink-overlay: rgba(#FBC5C5, 0.15); // Light pink overlay
       font-weight: $font-weight-semibold;
       margin-bottom: $spacing-xs;
       color: $dark;
-      background-color: rgba(255, 255, 255, 0.7);
+      background-color: rgba(#FBC5C5, 0.7);
       padding: $spacing-sm;
       border-radius: $button-radius;
       display: inline-block;
@@ -1177,7 +1177,7 @@ $pink-overlay: rgba(#FBC5C5, 0.15); // Light pink overlay
       font-weight: $font-weight-medium;
       color: $primary;
       margin-bottom: $spacing-md;
-      background-color: rgba(255, 255, 255, 0.7);
+      background-color: rgba(#FBC5C5, 0.7);
       padding: $spacing-xs $spacing-sm;
       border-radius: $button-radius;
       display: inline-block;
@@ -1188,7 +1188,7 @@ $pink-overlay: rgba(#FBC5C5, 0.15); // Light pink overlay
       font-size: 0.95rem;
       line-height: 1.5;
       margin-bottom: $spacing-md;
-      background-color: rgba(255, 255, 255, 0.7);
+      background-color: rgba(#FBC5C5, 0.7);
       padding: $spacing-sm;
       border-radius: $button-radius;
     }
@@ -1396,7 +1396,7 @@ $pink-overlay: rgba(#FBC5C5, 0.15); // Light pink overlay
     font-weight: $font-weight-bold;
     color: $dark;
     margin-bottom: $spacing-md;
-    background-color: rgba(255, 255, 255, 0.7);
+    background-color: rgba(#FBC5C5, 0.7);
     padding: $spacing-md;
     border-radius: $border-radius-enhanced;
     display: inline-block;
@@ -1408,7 +1408,7 @@ $pink-overlay: rgba(#FBC5C5, 0.15); // Light pink overlay
     max-width: 800px;
     margin: 0 auto;
     line-height: 1.6;
-    background-color: rgba(255, 255, 255, 0.7);
+    background-color: rgba(#FBC5C5, 0.7);
     padding: $spacing-md;
     border-radius: $border-radius-enhanced;
     margin-bottom: $spacing-md;

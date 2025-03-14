@@ -158,9 +158,9 @@ export default {
 .footer__cta {
   margin: $spacing-3xl 0;
   padding: $spacing-2xl;
-  border-radius: $border-radius-lg;
+  border-radius: 30px;
   background: #000000;
-  border: 1px solid rgba($primary, 0.3);
+  border: none;
   text-align: center;
   
   h3 {
