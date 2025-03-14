@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <!-- Hero Section -->
-    <section class="section hero-section">
+    <section class="section hero-section" id="demo">
       <div class="container">
         <div class="hero__content">
           <h1 class="hero__title animate-fade-in">
@@ -9,7 +9,16 @@
           </h1>
           
           <!-- Demo Frame - Made smaller -->
-          <div class="hero__demo animate-fade-in">
+          <p  v-if='isMobile'>
+            <a href="https://maiavr.s3.sa-east-1.amazonaws.com/demo.html" target="_blank" class="demo-container">
+              <div class="demo-container__overlay">
+                <a href="https://maiavr.s3.sa-east-1.amazonaws.com/demo.html" class="btn btn--primary try-demo-mobile" target="_blank">
+                  Probar Demo
+                </a>
+              </div>
+            </a>
+          </p>
+          <div v-else class="hero__demo animate-fade-in">
             <div class="demo-frame">
               <iframe 
                 src="https://maiavr.s3.sa-east-1.amazonaws.com/demo.html" 
@@ -27,14 +36,13 @@
           </p>
           
           <div class="hero__actions animate-slide-in-up">
-            <a href="#pricing" class="btn btn--primary btn--lg">Ver Planes</a>
-            <a href="#contact" class="btn btn--primary btn--lg">Suscribirse</a>
+            <a href="mailto:manuel@maiavr.cl" class="btn btn--primary btn--lg">Unirse al waitlist</a>
           </div>
         </div>
       </div>
     </section>
     
-    <!-- Pricing Section -->
+    <!-- Pricing Section
     <section class="section section--light" id="pricing">
       <div class="container">
         <div class="section__header">
@@ -177,6 +185,7 @@
         </div>
       </div>
     </section>
+    -->
     
     <!-- Features and Why Choose Us Section -->
     <section class="section section--light" id="features">
@@ -253,7 +262,8 @@
       </div>
     </section>
     
-    <!-- Testimonials Section -->
+    <!--
+    <!-- Testimonials Section
     <section class="section section--light">
       <div class="container">
         <div class="section__header">
@@ -325,9 +335,10 @@
         </div>
       </div>
     </section>
+   -->
     
     <!-- Team Section -->
-    <section class="section team-section">
+    <section class="section team-section" id="about">
       <div class="container">
         <div class="section__header">
           <h2 class="section__title">Conoce al Equipo</h2>
@@ -360,7 +371,7 @@
           
           <div class="team-card">
             <div class="team-image">
-              <img src="https://media.licdn.com/dms/image/v2/D4E03AQH9ThPQ5nKv-g/profile-displayphoto-shrink_800_800/B4EZVdl9b8HcAg-/0/1741031987437?e=1746662400&v=beta&t=_Qm55T90N-534-U-n_XnYRXmcbxTOnJRw62wXt6PxBo" alt="Juan Pablo Rojas" />
+              <img src="https://media.licdn.com/dms/image/v2/D4E03AQFRnpgqYgn6Cw/profile-displayphoto-shrink_800_800/B4EZWL7aWXH0Ag-/0/1741809363200?e=1747267200&v=beta&t=HvNAp2FbvZaiz3FKEy3g7Vk8rKdUC5tziFQ0_tWZVj8" alt="Juan Pablo Rojas" />
             </div>
             <div class="team-content">
               <h3>Juan Pablo Rojas</h3>
@@ -409,8 +420,9 @@
             Únete a cientos de inmobiliarias que están aumentando sus ventas con Maia
           </p>
           <div class="cta__actions">
-            <a href="#pricing" class="btn btn--white btn--lg">Ver Planes</a>
-            <a href="#contact" class="btn btn--white btn--lg">Suscribirse</a>
+            <a href="mailto:manuel@maiavr.cl" class="btn btn--white btn--lg">Unirse al waitlist</a>
+            <!-- <a href="#pricing" class="btn btn--white btn--lg">Ver Planes</a> -->
+            <!-- <a href="#contact" class="btn btn--white btn--lg">Suscribirse</a> -->
           </div>
         </div>
       </div>
@@ -426,7 +438,8 @@ export default {
     console.log(isMobile);
     return {
       currentSlide: 0,
-      totalSlides: isMobile ? 3 : 1
+      totalSlides: isMobile ? 3 : 1,
+      isMobile: isMobile
     };
   },
   mounted() {
@@ -509,6 +522,31 @@ $section-spacing: $spacing-4xl;
 $border-radius-enhanced: 30px; // Aumentado para esquinas más redondeadas
 $button-radius: 20px; // Redondeo específico para botones
 $purple-overlay: rgba($primary, 0.08); // Slightly stronger purple background
+
+.demo-container {
+  background: url(/demogif.gif);
+    height: 500px;
+    display: block;
+    aspect-ratio: 0.525;
+    background-size: 100%;
+  .demo-container__overlay {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.15);
+    backdrop-filter: blur(1px);
+    a {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      white-space: nowrap;
+      padding: 15px 20px;
+    }
+  }
+}
 
 // General section styling
 .section {

@@ -10,21 +10,22 @@
         </div>
         
         <nav class="header__nav" :class="{ 'active': mobileMenuOpen }">
+          
           <ul class="nav">
             <li class="nav__item">
-              <router-link to="/" class="nav__link">Inicio</router-link>
+              <router-link to="/" class="nav__link" @click="closeMobileMenu">Inicio</router-link>
             </li>
             <li class="nav__item">
-              <a href="#demo" class="nav__link">Demo</a>
+              <a href="#demo" class="nav__link" @click="closeMobileMenu">Demo</a>
+            </li>
+            <!-- <li class="nav__item">
+              <a href="#pricing" class="nav__link" @click="closeMobileMenu">Planes</a>
+            </li> -->
+            <li class="nav__item">
+              <router-link to="#about" class="nav__link" @click="closeMobileMenu">Nosotros</router-link>
             </li>
             <li class="nav__item">
-              <a href="#pricing" class="nav__link">Planes</a>
-            </li>
-            <li class="nav__item">
-              <router-link to="/about" class="nav__link">Nosotros</router-link>
-            </li>
-            <li class="nav__item">
-              <router-link to="/contact" class="nav__link">Contacto</router-link>
+              <router-link to="#contact" class="nav__link" @click="closeMobileMenu">Contacto</router-link>
             </li>
           </ul>
         </nav>
@@ -43,6 +44,8 @@
       </div>
     </div>
   </header>
+  <!-- Backdrop for closing the menu - moved outside header for better event handling -->
+  <div v-if="mobileMenuOpen" class="menu-backdrop" @click="closeMobileMenu"></div>
 </template>
 
 <script>
@@ -82,12 +85,19 @@ export default {
       }
     },
     toggleMobileMenu() {
+      console.log('Toggling mobile menu, current state:', this.mobileMenuOpen);
       this.mobileMenuOpen = !this.mobileMenuOpen;
+      console.log('New mobile menu state:', this.mobileMenuOpen);
       if (this.mobileMenuOpen) {
         document.body.style.overflow = 'hidden';
       } else {
         document.body.style.overflow = '';
       }
+    },
+    closeMobileMenu() {
+      console.log('Closing mobile menu');
+      this.mobileMenuOpen = false;
+      document.body.style.overflow = '';
     },
     scrollToSection(sectionId) {
       this.mobileMenuOpen = false;
@@ -218,6 +228,48 @@ $primary-gradient: linear-gradient(135deg, $primary 0%, lighten($primary, 15%) 1
   .header {
     &__nav {
       display: none;
+      
+      &.active {
+        display: flex;
+        position: fixed;
+        top: 100px;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        z-index: 1001;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        padding: $spacing-xl 0;
+        overflow-y: auto;
+        
+        .nav {
+          flex-direction: column;
+          width: 90%;
+          max-width: 400px;
+          
+          &__item {
+            width: 100%;
+            margin: $spacing-sm 0;
+            
+            a {
+              width: 100%;
+              font-size: 1.2rem;
+              padding: $spacing-md;
+              justify-content: center;
+              border-radius: $border-radius-lg;
+              background-color: rgba($primary, 0.05);
+              
+              &:hover, &:focus {
+                background-color: rgba($primary, 0.1);
+                transform: translateY(-3px);
+              }
+            }
+          }
+        }
+      }
     }
   }
 }
@@ -231,6 +283,7 @@ $primary-gradient: linear-gradient(135deg, $primary 0%, lighten($primary, 15%) 1
   position: relative;
   margin-left: 1rem;
   cursor: pointer;
+  z-index: 1002;
   
   span {
     display: block;
@@ -278,17 +331,20 @@ $primary-gradient: linear-gradient(135deg, $primary 0%, lighten($primary, 15%) 1
   }
 }
 
-// Overlay for mobile menu
-.header--open::after {
-  content: '';
+// Use a real element for the backdrop instead
+.menu-backdrop {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  right: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 100vh;
   background-color: rgba(0, 0, 0, 0.5);
-  z-index: 999;
+  z-index: 999; // Between header and nav
+  cursor: pointer;
   animation: fadeIn 0.3s ease forwards;
+  display: block; // Ensure it's displayed
 }
 
 @keyframes fadeIn {
@@ -299,5 +355,30 @@ $primary-gradient: linear-gradient(135deg, $primary 0%, lighten($primary, 15%) 1
 // Add this style for purple text
 .purple-text {
   color: $primary !important;
+}
+
+// Mobile close button
+.mobile-close-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: rgba($primary, 0.1);
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: $primary;
+  cursor: pointer;
+  z-index: 1002;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    background: rgba($primary, 0.2);
+    transform: rotate(90deg);
+  }
 }
 </style> 

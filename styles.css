@@ -586,6 +586,7 @@ nav ul li a:hover::after {
 .pricing-card__features {
     flex: 1;
     margin-bottom: 25px;
+    text-align: left;
 }
 
 .feature-item {
@@ -1955,4 +1956,4 @@ footer {
     .logo-text {
         font-size: 22px;
     }
-} 
+}

@@ -15,11 +15,11 @@
             <h4 class="footer-menu__title">Plataforma</h4>
             <ul class="footer-menu__list">
               <li><a href="#features">Características</a></li>
-              <li><a href="#pricing">Planes</a></li>
+              <!-- <li><a href="#pricing">Planes</a></li> -->
               <li><a href="#team">Equipo</a></li>
             </ul>
           </div>
-          
+<!--           
           <div class="footer-menu">
             <h4 class="footer-menu__title">Recursos</h4>
             <ul class="footer-menu__list">
@@ -29,27 +29,24 @@
               <li><a href="#">FAQ</a></li>
             </ul>
           </div>
-          
+           -->
           <div class="footer-menu">
             <h4 class="footer-menu__title">Empresa</h4>
             <ul class="footer-menu__list">
-              <li><a href="#">Sobre nosotros</a></li>
-              <li><a href="#">Contacto</a></li>
-              <li><a href="#">Política de privacidad</a></li>
-              <li><a href="#">Términos de servicio</a></li>
+              <li><a href="#about">Sobre nosotros</a></li>
+              <li><a href="#contact">Contacto</a></li>
             </ul>
           </div>
           
-          <div class="footer-menu">
+          <div class="footer-menu" id="contact">
             <h4 class="footer-menu__title">Contacto</h4>
             <ul class="footer-menu__list">
-              <li><a href="mailto:info@maiavr.cl">info@maiavr.cl</a></li>
+              <li><a href="mailto:manuel@maiavr.cl">manuel@maiavr.cl</a></li>
+              <li><a href="mailto:fede@maiavr.cl">fede@maiavr.cl</a></li>
               <li>Santiago, Chile</li>
             </ul>
             <div class="footer-social">
-              <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-              <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-              <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+              <a href="https://www.linkedin.com/company/maiavr" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
             </div>
           </div>
         </div>
@@ -59,7 +56,7 @@
         <div class="cta-content">
           <h3>¿Listo para transformar tus ventas inmobiliarias?</h3>
           <p>Únete a cientos de inmobiliarias y agentes que ya están utilizando Maia para vender más propiedades.</p>
-          <button class="btn btn--white btn--lg">Suscribirse</button>
+          <a href="mailto:manuel@maiavr.cl" class="btn btn--white btn--lg">Unirse al waitlist</a>
         </div>
       </div>
       

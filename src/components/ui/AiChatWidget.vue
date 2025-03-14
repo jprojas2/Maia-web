@@ -1,13 +1,12 @@
 <template>
   <div 
     class="ai-chat-widget" 
-    :class="{ 'mobile': isMobile, 'active': isActive, 'minimized': isMinimized && isMobile }"
+    :class="{ 'mobile': isMobile, 'active': isActive, 'minimized': isMinimized }"
     @focusin="handleWidgetFocus"
     @focusout="handleWidgetBlur"
   >
     <!-- Mobile Toggle Button - Only visible when minimized on mobile -->
     <button 
-      v-if="isMobile" 
       class="chat-toggle-button"
       :class="{ 'hidden': !isMinimized }"
       @click="toggleMinimized"
@@ -17,14 +16,13 @@
     </button>
     
     <!-- Chat panel - Always visible with white transparent background -->
-    <div class="chat-panel" :class="{ 'hidden': isMinimized && isMobile }">
+    <div class="chat-panel" :class="{ 'hidden': isMinimized }">
       <div class="chat-header">
         <div class="header-title">
           <h3>Maia</h3>
         </div>
         <!-- Minimize button - Only visible on mobile -->
         <button 
-          v-if="isMobile"
           class="minimize-button"
           @click="toggleMinimized"
           aria-label="Minimize chat"
@@ -113,7 +111,6 @@ const toggleChat = () => {
 
 // Toggle minimized state (mobile only)
 const toggleMinimized = () => {
-  if (!isMobile.value) return;
   
   isMinimized.value = !isMinimized.value;
   
@@ -218,7 +215,9 @@ const adjustTextareaHeight = () => {
 };
 
 // Handle widget interaction
-const handleWidgetFocus = () => {
+const handleWidgetFocus = (e) => {
+  // If target is the minimize button, don't activate the widget
+  if (e.target.closest('.minimize-button')) return;
   isActive.value = true;
   // When focusing on mobile, expand the chat
   if (isMobile.value && isMinimized.value) {
@@ -276,10 +275,22 @@ $primary-gradient: linear-gradient(135deg, $primary 0%, lighten($primary, 15%) 1
   overflow: hidden;
   background-color: rgba(255, 255, 255, 0.3);
   border: 1px solid rgba($primary, 0.2);
-  transition: all 0.3s ease;
+  transition: height 0.3s ease, transform 0.3s ease, border 0.3s ease, background 0.3s ease;
   display: flex;
   flex-direction: column;
-  
+
+  &:has(.chat-toggle-button:hover) {
+    transform: scale(1.05);
+  }
+
+  &.minimized {
+    bottom: 10px;
+    top: auto;
+    transform: none;
+    width: 60px;
+    border: none;
+    background: none;
+  }
   &.mobile {
     width: calc(100% - 40px);
     max-height: 70vh;
@@ -345,10 +356,6 @@ $primary-gradient: linear-gradient(135deg, $primary 0%, lighten($primary, 15%) 1
   padding: 0;
   transition: all 0.3s ease;
   overflow: hidden; // Ensure the image doesn't overflow the circular button
-  
-  &:hover {
-    transform: scale(1.05);
-  }
   
   &.hidden {
     display: none;
