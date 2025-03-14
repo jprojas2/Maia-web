@@ -44,9 +44,13 @@ fi
 
 echo -e "${GREEN}Proyecto construido correctamente.${NC}"
 
+# Create CNAME file
+echo -e "${BLUE}Creando archivo CNAME...${NC}"
+echo "maiavr.cl" > dist/CNAME
+
 # Deploy to GitHub Pages
 echo -e "${BLUE}Desplegando a GitHub Pages...${NC}"
-npx gh-pages -d dist --cname maiavr.cl
+npx gh-pages -d dist
 
 if [ $? -ne 0 ]; then
     echo -e "${RED}Error al desplegar a GitHub Pages. Verifica tu configuración de Git.${NC}"
