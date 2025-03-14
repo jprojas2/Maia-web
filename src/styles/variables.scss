@@ -1,9 +1,10 @@
 // Colors
 $primary: #5465FF;
 $primary-dark: #4A59E5;
-$secondary: #5CE1E6;
+$secondary: #FF5677;
+$accent-light-blue: #C5E0FB;
 $dark: #000000;
-$light: #F5F9FC;
+$light: #C5E0FB;
 $gray-100: #f8f9fa;
 $gray-200: #e9ecef;
 $gray-300: #dee2e6;
@@ -16,8 +17,8 @@ $gray-900: #212529;
 
 // Gradients
 $gradient-1: linear-gradient(135deg, $primary 0%, $secondary 100%);
-$gradient-2: linear-gradient(135deg, #B260FE 0%, $secondary 100%);
-$gradient-3: linear-gradient(135deg, #FF5677 0%, $secondary 100%);
+$gradient-2: linear-gradient(135deg, $secondary 0%, $accent-light-blue 100%);
+$gradient-3: linear-gradient(135deg, $primary 0%, $accent-light-blue 100%);
 
 // Typography
 $font-family-base: 'Poppins', sans-serif;
