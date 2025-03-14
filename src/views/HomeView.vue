@@ -1077,8 +1077,8 @@ $pink-overlay: rgba(#FBC5C5, 0.15); // Light pink overlay
     right: 0;
     bottom: 0;
     background-image: 
-      linear-gradient(to bottom, rgba($dark, 0.01), rgba($primary, 0.01)),
-      radial-gradient(rgba($dark, 0.01) 1px, transparent 1px);
+      linear-gradient(to bottom, rgba($dark, 0.05), rgba($primary, 0.05)),
+      radial-gradient(rgba($dark, 0.05) 1px, transparent 1px);
     background-size: 100% 100%, 20px 20px;
     z-index: -1;
   }
@@ -1128,10 +1128,10 @@ $pink-overlay: rgba(#FBC5C5, 0.15); // Light pink overlay
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.5);
   
-  // Use the same background pattern as hero section with 0.01 opacity
+  // Update background pattern to match team section opacity (0.05)
   background-image: 
-    linear-gradient(to bottom, rgba($dark, 0.01), rgba($primary, 0.01)),
-    radial-gradient(rgba($dark, 0.01) 1px, transparent 1px);
+    linear-gradient(to bottom, rgba($dark, 0.05), rgba($primary, 0.05)),
+    radial-gradient(rgba($dark, 0.05) 1px, transparent 1px);
   background-size: 100% 100%, 20px 20px;
   
   &:hover {
