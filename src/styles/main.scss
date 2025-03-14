@@ -156,9 +156,8 @@ strong {
     right: 0;
     bottom: 0;
     background-image: 
-      linear-gradient(to bottom, rgba($dark, 0.01), rgba($primary, 0.01)),
-      radial-gradient(rgba($dark, 0.01) 1px, transparent 1px);
-    background-size: 100% 100%, 20px 20px;
+      linear-gradient(to bottom, rgba($dark, 0.01), rgba($primary, 0.01));
+    background-size: 100% 100%;
     z-index: -1;
   }
   
@@ -170,9 +169,8 @@ strong {
     
     &::before {
       background-image: 
-        linear-gradient(to bottom, rgba($dark, 0.01), rgba($primary, 0.01)),
-        radial-gradient(rgba($dark, 0.01) 1px, transparent 1px);
-      background-size: 100% 100%, 20px 20px;
+        linear-gradient(to bottom, rgba($dark, 0.01), rgba($primary, 0.01));
+      background-size: 100% 100%;
     }
     
     &:nth-of-type(even) {
@@ -195,9 +193,8 @@ strong {
     
     &::before {
       background-image: 
-        linear-gradient(to bottom, rgba($dark, 0.01), rgba($primary, 0.01)),
-        radial-gradient(rgba($dark, 0.01) 1px, transparent 1px);
-      background-size: 100% 100%, 20px 20px;
+        linear-gradient(to bottom, rgba($dark, 0.01), rgba($primary, 0.01));
+      background-size: 100% 100%;
     }
   }
   
@@ -207,9 +204,8 @@ strong {
     
     &::before {
       background-image: 
-        linear-gradient(to bottom, rgba($dark, 0.01), rgba($primary, 0.01)),
-        radial-gradient(rgba($dark, 0.01) 1px, transparent 1px);
-      background-size: 100% 100%, 20px 20px;
+        linear-gradient(to bottom, rgba($dark, 0.01), rgba($primary, 0.01));
+      background-size: 100% 100%;
     }
   }
   
@@ -220,9 +216,8 @@ strong {
     
     &::before {
       background-image: 
-        linear-gradient(to bottom, rgba($dark, 0.02), rgba($primary, 0.03)),
-        radial-gradient(rgba(#E7ECFF, 0.1) 1px, transparent 1px);
-      background-size: 100% 100%, 20px 20px;
+        linear-gradient(to bottom, rgba($dark, 0.02), rgba($primary, 0.03));
+      background-size: 100% 100%;
     }
   }
   

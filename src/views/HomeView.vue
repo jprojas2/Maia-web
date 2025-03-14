@@ -574,9 +574,8 @@ $pink-overlay: rgba(#FBC5C5, 0.15); // Light pink overlay
       right: 0;
       bottom: 0;
       background-image: 
-        linear-gradient(to bottom, rgba($dark, 0.03), rgba($primary, 0.03)),
-        radial-gradient(rgba($dark, 0.03) 1px, transparent 1px);
-      background-size: 100% 100%, 20px 20px;
+        linear-gradient(to bottom, rgba($dark, 0.03), rgba($primary, 0.03));
+      background-size: 100% 100%;
       z-index: -1;
     }
   }
@@ -616,9 +615,8 @@ $pink-overlay: rgba(#FBC5C5, 0.15); // Light pink overlay
     right: 0;
     bottom: 0;
     background-image: 
-      linear-gradient(to bottom, rgba($dark, 0.01), rgba($primary, 0.01)),
-      radial-gradient(rgba($dark, 0.01) 1px, transparent 1px);
-    background-size: 100% 100%, 20px 20px;
+      linear-gradient(to bottom, rgba($dark, 0.01), rgba($primary, 0.01));
+    background-size: 100% 100%;
     z-index: -1;
   }
   
@@ -1077,9 +1075,8 @@ $pink-overlay: rgba(#FBC5C5, 0.15); // Light pink overlay
     right: 0;
     bottom: 0;
     background-image: 
-      linear-gradient(to bottom, rgba($dark, 0.05), rgba($primary, 0.05)),
-      radial-gradient(rgba($dark, 0.05) 1px, transparent 1px);
-    background-size: 100% 100%, 20px 20px;
+      linear-gradient(to bottom, rgba($dark, 0.05), rgba($primary, 0.05));
+    background-size: 100% 100%;
     z-index: -1;
   }
   
@@ -1130,9 +1127,8 @@ $pink-overlay: rgba(#FBC5C5, 0.15); // Light pink overlay
   
   // Update background pattern to match team section opacity (0.05)
   background-image: 
-    linear-gradient(to bottom, rgba($dark, 0.05), rgba($primary, 0.05)),
-    radial-gradient(rgba($dark, 0.05) 1px, transparent 1px);
-  background-size: 100% 100%, 20px 20px;
+    linear-gradient(to bottom, rgba($dark, 0.05), rgba($primary, 0.05));
+  background-size: 100% 100%;
   
   &:hover {
     transform: translateY(-5px);
@@ -1230,19 +1226,6 @@ $pink-overlay: rgba(#FBC5C5, 0.15); // Light pink overlay
   position: relative;
   padding: $spacing-3xl 0;
   
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image: 
-      radial-gradient(rgba(white, 0.1) 1px, transparent 1px);
-    background-size: 20px 20px;
-    z-index: 0;
-  }
-  
   .container {
     position: relative;
     z-index: 1;
@@ -1335,19 +1318,6 @@ $pink-overlay: rgba(#FBC5C5, 0.15); // Light pink overlay
   position: relative;
   padding: $spacing-3xl 0;
   
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image: 
-      radial-gradient(rgba(white, 0.1) 1px, transparent 1px);
-    background-size: 20px 20px;
-    z-index: 0;
-  }
-  
   .container {
     position: relative;
     z-index: 1;
@@ -1373,8 +1343,7 @@ $pink-overlay: rgba(#FBC5C5, 0.15); // Light pink overlay
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.5);
   background-image: 
-    linear-gradient(to bottom, rgba($dark, 0.02), rgba($primary, 0.03)),
-    radial-gradient(rgba($dark, 0.03) 1px, transparent 1px);
+    linear-gradient(to bottom, rgba($dark, 0.02), rgba($primary, 0.03));
   background-size: 100%, 20px 20px;
   
   &:hover {

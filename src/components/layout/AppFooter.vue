@@ -81,7 +81,7 @@ export default {
 @import "../../styles/variables";
 
 .footer {
-  background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%) !important;
+  background: linear-gradient(135deg, #000000 0%, #333333 100%) !important;
   color: #E7ECFF;
   padding: $spacing-xl 0;
   display: flex;
@@ -159,7 +159,7 @@ export default {
   margin: $spacing-3xl 0;
   padding: $spacing-2xl;
   border-radius: 30px;
-  background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+  background: linear-gradient(135deg, #000000 0%, #333333 100%);
   border: none;
   box-shadow: none;
   text-align: center;
