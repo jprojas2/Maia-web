@@ -31,11 +31,14 @@
           </div>
           
           <p class="hero__subtitle animate-slide-in-up">
-            "Show, don't tell": La venta inmobiliaria es visual, no textual. Maia transforma tus recorridos virtuales en experiencias de venta guiadas por inteligencia artificial.
+            "Show, don't tell": La venta inmobiliaria es visual, no textual.
+          </br>Maia transforma tus recorridos virtuales en experiencias de venta guiadas por inteligencia artificial.
           </p>
-          
+          <p class="hero__subtitle animate-slide-in-up">
+            ¿Listo para sumarte a la revolución de las ventas inmobiliarias?
+          </p>
           <div class="hero__actions animate-slide-in-up">
-            <a href="mailto:manuel@maiavr.cl" class="btn btn--primary btn--lg">¿Listo para sumarte a la revolución de las ventas inmobiliarias? ¡Únete a nuestro waitlist para ser de los primeros!</a>
+            <a href="mailto:manuel@maiavr.cl" class="btn btn--primary btn--lg">¡Únete a nuestro waitlist para ser de los primeros!</a>
           </div>
         </div>
       </div>
@@ -192,27 +195,26 @@
         <div class="section__header">
           <h2 class="section__title">¿Por Qué Elegir Maia?</h2>
           <p class="section__subtitle">
-            Las webs inmobiliarias actuales son estáticas, impersonales, llenas de formularios y complejas de navegar. Ofrecemos una experiencia de compra interactiva, personalizada y simple a través de recorridos virtuales guiados por AI, captando información de una manera más natural y fluida, mejorando la calidad de tus leads.
+            Las visitas a salas de ventas han disminuido un 70% desde el 2020.
+          </br>Las páginas webs inmobiliarias actuales son estáticas, impersonales, llenas de formularios y complejas de navegar.
+          </br>Ofrecemos una experiencia de compra interactiva, personalizada y simple a través de recorridos virtuales guiados por AI, captando información de una manera más natural y fluida, mejorando la calidad de tus leads.
+        </br>Las páginas web tradicionales de proyectos inmobiliarios tienen:
           </p>
         </div>
         
         <!-- Stats Row - All stats included -->
         <div class="stats-container">
           <div class="stat-item">
-            <span class="stat-number">-70%</span>
-            <span class="stat-label">Visitas a salas de ventas desde el 2020.</span>
-          </div>
-          <div class="stat-item">
             <span class="stat-number">60%</span>
-            <span class="stat-label">Tasa de rebote en páginas tradicionales de proyectos inmobiliarios.</span>
+            <span class="stat-label">Tasa de rebote.</span>
           </div>
           <div class="stat-item">
             <span class="stat-number">45 s</span>
-            <span class="stat-label">Tiempo de permanencia promedio en páginas tradicionales de proyectos inmobiliarios.</span>
+            <span class="stat-label">Tiempo de permanencia promedio.</span>
           </div>
           <div class="stat-item">
             <span class="stat-number">4%</span>
-            <span class="stat-label">Tasa de conversión de leads en páginas tradicionales de proyectos inmobiliarios.</span>
+            <span class="stat-label">Tasa de conversión a lead.</span>
           </div>
         </div>
         
@@ -224,7 +226,7 @@
             </div>
             <h3 class="feature-title">Broker AI</h3>
             <p class="feature-desc">
-              Guíamos a los potenciales compradores en el recorrido virtual, entregando la información de las propiedades a través de conversaciones naturales y aclarando dudas al instante. 
+              Guíamos a los potenciales compradores en el recorrido virtual, entregando información y aclarando dudas a través de conversaciones naturales. 
             </p>
           </div>
           
@@ -232,9 +234,9 @@
             <div class="feature-icon">
               <i class="fas fa-chart-line"></i>
             </div>
-            <h3 class="feature-title">Calficación de Leads</h3>
+            <h3 class="feature-title">Calficación de leads</h3>
             <p class="feature-desc">
-              Calificamos los leads de tus recorridos virtuales en base a las conversaciones y comportamientos de tus clientes, ahorrando tiempo y esfuerzo a tus vendedores para que se enfoquen en cerrar los tratos.
+              Calificamos leads en base a las conversaciones y comportamientos de tus clientes, ahorrando tiempo y esfuerzo a tus vendedores para que se enfoquen en cerrar los tratos.
             </p>
           </div>
           
@@ -244,7 +246,8 @@
             </div>
             <h3 class="feature-title">Recorridos Virtuales</h3>
             <p class="feature-desc">
-              Aprovechamos tus recorridos virtuales existentes, o bien los creamos por ti. Los recorridos virtuales aumentan la conversión de visita a lead en un 95% y reducen el tiempo de venta en 33%.
+              Aprovechamos tus recorridos virtuales existentes, o bien los creamos por ti.
+            </br>Los recorridos virtuales aumentan la conversión de visita a lead en un 95% y reducen el tiempo de venta en 33%.
             </p>
           </div>
           
@@ -252,7 +255,7 @@
             <div class="feature-icon">
               <i class="fas fa-plug"></i>
             </div>
-            <h3 class="feature-title">Integración y seguimiento sin esfuerzo</h3>
+            <h3 class="feature-title">Integración sin esfuerzo</h3>
             <p class="feature-desc">
               Nos integramos a tus canales de comunicación existentes y CRM, automatizando y centralizando el seguimiento de tus leads.
             </p>
