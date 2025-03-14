@@ -98,9 +98,9 @@ onUnmounted(() => {
       radial-gradient(ellipse 10vw 12vw at 50% 70%, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0) 60%),
       radial-gradient(circle 8vw at 70% 15%, rgba(0, 0, 0, 0.97) 0%, rgba(0, 0, 0, 0) 55%),
       // Pink spots (secondary color)
-      radial-gradient(circle 14vw at 85% 60%, rgba(255, 86, 119, 0.95) 0%, rgba(255, 86, 119, 0) 60%),
-      radial-gradient(ellipse 12vw 10vw at 15% 70%, rgba(255, 86, 119, 0.97) 0%, rgba(255, 86, 119, 0) 55%),
-      radial-gradient(circle 10vw at 60% 95%, rgba(255, 86, 119, 0.95) 0%, rgba(255, 86, 119, 0) 60%);
+      radial-gradient(circle 14vw at 85% 60%, rgba(251, 197, 197, 0.95) 0%, rgba(251, 197, 197, 0) 60%),
+      radial-gradient(ellipse 12vw 10vw at 15% 70%, rgba(251, 197, 197, 0.97) 0%, rgba(251, 197, 197, 0) 55%),
+      radial-gradient(circle 10vw at 60% 95%, rgba(251, 197, 197, 0.95) 0%, rgba(251, 197, 197, 0) 60%);
     opacity: 1;
     z-index: 0;
   }
