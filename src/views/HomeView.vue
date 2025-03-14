@@ -195,7 +195,7 @@
     <section class="section section--light" id="features">
       <div class="container">
         <div class="section__header">
-          <h2 class="section__title">¿Por Qué Elegir Maia?</h2>
+          <h2 class="section__title">¿Por qué elegir Maia?</h2>
           <p class="section__subtitle">
             Ofrecemos una experiencia de compra interactiva, personalizada y simple a través de recorridos virtuales guiados por AI, captando información de una manera más natural y mejorando la calidad de tus leads.
           </p>
@@ -246,10 +246,12 @@
             <div class="feature-icon">
               <i class="fas fa-vr-cardboard"></i>
             </div>
-            <h3 class="feature-title">Recorridos Virtuales</h3>
+            <h3 class="feature-title">Recorridos virtuales</h3>
             <p class="feature-desc">
               Aprovechamos tus recorridos virtuales existentes, o bien los creamos por ti.
-            </br>Los recorridos virtuales aumentan la conversión de visita a lead en un 95% y reducen el tiempo de venta en 33%.
+            </p>
+            <p class="feature-desc">
+              Los recorridos virtuales aumentan la conversión de visita a lead en un 95% y reducen el tiempo de venta en 33%.
             </p>
           </div>
           

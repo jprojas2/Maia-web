@@ -18,6 +18,9 @@
             <li class="nav__item">
               <a href="#demo" class="nav__link" @click="closeMobileMenu">Demo</a>
             </li>
+            <li class="nav__item">
+              <a href="#features" class="nav__link" @click="closeMobileMenu">Características</a>
+            </li>
             <!-- <li class="nav__item">
               <a href="#pricing" class="nav__link" @click="closeMobileMenu">Planes</a>
             </li> -->
