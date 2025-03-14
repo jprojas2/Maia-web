@@ -180,6 +180,10 @@ export default {
     margin-right: auto;
   }
   
+  .btn {
+    border-radius: 20px;
+  }
+  
   .btn--primary {
     background-color: $primary;
     color: white;
