@@ -12,11 +12,10 @@
         
         <div class="footer__nav">
           <div class="footer-menu">
-            <h4 class="footer-menu__title">Plataforma</h4>
+            <h4 class="footer-menu__title">Producto</h4>
             <ul class="footer-menu__list">
               <li><a href="#features">Características</a></li>
               <!-- <li><a href="#pricing">Planes</a></li> -->
-              <li><a href="#team">Equipo</a></li>
             </ul>
           </div>
 <!--           
@@ -54,7 +53,7 @@
       
       <div class="footer__cta">
         <div class="cta-content">
-          <h3>¿Listo para sumarte a la revolución inmobiliaria?</h3>
+          <h3>¿Listo para sumarte a la revolución de las ventas inmobiliarias?</h3>
           <a href="mailto:manuel@maiavr.cl" class="btn btn--white btn--lg">¡Quiero un mes de prueba gratis!</a>
         </div>
       </div>
