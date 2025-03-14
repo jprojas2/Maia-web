@@ -161,6 +161,7 @@ export default {
   border-radius: 30px;
   background: #000000;
   border: none;
+  box-shadow: none;
   text-align: center;
   
   h3 {
