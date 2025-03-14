@@ -190,7 +190,7 @@ strong {
   
   &--dark {
     background-color: rgba($dark, 0.85);
-    color: white;
+    color: #E7ECFF;
     width: 100%;
     
     &::before {
@@ -215,13 +215,13 @@ strong {
   
   &--gradient {
     background: $primary-gradient;
-    color: white;
+    color: #E7ECFF;
     width: 100%;
     
     &::before {
       background-image: 
         linear-gradient(to bottom, rgba($dark, 0.02), rgba($primary, 0.03)),
-        radial-gradient(rgba(white, 0.1) 1px, transparent 1px);
+        radial-gradient(rgba(#E7ECFF, 0.1) 1px, transparent 1px);
       background-size: 100% 100%, 20px 20px;
     }
   }
@@ -356,7 +356,7 @@ strong {
   
   &--primary {
     background-color: $primary;
-    color: white;
+    color: #E7ECFF;
     box-shadow: 0 5px 15px rgba($primary, 0.25);
     
     &::after {
@@ -364,7 +364,7 @@ strong {
     }
     
     &:hover {
-      color: white;
+      color: #E7ECFF;
     }
   }
   
@@ -393,24 +393,24 @@ strong {
   
   &--gradient {
     background: $primary-gradient;
-    color: white;
+    color: #E7ECFF;
     
     &::after {
       background: $primary-gradient;
     }
     
     &:hover {
-      color: white;
+      color: #E7ECFF;
     }
   }
   
   &--white {
-    background-color: white;
+    background-color: #E7ECFF;
     color: $primary;
     border: 1px solid rgba($gray-200, 0.7);
     
     &::after {
-      background-color: white;
+      background-color: #E7ECFF;
     }
   }
   

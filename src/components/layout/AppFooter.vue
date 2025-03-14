@@ -82,7 +82,7 @@ export default {
 
 .footer {
   background-color: #000000 !important;
-  color: white;
+  color: #E7ECFF;
   padding: $spacing-xl 0;
   display: flex;
   align-items: flex-start;
@@ -168,12 +168,12 @@ export default {
     font-size: 1.8rem;
     font-weight: $font-weight-bold;
     margin-bottom: $spacing-md;
-    color: white;
+    color: #E7ECFF;
   }
   
   p {
     font-size: 1.1rem;
-    color: rgba(white, 0.9);
+    color: rgba(#E7ECFF, 0.9);
     margin-bottom: $spacing-xl;
     max-width: 700px;
     margin-left: auto;
@@ -186,7 +186,7 @@ export default {
   
   .btn--primary {
     background-color: $primary;
-    color: white;
+    color: #E7ECFF;
     
     &:hover {
       background-color: rgba($primary, 0.9);
@@ -218,13 +218,13 @@ export default {
   gap: $spacing-md;
   
   a {
-    color: rgba(white, 0.5);
+    color: rgba(#E7ECFF, 0.5);
     text-decoration: none;
     font-size: 0.9rem;
     transition: color 0.2s ease;
     
     &:hover {
-      color: white;
+      color: #E7ECFF;
     }
   }
 }
@@ -270,7 +270,7 @@ export default {
     font-size: 1.1rem;
     font-weight: $font-weight-semibold;
     margin-bottom: $spacing-md;
-    color: white;
+    color: #E7ECFF;
   }
   
   &__list {
@@ -287,7 +287,7 @@ export default {
         transition: $transition-base;
         
         &:hover {
-          color: white;
+          color: #E7ECFF;
         }
       }
     }
@@ -306,8 +306,8 @@ export default {
     width: 36px;
     height: 36px;
     border-radius: 50%;
-    background-color: rgba(white, 0.1);
-    color: white;
+    background-color: rgba(#E7ECFF, 0.1);
+    color: #E7ECFF;
     transition: $transition-base;
     
     &:hover {
