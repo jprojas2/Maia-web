@@ -33,7 +33,6 @@
             <h4 class="footer-menu__title">Empresa</h4>
             <ul class="footer-menu__list">
               <li><a href="#about">Sobre nosotros</a></li>
-              <li><a href="#contact">Contacto</a></li>
             </ul>
           </div>
           
@@ -54,7 +53,7 @@
       <div class="footer__cta">
         <div class="cta-content">
           <h3>¿Listo para sumarte a la revolución de las ventas inmobiliarias?</h3>
-          <a href="mailto:manuel@maiavr.cl" class="btn btn--white btn--lg">¡Quiero un mes de prueba gratis!</a>
+          <a href="mailto:manuel@maiavr.cl" class="btn btn--primary btn--lg">¡Quiero un mes de prueba gratis!</a>
         </div>
       </div>
       
@@ -177,12 +176,12 @@ export default {
     margin-right: auto;
   }
   
-  .btn--white {
-    background-color: white;
-    color: $dark;
+  .btn--primary {
+    background-color: $primary;
+    color: white;
     
     &:hover {
-      background-color: rgba(white, 0.9);
+      background-color: rgba($primary, 0.9);
     }
   }
 }
