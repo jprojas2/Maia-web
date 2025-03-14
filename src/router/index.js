@@ -5,25 +5,25 @@ const routes = [
     path: '/',
     name: 'Home',
     component: () => import('@/views/HomeView.vue'),
-    meta: { title: 'Maia AI - Transformando la venta inmobiliaria con IA' }
+    meta: { title: 'Maia - La evolución natural de las ventas inmobiliarias' }
   },
   {
     path: '/demo',
     name: 'Demo',
     component: () => import('@/views/DemoView.vue'),
-    meta: { title: 'Demo - Maia AI' }
+    meta: { title: 'Demo - Maia' }
   },
   {
     path: '/pricing',
     name: 'Pricing',
     component: () => import('@/views/PricingView.vue'),
-    meta: { title: 'Planes y Precios - Maia AI' }
+    meta: { title: 'Planes y Precios - Maia' }
   },
   {
     path: '/contact',
     name: 'Contact',
     component: () => import('@/views/ContactView.vue'),
-    meta: { title: 'Contacto - Maia AI' }
+    meta: { title: 'Contacto - Maia' }
   }
 ]
 
@@ -43,7 +43,7 @@ const router = createRouter({
 
 // Update document title based on route meta
 router.beforeEach((to, from, next) => {
-  document.title = to.meta.title || 'Maia AI'
+  document.title = to.meta.title || 'Maia - La evolución natural de las ventas inmobiliarias'
   next()
 })
 
