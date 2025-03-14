@@ -523,7 +523,8 @@ $primary-gradient: linear-gradient(135deg, $primary 0%, lighten($primary, 15%) 1
 $section-spacing: $spacing-4xl;
 $border-radius-enhanced: 30px; // Aumentado para esquinas más redondeadas
 $button-radius: 20px; // Redondeo específico para botones
-$purple-overlay: rgba($primary, 0.15); // Slightly stronger purple background
+$purple-overlay: rgba($primary, 0.15); // Light blue overlay
+$pink-overlay: rgba(#FBC5C5, 0.15); // Light pink overlay
 
 .demo-container {
   background: url(/demogif.gif);
@@ -558,8 +559,9 @@ $purple-overlay: rgba($primary, 0.15); // Slightly stronger purple background
   z-index: 1; // Ensure section content is above the background
 
   &--light {
-    background-color: rgba(white, 0.85); // Semi-transparent white
+    background-color: rgba($dark, 0.95); // Black background
     position: relative;
+    color: black;
     
     &::before {
       content: '';
@@ -568,8 +570,12 @@ $purple-overlay: rgba($primary, 0.15); // Slightly stronger purple background
       left: 0;
       right: 0;
       bottom: 0;
-      background-image: radial-gradient($purple-overlay 1px, transparent 1px);
-      background-size: 20px 20px;
+      background-color: $dark;
+      background-image: 
+        radial-gradient($purple-overlay 1px, transparent 1px),
+        radial-gradient($pink-overlay 1px, transparent 1px);
+      background-position: 0 0, 10px 10px;
+      background-size: 20px 20px, 20px 20px;
       z-index: -1;
     }
   }
@@ -607,10 +613,12 @@ $purple-overlay: rgba($primary, 0.15); // Slightly stronger purple background
     left: 0;
     right: 0;
     bottom: 0;
+    background-color: $dark;
     background-image: 
-      linear-gradient(to bottom, rgba($dark, 0.02), rgba($primary, 0.03)),
-      radial-gradient(rgba($dark, 0.03) 1px, transparent 1px);
-    background-size: 100% 100%, 20px 20px;
+      radial-gradient($purple-overlay 1px, transparent 1px),
+      radial-gradient($pink-overlay 1px, transparent 1px);
+    background-position: 0 0, 10px 10px;
+    background-size: 20px 20px, 20px 20px;
     z-index: -1;
   }
   
@@ -625,11 +633,11 @@ $purple-overlay: rgba($primary, 0.15); // Slightly stronger purple background
   .hero__title {
     font-size: 2.5rem; // Tamaño reducido
     font-weight: $font-weight-bold;
-    color: $dark;
+    color: black;
     margin-bottom: $spacing-xl;
     line-height: 1.2;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); // Sombra de texto más pronunciada
-    background-color: rgba(255, 255, 255, 0.7); // Fondo semi-transparente
+    text-shadow: 0 2px 4px rgba(255, 255, 255, 0.2); // Sombra de texto más pronunciada
+    background-color: rgba($primary, 0.7); // Fondo semi-transparente
     padding: $spacing-md;
     border-radius: $border-radius-enhanced;
     display: inline-block;
@@ -667,11 +675,11 @@ $purple-overlay: rgba($primary, 0.15); // Slightly stronger purple background
   .hero__subtitle {
     font-size: 1.4rem; // Tamaño reducido
     font-weight: $font-weight-normal;
-    color: $gray-700;
+    color: black;
     margin-bottom: $spacing-xl;
     max-width: 900px; // Ancho ampliado
     line-height: 1.5;
-    background-color: rgba(255, 255, 255, 0.7); // Fondo semi-transparente
+    background-color: rgba($primary, 0.7); // Fondo semi-transparente
     padding: $spacing-md;
     border-radius: $border-radius-enhanced;
     text-shadow: 0 1px 2px rgba(255, 255, 255, 0.5); // Sutil sombra de texto
@@ -835,7 +843,7 @@ $purple-overlay: rgba($primary, 0.15); // Slightly stronger purple background
   }
   
   .stat-item {
-    background-color: rgba(white, 0.9);
+    background-color: rgba($primary, 0.7);
     border-radius: $border-radius-enhanced;
     padding: $spacing-lg;
     text-align: center;
@@ -854,13 +862,13 @@ $purple-overlay: rgba($primary, 0.15); // Slightly stronger purple background
       display: block;
       font-size: 2.5rem;
       font-weight: $font-weight-bold;
-      color: $primary;
+      color: black;
       margin-bottom: $spacing-sm;
     }
     
     .stat-label {
       font-size: 1rem;
-      color: $gray-700;
+      color: black;
       line-height: 1.4;
     }
   }
@@ -879,9 +887,9 @@ $purple-overlay: rgba($primary, 0.15); // Slightly stronger purple background
   
   .feature-card {
     padding: $spacing-xl;
-    background-color: rgba(255, 255, 255, 0.7);
+    background-color: rgba($primary, 0.7);
     border-radius: $border-radius-xl; // Increased from border-radius-lg
-    border: 1px solid rgba(0, 0, 0, 0.03);
+    border: 1px solid rgba($primary, 0.3);
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -893,19 +901,19 @@ $purple-overlay: rgba($primary, 0.15); // Slightly stronger purple background
     
     .feature-icon {
       font-size: 2.5rem;
-      color: $primary;
+      color: black;
       margin-bottom: $spacing-md;
     }
     
     .feature-title {
       font-size: 1.5rem;
       font-weight: $font-weight-semibold;
-      color: $dark;
+      color: black;
       margin-bottom: $spacing-md;
     }
     
     .feature-desc {
-      color: $gray-700;
+      color: black;
       line-height: 1.6;
     }
   }
@@ -1067,20 +1075,23 @@ $purple-overlay: rgba($primary, 0.15); // Slightly stronger purple background
     left: 0;
     right: 0;
     bottom: 0;
+    background-color: $dark;
     background-image: 
-      linear-gradient(to bottom, rgba($dark, 0.02), rgba($primary, 0.03)),
-      radial-gradient(rgba($dark, 0.03) 1px, transparent 1px);
-    background-size: 100% 100%, 20px 20px;
+      radial-gradient($purple-overlay 1px, transparent 1px),
+      radial-gradient($pink-overlay 1px, transparent 1px);
+    background-position: 0 0, 10px 10px;
+    background-size: 20px 20px, 20px 20px;
     z-index: -1;
   }
   
   .section__title, .section__subtitle {
-    background-color: rgba(255, 255, 255, 0.7);
+    background-color: rgba($primary, 0.7);
     padding: $spacing-md;
     border-radius: $border-radius-enhanced;
     display: inline-block;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-shadow: 0 2px 4px rgba(255, 255, 255, 0.1);
     margin-bottom: $spacing-md;
+    color: black;
   }
   
   .section__subtitle {
@@ -1140,31 +1151,31 @@ $purple-overlay: rgba($primary, 0.15); // Slightly stronger purple background
       font-size: 1.3rem;
       font-weight: $font-weight-semibold;
       margin-bottom: $spacing-xs;
-      color: $dark;
-      background-color: rgba(255, 255, 255, 0.7);
+      color: black;
+      background-color: rgba($primary, 0.7);
       padding: $spacing-sm;
       border-radius: $button-radius;
       display: inline-block;
-      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+      text-shadow: 0 1px 2px rgba(255, 255, 255, 0.1);
     }
     
     h4 {
       font-size: 1rem;
       font-weight: $font-weight-medium;
-      color: $primary;
+      color: black;
       margin-bottom: $spacing-md;
-      background-color: rgba(255, 255, 255, 0.7);
+      background-color: rgba($primary, 0.7);
       padding: $spacing-xs $spacing-sm;
       border-radius: $button-radius;
       display: inline-block;
     }
     
     p {
-      color: $gray-700;
+      color: black;
       font-size: 0.95rem;
       line-height: 1.5;
       margin-bottom: $spacing-md;
-      background-color: rgba(255, 255, 255, 0.5);
+      background-color: rgba($primary, 0.7);
       padding: $spacing-sm;
       border-radius: $button-radius;
     }
@@ -1381,5 +1392,42 @@ $purple-overlay: rgba($primary, 0.15); // Slightly stronger purple background
 
 .demo-frame, .hero__title, .hero__subtitle {
   border-radius: $border-radius-enhanced;
+}
+
+.section__header {
+  text-align: center;
+  margin-bottom: $spacing-2xl;
+  
+  .section__title {
+    font-size: 2.5rem;
+    font-weight: $font-weight-bold;
+    color: black;
+    margin-bottom: $spacing-md;
+    background-color: rgba($primary, 0.7);
+    padding: $spacing-md;
+    border-radius: $border-radius-enhanced;
+    display: inline-block;
+  }
+  
+  .section__subtitle {
+    font-size: 1.2rem;
+    color: black;
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.6;
+    background-color: rgba($primary, 0.7);
+    padding: $spacing-md;
+    border-radius: $border-radius-enhanced;
+    margin-bottom: $spacing-md;
+  }
+}
+
+.btn--white {
+  background-color: white;
+  color: black;
+  
+  &:hover {
+    background-color: rgba(white, 0.9);
+  }
 }
 </style> 

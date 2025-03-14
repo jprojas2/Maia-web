@@ -178,7 +178,7 @@ export default {
   
   .btn--primary {
     background-color: $primary;
-    color: white;
+    color: black;
     
     &:hover {
       background-color: rgba($primary, 0.9);
