@@ -53,7 +53,7 @@
       <div class="footer__cta">
         <div class="cta-content">
           <h3>¿Listo para sumarte a la revolución de las ventas inmobiliarias?</h3>
-          <a href="https://docs.google.com/forms/d/1PUet4FLIe1eR0cafpNDapUpBuh0Y7Jvzl7mea_m0kNY/edit?ts=67d4874a" target="_blank" class="btn btn--primary btn--lg">¡Quiero un mes de prueba gratis!</a>
+          <a href="https://docs.google.com/forms/d/1PUet4FLIe1eR0cafpNDapUpBuh0Y7Jvzl7mea_m0kNY/edit?ts=67d4874a" target="_blank" class="btn btn--pink btn--lg">¡Quiero un mes de prueba gratis!</a>
         </div>
       </div>
       

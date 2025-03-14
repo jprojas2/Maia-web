@@ -12,7 +12,7 @@
           <p  v-if='isMobile'>
             <a href="https://maiavr.s3.sa-east-1.amazonaws.com/demo.html" target="_blank" class="demo-container">
               <div class="demo-container__overlay">
-                <a href="https://maiavr.s3.sa-east-1.amazonaws.com/demo.html" class="btn btn--primary try-demo-mobile" target="_blank">
+                <a href="https://maiavr.s3.sa-east-1.amazonaws.com/demo.html" class="btn btn--pink try-demo-mobile" target="_blank">
                   Probar Demo
                 </a>
               </div>
@@ -40,7 +40,7 @@
             ¿Listo para sumarte a la revolución de las ventas inmobiliarias?
           </p>
           <div class="hero__actions animate-slide-in-up">
-            <a href="https://docs.google.com/forms/d/1PUet4FLIe1eR0cafpNDapUpBuh0Y7Jvzl7mea_m0kNY/edit?ts=67d4874a" target="_blank" class="btn btn--primary btn--lg">¡Quiero un mes de prueba gratis!</a>
+            <a href="https://docs.google.com/forms/d/1PUet4FLIe1eR0cafpNDapUpBuh0Y7Jvzl7mea_m0kNY/edit?ts=67d4874a" target="_blank" class="btn btn--pink btn--lg">¡Quiero un mes de prueba gratis!</a>
           </div>
         </div>
       </div>
@@ -422,7 +422,7 @@
             
           </p>
           <div class="cta__actions">
-            <a href="https://docs.google.com/forms/d/1PUet4FLIe1eR0cafpNDapUpBuh0Y7Jvzl7mea_m0kNY/edit?ts=67d4874a" target="_blank" class="btn btn--white btn--lg">¡Quiero un mes de prueba gratis!</a>
+            <a href="https://docs.google.com/forms/d/1PUet4FLIe1eR0cafpNDapUpBuh0Y7Jvzl7mea_m0kNY/edit?ts=67d4874a" target="_blank" class="btn btn--primary btn--lg">¡Quiero un mes de prueba gratis!</a>
             <!-- <a href="#pricing" class="btn btn--white btn--lg">Ver Planes</a> -->
             <!-- <a href="#contact" class="btn btn--white btn--lg">Suscribirse</a> -->
           </div>
@@ -1327,7 +1327,7 @@ $pink-overlay: rgba(#FBC5C5, 0.15); // Light pink overlay
 
 // Nueva sección de CTA con fondo completo
 .section--cta {
-  background: $primary-gradient;
+  background: #FBC5C5;
   color: white;
   width: 100vw;
   margin-left: calc(-50vw + 50%);
@@ -1415,12 +1415,12 @@ $pink-overlay: rgba(#FBC5C5, 0.15); // Light pink overlay
   }
 }
 
-.btn--white {
-  background-color: white;
-  color: $primary;
+.btn--primary {
+  background-color: $primary;
+  color: white;
   
   &:hover {
-    background-color: rgba(white, 0.9);
+    background-color: lighten($primary, 10%);
   }
 }
 </style> 

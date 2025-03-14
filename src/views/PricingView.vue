@@ -130,7 +130,7 @@ const plans = ref([
     ],
     buttonText: 'Suscribirse',
     buttonLink: '/contact',
-    buttonClass: 'btn--primary',
+    buttonClass: 'btn--pink',
     popular: false
   },
   {
@@ -166,7 +166,7 @@ const plans = ref([
     ],
     buttonText: 'Suscribirse',
     buttonLink: '/contact',
-    buttonClass: 'btn--primary',
+    buttonClass: 'btn--pink',
     popular: false
   }
 ]);

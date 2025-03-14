@@ -368,6 +368,20 @@ strong {
     }
   }
   
+  &--pink {
+    background-color: #FBC5C5;
+    color: white;
+    box-shadow: 0 5px 15px rgba(#FBC5C5, 0.25);
+    
+    &::after {
+      background-color: #FBC5C5;
+    }
+    
+    &:hover {
+      color: white;
+    }
+  }
+  
   &--secondary {
     background-color: $secondary;
     color: $dark;

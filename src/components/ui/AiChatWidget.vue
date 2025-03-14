@@ -553,7 +553,7 @@ $primary-gradient: linear-gradient(135deg, $primary 0%, lighten($primary, 15%) 1
 }
 
 .send-button {
-  background-color: $primary;
+  background-color: #FBC5C5;
   color: white;
   border: none;
   width: 36px;
@@ -567,7 +567,7 @@ $primary-gradient: linear-gradient(135deg, $primary 0%, lighten($primary, 15%) 1
   transition: $transition-base;
   
   &:hover {
-    background-color: darken($primary, 5%);
+    background-color: darken(#FBC5C5, 5%);
   }
   
   &:disabled {
