@@ -346,7 +346,7 @@ $primary-gradient: linear-gradient(135deg, $primary 0%, lighten($primary, 15%) 1
   width: 60px;
   height: 60px;
   border-radius: 50%;
-  background: $primary-gradient;
+  background: #FBC5C5;
   border: none;
   box-shadow: $shadow-lg;
   display: flex;
@@ -385,7 +385,7 @@ $primary-gradient: linear-gradient(135deg, $primary 0%, lighten($primary, 15%) 1
 }
 
 .chat-header {
-  background: $primary-gradient;
+  background: #FBC5C5;
   color: white;
   padding: $spacing-md;
   display: flex;

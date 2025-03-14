@@ -1222,7 +1222,7 @@ $pink-overlay: rgba(#FBC5C5, 0.15); // Light pink overlay
 
 // CTA Section
 .section--cta {
-  background: $primary-gradient;
+  background: #FBC5C5;
   color: white;
   width: 100vw;
   margin-left: calc(-50vw + 50%);
