@@ -523,7 +523,7 @@ $primary-gradient: linear-gradient(135deg, $primary 0%, lighten($primary, 15%) 1
 $section-spacing: $spacing-4xl;
 $border-radius-enhanced: 30px; // Aumentado para esquinas más redondeadas
 $button-radius: 20px; // Redondeo específico para botones
-$purple-overlay: rgba($primary, 0.08); // Slightly stronger purple background
+$purple-overlay: rgba($primary, 0.15); // Slightly stronger purple background
 
 .demo-container {
   background: url(/demogif.gif);
