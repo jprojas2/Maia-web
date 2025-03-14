@@ -31,14 +31,17 @@
           </div>
           
           <p class="hero__subtitle animate-slide-in-up">
-            "Show, don't tell": La venta inmobiliaria es visual, no textual.
+            <strong>Show, don't tell</strong>
+          </p>
+          <p class="hero__subtitle animate-slide-in-up">
+            La venta inmobiliaria es visual, no textual.
           </br>Maia transforma tus recorridos virtuales en experiencias de venta guiadas por inteligencia artificial.
           </p>
           <p class="hero__subtitle animate-slide-in-up">
             ¿Listo para sumarte a la revolución de las ventas inmobiliarias?
           </p>
           <div class="hero__actions animate-slide-in-up">
-            <a href="mailto:manuel@maiavr.cl" class="btn btn--primary btn--lg">¡Únete a nuestro waitlist para ser de los primeros!</a>
+            <a href="mailto:manuel@maiavr.cl" class="btn btn--primary btn--lg">¡Quiero un mes de prueba gratis!</a>
           </div>
         </div>
       </div>
@@ -195,8 +198,11 @@
         <div class="section__header">
           <h2 class="section__title">¿Por Qué Elegir Maia?</h2>
           <p class="section__subtitle">
-            Ofrecemos una experiencia de compra interactiva, personalizada y simple a través de recorridos virtuales guiados por AI, captando información de una manera más natural y fluida, mejorando la calidad de tus leads.
-            </p>Las páginas web tradicionales de proyectos inmobiliarios tienen:
+            Ofrecemos una experiencia de compra interactiva, personalizada y simple a través de recorridos virtuales guiados por AI, captando información de una manera más natural y mejorando la calidad de tus leads.
+          </p>
+          <p class="section__subtitle">
+            Las páginas web tradicionales de proyectos inmobiliarios tienen:
+          </p>
         </div>
         
         <!-- Stats Row - All stats included -->
@@ -416,7 +422,7 @@
             
           </p>
           <div class="cta__actions">
-            <a href="mailto:manuel@maiavr.cl" class="btn btn--white btn--lg">¡Inscríbete en nuestro waitlist para ser de los primeros!</a>
+            <a href="mailto:manuel@maiavr.cl" class="btn btn--white btn--lg">¡Quiero un mes de prueba gratis!</a>
             <!-- <a href="#pricing" class="btn btn--white btn--lg">Ver Planes</a> -->
             <!-- <a href="#contact" class="btn btn--white btn--lg">Suscribirse</a> -->
           </div>
@@ -815,9 +821,10 @@ $purple-overlay: rgba($primary, 0.08); // Slightly stronger purple background
 // Stats layout
 .stats-container {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: $spacing-lg;
   margin: $spacing-2xl 0;
+  justify-content: center;
   
   @media (max-width: $breakpoint-md) {
     grid-template-columns: repeat(2, 1fr);
