@@ -250,7 +250,7 @@ nav ul li a:hover::after {
 }
 
 .cta-button {
-    background: var(--gradient-1);
+    background: var(--primary);
     color: white;
     border: none;
     padding: 12px 30px;
@@ -264,11 +264,15 @@ nav ul li a:hover::after {
     position: relative;
     overflow: hidden;
     z-index: 1;
+    font-size: 16px;
+    letter-spacing: 0.01em;
+    text-align: center;
 }
 
 .cta-button:hover {
     transform: translateY(-3px);
     box-shadow: 0 8px 20px rgba(84, 101, 255, 0.5);
+    background: var(--primary-dark);
 }
 
 .cta-button::before {
@@ -284,6 +288,20 @@ nav ul li a:hover::after {
     border: 1px solid var(--glass-border);
     border-radius: inherit;
     z-index: -1;
+}
+
+/* Special white CTA button for CTA section */
+.cta-section .cta-button,
+.section--cta .cta-button {
+    background: white;
+    color: var(--primary);
+    border: 1px solid var(--primary);
+}
+
+.cta-section .cta-button:hover,
+.section--cta .cta-button:hover {
+    background: rgba(255, 255, 255, 0.9);
+    color: var(--primary-dark);
 }
 
 /* Mobile menu */
