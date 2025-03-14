@@ -249,8 +249,7 @@
             <h3 class="feature-title">Recorridos virtuales</h3>
             <p class="feature-desc">
               Aprovechamos tus recorridos virtuales existentes, o bien los creamos por ti.
-            </p>
-            <p class="feature-desc">
+              <br><br>
               Los recorridos virtuales aumentan la conversión de visita a lead en un 95% y reducen el tiempo de venta en 33%.
             </p>
           </div>
