@@ -31,12 +31,11 @@
           </div>
           
           <p class="hero__subtitle animate-slide-in-up">
-            Maia transforma tus recorridos virtuales en experiencias de venta guiadas por inteligencia artificial, 
-            analizando el comportamiento de tus clientes para destacar lo que realmente les importa.
+            "Show, don't tell": Maia transforma tus recorridos virtuales en experiencias de venta guiadas por inteligencia artificial.
           </p>
           
           <div class="hero__actions animate-slide-in-up">
-            <a href="mailto:manuel@maiavr.cl" class="btn btn--primary btn--lg">Unirse al waitlist</a>
+            <a href="mailto:manuel@maiavr.cl" class="btn btn--primary btn--lg">¿Quieres ser parte de la revolución de las ventas inmobiliarias? Únete a nuestro waitlist!</a>
           </div>
         </div>
       </div>
@@ -193,27 +192,27 @@
         <div class="section__header">
           <h2 class="section__title">¿Por Qué Elegir Maia?</h2>
           <p class="section__subtitle">
-            Transforma la manera en que vendes propiedades con nuestra tecnología revolucionaria
+            Las webs inmobiliarias actuales son estáticas, impersonales, llenas de formularios y complejas de navegar. Ofrecemos una experiencia de compra interactiva, personalizada y simple a través de recorridos virtuales guiados por AI, captando información de una manera más natural y fluida, mejorando la calidad de tus leads.
           </p>
         </div>
         
         <!-- Stats Row - All stats included -->
         <div class="stats-container">
           <div class="stat-item">
-            <span class="stat-number">92%</span>
-            <span class="stat-label">Tasa de rebote en webs inmobiliarias tradicionales</span>
+            <span class="stat-number">-70%</span>
+            <span class="stat-label">Visitas a salas de ventas desde el 2020.</span>
           </div>
           <div class="stat-item">
-            <span class="stat-number">72%</span>
-            <span class="stat-label">Más conversiones con Maia</span>
+            <span class="stat-number">60%</span>
+            <span class="stat-label">Tasa de rebote en páginas tradicionales de proyectos inmobiliarios.</span>
           </div>
           <div class="stat-item">
-            <span class="stat-number">3.5x</span>
-            <span class="stat-label">Mayor engagement</span>
+            <span class="stat-number">45 s</span>
+            <span class="stat-label">Tiempo de permanencia promedio en páginas tradicionales de proyectos inmobiliarios.</span>
           </div>
           <div class="stat-item">
-            <span class="stat-number">40%</span>
-            <span class="stat-label">Ventas más rápidas</span>
+            <span class="stat-number">4%</span>
+            <span class="stat-label">Tasa de conversión de leads en páginas tradicionales de proyectos inmobiliarios.</span>
           </div>
         </div>
         
@@ -223,9 +222,9 @@
             <div class="feature-icon">
               <i class="fas fa-robot"></i>
             </div>
-            <h3 class="feature-title">Inteligencia Artificial</h3>
+            <h3 class="feature-title">Broker AI</h3>
             <p class="feature-desc">
-              Algoritmos avanzados que aprenden de cada interacción para ofrecer experiencias cada vez más personalizadas a tus clientes.
+              Guíamos a los potenciales compradores en el recorrido virtual, entregando la información de las propiedades a través de conversaciones naturales y aclarando dudas al instante. 
             </p>
           </div>
           
@@ -233,9 +232,9 @@
             <div class="feature-icon">
               <i class="fas fa-chart-line"></i>
             </div>
-            <h3 class="feature-title">Datos y Análisis</h3>
+            <h3 class="feature-title">Calficación de Leads</h3>
             <p class="feature-desc">
-              Comprende qué características de tus propiedades generan más interés y ajusta tus estrategias de venta en base a datos reales.
+              Calificamos los leads de tus recorridos virtuales en base a las conversaciones y comportamientos de tus clientes, ahorrando tiempo y esfuerzo a tus vendedores para que se enfoquen en cerrar los tratos.
             </p>
           </div>
           
@@ -243,9 +242,9 @@
             <div class="feature-icon">
               <i class="fas fa-vr-cardboard"></i>
             </div>
-            <h3 class="feature-title">Tours Virtuales 3D</h3>
+            <h3 class="feature-title">Recorridos Virtuales</h3>
             <p class="feature-desc">
-              Recorridos inmersivos que permiten a los compradores explorar cada detalle de la propiedad como si estuvieran allí.
+              Aprovechamos tus recorridos virtuales existentes, o bien los creamos por ti. Los recorridos virtuales aumentan la conversión de visita a lead en un 95% y reducen el tiempo de venta en 33%.
             </p>
           </div>
           
@@ -253,9 +252,9 @@
             <div class="feature-icon">
               <i class="fas fa-plug"></i>
             </div>
-            <h3 class="feature-title">Integración Sin Esfuerzo</h3>
+            <h3 class="feature-title">Integración y seguimiento sin esfuerzo</h3>
             <p class="feature-desc">
-              Implementa Maia en tu sitio web en minutos, sin necesidad de conocimientos técnicos. Se integra con tus herramientas actuales.
+              Nos integramos a tus canales de comunicación existentes y CRM, automatizando y centralizando el seguimiento de tus leads.
             </p>
           </div>
         </div>
@@ -342,9 +341,6 @@
       <div class="container">
         <div class="section__header">
           <h2 class="section__title">Conoce al Equipo</h2>
-          <p class="section__subtitle">
-            Un grupo apasionado de profesionales dedicados a revolucionar el sector inmobiliario
-          </p>
         </div>
         
         <div class="team-container">
@@ -377,7 +373,7 @@
               <h3>Juan Pablo Rojas</h3>
               <h4>CTO & Co-Fundador</h4>
               <p>
-                10+ años en desarrollo de software, diseñó sistemas escalables para startups. Responsable de la arquitectura técnica y desarrollo de IA.
+                10+ años en desarrollo de software diseñando sistemas escalables para startups. Responsable de la arquitectura técnica y desarrollo de IA.
               </p>
               <div class="team-social">
                 <a href="https://www.linkedin.com/in/jprojasc/" target="_blank" class="social-link" aria-label="LinkedIn">
@@ -415,12 +411,12 @@
     <section class="section section--cta">
       <div class="container">
         <div class="cta">
-          <h2 class="cta__title">¿Listo para transformar tu negocio inmobiliario?</h2>
+          <h2 class="cta__title">¿Listo para sumarte a la revolución de las ventas inmobiliarias?</h2>
           <p class="cta__subtitle">
-            Únete a cientos de inmobiliarias que están aumentando sus ventas con Maia
+            
           </p>
           <div class="cta__actions">
-            <a href="mailto:manuel@maiavr.cl" class="btn btn--white btn--lg">Unirse al waitlist</a>
+            <a href="mailto:manuel@maiavr.cl" class="btn btn--white btn--lg">¡Inscríbete en nuestro waitlist para ser de los primeros!</a>
             <!-- <a href="#pricing" class="btn btn--white btn--lg">Ver Planes</a> -->
             <!-- <a href="#contact" class="btn btn--white btn--lg">Suscribirse</a> -->
           </div>
