@@ -38,3 +38,7 @@ build
 
 # Coverage
 coverage 
+
+.vite
+.vite/deps
+.vite/deps/vue-router.js
