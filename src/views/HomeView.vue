@@ -195,11 +195,8 @@
         <div class="section__header">
           <h2 class="section__title">¿Por Qué Elegir Maia?</h2>
           <p class="section__subtitle">
-            Las visitas a salas de ventas han disminuido un 70% desde el 2020.
-          </br>Las páginas webs inmobiliarias actuales son estáticas, impersonales, llenas de formularios y complejas de navegar.
-          </br>Ofrecemos una experiencia de compra interactiva, personalizada y simple a través de recorridos virtuales guiados por AI, captando información de una manera más natural y fluida, mejorando la calidad de tus leads.
-        </br>Las páginas web tradicionales de proyectos inmobiliarios tienen:
-          </p>
+            Ofrecemos una experiencia de compra interactiva, personalizada y simple a través de recorridos virtuales guiados por AI, captando información de una manera más natural y fluida, mejorando la calidad de tus leads.
+            </p>Las páginas web tradicionales de proyectos inmobiliarios tienen:
         </div>
         
         <!-- Stats Row - All stats included -->
