@@ -1068,8 +1068,6 @@ $pink-overlay: rgba(#FBC5C5, 0.15); // Light pink overlay
 .team-section {
   position: relative;
   background-color: transparent;
-  margin-top: $spacing-2xl; // Add margin to create more separation
-  padding-top: $spacing-3xl; // Add more padding at the top
   
   &::before {
     content: '';
@@ -1083,18 +1081,6 @@ $pink-overlay: rgba(#FBC5C5, 0.15); // Light pink overlay
       radial-gradient(rgba($dark, 0.01) 1px, transparent 1px);
     background-size: 100% 100%, 20px 20px;
     z-index: -1;
-  }
-  
-  // Add a subtle border at the top to create visual separation
-  &::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 10%;
-    right: 10%;
-    height: 1px;
-    background: linear-gradient(to right, transparent, rgba($primary, 0.2), transparent);
-    z-index: 0;
   }
   
   .section__title, .section__subtitle {
