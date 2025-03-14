@@ -129,7 +129,7 @@ $primary-gradient: linear-gradient(135deg, $primary 0%, lighten($primary, 15%) 1
   right: 0;
   z-index: 1000;
   padding: 0 $spacing-lg;
-  background-color: white;
+  background-color: #E7ECFF;
   height: 100px;
   display: flex;
   align-items: center;

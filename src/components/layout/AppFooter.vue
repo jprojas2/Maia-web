@@ -233,7 +233,7 @@ export default {
   display: flex;
   align-items: center;
   gap: 0.2rem;
-  background-color: white;
+  background-color: #E7ECFF;
   padding: 0.3rem 2.8rem 0.3rem 1rem;
   border-radius: 2rem;
   display: inline-flex;
