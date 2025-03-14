@@ -46,7 +46,7 @@ echo -e "${GREEN}Proyecto construido correctamente.${NC}"
 
 # Deploy to GitHub Pages
 echo -e "${BLUE}Desplegando a GitHub Pages...${NC}"
-npx gh-pages -d dist
+npx gh-pages -d dist --cname maiavr.cl
 
 if [ $? -ne 0 ]; then
     echo -e "${RED}Error al desplegar a GitHub Pages. Verifica tu configuración de Git.${NC}"
