@@ -559,7 +559,7 @@ $pink-overlay: rgba(#FBC5C5, 0.15); // Light pink overlay
   z-index: 1; // Ensure section content is above the background
 
   &--light {
-    background-color: rgba(255, 255, 255, 0.95); // White background
+    background-color: rgba(255, 255, 255, 0.2); // Much more transparent
     position: relative;
     color: $dark;
     
@@ -570,7 +570,7 @@ $pink-overlay: rgba(#FBC5C5, 0.15); // Light pink overlay
       left: 0;
       right: 0;
       bottom: 0;
-      background-color: white;
+      background-color: transparent; // Changed from white to transparent
       background-image: 
         radial-gradient($purple-overlay 1px, transparent 1px),
         radial-gradient($pink-overlay 1px, transparent 1px);

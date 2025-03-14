@@ -60,9 +60,10 @@ onUnmounted(() => {
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: -1;
-  background-color: rgba(255, 255, 255, 0.95);
+  z-index: 0;
+  background-color: rgba(255, 255, 255, 0.98);
   overflow: hidden;
+  pointer-events: none;
   
   // Create cow hide pattern with pseudo-elements
   &::before, &::after {
@@ -78,28 +79,30 @@ onUnmounted(() => {
   // Purple spots (primary color from pitch deck)
   &::before {
     background-image: 
-      radial-gradient(ellipse 15vw 15vw at 15% 25%, rgba(84, 101, 255, 0.9) 0%, rgba(84, 101, 255, 0) 60%),
-      radial-gradient(circle 12vw at 35% 65%, rgba(84, 101, 255, 0.92) 0%, rgba(84, 101, 255, 0) 50%),
-      radial-gradient(ellipse 18vw 14vw at 55% 35%, rgba(84, 101, 255, 0.9) 0%, rgba(84, 101, 255, 0) 60%),
-      radial-gradient(circle 10vw at 75% 80%, rgba(84, 101, 255, 0.92) 0%, rgba(84, 101, 255, 0) 50%),
-      radial-gradient(ellipse 15vw 15vw at 90% 40%, rgba(84, 101, 255, 0.9) 0%, rgba(84, 101, 255, 0) 60%),
-      radial-gradient(circle 12vw at 25% 90%, rgba(84, 101, 255, 0.92) 0%, rgba(84, 101, 255, 0) 50%);
+      radial-gradient(ellipse 15vw 15vw at 15% 25%, rgba(84, 101, 255, 0.95) 0%, rgba(84, 101, 255, 0) 60%),
+      radial-gradient(circle 12vw at 35% 65%, rgba(84, 101, 255, 0.97) 0%, rgba(84, 101, 255, 0) 50%),
+      radial-gradient(ellipse 18vw 14vw at 55% 35%, rgba(84, 101, 255, 0.95) 0%, rgba(84, 101, 255, 0) 60%),
+      radial-gradient(circle 10vw at 75% 80%, rgba(84, 101, 255, 0.97) 0%, rgba(84, 101, 255, 0) 50%),
+      radial-gradient(ellipse 15vw 15vw at 90% 40%, rgba(84, 101, 255, 0.95) 0%, rgba(84, 101, 255, 0) 60%),
+      radial-gradient(circle 12vw at 25% 90%, rgba(84, 101, 255, 0.97) 0%, rgba(84, 101, 255, 0) 50%);
     opacity: 1;
+    z-index: 0;
   }
   
   // Black and pink spots (secondary color from pitch deck)
   &::after {
     background-image: 
       // Black spots
-      radial-gradient(circle 12vw at 10% 10%, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 60%),
-      radial-gradient(ellipse 15vw 12vw at 30% 45%, rgba(0, 0, 0, 0.92) 0%, rgba(0, 0, 0, 0) 55%),
-      radial-gradient(ellipse 10vw 12vw at 50% 70%, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 60%),
-      radial-gradient(circle 8vw at 70% 15%, rgba(0, 0, 0, 0.92) 0%, rgba(0, 0, 0, 0) 55%),
+      radial-gradient(circle 12vw at 10% 10%, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0) 60%),
+      radial-gradient(ellipse 15vw 12vw at 30% 45%, rgba(0, 0, 0, 0.97) 0%, rgba(0, 0, 0, 0) 55%),
+      radial-gradient(ellipse 10vw 12vw at 50% 70%, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0) 60%),
+      radial-gradient(circle 8vw at 70% 15%, rgba(0, 0, 0, 0.97) 0%, rgba(0, 0, 0, 0) 55%),
       // Pink spots (secondary color)
-      radial-gradient(circle 14vw at 85% 60%, rgba(255, 86, 119, 0.9) 0%, rgba(255, 86, 119, 0) 60%),
-      radial-gradient(ellipse 12vw 10vw at 15% 70%, rgba(255, 86, 119, 0.92) 0%, rgba(255, 86, 119, 0) 55%),
-      radial-gradient(circle 10vw at 60% 95%, rgba(255, 86, 119, 0.9) 0%, rgba(255, 86, 119, 0) 60%);
+      radial-gradient(circle 14vw at 85% 60%, rgba(255, 86, 119, 0.95) 0%, rgba(255, 86, 119, 0) 60%),
+      radial-gradient(ellipse 12vw 10vw at 15% 70%, rgba(255, 86, 119, 0.97) 0%, rgba(255, 86, 119, 0) 55%),
+      radial-gradient(circle 10vw at 60% 95%, rgba(255, 86, 119, 0.95) 0%, rgba(255, 86, 119, 0) 60%);
     opacity: 1;
+    z-index: 0;
   }
 }
 

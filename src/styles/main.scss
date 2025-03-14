@@ -156,59 +156,59 @@ strong {
     right: 0;
     bottom: 0;
     background-image: 
-      linear-gradient(to bottom, rgba($dark, 0.02), rgba($primary, 0.03)),
-      radial-gradient(rgba($dark, 0.03) 1px, transparent 1px);
+      linear-gradient(to bottom, rgba($dark, 0.01), rgba($primary, 0.01)),
+      radial-gradient(rgba($dark, 0.01) 1px, transparent 1px);
     background-size: 100% 100%, 20px 20px;
     z-index: -1;
   }
   
   &--light {
-    background-color: rgba(255, 255, 255, 0.5);
+    background-color: rgba(255, 255, 255, 0.2);
     width: 100%;
     box-shadow: none;
     transition: background-color 0.5s ease;
     
     &::before {
       background-image: 
-        linear-gradient(to bottom, rgba($dark, 0.02), rgba($primary, 0.03)),
-        radial-gradient(rgba($dark, 0.03) 1px, transparent 1px);
+        linear-gradient(to bottom, rgba($dark, 0.01), rgba($primary, 0.01)),
+        radial-gradient(rgba($dark, 0.01) 1px, transparent 1px);
       background-size: 100% 100%, 20px 20px;
     }
     
     &:nth-of-type(even) {
-      background-color: rgba(255, 255, 255, 0.45);
+      background-color: rgba(255, 255, 255, 0.15);
     }
     
     &:nth-of-type(3n) {
-      background-color: rgba(255, 255, 255, 0.4);
+      background-color: rgba(255, 255, 255, 0.1);
     }
     
     &:nth-of-type(4n) {
-      background-color: rgba(255, 255, 255, 0.35);
+      background-color: rgba(255, 255, 255, 0.05);
     }
   }
   
   &--dark {
-    background-color: rgba($dark, 0.95);
+    background-color: rgba($dark, 0.85);
     color: white;
     width: 100%;
     
     &::before {
       background-image: 
-        linear-gradient(to bottom, rgba($dark, 0.02), rgba($primary, 0.03)),
-        radial-gradient(rgba($dark, 0.03) 1px, transparent 1px);
+        linear-gradient(to bottom, rgba($dark, 0.01), rgba($primary, 0.01)),
+        radial-gradient(rgba($dark, 0.01) 1px, transparent 1px);
       background-size: 100% 100%, 20px 20px;
     }
   }
   
   &--gray {
-    background-color: rgba(255, 255, 255, 0.5);
+    background-color: rgba(255, 255, 255, 0.2);
     width: 100%;
     
     &::before {
       background-image: 
-        linear-gradient(to bottom, rgba($dark, 0.02), rgba($primary, 0.03)),
-        radial-gradient(rgba($dark, 0.03) 1px, transparent 1px);
+        linear-gradient(to bottom, rgba($dark, 0.01), rgba($primary, 0.01)),
+        radial-gradient(rgba($dark, 0.01) 1px, transparent 1px);
       background-size: 100% 100%, 20px 20px;
     }
   }
