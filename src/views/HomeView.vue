@@ -1125,6 +1125,11 @@ $pink-overlay: rgba(#FBC5C5, 0.15); // Light pink overlay
   text-align: center;
   position: relative;
   
+  // Override the common card styles to match hero section opacity
+  background-image: 
+    linear-gradient(to bottom, rgba($dark, 0.01), rgba($primary, 0.01)),
+    radial-gradient(rgba($dark, 0.01) 1px, transparent 1px);
+  
   .team-image {
     width: 200px;
     height: 200px;
