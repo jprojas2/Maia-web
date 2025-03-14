@@ -34,7 +34,7 @@
             <strong>Show, don't tell</strong>
           </p>
           <p class="hero__subtitle animate-slide-in-up">
-            La venta inmobiliaria es visual, no textual.
+            <strong>La venta inmobiliaria es visual, no textual.</strong>
           </br>Maia transforma tus recorridos virtuales en experiencias de venta guiadas por inteligencia artificial.
           </p>
           <p class="hero__subtitle animate-slide-in-up">

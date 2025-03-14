@@ -54,9 +54,8 @@
       
       <div class="footer__cta">
         <div class="cta-content">
-          <h3>¿Listo para transformar tus ventas inmobiliarias?</h3>
-          <p>Únete a cientos de inmobiliarias y agentes que ya están utilizando Maia para vender más propiedades.</p>
-          <a href="mailto:manuel@maiavr.cl" class="btn btn--white btn--lg">Unirse al waitlist</a>
+          <h3>¿Listo para sumarte a la revolución inmobiliaria?</h3>
+          <a href="mailto:manuel@maiavr.cl" class="btn btn--white btn--lg">¡Quiero un mes de prueba gratis!</a>
         </div>
       </div>
       
