@@ -570,12 +570,8 @@ $pink-overlay: rgba(#FBC5C5, 0.15); // Light pink overlay
       left: 0;
       right: 0;
       bottom: 0;
-      background-color: transparent; // Changed from white to transparent
-      background-image: 
-        radial-gradient($purple-overlay 1px, transparent 1px),
-        radial-gradient($pink-overlay 1px, transparent 1px);
-      background-position: 0 0, 10px 10px;
-      background-size: 20px 20px, 20px 20px;
+      background-color: transparent !important; // Force transparency
+      background-image: none !important; // Remove background image
       z-index: -1;
     }
   }
@@ -605,6 +601,7 @@ $pink-overlay: rgba(#FBC5C5, 0.15); // Light pink overlay
   padding-bottom: $spacing-4xl;
   position: relative;
   text-align: center;
+  background-color: transparent !important; // Force transparency
   
   &::before {
     content: '';
@@ -613,12 +610,8 @@ $pink-overlay: rgba(#FBC5C5, 0.15); // Light pink overlay
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: white;
-    background-image: 
-      radial-gradient($purple-overlay 1px, transparent 1px),
-      radial-gradient($pink-overlay 1px, transparent 1px);
-    background-position: 0 0, 10px 10px;
-    background-size: 20px 20px, 20px 20px;
+    background-color: transparent !important; // Force transparency
+    background-image: none !important; // Remove background image
     z-index: -1;
   }
   
@@ -1067,6 +1060,7 @@ $pink-overlay: rgba(#FBC5C5, 0.15); // Light pink overlay
 // Team section
 .team-section {
   position: relative;
+  background-color: transparent !important; // Force transparency
   
   &::before {
     content: '';
@@ -1075,12 +1069,8 @@ $pink-overlay: rgba(#FBC5C5, 0.15); // Light pink overlay
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: white;
-    background-image: 
-      radial-gradient($purple-overlay 1px, transparent 1px),
-      radial-gradient($pink-overlay 1px, transparent 1px);
-    background-position: 0 0, 10px 10px;
-    background-size: 20px 20px, 20px 20px;
+    background-color: transparent !important; // Force transparency
+    background-image: none !important; // Remove background image
     z-index: -1;
   }
   

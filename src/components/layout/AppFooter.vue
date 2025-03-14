@@ -81,11 +81,14 @@ export default {
 @import "../../styles/variables";
 
 .footer {
-  background-color: $dark;
+  background-color: #000000 !important;
   color: white;
   padding: $spacing-xl 0;
   display: flex;
   align-items: flex-start;
+  position: relative;
+  z-index: 2;
+  box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.1);
 }
 
 .container {
