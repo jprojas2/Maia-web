@@ -40,7 +40,7 @@
             ¿Listo para sumarte a la revolución de las ventas inmobiliarias?
           </p>
           <div class="hero__actions animate-slide-in-up">
-            <a href="mailto:manuel@maiavr.cl" class="btn btn--primary btn--lg">¡Quiero un mes de prueba gratis!</a>
+            <a href="https://docs.google.com/forms/d/1PUet4FLIe1eR0cafpNDapUpBuh0Y7Jvzl7mea_m0kNY/edit?ts=67d4874a" target="_blank" class="btn btn--primary btn--lg">¡Quiero un mes de prueba gratis!</a>
           </div>
         </div>
       </div>
@@ -249,8 +249,8 @@
             <h3 class="feature-title">Recorridos virtuales</h3>
             <p class="feature-desc">
               Aprovechamos tus recorridos virtuales existentes, o bien los creamos por ti.
-              <br><br>
-              Los recorridos virtuales aumentan la conversión de visita a lead en un 95% y reducen el tiempo de venta en 33%.
+              <br>
+              <strong>Los recorridos virtuales aumentan la conversión de visita a lead en un 95% y reducen el tiempo de venta en 33%.</strong>
             </p>
           </div>
           
@@ -422,7 +422,7 @@
             
           </p>
           <div class="cta__actions">
-            <a href="mailto:manuel@maiavr.cl" class="btn btn--white btn--lg">¡Quiero un mes de prueba gratis!</a>
+            <a href="https://docs.google.com/forms/d/1PUet4FLIe1eR0cafpNDapUpBuh0Y7Jvzl7mea_m0kNY/edit?ts=67d4874a" target="_blank" class="btn btn--white btn--lg">¡Quiero un mes de prueba gratis!</a>
             <!-- <a href="#pricing" class="btn btn--white btn--lg">Ver Planes</a> -->
             <!-- <a href="#contact" class="btn btn--white btn--lg">Suscribirse</a> -->
           </div>
