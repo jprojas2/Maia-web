@@ -557,11 +557,14 @@ $pink-overlay: rgba(#FBC5C5, 0.15); // Light pink overlay
   position: relative;
   overflow: hidden;
   z-index: 1; // Ensure section content is above the background
+  background-color: transparent;
 
   &--light {
-    background-color: rgba(255, 255, 255, 0.2); // Much more transparent
+    background-color: transparent;
     position: relative;
     color: $dark;
+    width: 100%;
+    box-shadow: none;
     
     &::before {
       content: '';
@@ -570,8 +573,10 @@ $pink-overlay: rgba(#FBC5C5, 0.15); // Light pink overlay
       left: 0;
       right: 0;
       bottom: 0;
-      background-color: transparent !important; // Force transparency
-      background-image: none !important; // Remove background image
+      background-image: 
+        linear-gradient(to bottom, rgba($dark, 0.03), rgba($primary, 0.03)),
+        radial-gradient(rgba($dark, 0.03) 1px, transparent 1px);
+      background-size: 100% 100%, 20px 20px;
       z-index: -1;
     }
   }
@@ -601,7 +606,7 @@ $pink-overlay: rgba(#FBC5C5, 0.15); // Light pink overlay
   padding-bottom: $spacing-4xl;
   position: relative;
   text-align: center;
-  background-color: transparent !important; // Force transparency
+  background-color: transparent;
   
   &::before {
     content: '';
@@ -610,8 +615,10 @@ $pink-overlay: rgba(#FBC5C5, 0.15); // Light pink overlay
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: transparent !important; // Force transparency
-    background-image: none !important; // Remove background image
+    background-image: 
+      linear-gradient(to bottom, rgba($dark, 0.01), rgba($primary, 0.01)),
+      radial-gradient(rgba($dark, 0.01) 1px, transparent 1px);
+    background-size: 100% 100%, 20px 20px;
     z-index: -1;
   }
   
@@ -880,7 +887,7 @@ $pink-overlay: rgba(#FBC5C5, 0.15); // Light pink overlay
   
   .feature-card {
     padding: $spacing-xl;
-    background-color: rgba(255, 255, 255, 0.7);
+    background-color: rgba(255, 255, 255, 0.9);
     border-radius: $border-radius-xl; // Increased from border-radius-lg
     border: 1px solid rgba($primary, 0.3);
     height: 100%;
@@ -1060,7 +1067,7 @@ $pink-overlay: rgba(#FBC5C5, 0.15); // Light pink overlay
 // Team section
 .team-section {
   position: relative;
-  background-color: transparent !important; // Force transparency
+  background-color: transparent;
   
   &::before {
     content: '';
@@ -1069,8 +1076,10 @@ $pink-overlay: rgba(#FBC5C5, 0.15); // Light pink overlay
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: transparent !important; // Force transparency
-    background-image: none !important; // Remove background image
+    background-image: 
+      linear-gradient(to bottom, rgba($dark, 0.01), rgba($primary, 0.01)),
+      radial-gradient(rgba($dark, 0.01) 1px, transparent 1px);
+    background-size: 100% 100%, 20px 20px;
     z-index: -1;
   }
   
