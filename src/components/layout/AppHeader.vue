@@ -129,7 +129,7 @@ $primary-gradient: linear-gradient(135deg, $primary 0%, lighten($primary, 15%) 1
   right: 0;
   z-index: 1000;
   padding: 0 $spacing-lg;
-  background-color: #FFFFFF;
+  background-color: #FBC5C5;
   height: 100px;
   display: flex;
   align-items: center;
@@ -239,7 +239,7 @@ $primary-gradient: linear-gradient(135deg, $primary 0%, lighten($primary, 15%) 1
         left: 0;
         right: 0;
         bottom: 0;
-        background-color: rgba(255, 255, 255, 0.95);
+        background-color: rgba(251, 197, 197, 0.95);
         backdrop-filter: blur(10px);
         z-index: 1001;
         flex-direction: column;
