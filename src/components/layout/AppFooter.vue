@@ -81,7 +81,7 @@ export default {
 @import "../../styles/variables";
 
 .footer {
-  background: $primary-gradient !important;
+  background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%) !important;
   color: #E7ECFF;
   padding: $spacing-xl 0;
   display: flex;
@@ -89,19 +89,6 @@ export default {
   position: relative;
   z-index: 2;
   box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.1);
-  
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image: 
-      radial-gradient(rgba(#E7ECFF, 0.1) 1px, transparent 1px);
-    background-size: 20px 20px;
-    z-index: -1;
-  }
 }
 
 .container {
@@ -172,7 +159,7 @@ export default {
   margin: $spacing-3xl 0;
   padding: $spacing-2xl;
   border-radius: 30px;
-  background: #000000;
+  background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
   border: none;
   box-shadow: none;
   text-align: center;
