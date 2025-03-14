@@ -178,7 +178,7 @@ export default {
   
   .btn--primary {
     background-color: $primary;
-    color: black;
+    color: white;
     
     &:hover {
       background-color: rgba($primary, 0.9);
@@ -225,7 +225,7 @@ export default {
   display: flex;
   align-items: center;
   gap: 0.2rem;
-  background-color: #FBC5C5;
+  background-color: white;
   padding: 0.3rem 2.8rem 0.3rem 1rem;
   border-radius: 2rem;
   display: inline-flex;
