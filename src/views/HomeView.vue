@@ -422,7 +422,7 @@
             
           </p>
           <div class="cta__actions">
-            <a href="https://docs.google.com/forms/d/1PUet4FLIe1eR0cafpNDapUpBuh0Y7Jvzl7mea_m0kNY/edit?ts=67d4874a" target="_blank" class="btn btn--primary btn--lg">¡Quiero un mes de prueba gratis!</a>
+            <a href="https://docs.google.com/forms/d/1PUet4FLIe1eR0cafpNDapUpBuh0Y7Jvzl7mea_m0kNY/edit?ts=67d4874a" target="_blank" class="btn btn--pink btn--lg">¡Quiero un mes de prueba gratis!</a>
             <!-- <a href="#pricing" class="btn btn--white btn--lg">Ver Planes</a> -->
             <!-- <a href="#contact" class="btn btn--white btn--lg">Suscribirse</a> -->
           </div>
@@ -1222,7 +1222,7 @@ $pink-overlay: rgba(#FBC5C5, 0.15); // Light pink overlay
 
 // CTA Section
 .section--cta {
-  background: #FBC5C5;
+  background: $primary-gradient;
   color: white;
   width: 100vw;
   margin-left: calc(-50vw + 50%);
@@ -1327,7 +1327,7 @@ $pink-overlay: rgba(#FBC5C5, 0.15); // Light pink overlay
 
 // Nueva sección de CTA con fondo completo
 .section--cta {
-  background: #FBC5C5;
+  background: $primary-gradient;
   color: white;
   width: 100vw;
   margin-left: calc(-50vw + 50%);

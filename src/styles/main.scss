@@ -370,7 +370,7 @@ strong {
   
   &--pink {
     background-color: #FBC5C5;
-    color: white;
+    color: $primary;
     box-shadow: 0 5px 15px rgba(#FBC5C5, 0.25);
     
     &::after {
@@ -378,7 +378,7 @@ strong {
     }
     
     &:hover {
-      color: white;
+      color: $primary;
     }
   }
   
