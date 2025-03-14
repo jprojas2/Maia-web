@@ -31,11 +31,11 @@
           </div>
           
           <p class="hero__subtitle animate-slide-in-up">
-            "Show, don't tell": Maia transforma tus recorridos virtuales en experiencias de venta guiadas por inteligencia artificial.
+            "Show, don't tell": La venta inmobiliaria es visual, no textual. Maia transforma tus recorridos virtuales en experiencias de venta guiadas por inteligencia artificial.
           </p>
           
           <div class="hero__actions animate-slide-in-up">
-            <a href="mailto:manuel@maiavr.cl" class="btn btn--primary btn--lg">¿Quieres ser parte de la revolución de las ventas inmobiliarias? Únete a nuestro waitlist!</a>
+            <a href="mailto:manuel@maiavr.cl" class="btn btn--primary btn--lg">¿Listo para sumarte a la revolución de las ventas inmobiliarias? ¡Únete a nuestro waitlist para ser de los primeros!</a>
           </div>
         </div>
       </div>
