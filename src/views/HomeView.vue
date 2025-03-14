@@ -1068,6 +1068,8 @@ $pink-overlay: rgba(#FBC5C5, 0.15); // Light pink overlay
 .team-section {
   position: relative;
   background-color: transparent;
+  margin-top: $spacing-2xl; // Add margin to create more separation
+  padding-top: $spacing-3xl; // Add more padding at the top
   
   &::before {
     content: '';
@@ -1081,6 +1083,18 @@ $pink-overlay: rgba(#FBC5C5, 0.15); // Light pink overlay
       radial-gradient(rgba($dark, 0.01) 1px, transparent 1px);
     background-size: 100% 100%, 20px 20px;
     z-index: -1;
+  }
+  
+  // Add a subtle border at the top to create visual separation
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 10%;
+    right: 10%;
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba($primary, 0.2), transparent);
+    z-index: 0;
   }
   
   .section__title, .section__subtitle {
@@ -1120,15 +1134,24 @@ $pink-overlay: rgba(#FBC5C5, 0.15); // Light pink overlay
 .team-card {
   padding: $spacing-xl;
   background: transparent;
-  border-radius: $border-radius-xl; // Increased from border-radius-lg
+  border-radius: $border-radius-xl;
   overflow: hidden;
   text-align: center;
   position: relative;
+  transition: $transition-base;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.5);
   
-  // Override the common card styles to match hero section opacity
+  // Use the same background pattern as hero section with 0.01 opacity
   background-image: 
     linear-gradient(to bottom, rgba($dark, 0.01), rgba($primary, 0.01)),
     radial-gradient(rgba($dark, 0.01) 1px, transparent 1px);
+  background-size: 100% 100%, 20px 20px;
+  
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+  }
   
   .team-image {
     width: 200px;
@@ -1357,7 +1380,7 @@ $pink-overlay: rgba(#FBC5C5, 0.15); // Light pink overlay
 }
 
 // Common styles for all cards - Increased border radius
-.card, .feature-card, .pricing-card, .testimonial-card, .team-card, .stats-container .stat-item {
+.card, .feature-card, .pricing-card, .testimonial-card, .stats-container .stat-item {
   border-radius: $border-radius-xl; // Increased from border-radius-lg
   overflow: hidden;
   transition: $transition-base;
