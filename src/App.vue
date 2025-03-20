@@ -12,7 +12,6 @@
       </router-view>
     </main>
     <AppFooter />
-    <AiChatWidget />
   </div>
 </template>
 
