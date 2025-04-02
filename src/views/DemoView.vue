@@ -13,7 +13,7 @@
               src="https://maiavr.s3.sa-east-1.amazonaws.com/demo.html" 
               frameborder="0" 
               allowfullscreen 
-              allow="xr-spatial-tracking"
+              allow="xr-spatial-tracking *; microphone *;"
               class="demo-iframe">
             </iframe>
             <div class="demo-overlay" v-if="showOverlay" @click="startDemo">
