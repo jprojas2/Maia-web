@@ -351,7 +351,7 @@
         <div class="team-container">
           <div class="team-card">
             <div class="team-image">
-              <img src="https://media.licdn.com/dms/image/v2/D4E03AQFi2QfyPeH3sQ/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1700504903894?e=1746057600&v=beta&t=T2CmNrKmIqp0Rn1Vd3TLguv87GMRzwZbgf8iDDiblYw" alt="Manuel Fernández" />
+              <img src="https://i.imgur.com/vftLVvg.jpeg" alt="Manuel Fernández" />
             </div>
             <div class="team-content">
               <h3>Manuel Fernández</h3>
@@ -372,7 +372,7 @@
           
           <div class="team-card">
             <div class="team-image">
-              <img src="https://media.licdn.com/dms/image/v2/D4E03AQFRnpgqYgn6Cw/profile-displayphoto-shrink_800_800/B4EZWL7aWXH0Ag-/0/1741809363200?e=1747267200&v=beta&t=HvNAp2FbvZaiz3FKEy3g7Vk8rKdUC5tziFQ0_tWZVj8" alt="Juan Pablo Rojas" />
+              <img src="https://i.imgur.com/piAMdJ1.jpeg" alt="Juan Pablo Rojas" />
             </div>
             <div class="team-content">
               <h3>Juan Pablo Rojas</h3>
@@ -390,7 +390,7 @@
           
           <div class="team-card">
             <div class="team-image">
-              <img src="https://media.licdn.com/dms/image/v2/C4D03AQExEzpf2qxawQ/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1635413934306?e=1746057600&v=beta&t=DZsUsWBp3D5yciGIHNtxFH15bROc2GTBmQOzZ9ikR00" alt="Federico Antunovic" />
+              <img src="https://i.imgur.com/R8b0sKX.jpeg" alt="Federico Antunovic" />
             </div>
             <div class="team-content">
               <h3>Federico Antunovic</h3>
